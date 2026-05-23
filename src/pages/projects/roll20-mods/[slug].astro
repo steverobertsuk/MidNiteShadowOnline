@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const mods = await getCollection("roll20Mods");
+
+  return mods.map((mod) => ({
+    params: { slug: mod.id.replace(/\.(md|mdx)$/, "") },
+    props: { mod },
+  }));
+}
+
+const { mod } = Astro.props;
+const { Content } = await render(mod);
+---
+
+<BaseLayout
+  title={`${mod.data.title} | Roll20 Mods | MidNiteShadow Online`}
+  description={mod.data.summary}
+>
+  <section class="hero">
+    <img
+      class="hero-bg"
+      src={mod.data.hero ?? "/assets/images/placeholder.webp"}
+      alt=""
+    />
+    <div class="container">
+      <p class="eyebrow">{mod.data.category}</p>
+      <h1>{mod.data.title}</h1>
+      <p class="lede">{mod.data.summary}</p>
+      <div class="meta"><span class="tag">{mod.data.status}</span></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container prose">
+      <Content />
+      <h2>Download links</h2>
+      {
+        mod.data.links.length > 0 ? (
+          mod.data.links.map((link) => (
+            <p>
+              <a href={link.url}>{link.label}</a>
+            </p>
+          ))
+        ) : (
+          <p>
+            Download links will be added here when the packaged release is
+            published.
+          </p>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

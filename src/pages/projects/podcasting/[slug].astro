@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const podcasts = await getCollection("podcasts");
+
+  return podcasts.map((podcast) => ({
+    params: { slug: podcast.id.replace(/\.(md|mdx)$/, "") },
+    props: { podcast },
+  }));
+}
+
+const { podcast } = Astro.props;
+const { Content } = await render(podcast);
+---
+
+<BaseLayout
+  title={`${podcast.data.title} | Podcasting | MidNiteShadow Online`}
+  description={podcast.data.summary}
+>
+  <section class="hero">
+    <img
+      class="hero-bg"
+      src={podcast.data.hero ?? "/assets/images/placeholder.webp"}
+      alt=""
+    />
+    <div class="container">
+      <p class="eyebrow">{podcast.data.category}</p>
+      <h1>{podcast.data.title}</h1>
+      <p class="lede">{podcast.data.summary}</p>
+      <div class="meta"><span class="tag">{podcast.data.status}</span></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container prose">
+      <Content />
+      <h2>Listen and follow</h2>
+      {
+        podcast.data.links.length > 0 ? (
+          podcast.data.links.map((link) => (
+            <p>
+              <a href={link.url}>{link.label}</a>
+            </p>
+          ))
+        ) : (
+          <p>Show links will be added here as they are published.</p>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

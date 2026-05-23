@@ -1,0 +1,123 @@
+---
+import { getCollection } from 'astro:content';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatPostDate, toSlug } from '../lib/postCategory';
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<BaseLayout>
+  <Hero
+    eyebrow="Gaming · Tools · Worlds · Media"
+    title="Creative systems for geek communities."
+    lede="MidNiteShadow Online is the home for gaming projects, STO Info, tabletop worlds, Roll20 mods and podcasting production notes."
+    video={true}
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Featured work</p>
+          <h2>Projects and worlds</h2>
+        </div>
+        <a class="button" href="/projects/">View all projects</a>
+      </div>
+      <div class="grid">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Current focus</p>
+          <h2>What this site should become</h2>
+        </div>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>Project showcase</h3><p>
+            A place to explain what each project is, why it exists, and how it
+            is evolving.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Development notes</h3><p>
+            Posts for Roll20 APIs, STO Info progress, tooling choices and
+            technical experiments.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Worldbuilding archive</h3><p>
+            A structured home for Midnight Realm, D&D notes, tokens, lore and
+            reusable tabletop material.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><p class="eyebrow">Latest</p><h2>Recent notes</h2></div>
+      </div>
+      <div class="grid">
+        {
+          posts.map((post) =>
+            (() => {
+              const postSlug = post.id.replace(/\.(md|mdx)$/, '');
+              return (
+                <article class="card post-card">
+                  <div class="post-meta-inline">
+                    <time
+                      class="post-date"
+                      datetime={post.data.date.toISOString()}
+                    >
+                      Posted: {formatPostDate(post.data.date)}
+                    </time>
+                    <span class="post-meta-separator">•</span>
+                    <a
+                      class="category-meta-link"
+                      href={`/posts/category/${toSlug(post.data.category)}/`}
+                    >
+                      {post.data.category}
+                    </a>
+                  </div>
+                  <h3>
+                    <a href={`/posts/${postSlug}/`}>{post.data.title}</a>
+                  </h3>
+                  <p>{post.data.summary}</p>
+                  <a class="button read-more-cta" href={`/posts/${postSlug}/`}>
+                    Read more
+                  </a>
+                  {post.data.tags.length > 0 && (
+                    <div class="card-tags">
+                      {post.data.tags.map((tag) => (
+                        <a
+                          class="tag tag-cta"
+                          href={`/posts/tag/${toSlug(tag)}/`}
+                        >
+                          {tag}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </article>
+              );
+            })(),
+          )
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

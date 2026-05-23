@@ -1,0 +1,28 @@
+---
+const {
+  eyebrow,
+  title,
+  lede,
+  video = false,
+  image = "/assets/images/placeholder.webp",
+} = Astro.props;
+---
+
+<section class="hero">
+  {
+    video ? (
+      <video autoplay muted loop playsinline src="/assets/video/hero.mp4" />
+    ) : (
+      <img class="hero-bg" src={image} alt="" />
+    )
+  }
+  <div class="container">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p class="lede">{lede}</p>
+    <div class="hero-actions">
+      <a class="button primary" href="/projects/">Explore projects</a>
+      <a class="button" href="/about/">About MidNiteShadow</a>
+    </div>
+  </div>
+</section>

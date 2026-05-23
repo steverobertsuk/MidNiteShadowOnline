@@ -1,0 +1,54 @@
+---
+title: 'STO Info App - Production Update (Email Fix for Outlook/Hotmail + Major Backend & Frontend Improvements)'
+summary: 'A production release that fixed Microsoft email delivery and rolled out a large batch of backend and frontend improvements.'
+date: 2026-02-25
+category: 'STO Info'
+tags: ['Star Trek Online', 'STO Info', 'Production Update']
+---
+
+Hi everyone,
+
+I’ve pushed new production releases for both the backend and frontend of STO Info.
+
+### Backend: v1.0.71 → v1.0.102
+
+### Frontend: v1.0.96 → v1.0.132
+
+These releases include a significant number of commits focused on security hardening, CI improvements, dependency maintenance, and infrastructure upgrades.
+
+### Important: Microsoft Email Delivery Fixed
+
+The biggest user-visible change:
+
+👉 The email sending provider has been changed.
+
+Users registering with **Microsoft accounts (Outlook / Hotmail / Live)** should now reliably receive confirmation and notification emails.
+
+Microsoft had previously been blocking delivery from the prior shared IP provider despite SPF/DKIM/DMARC being correctly configured. That issue should now be resolved.
+
+If you previously attempted to register and did not receive an email, please try again.
+
+### Backend Improvements
+
+- Security workflow enhancements (CodeQL, ZAP DAST, fuzz testing)
+- Stronger CI enforcement (DCO, audit jobs)
+- Explicit entity typing for improved database consistency
+- Dependency updates across runtime and tooling
+- AWS SDK, Redis, ESLint and CI action updates
+- Documentation refinements
+
+### Frontend Improvements
+
+- Team pages and contact form enhancements
+- CI security additions (fuzzing, ZAP)
+- Automated release workflows
+- Font Awesome moved to CDN to reduce build weight
+- Angular/tooling dependency updates
+- ESLint adjustments for compatibility
+- Documentation updates
+
+Overall, this release cycle focused heavily on reliability, maintainability and security rather than major feature expansion.
+
+As always, feedback is welcome.
+
+— Steve

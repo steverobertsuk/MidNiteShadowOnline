@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatPostDate, toSlug } from '../../lib/postCategory';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<BaseLayout title="Posts | MidNiteShadow Online">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Posts</p>
+      <h1>News, Updates and Releases</h1>
+      <p class="lede">
+        A chronological feed of site posts drawn from Roll20, STO Info, podcasts
+        and more.
+      </p>
+      <div class="grid" style="margin-top: 40px;">
+        {
+          posts.map((post) => (
+            <article class="card large post-card">
+              <h3>
+                <a href={`/posts/${post.id.replace(/\.(md|mdx)$/, '')}/`}>
+                  {post.data.title}
+                </a>
+              </h3>
+              <div class="post-meta-inline">
+                <time class="post-date" datetime={post.data.date.toISOString()}>
+                  Posted: {formatPostDate(post.data.date)}
+                </time>
+                <span class="post-meta-separator">•</span>
+                <a
+                  class="category-meta-link"
+                  href={`/posts/category/${toSlug(post.data.category)}/`}
+                >
+                  {post.data.category}
+                </a>
+              </div>
+              <p>{post.data.summary}</p>
+              <a
+                class="button read-more-cta"
+                href={`/posts/${post.id.replace(/\.(md|mdx)$/, '')}/`}
+              >
+                Read more
+              </a>
+              {post.data.tags.length > 0 && (
+                <div class="card-tags">
+                  {post.data.tags.map((tag) => (
+                    <a class="tag tag-cta" href={`/posts/tag/${toSlug(tag)}/`}>
+                      {tag}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

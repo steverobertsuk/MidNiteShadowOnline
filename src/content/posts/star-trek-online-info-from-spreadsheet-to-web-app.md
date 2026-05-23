@@ -1,0 +1,36 @@
+---
+title: 'Star Trek Online Info: From Spreadsheet to Web App'
+summary: 'A look at how STO Info grew from a personal spreadsheet into a free community web app for Star Trek Online players.'
+date: 2026-04-05
+category: 'STO Info'
+tags: ['Star Trek Online', 'STO Info', 'LCARS UI']
+---
+
+This all started with a spreadsheet.
+
+For years, I tracked everything for Star Trek Online in a way that worked for me - but it grew... and grew... and eventually turned into something much bigger.
+
+Try the app here: [https://startrekonline.info/](https://startrekonline.info/)
+
+The STO Info app is a free community project designed to help players track and manage their Star Trek Online characters, progress, and more - with a clean LCARS-inspired interface.
+
+This is just the beginning - there's plenty more to come.
+
+I'll publish a roadmap soon.
+
+In the meantime, I'd love your feedback, so let me know what you think in the comments.
+
+This video shows where it began, and what it has become: [https://youtu.be/pXSzMqregd8](https://youtu.be/pXSzMqregd8)
+
+<div class="video-embed">
+	<iframe
+		src="https://www.youtube.com/embed/pXSzMqregd8?rel=0&modestbranding=1"
+		title="STO Info - From Spreadsheet to Web App"
+		loading="lazy"
+		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+		referrerpolicy="strict-origin-when-cross-origin"
+		allowfullscreen
+	></iframe>
+</div>
+
+[https://reddit.com/link/1scs8f8/video/kzeb1y99catg1/player](https://reddit.com/link/1scs8f8/video/kzeb1y99catg1/player)

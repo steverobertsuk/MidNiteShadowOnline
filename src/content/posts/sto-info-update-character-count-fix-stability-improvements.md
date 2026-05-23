@@ -1,0 +1,41 @@
+---
+title: 'STO Info Update - Character Count Fix + Stability Improvements'
+summary: 'A small but useful STO Info update that fixed account character counts and added Sentry-backed stability improvements.'
+date: 2026-02-08
+category: 'STO Info'
+tags: ['Star Trek Online', 'STO Info', 'Stability Update']
+---
+
+Hey folks 👋
+
+A new update has gone live for **STO Info**. Most of this one is behind-the-scenes work, but there _is_ one visible fix worth calling out first:
+
+**What’s changed**
+
+- ✅ **Fixed STO account character counts** - these should now report correctly.
+- Added **Sentry** to help detect and fix errors faster.
+- Improved internal logging and request tracking to make diagnosing issues easier.
+- General maintenance: dependency updates, security checks, and workflow improvements.
+
+You probably won’t notice much difference day-to-day (apart from the character count fix), but this should make the app more stable and reduce odd edge-case bugs.
+
+**Quick note on Sentry (plain English)**
+
+Sentry is a tool that helps explain _why_ something went wrong if the app errors or crashes.
+
+What it’s used for:
+
+- Spotting bugs and crashes.
+- Fixing issues more quickly.
+
+What it’s **not** used for:
+
+- No ads or behavioural tracking.
+- No passwords or sensitive personal data.
+- No monitoring of how you personally use the site.
+
+Personal data collection is disabled, and any logged data is kept for a limited time, in line with the privacy policy. The goal is simply to improve stability and speed up fixes.
+
+As always, feedback and bug reports are very welcome 🙂
+
+Live long and prosper 🖖

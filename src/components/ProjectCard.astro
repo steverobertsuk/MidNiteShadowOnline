@@ -1,0 +1,19 @@
+---
+const { project } = Astro.props;
+const slug = project.id.replace(/\.(md|mdx)$/, '');
+---
+
+<article class="card large post-card">
+  {
+    project.data.hero && (
+      <img class="project-image" src={project.data.hero} alt="" />
+    )
+  }
+  <h3><a href={`/projects/${slug}/`}>{project.data.title}</a></h3>
+  <p>{project.data.summary}</p>
+  <a class="button read-more-cta" href={`/projects/${slug}/`}>Read more</a>
+  <div class="card-tags">
+    <span class="tag">{project.data.category}</span>
+    <span class="tag">{project.data.status}</span>
+  </div>
+</article>

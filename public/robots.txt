@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://midniteshadow.online/sitemap-index.xml
