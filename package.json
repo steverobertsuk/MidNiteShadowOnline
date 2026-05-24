@@ -14,7 +14,6 @@
   "dependencies": {
     "@astrojs/check": "latest",
     "astro": "latest",
-    "gitleaks": "^1.0.0",
     "typescript": "latest"
   },
   "overrides": {
