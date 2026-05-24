@@ -1,5 +1,16 @@
 import { defineConfig } from 'astro/config';
 export default defineConfig({
-  site: 'https://midniteshadow.online',
-  output: 'static'
+  site: process.env.SITE_URL ?? 'https://midniteshadow.online',
+  output: 'static',
+  server: {
+    port: 8080,
+  },
+  preview: {
+    port: 8080,
+  },
+  vite: {
+    server: {
+      strictPort: true,
+    },
+  },
 });

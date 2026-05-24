@@ -6,17 +6,24 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "watch": "node ./scripts/watch.mjs",
+    "format": "prettier --write . --ignore-unknown",
+    "format:check": "prettier --check . --ignore-unknown"
   },
   "dependencies": {
     "@astrojs/check": "latest",
     "astro": "latest",
+    "gitleaks": "^1.0.0",
     "typescript": "latest"
   },
   "overrides": {
     "yaml-language-server": {
       "yaml": "^2.9.0"
     }
+  },
+  "engines": {
+    "node": ">=24"
   },
   "devDependencies": {
     "prettier": "^3.8.3",
