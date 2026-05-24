@@ -11,9 +11,9 @@ const slug = project.id.replace(/\.(md|mdx)$/, '');
   }
   <h3><a href={`/projects/${slug}/`}>{project.data.title}</a></h3>
   <p>{project.data.summary}</p>
-  <a class="button read-more-cta" href={`/projects/${slug}/`}>Read more</a>
+  <a class="button read-more-cta" href={`/projects/${slug}/`}><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Read more</a>
   <div class="card-tags">
-    <span class="tag">{project.data.category}</span>
-    <span class="tag">{project.data.status}</span>
+    <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> {project.data.category}</span>
+    <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> {project.data.status}</span>
   </div>
 </article>

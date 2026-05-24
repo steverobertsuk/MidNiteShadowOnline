@@ -97,6 +97,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 50;
+  -webkit-backdrop-filter: blur(22px);
   backdrop-filter: blur(22px);
   background: linear-gradient(
     180deg,
@@ -153,13 +154,16 @@ img {
   background: rgba(179, 136, 255, 0.09);
   border-radius: 999px;
   padding: 10px 16px;
-  color: var(--white);
-}
-.button {
-  display: inline-flex;
-  gap: 8px;
   align-items: center;
   font-weight: 700;
+}
+.tag {
+  display: inline-flex;
+  gap: 6px;
+}
+.tag i {
+  font-size: 0.72rem;
+  color: rgba(230, 223, 255, 0.85);
 }
 .button.primary {
   border: 0;
@@ -345,10 +349,9 @@ h3 {
   gap: 8px;
   margin-bottom: 18px;
 }
-.tag {
-  padding: 6px 11px;
-  font-size: 0.78rem;
-  color: var(--muted);
+.tag-cta i {
+  font-size: 0.72rem;
+  color: rgba(230, 223, 255, 0.85);
 }
 .post-date {
   font-size: 0.84rem;
@@ -506,10 +509,9 @@ h3 {
   background: rgba(179, 136, 255, 0.1);
   color: var(--arcane-silver);
 }
-.tag-cta::before {
-  content: '#';
-  margin-right: 1px;
-  color: rgba(230, 223, 255, 0.8);
+.tag-cta i {
+  font-size: 0.72rem;
+  color: rgba(230, 223, 255, 0.85);
 }
 .tag-cta:hover {
   border-color: rgba(230, 223, 255, 0.62);

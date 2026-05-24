@@ -29,7 +29,7 @@ const { Content } = await render(post);
         <p class="post-details-title">Post details</p>
         <div class="post-details-block">
           <p class="post-details-label post-details-label-inline">
-            Posted:
+            <i class="fa-regular fa-calendar" aria-hidden="true"></i> Posted:
             <span class="post-details-date">
               <time datetime={post.data.date.toISOString()}>
                 {formatPostDate(post.data.date)}
@@ -38,7 +38,7 @@ const { Content } = await render(post);
           </p>
         </div>
         <div class="post-details-block">
-          <p class="post-details-label">Category</p>
+          <p class="post-details-label"><i class="fa-solid fa-folder-open" aria-hidden="true"></i> Category</p>
           <a
             class="tag category-cta"
             href={`/posts/category/${toSlug(post.data.category)}/`}
@@ -49,11 +49,11 @@ const { Content } = await render(post);
         {
           post.data.tags.length > 0 && (
             <div class="post-details-block">
-              <p class="post-details-label">Tags</p>
+              <p class="post-details-label"><i class="fa-solid fa-tag" aria-hidden="true"></i> Tags</p>
               <div class="post-details-tags">
                 {post.data.tags.map((tag) => (
                   <a class="tag tag-cta" href={`/posts/tag/${toSlug(tag)}/`}>
-                    {tag}
+                    <i class="fa-solid fa-tag" aria-hidden="true"></i> {tag}
                   </a>
                 ))}
               </div>

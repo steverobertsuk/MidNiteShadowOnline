@@ -29,7 +29,7 @@ const { Content } = await render(podcast);
       <p class="eyebrow">{podcast.data.category}</p>
       <h1>{podcast.data.title}</h1>
       <p class="lede">{podcast.data.summary}</p>
-      <div class="meta"><span class="tag">{podcast.data.status}</span></div>
+      <div class="meta"><span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> {podcast.data.status}</span></div>
     </div>
   </section>
   <section class="section">

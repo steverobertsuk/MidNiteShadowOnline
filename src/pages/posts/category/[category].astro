@@ -40,14 +40,14 @@ const { category, posts } = Astro.props;
               </h3>
               <div class="post-meta-inline">
                 <time class="post-date" datetime={post.data.date.toISOString()}>
-                  Posted: {formatPostDate(post.data.date)}
+                  <i class="fa-regular fa-calendar" aria-hidden="true"></i> Posted: {formatPostDate(post.data.date)}
                 </time>
                 <span class="post-meta-separator">•</span>
                 <a
                   class="category-meta-link"
                   href={`/posts/category/${toSlug(post.data.category)}/`}
                 >
-                  {post.data.category}
+                  <i class="fa-solid fa-folder-open" aria-hidden="true"></i> {post.data.category}
                 </a>
               </div>
               <p>{post.data.summary}</p>
@@ -61,7 +61,7 @@ const { category, posts } = Astro.props;
                 <div class="card-tags">
                   {post.data.tags.map((tag) => (
                     <a class="tag tag-cta" href={`/posts/tag/${toSlug(tag)}/`}>
-                      {tag}
+                      <i class="fa-solid fa-tag" aria-hidden="true"></i> {tag}
                     </a>
                   ))}
                 </div>

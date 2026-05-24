@@ -80,19 +80,20 @@ const imageAlt = `${siteName} — ${description}`;
             <Image
               class="brand-mark-icon"
               src={brandMarkIcon}
+              loading="eager"
               alt=""
             />
           </span>
           <span>MidNite Shadow Online</span>
         </a>
         <nav class="nav-links" aria-label="Primary navigation">
-          <a href="/gaming/">Gaming</a>
-          <a href="/projects/sto-info/">STO Info</a>
-          <a href="/dnd/">D&D</a>
-          <a href="/projects/roll20-mods/">Roll20 Mods</a>
-          <a href="/projects/podcasting/">Podcasting</a>
-          <a href="/posts/">Posts</a>
-          <a class="button" href="/projects/">Projects</a>
+          <a href="/gaming/"><i class="fa-solid fa-gamepad" aria-hidden="true"></i> Gaming</a>
+          <a href="/projects/sto-info/"><i class="fa-solid fa-star" aria-hidden="true"></i> STO Info</a>
+          <a href="/dnd/"><i class="fa-solid fa-dice-d20" aria-hidden="true"></i> D&D</a>
+          <a href="/projects/roll20-mods/"><i class="fa-solid fa-gears" aria-hidden="true"></i> Roll20 Mods</a>
+          <a href="/projects/podcasting/"><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> Podcasting</a>
+          <a href="/posts/"><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a>
+          <a class="button" href="/projects/"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Projects</a>
         </nav>
       </div>
     </header>
@@ -106,5 +107,6 @@ const imageAlt = `${siteName} — ${description}`;
         </p>
       </div>
     </footer>
+    <script is:inline src="https://kit.fontawesome.com/997e87a249.js" crossorigin="anonymous"></script>
   </body>
 </html>

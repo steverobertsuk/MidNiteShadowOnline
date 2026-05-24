@@ -133,7 +133,7 @@ function shutdown(signal) {
   stopProcess(devProcess, signal);
 }
 
-devProcess.on('exit', (code, signal) => {
+devProcess.on('exit', (code) => {
   shuttingDown = true;
   watcher.close();
   clearTimeout(buildTimer);
