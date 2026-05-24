@@ -4,14 +4,14 @@ const {
   title,
   lede,
   video = false,
-  image = "/assets/images/placeholder.webp",
+  image = "/assets/images/hero-purple-embers.webp",
 } = Astro.props;
 ---
 
 <section class="hero">
   {
     video ? (
-      <video autoplay muted loop playsinline src="/assets/video/hero.mp4" />
+      <video autoplay muted loop playsinline src="/assets/video/hero-purple-embers.webm" />
     ) : (
       <img class="hero-bg" src={image} alt="" />
     )
