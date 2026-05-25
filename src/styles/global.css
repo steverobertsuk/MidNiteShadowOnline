@@ -154,6 +154,7 @@ pre {
   font-family: "Cinzel", serif;
   font-weight: 700;
   letter-spacing: 0.06em;
+  white-space: nowrap;
   background: linear-gradient(135deg, var(--violet), var(--energy-pink) 50%, var(--arcane-blue));
   -webkit-background-clip: text;
   background-clip: text;
@@ -918,18 +919,26 @@ h3 {
   }
 }
 
+@media (max-width: 1200px) {
+  .nav-links {
+    font-size: 0.82rem;
+    gap: 16px;
+    letter-spacing: 0.04em;
+  }
+}
+
 @media (max-width: 1100px) {
   .nav-links {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     gap: 12px;
     letter-spacing: 0.03em;
   }
   .brand {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1024px) {
   .nav {
     align-items: center;
   }
