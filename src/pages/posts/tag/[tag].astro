@@ -54,9 +54,7 @@ const { tag, posts } = Astro.props;
               <a
                 class="button read-more-cta"
                 href={`/posts/${post.id.replace(/\.(md|mdx)$/, '')}/`}
-              >
-                Read more
-              </a>
+              >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
               {post.data.tags.length > 0 && (
                 <div class="card-tags">
                   {post.data.tags.map((postTag) => (

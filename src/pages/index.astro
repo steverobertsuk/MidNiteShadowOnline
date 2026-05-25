@@ -97,9 +97,7 @@ const posts = (await getCollection('posts')).sort(
                     <a href={`/posts/${postSlug}/`}>{post.data.title}</a>
                   </h3>
                   <p>{post.data.summary}</p>
-                  <a class="button read-more-cta" href={`/posts/${postSlug}/`}>
-                    <i class="fa-solid fa-angles-right" aria-hidden="true"></i> Read more
-                  </a>
+                  <a class="button read-more-cta" href={`/posts/${postSlug}/`}>Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
                   {post.data.tags.length > 0 && (
                     <div class="card-tags">
                       {post.data.tags.map((tag) => (
