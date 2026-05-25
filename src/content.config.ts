@@ -1,6 +1,6 @@
-import { glob } from 'astro/loaders';
-import { z } from 'astro/zod';
-import { defineCollection } from 'astro:content';
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
+import { defineCollection } from "astro:content";
 
 const collectionSchema = z.object({
   title: z.string(),
@@ -13,22 +13,22 @@ const collectionSchema = z.object({
 });
 
 const projects = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
   schema: collectionSchema,
 });
 
 const roll20Mods = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/roll20-mods' }),
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/roll20-mods" }),
   schema: collectionSchema,
 });
 
 const podcasts = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/podcasts' }),
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/podcasts" }),
   schema: collectionSchema,
 });
 
 const posts = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts' }),
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts" }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),

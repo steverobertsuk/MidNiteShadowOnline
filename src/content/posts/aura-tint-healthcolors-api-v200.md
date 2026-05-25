@@ -1,9 +1,9 @@
 ---
-title: 'Aura/Tint HealthColors API v2.0.0'
-summary: 'A major modernization of the Aura/Tint HealthColors script with stability fixes, configuration cleanup, and improved visual behavior.'
+title: "Aura/Tint HealthColors API v2.0.0"
+summary: "A major modernization of the Aura/Tint HealthColors script with stability fixes, configuration cleanup, and improved visual behavior."
 date: 2026-04-09
-category: 'HealthColors'
-tags: ['Roll20 API Mod', 'HealthColors', 'Tabletop Tools']
+category: "HealthColors"
+tags: ["Roll20 API Mod", "HealthColors", "Tabletop Tools"]
 ---
 
 A couple of DMs whose games I play in mentioned that they wish this API had its bugs fixed, especially the ones where the aura would not show, and the animations no longer had colour.

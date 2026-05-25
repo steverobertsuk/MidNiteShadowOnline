@@ -1,9 +1,9 @@
 ---
-title: 'STO Info App Update - Continued LCARS UI Improvements & Enhancements'
-summary: 'A follow-up STO Info update focused on continued LCARS-style UI refinements, usability improvements, and backend stability work.'
+title: "STO Info App Update - Continued LCARS UI Improvements & Enhancements"
+summary: "A follow-up STO Info update focused on continued LCARS-style UI refinements, usability improvements, and backend stability work."
 date: 2026-03-30
-category: 'STO Info'
-tags: ['Star Trek Online', 'STO Info', 'LCARS UI']
+category: "STO Info"
+tags: ["Star Trek Online", "STO Info", "LCARS UI"]
 ---
 
 Hi all 👋

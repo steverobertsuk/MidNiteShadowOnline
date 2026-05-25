@@ -1,9 +1,9 @@
 ---
-title: 'Script Condition Tracker'
-summary: 'A Roll20 API script for managing token conditions and custom effects inside the Turn Tracker.'
+title: "Script Condition Tracker"
+summary: "A Roll20 API script for managing token conditions and custom effects inside the Turn Tracker."
 date: 2026-05-03
-category: 'Condition Tracker'
-tags: ['Roll20 API Mod', 'Condition Tracker', 'Tabletop Tools']
+category: "Condition Tracker"
+tags: ["Roll20 API Mod", "Condition Tracker", "Tabletop Tools"]
 ---
 
 Introducing **Condition Tracker**, a Roll20 API script for managing token conditions and custom effects within the Turn Tracker.

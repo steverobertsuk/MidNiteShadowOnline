@@ -1,9 +1,9 @@
 ---
-title: 'New SwapTokenPositions Mod API'
-summary: 'A Roll20 mod update for swapping selected tokens, with staged FX pipelines, presets, and an instant-swap path.'
+title: "New SwapTokenPositions Mod API"
+summary: "A Roll20 mod update for swapping selected tokens, with staged FX pipelines, presets, and an instant-swap path."
 date: 2026-04-23
-category: 'SwapTokenPositions'
-tags: ['Roll20 API Mod', 'SwapTokenPositions', 'Tabletop Tools']
+category: "SwapTokenPositions"
+tags: ["Roll20 API Mod", "SwapTokenPositions", "Tabletop Tools"]
 ---
 
 SwapTokenPositions is a Roll20 Mod (API script) that allows GMs and players to quickly swap the positions of two selected tokens on the same page. It features customizable animation effects, persistent global settings, and clear chat feedback.

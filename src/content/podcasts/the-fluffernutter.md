@@ -1,9 +1,9 @@
 ---
-title: 'The Fluffernutter'
-summary: 'A lighter-format podcast concept blending geek culture, conversational tangents, and personality-led segments.'
-category: 'Show'
-status: 'Planned'
-hero: '/assets/images/placeholder.webp'
+title: "The Fluffernutter"
+summary: "A lighter-format podcast concept blending geek culture, conversational tangents, and personality-led segments."
+category: "Show"
+status: "Planned"
+hero: "/assets/images/placeholder.webp"
 order: 4
 links: []
 ---

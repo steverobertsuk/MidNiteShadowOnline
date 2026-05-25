@@ -1,9 +1,9 @@
 ---
-title: 'SwapTokenPositions'
+title: "SwapTokenPositions"
 summary: "Moves two selected tokens into each other's spaces without manual drag-and-drop cleanup or layer mistakes."
-category: 'Token workflow'
-status: 'Planned'
-hero: '/assets/images/placeholder.webp'
+category: "Token workflow"
+status: "Planned"
+hero: "/assets/images/placeholder.webp"
 order: 2
 links: []
 ---

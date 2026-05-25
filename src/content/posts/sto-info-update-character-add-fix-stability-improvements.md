@@ -1,9 +1,9 @@
 ---
-title: 'STO Info Update - Character Add Fix & Stability Improvements'
-summary: 'A production update that fixed character creation issues and improved authentication and stability across STO Info.'
+title: "STO Info Update - Character Add Fix & Stability Improvements"
+summary: "A production update that fixed character creation issues and improved authentication and stability across STO Info."
 date: 2026-03-01
-category: 'STO Info'
-tags: ['Star Trek Online', 'STO Info', 'Stability Update']
+category: "STO Info"
+tags: ["Star Trek Online", "STO Info", "Stability Update"]
 ---
 
 Hi all,

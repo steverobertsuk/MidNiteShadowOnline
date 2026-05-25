@@ -1,9 +1,9 @@
 ---
-title: 'Condition Tracker'
-summary: 'Tracks active conditions, durations, and turn-by-turn cleanup so status effects are easier to manage in live play.'
-category: 'Combat automation'
-status: 'In development'
-hero: '/assets/images/placeholder.webp'
+title: "Condition Tracker"
+summary: "Tracks active conditions, durations, and turn-by-turn cleanup so status effects are easier to manage in live play."
+category: "Combat automation"
+status: "In development"
+hero: "/assets/images/placeholder.webp"
 order: 3
 links: []
 ---

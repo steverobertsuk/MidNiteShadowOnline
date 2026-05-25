@@ -1,9 +1,9 @@
 ---
-title: 'STO Info Update - Character Count Fix + Stability Improvements'
-summary: 'A small but useful STO Info update that fixed account character counts and added Sentry-backed stability improvements.'
+title: "STO Info Update - Character Count Fix + Stability Improvements"
+summary: "A small but useful STO Info update that fixed account character counts and added Sentry-backed stability improvements."
 date: 2026-02-08
-category: 'STO Info'
-tags: ['Star Trek Online', 'STO Info', 'Stability Update']
+category: "STO Info"
+tags: ["Star Trek Online", "STO Info", "Stability Update"]
 ---
 
 Hey folks 👋

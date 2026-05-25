@@ -1,9 +1,9 @@
 ---
-title: 'STO Info Update: Character Statistics Filtering, Dashboard Improvements & Automation Updates'
-summary: 'A STO Info release with character statistics filtering, release-note automation, contributor automation, and other dashboard improvements.'
+title: "STO Info Update: Character Statistics Filtering, Dashboard Improvements & Automation Updates"
+summary: "A STO Info release with character statistics filtering, release-note automation, contributor automation, and other dashboard improvements."
 date: 2026-03-09
-category: 'STO Info'
-tags: ['Star Trek Online', 'STO Info', 'Character Statistics']
+category: "STO Info"
+tags: ["Star Trek Online", "STO Info", "Character Statistics"]
 ---
 
 A new update has been released for **STO Info** with a number of improvements to the dashboard and behind-the-scenes systems.

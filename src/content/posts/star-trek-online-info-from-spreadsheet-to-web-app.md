@@ -1,9 +1,9 @@
 ---
-title: 'Star Trek Online Info: From Spreadsheet to Web App'
-summary: 'A look at how STO Info grew from a personal spreadsheet into a free community web app for Star Trek Online players.'
+title: "Star Trek Online Info: From Spreadsheet to Web App"
+summary: "A look at how STO Info grew from a personal spreadsheet into a free community web app for Star Trek Online players."
 date: 2026-04-05
-category: 'STO Info'
-tags: ['Star Trek Online', 'STO Info', 'LCARS UI']
+category: "STO Info"
+tags: ["Star Trek Online", "STO Info", "LCARS UI"]
 ---
 
 This all started with a spreadsheet.

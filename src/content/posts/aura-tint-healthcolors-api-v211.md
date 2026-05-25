@@ -1,9 +1,9 @@
 ---
-title: 'Aura/Tint HealthColors API v2.1.1'
-summary: 'A follow-up Roll20 update that fixes aura visibility, settings menu behavior, and a few lingering stability issues.'
+title: "Aura/Tint HealthColors API v2.1.1"
+summary: "A follow-up Roll20 update that fixes aura visibility, settings menu behavior, and a few lingering stability issues."
 date: 2026-05-07
-category: 'HealthColors'
-tags: ['Roll20 API Mod', 'HealthColors', 'Bug Fix Release']
+category: "HealthColors"
+tags: ["Roll20 API Mod", "HealthColors", "Bug Fix Release"]
 ---
 
 I have submitted the pull request to approve a new 2.1.1 version containing the bug fixes.

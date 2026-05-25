@@ -1,9 +1,9 @@
 ---
-title: 'STO Info Update - LCARS UI Refresh (Frontend v1.0.162 / Backend v1.0.141)'
-summary: 'A visual refresh for STO Info that pushed the interface further toward a LCARS-inspired look.'
+title: "STO Info Update - LCARS UI Refresh (Frontend v1.0.162 / Backend v1.0.141)"
+summary: "A visual refresh for STO Info that pushed the interface further toward a LCARS-inspired look."
 date: 2026-03-16
-category: 'STO Info'
-tags: ['Star Trek Online', 'STO Info', 'LCARS UI']
+category: "STO Info"
+tags: ["Star Trek Online", "STO Info", "LCARS UI"]
 ---
 
 A new update has been released for the **STO Info community project**, introducing a **refactored user interface, moving the site toward a more LCARS-inspired design**.

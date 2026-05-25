@@ -1,9 +1,9 @@
 ---
-title: 'Holosuite Media'
-summary: 'Production umbrella for Star Trek and genre-focused podcasting with coordinated publishing and host collaboration.'
-category: 'Network'
-status: 'Active'
-hero: '/assets/images/placeholder.webp'
+title: "Holosuite Media"
+summary: "Production umbrella for Star Trek and genre-focused podcasting with coordinated publishing and host collaboration."
+category: "Network"
+status: "Active"
+hero: "/assets/images/placeholder.webp"
 order: 1
 links: []
 ---

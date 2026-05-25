@@ -1,9 +1,9 @@
 ---
-title: 'STO Info App - Production Update (Email Fix for Outlook/Hotmail + Major Backend & Frontend Improvements)'
-summary: 'A production release that fixed Microsoft email delivery and rolled out a large batch of backend and frontend improvements.'
+title: "STO Info App - Production Update (Email Fix for Outlook/Hotmail + Major Backend & Frontend Improvements)"
+summary: "A production release that fixed Microsoft email delivery and rolled out a large batch of backend and frontend improvements."
 date: 2026-02-25
-category: 'STO Info'
-tags: ['Star Trek Online', 'STO Info', 'Production Update']
+category: "STO Info"
+tags: ["Star Trek Online", "STO Info", "Production Update"]
 ---
 
 Hi everyone,
