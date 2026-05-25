@@ -2,15 +2,17 @@
 import { Image } from 'astro:assets';
 import '../styles/global.css';
 import brandMarkIcon from '../assets/icons/mns7-icon.png';
+import CookieBanner from '../components/CookieBanner.astro';
 const {
-  title = 'MidNiteShadow Online',
+  title = 'MidNite Shadow Online',
   description = 'Gaming, tabletop worlds, Roll20 mods, STO Info and podcasting projects.',
 } = Astro.props;
 
-const siteName = 'MidNiteShadow Online';
+const siteName = 'MidNite Shadow Online';
 const author = 'Steve Roberts';
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://midniteshadow.online').href;
 const imageAlt = `${siteName} — ${description}`;
+const gaId = (import.meta as any).env?.GA_MEASUREMENT_ID ?? '';
 ---
 
 <!doctype html>
@@ -105,8 +107,31 @@ const imageAlt = `${siteName} — ${description}`;
           Gaming projects, tabletop worlds, Roll20 tools, podcast production and
           technical creativity.
         </p>
+        <p class="footer-links">
+          <a href="/">Home</a>
+          <span aria-hidden="true"> · </span>
+          <a href="/about/">About</a>
+          <span aria-hidden="true"> · </span>
+          <a href="/projects/">Projects</a>
+          {gaId && (
+            <>
+              <span aria-hidden="true"> · </span>
+              <a href="#" id="cookie-prefs-link">Cookie Preferences</a>
+            </>
+          )}
+        </p>
+        <p class="footer-links">
+          <a href="/privacy/">Privacy Policy</a>
+          {gaId && (
+            <>
+              <span aria-hidden="true"> · </span>
+              <a href="/privacy/#cookies">Cookies</a>
+            </>
+          )}
+        </p>
       </div>
     </footer>
+    {gaId && <CookieBanner gaId={gaId} />}
     <script is:inline src="https://kit.fontawesome.com/997e87a249.js" crossorigin="anonymous"></script>
   </body>
 </html>

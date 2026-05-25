@@ -1,0 +1,92 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Privacy Policy | MidNite Shadow Online";
+const description =
+  "How MidNite Shadow Online handles personal data, cookies, and analytics.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">Legal</p>
+      <h1>Privacy Policy</h1>
+      <p class="lede">
+        How MidNite Shadow Online collects, uses, and protects personal data.
+      </p>
+
+      <p><strong>Last updated:</strong> 24th May 2026</p>
+
+      <h2>Who we are</h2>
+      <p>
+        MidNite Shadow Online is maintained by Steve Roberts. For privacy
+        questions, please use the contact details on the main <a
+          href="https://steveroberts.me/contact/"
+          target="_blank"
+          rel="noopener noreferrer">Steve Roberts site</a
+        >.
+      </p>
+
+      <h2>What we collect</h2>
+      <p>
+        This site is mostly informational. It does not currently run a contact
+        form or account system, but we may collect the following data when you
+        visit:
+      </p>
+      <ul>
+        <li>Basic server logs from the hosting platform</li>
+        <li>Analytics data, if you choose to accept analytics cookies</li>
+        <li>Information you send through external services or links</li>
+      </ul>
+
+      <h2>How we use data</h2>
+      <p>We use personal data only to:</p>
+      <ul>
+        <li>Keep the site secure and reliable</li>
+        <li>Understand which pages are useful, if analytics is accepted</li>
+        <li>Respond to direct messages sent through other services</li>
+      </ul>
+
+      <h2>Cookies</h2>
+      <p>
+        If analytics is enabled, this site stores a small consent cookie so the
+        banner remembers your choice. If you accept analytics, Google Analytics
+        may set its own cookies for measurement.
+      </p>
+      <p>
+        You can change your choice at any time using the <a
+          href="/privacy/#cookies">cookie preferences</a
+        >
+        link in the footer.
+      </p>
+
+      <h2 id="cookies">Cookies in detail</h2>
+      <p>
+        The consent cookie is used only to remember whether analytics was
+        accepted or declined. No advertising or profiling cookies are used on
+        this site.
+      </p>
+
+      <h2>Retention</h2>
+      <p>
+        Personal data is kept only for as long as needed for the purpose it was
+        collected. Provider logs and analytics data are retained according to
+        the relevant service's default settings.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        Under UK GDPR you may ask for access to, correction of, or deletion of
+        your personal data where applicable. You may also object to processing
+        based on legitimate interests.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        This page may be updated from time to time. Any material changes will be
+        reflected here with a new update date. Continued use of this website
+        after any changes constitutes acceptance of the updated policy.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

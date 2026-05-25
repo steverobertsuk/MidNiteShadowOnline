@@ -30,7 +30,7 @@ body {
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     sans-serif;
   background: #0a0a12;
   color: var(--text);
@@ -54,9 +54,21 @@ body {
   inset: -14%;
   z-index: -2;
   background:
-    radial-gradient(circle at 18% 38%, rgba(179, 136, 255, 0.46), transparent 34%),
-    radial-gradient(circle at 68% 48%, rgba(106, 13, 173, 0.52), transparent 38%),
-    radial-gradient(circle at 46% 72%, rgba(179, 136, 255, 0.34), transparent 42%),
+    radial-gradient(
+      circle at 18% 38%,
+      rgba(179, 136, 255, 0.46),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 68% 48%,
+      rgba(106, 13, 173, 0.52),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 46% 72%,
+      rgba(179, 136, 255, 0.34),
+      transparent 42%
+    ),
     radial-gradient(circle at 50% 52%, rgba(10, 10, 18, 0), #0a0a12 84%);
   filter: blur(24px);
   animation: drift 10s ease-in-out infinite alternate;
@@ -198,7 +210,7 @@ img {
   opacity: 0.95;
 }
 .hero:after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -222,7 +234,7 @@ img {
     radial-gradient(circle at 72% 24%, rgba(61, 90, 254, 0.12), transparent 26%);
 }
 .hero:before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -264,19 +276,19 @@ h3 {
   margin: 0 0 16px;
 }
 h1 {
-  font-size: clamp(2rem, 8vw, 3rem);
+  font-size: clamp(2.9rem, 8vw, 3.5rem);
   letter-spacing: -0.06em;
   max-width: 960px;
 }
 h2 {
-  font-size: clamp(2rem, 4vw, 4.2rem);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
   letter-spacing: -0.04em;
 }
 h3 {
   font-size: 1.35rem;
 }
 .lede {
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
   color: var(--muted);
   max-width: 760px;
 }
@@ -322,7 +334,7 @@ h3 {
   height: 100%;
 }
 .card:before {
-  content: '';
+  content: "";
   position: absolute;
   inset: -40% -20% auto auto;
   width: 240px;
@@ -415,7 +427,7 @@ h3 {
   );
 }
 .post-card .card-tags::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 10px;
   left: 0;
@@ -448,7 +460,7 @@ h3 {
     background 0.18s ease;
 }
 .post-card .button.read-more-cta::after {
-  content: '→';
+  content: "→";
   font-size: 1rem;
   transition: transform 0.18s ease;
 }
@@ -547,6 +559,19 @@ h3 {
   padding: 42px 0;
   color: var(--muted);
   background: rgba(5, 7, 15, 0.86);
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 12px 0 0;
+}
+.footer-links a {
+  color: var(--muted);
+}
+.footer-links a:hover {
+  color: var(--white);
 }
 .prose {
   max-width: 860px;
@@ -656,6 +681,58 @@ h3 {
   height: 100%;
   border: 0;
 }
+
+/* Cookie consent */
+.cookie-banner {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 250;
+  padding: 16px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -22px 60px rgba(0, 0, 0, 0.35);
+}
+.cookie-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.cookie-banner-body {
+  flex: 1 1 280px;
+}
+.cookie-banner-title {
+  margin: 0 0 4px;
+  font-weight: 700;
+  color: var(--white);
+}
+.cookie-banner-text {
+  margin: 0;
+  color: var(--muted);
+}
+.cookie-banner-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cookie-banner-actions .button {
+  border-bottom: none;
+}
+.cookie-banner-text a {
+  color: var(--violet);
+}
+
+@media (max-width: 640px) {
+  .cookie-banner-actions {
+    width: 100%;
+  }
+  .cookie-banner-actions .button {
+    flex: 1 1 0;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 860px) {
   .nav {
     align-items: flex-start;
