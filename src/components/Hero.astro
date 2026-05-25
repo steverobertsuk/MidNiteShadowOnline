@@ -1,27 +1,32 @@
 ---
 import { Image } from 'astro:assets';
 import placeholderImage from '../assets/images/placeholder.webp';
+import { getImageLoadingPolicy, getVideoLoadingPolicy } from '../lib/mediaPriority';
 
 const {
   eyebrow,
   title,
   lede,
   video = false,
+  videoPoster = '/assets/images/hero_purple_embers.webp',
   image = placeholderImage,
 } = Astro.props;
+const heroImagePolicy = getImageLoadingPolicy('hero');
+const heroVideoPolicy = getVideoLoadingPolicy('hero');
 ---
 
 <section class="hero">
   {
     video ? (
-      <video autoplay muted loop playsinline src="/assets/video/hero-purple-embers.webm" />
+      <video autoplay muted loop playsinline preload={heroVideoPolicy.preload} poster={videoPoster} src="/assets/video/hero-purple-embers.webm" />
     ) : (
       <Image
         class="hero-bg"
         src={image}
         alt=""
-        loading="eager"
-        fetchpriority="high"
+        loading={heroImagePolicy.loading}
+        fetchpriority={heroImagePolicy.fetchpriority}
+        decoding={heroImagePolicy.decoding}
       />
     )
   }

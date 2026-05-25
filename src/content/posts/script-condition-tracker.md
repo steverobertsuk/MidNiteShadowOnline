@@ -16,7 +16,8 @@ You can view the introduction video on YouTube: [https://youtu.be/gllliINRQsQ](h
 	<iframe
 		src="https://www.youtube.com/embed/gllliINRQsQ?rel=0&modestbranding=1"
 		title="Condition Tracker Introduction"
-		loading="lazy"
+		loading="eager"
+		fetchpriority="high"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen

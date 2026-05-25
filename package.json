@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && node ./scripts/check-accessible-names.mjs dist",
     "preview": "astro preview",
     "watch": "node ./scripts/watch.mjs",
     "format": "prettier --write . --ignore-unknown",

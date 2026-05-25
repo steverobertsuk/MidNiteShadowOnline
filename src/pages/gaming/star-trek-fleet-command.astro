@@ -2,6 +2,9 @@
 import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import placeholderImage from "../../assets/images/placeholder.webp";
+import { getImageLoadingPolicy } from "../../lib/mediaPriority";
+
+const heroImagePolicy = getImageLoadingPolicy("hero");
 ---
 
 <BaseLayout
@@ -9,7 +12,7 @@ import placeholderImage from "../../assets/images/placeholder.webp";
   description="Gaming notes and links for Star Trek Fleet Command."
 >
   <section class="hero">
-    <Image class="hero-bg" src={placeholderImage} alt="" loading="eager" fetchpriority="high" />
+    <Image class="hero-bg" src={placeholderImage} alt="" loading={heroImagePolicy.loading} fetchpriority={heroImagePolicy.fetchpriority} decoding={heroImagePolicy.decoding} />
     <div class="container">
       <p class="eyebrow">Gaming</p>
       <h1>Star Trek Fleet Command</h1>

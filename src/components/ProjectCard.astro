@@ -1,8 +1,10 @@
 ---
 import { Image } from 'astro:assets';
+import { getImageLoadingPolicy } from '../lib/mediaPriority';
 
 const { project } = Astro.props;
 const slug = project.id.replace(/\.(md|mdx)$/, '');
+const cardImagePolicy = getImageLoadingPolicy('card');
 ---
 
 <article class="card large post-card">
@@ -12,8 +14,9 @@ const slug = project.id.replace(/\.(md|mdx)$/, '');
         class="project-image"
         src={project.data.hero}
         alt=""
-        loading="lazy"
-        fetchpriority="low"
+        loading={cardImagePolicy.loading}
+        fetchpriority={cardImagePolicy.fetchpriority}
+        decoding={cardImagePolicy.decoding}
       />
     )
   }

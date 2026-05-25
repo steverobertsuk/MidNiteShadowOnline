@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getCollection, render } from "astro:content";
 import placeholderImage from "../../../assets/images/placeholder.webp";
+import { getImageLoadingPolicy } from "../../../lib/mediaPriority";
 
 export async function getStaticPaths() {
   const mods = await getCollection("roll20Mods");
@@ -15,6 +16,7 @@ export async function getStaticPaths() {
 
 const { mod } = Astro.props;
 const { Content } = await render(mod);
+const heroImagePolicy = getImageLoadingPolicy("hero");
 ---
 
 <BaseLayout
@@ -26,8 +28,9 @@ const { Content } = await render(mod);
       class="hero-bg"
       src={mod.data.hero ?? placeholderImage}
       alt=""
-      loading="eager"
-      fetchpriority="high"
+      loading={heroImagePolicy.loading}
+      fetchpriority={heroImagePolicy.fetchpriority}
+      decoding={heroImagePolicy.decoding}
     />
     <div class="container">
       <p class="eyebrow">{mod.data.category}</p>

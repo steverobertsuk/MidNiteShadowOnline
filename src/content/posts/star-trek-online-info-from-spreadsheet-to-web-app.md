@@ -26,7 +26,8 @@ This video shows where it began, and what it has become: [https://youtu.be/pXSzM
 	<iframe
 		src="https://www.youtube.com/embed/pXSzMqregd8?rel=0&modestbranding=1"
 		title="STO Info - From Spreadsheet to Web App"
-		loading="lazy"
+		loading="eager"
+		fetchpriority="high"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen

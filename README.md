@@ -15,6 +15,32 @@ npm run dev
 npm run build
 ```
 
+## Accessibility check
+
+`npm run build` now includes an automated audit for heading and anchor accessible names in generated HTML (`dist`).
+
+The audit fails the build if any `<h1>`-`<h6>` or `<a>` element has no accessible name.
+
+Accepted name sources:
+
+- inner text
+- `aria-label`
+- `aria-labelledby`
+- an `img`/`Image` with non-empty `alt`
+- an `svg` with a non-empty `<title>`
+
+To run only the audit after a build:
+
+```bash
+node ./scripts/check-accessible-names.mjs dist
+```
+
+Watch mode also runs the same audit after each rebuild:
+
+```bash
+npm run watch
+```
+
 ## Cloudflare Pages
 
 - Build command: `npm run build`

@@ -2,11 +2,15 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import placeholderImage from '../../assets/images/placeholder.webp';
+import { getImageLoadingPolicy } from '../../lib/mediaPriority';
+
+const heroImagePolicy = getImageLoadingPolicy('hero');
+const cardImagePolicy = getImageLoadingPolicy('card');
 ---
 
 <BaseLayout title="Gaming | MidNiteShadow Online">
   <section class="hero">
-    <Image class="hero-bg" src={placeholderImage} alt="" loading="eager" fetchpriority="high" /><div
+    <Image class="hero-bg" src={placeholderImage} alt="" loading={heroImagePolicy.loading} fetchpriority={heroImagePolicy.fetchpriority} decoding={heroImagePolicy.decoding} /><div
       class="container"
     >
       <p class="eyebrow">Gaming</p><h1>
@@ -30,8 +34,9 @@ import placeholderImage from '../../assets/images/placeholder.webp';
             class="project-image"
             src={placeholderImage}
             alt=""
-            loading="lazy"
-            fetchpriority="low"
+            loading={cardImagePolicy.loading}
+            fetchpriority={cardImagePolicy.fetchpriority}
+            decoding={cardImagePolicy.decoding}
           />
           <h3><a href="/gaming/star-trek-online/">Star Trek Online</a></h3>
           <p>
@@ -53,8 +58,9 @@ import placeholderImage from '../../assets/images/placeholder.webp';
             class="project-image"
             src={placeholderImage}
             alt=""
-            loading="lazy"
-            fetchpriority="low"
+            loading={cardImagePolicy.loading}
+            fetchpriority={cardImagePolicy.fetchpriority}
+            decoding={cardImagePolicy.decoding}
           />
           <h3>
             <a href="/gaming/star-trek-fleet-command/"
@@ -78,8 +84,9 @@ import placeholderImage from '../../assets/images/placeholder.webp';
             class="project-image"
             src={placeholderImage}
             alt=""
-            loading="lazy"
-            fetchpriority="low"
+            loading={cardImagePolicy.loading}
+            fetchpriority={cardImagePolicy.fetchpriority}
+            decoding={cardImagePolicy.decoding}
           />
           <h3><a href="/dnd/">Dungeons &amp; Dragons</a></h3>
           <p>

@@ -4,15 +4,20 @@ import Hero from '../components/Hero.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { formatPostDate, toSlug } from '../lib/postCategory';
+import { getResponsiveImagePreloads } from '../lib/mediaPriority';
 const projects = (await getCollection('projects')).sort(
   (a, b) => a.data.order - b.data.order,
 );
 const posts = (await getCollection('posts')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
+const heroResponsivePreloads = getResponsiveImagePreloads(
+  '/assets/images/placeholder.webp',
+  '/assets/images/hero_purple_embers.webp',
+);
 ---
 
-<BaseLayout>
+<BaseLayout responsiveImagePreloads={heroResponsivePreloads}>
   <Hero
     eyebrow="Gaming · Tools · Worlds · Media"
     title="Creative systems for geek communities."

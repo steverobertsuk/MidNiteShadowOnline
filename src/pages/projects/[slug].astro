@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import placeholderImage from '../../assets/images/placeholder.webp';
+import { getImageLoadingPolicy } from '../../lib/mediaPriority';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -28,6 +29,8 @@ const podcasts =
         (a, b) => a.data.order - b.data.order,
       )
     : [];
+const heroImagePolicy = getImageLoadingPolicy('hero');
+const cardImagePolicy = getImageLoadingPolicy('card');
 ---
 
 <BaseLayout
@@ -39,8 +42,9 @@ const podcasts =
       class="hero-bg"
       src={project.data.hero ?? placeholderImage}
       alt=""
-      loading="eager"
-      fetchpriority="high"
+      loading={heroImagePolicy.loading}
+      fetchpriority={heroImagePolicy.fetchpriority}
+      decoding={heroImagePolicy.decoding}
     />
     <div class="container">
       <p class="eyebrow">{project.data.category}</p>
@@ -68,8 +72,9 @@ const podcasts =
                         class="project-image"
                         src={mod.data.hero}
                         alt=""
-                        loading="lazy"
-                        fetchpriority="low"
+                        loading={cardImagePolicy.loading}
+                        fetchpriority={cardImagePolicy.fetchpriority}
+                        decoding={cardImagePolicy.decoding}
                       />
                     )}
                     <h3>
@@ -109,8 +114,9 @@ const podcasts =
                         class="project-image"
                         src={podcast.data.hero}
                         alt=""
-                        loading="lazy"
-                        fetchpriority="low"
+                        loading={cardImagePolicy.loading}
+                        fetchpriority={cardImagePolicy.fetchpriority}
+                        decoding={cardImagePolicy.decoding}
                       />
                     )}
                     <h3>

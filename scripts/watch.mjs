@@ -17,6 +17,10 @@ const spawnOptions = {
   cwd: projectRoot,
   stdio: "inherit",
 };
+const accessibleNameCheckScript = resolve(
+  scriptDir,
+  "check-accessible-names.mjs",
+);
 const ignoredSegments = new Set([".astro", "dist", "node_modules", ".git"]);
 
 let buildProcess = null;
@@ -72,6 +76,26 @@ function runBuildStep(args) {
   });
 }
 
+function runAccessibleNameAudit() {
+  return new Promise((resolveAudit, rejectAudit) => {
+    const childProcess = spawn(
+      process.execPath,
+      [accessibleNameCheckScript, "dist"],
+      spawnOptions,
+    );
+
+    childProcess.on("error", rejectAudit);
+    childProcess.on("exit", (code) => {
+      if (code === 0) {
+        resolveAudit();
+        return;
+      }
+
+      rejectAudit(new Error(`Accessible-name audit exited with code ${code}.`));
+    });
+  });
+}
+
 function startBuild() {
   if (shuttingDown || buildProcess) {
     return;
@@ -82,6 +106,7 @@ function startBuild() {
   Promise.resolve()
     .then(() => runBuildStep(["check"]))
     .then(() => runBuildStep(["build"]))
+    .then(() => runAccessibleNameAudit())
     .catch((error) => {
       if (!buildProcess?.cancelled) {
         console.error(error.message);
