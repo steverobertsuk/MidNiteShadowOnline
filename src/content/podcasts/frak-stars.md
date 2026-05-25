@@ -3,7 +3,7 @@ title: "Frak Stars"
 summary: "A sci-fi and genre discussion format designed for sharp topic segments, rotating themes, and guest conversation."
 category: "Show"
 status: "In development"
-hero: "/assets/images/placeholder.webp"
+hero: "../../assets/images/placeholder.webp"
 order: 3
 links: []
 ---

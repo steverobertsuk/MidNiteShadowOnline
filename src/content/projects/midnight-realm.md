@@ -3,7 +3,7 @@ title: "Midnight Realm"
 summary: "A dark episodic tabletop setting built around a floating island, perpetual night, the Orb of Osuvox and modular one-shot adventures."
 category: "D&D / Worldbuilding"
 status: "Concept development"
-hero: "/assets/images/placeholder.webp"
+hero: "../../assets/images/placeholder.webp"
 order: 3
 links: []
 ---

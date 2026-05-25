@@ -1,7 +1,10 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 export default defineConfig({
   site: process.env.SITE_URL ?? "https://midniteshadow.online",
   output: "static",
+  image: {
+    service: passthroughImageService(),
+  },
   server: {
     port: 8080,
   },

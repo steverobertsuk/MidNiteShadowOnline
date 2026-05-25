@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import placeholderImage from '../../assets/images/placeholder.webp';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -33,10 +35,12 @@ const podcasts =
   description={project.data.summary}
 >
   <section class="hero">
-    <img
+    <Image
       class="hero-bg"
-      src={project.data.hero ?? '/assets/images/placeholder.webp'}
+      src={project.data.hero ?? placeholderImage}
       alt=""
+      loading="eager"
+      fetchpriority="high"
     />
     <div class="container">
       <p class="eyebrow">{project.data.category}</p>
@@ -60,7 +64,13 @@ const podcasts =
                 return (
                   <article class="card large post-card">
                     {mod.data.hero && (
-                      <img class="project-image" src={mod.data.hero} alt="" />
+                      <Image
+                        class="project-image"
+                        src={mod.data.hero}
+                        alt=""
+                        loading="lazy"
+                        fetchpriority="low"
+                      />
                     )}
                     <h3>
                       <a href={`/projects/roll20-mods/${modSlug}/`}>
@@ -97,10 +107,12 @@ const podcasts =
                 return (
                   <article class="card large post-card">
                     {podcast.data.hero && (
-                      <img
+                      <Image
                         class="project-image"
                         src={podcast.data.hero}
                         alt=""
+                        loading="lazy"
+                        fetchpriority="low"
                       />
                     )}
                     <h3>

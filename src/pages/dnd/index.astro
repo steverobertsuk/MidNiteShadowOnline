@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import placeholderImage from '../../assets/images/placeholder.webp';
 ---
 
 <BaseLayout title="D&D | MidNiteShadow Online">
   <section class="hero">
-    <img class="hero-bg" src="/assets/images/placeholder.webp" alt="" /><div
+    <Image class="hero-bg" src={placeholderImage} alt="" loading="eager" fetchpriority="high" /><div
       class="container"
     >
       <p class="eyebrow">D&D / Tabletop</p><h1>
@@ -25,10 +27,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
       <div class="grid" style="margin-top: 40px;">
         <article class="card large post-card">
-          <img
+          <Image
             class="project-image"
-            src="/assets/images/placeholder.webp"
+            src={placeholderImage}
             alt=""
+            loading="lazy"
+            fetchpriority="low"
           />
           <h3><a href="/dnd/dorn/">Dorn</a></h3>
           <p>
@@ -42,10 +46,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </article>
         <article class="card large post-card">
-          <img
+          <Image
             class="project-image"
-            src="/assets/images/placeholder.webp"
+            src={placeholderImage}
             alt=""
+            loading="lazy"
+            fetchpriority="low"
           />
           <h3><a href="/dnd/nox/">Nox</a></h3>
           <p>
@@ -59,10 +65,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </article>
         <article class="card large post-card">
-          <img
+          <Image
             class="project-image"
-            src="/assets/images/placeholder.webp"
+            src={placeholderImage}
             alt=""
+            loading="lazy"
+            fetchpriority="low"
           />
           <h3><a href="/dnd/ulrick/">Ulrick</a></h3>
           <p>
@@ -76,10 +84,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </article>
         <article class="card large post-card">
-          <img
+          <Image
             class="project-image"
-            src="/assets/images/placeholder.webp"
+            src={placeholderImage}
             alt=""
+            loading="lazy"
+            fetchpriority="low"
           />
           <h3><a href="/projects/roll20-mods/">Roll20 Mods</a></h3>
           <p>

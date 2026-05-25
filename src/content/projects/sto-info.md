@@ -3,7 +3,7 @@ title: "STO Info"
 summary: "A free community app for Star Trek Online players, combining account and character tracking with a growing roadmap for fleet management."
 category: "Star Trek Online"
 status: "Active development"
-hero: "/assets/images/placeholder.webp"
+hero: "../../assets/images/placeholder.webp"
 order: 1
 links:
   - label: "Website"

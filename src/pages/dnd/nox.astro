@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import placeholderImage from "../../assets/images/placeholder.webp";
 ---
 
 <BaseLayout
@@ -7,7 +9,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   description="Campaign notes and character overview for Nox."
 >
   <section class="hero">
-    <img class="hero-bg" src="/assets/images/placeholder.webp" alt="" />
+    <Image class="hero-bg" src={placeholderImage} alt="" loading="eager" fetchpriority="high" />
     <div class="container">
       <p class="eyebrow">D&D Character</p>
       <h1>Nox</h1>

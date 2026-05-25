@@ -1,16 +1,18 @@
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { defineCollection } from "astro:content";
+import type { SchemaContext } from "astro:content";
 
-const collectionSchema = z.object({
-  title: z.string(),
-  summary: z.string(),
-  category: z.string(),
-  status: z.string(),
-  hero: z.string().optional(),
-  order: z.number().default(0),
-  links: z.array(z.object({ label: z.string(), url: z.string() })).default([]),
-});
+const collectionSchema = ({ image }: SchemaContext) =>
+  z.object({
+    title: z.string(),
+    summary: z.string(),
+    category: z.string(),
+    status: z.string(),
+    hero: image().optional(),
+    order: z.number().default(0),
+    links: z.array(z.object({ label: z.string(), url: z.string() })).default([]),
+  });
 
 const projects = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),

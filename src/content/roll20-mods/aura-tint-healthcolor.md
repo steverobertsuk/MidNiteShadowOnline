@@ -3,7 +3,7 @@ title: "Aura/Tint HealthColor"
 summary: "Applies health-based aura and tint feedback so token state is readable at a glance without opening character sheets."
 category: "Visual feedback"
 status: "Planned"
-hero: "/assets/images/placeholder.webp"
+hero: "../../assets/images/placeholder.webp"
 order: 1
 links: []
 ---

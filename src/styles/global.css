@@ -531,20 +531,26 @@ h3 {
   color: var(--white);
 }
 .project-image {
+  width: 100%;
+  height: auto;
   border-radius: 22px;
   border: 1px solid var(--line);
   margin-bottom: 20px;
   aspect-ratio: 16/9;
   object-fit: cover;
+  object-position: center;
   opacity: 0.9;
 }
 .post-card > .project-image {
   width: calc(100% + 52px);
   max-width: calc(100% + 52px);
+  height: clamp(180px, 22vw, 260px);
   margin: -26px -26px 20px;
   border-radius: 28px 28px 0 0;
   border: 0;
   border-bottom: 1px solid var(--line);
+  object-fit: cover;
+  object-position: center;
 }
 .timeline {
   display: grid;

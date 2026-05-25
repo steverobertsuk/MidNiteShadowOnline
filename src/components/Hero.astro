@@ -1,10 +1,13 @@
 ---
+import { Image } from 'astro:assets';
+import placeholderImage from '../assets/images/placeholder.webp';
+
 const {
   eyebrow,
   title,
   lede,
   video = false,
-  image = "/assets/images/hero-purple-embers.webp",
+  image = placeholderImage,
 } = Astro.props;
 ---
 
@@ -13,7 +16,13 @@ const {
     video ? (
       <video autoplay muted loop playsinline src="/assets/video/hero-purple-embers.webm" />
     ) : (
-      <img class="hero-bg" src={image} alt="" />
+      <Image
+        class="hero-bg"
+        src={image}
+        alt=""
+        loading="eager"
+        fetchpriority="high"
+      />
     )
   }
   <div class="container">

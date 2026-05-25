@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import '../styles/global.css';
 import brandMarkIcon from '../assets/icons/mns7-icon.png';
+import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
 const {
   title = 'MidNite Shadow Online',
@@ -116,7 +116,7 @@ const gaId = (import.meta as any).env?.GA_MEASUREMENT_ID ?? '';
           {gaId && (
             <>
               <span aria-hidden="true"> · </span>
-              <a href="#" id="cookie-prefs-link">Cookie Preferences</a>
+              <a href="/privacy/#cookies" id="cookie-prefs-link">Cookie Preferences</a>
             </>
           )}
         </p>

@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import placeholderImage from '../../assets/images/placeholder.webp';
 ---
 
 <BaseLayout title="Gaming | MidNiteShadow Online">
   <section class="hero">
-    <img class="hero-bg" src="/assets/images/placeholder.webp" alt="" /><div
+    <Image class="hero-bg" src={placeholderImage} alt="" loading="eager" fetchpriority="high" /><div
       class="container"
     >
       <p class="eyebrow">Gaming</p><h1>
@@ -24,10 +26,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
       <div class="grid" style="margin-top: 40px;">
         <article class="card large post-card">
-          <img
+          <Image
             class="project-image"
-            src="/assets/images/placeholder.webp"
+            src={placeholderImage}
             alt=""
+            loading="lazy"
+            fetchpriority="low"
           />
           <h3><a href="/gaming/star-trek-online/">Star Trek Online</a></h3>
           <p>
@@ -47,10 +51,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </article>
         <article class="card large post-card">
-          <img
+          <Image
             class="project-image"
-            src="/assets/images/placeholder.webp"
+            src={placeholderImage}
             alt=""
+            loading="lazy"
+            fetchpriority="low"
           />
           <h3>
             <a href="/gaming/star-trek-fleet-command/"
@@ -73,10 +79,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </article>
         <article class="card large post-card">
-          <img
+          <Image
             class="project-image"
-            src="/assets/images/placeholder.webp"
+            src={placeholderImage}
             alt=""
+            loading="lazy"
+            fetchpriority="low"
           />
           <h3><a href="/dnd/">Dungeons &amp; Dragons</a></h3>
           <p>

@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getCollection, render } from "astro:content";
+import placeholderImage from "../../../assets/images/placeholder.webp";
 
 export async function getStaticPaths() {
   const podcasts = await getCollection("podcasts");
@@ -20,10 +22,12 @@ const { Content } = await render(podcast);
   description={podcast.data.summary}
 >
   <section class="hero">
-    <img
+    <Image
       class="hero-bg"
-      src={podcast.data.hero ?? "/assets/images/placeholder.webp"}
+      src={podcast.data.hero ?? placeholderImage}
       alt=""
+      loading="eager"
+      fetchpriority="high"
     />
     <div class="container">
       <p class="eyebrow">{podcast.data.category}</p>

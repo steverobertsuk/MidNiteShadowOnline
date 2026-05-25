@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getCollection, render } from "astro:content";
+import placeholderImage from "../../../assets/images/placeholder.webp";
 
 export async function getStaticPaths() {
   const mods = await getCollection("roll20Mods");
@@ -20,10 +22,12 @@ const { Content } = await render(mod);
   description={mod.data.summary}
 >
   <section class="hero">
-    <img
+    <Image
       class="hero-bg"
-      src={mod.data.hero ?? "/assets/images/placeholder.webp"}
+      src={mod.data.hero ?? placeholderImage}
       alt=""
+      loading="eager"
+      fetchpriority="high"
     />
     <div class="container">
       <p class="eyebrow">{mod.data.category}</p>
