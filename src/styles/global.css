@@ -285,7 +285,17 @@ span.tag {
     box-shadow 0.2s ease,
     filter 0.2s ease;
 }
-.button.primary:hover {
+.button.deny {
+  border: 1px solid rgba(255, 77, 109, 0.8);
+  background: linear-gradient(135deg, var(--purple), var(--energy-pink));
+  color: var(--white);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+  transition:
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+.button.primary:hover,
+.button.deny:hover {
   transform: none;
   box-shadow: 0 4px 28px rgba(0, 0, 0, 0.5);
   filter: brightness(1.1);
