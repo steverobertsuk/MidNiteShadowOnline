@@ -4,13 +4,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryFilter from '../../components/CategoryFilter.astro';
 import { formatPostDate, postIdToSlug, toSlug } from '../../lib/postCategory';
 
-const posts = (await getCollection('posts')).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
-);
-const categories = [...new Set(posts.map((p) => p.data.category))].sort().map((name) => ({ name, slug: toSlug(name) }));
+export async function getStaticPaths({ paginate }) {
+  const allPosts = (await getCollection('posts')).sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+  );
+  const categories = [...new Set(allPosts.map((p) => p.data.category))].sort().map((name) => ({ name, slug: toSlug(name) }));
+  return paginate(allPosts, { pageSize: 6, props: { categories } });
+}
+
+const { page, categories } = Astro.props;
 ---
 
-<BaseLayout title="Posts | MidNiteShadow Online">
+<BaseLayout title={page.currentPage === 1 ? 'Posts | MidNiteShadow Online' : `Posts — Page ${page.currentPage} | MidNiteShadow Online`}>
   <section class="section">
     <div class="container">
       <p class="eyebrow">Posts</p>
@@ -22,7 +27,7 @@ const categories = [...new Set(posts.map((p) => p.data.category))].sort().map((n
       <CategoryFilter categories={categories} />
       <div class="grid">
         {
-          posts.map((post) => (
+          page.data.map((post) => (
             <article class="card large post-card">
               <h3>
                 <a href={`/posts/${postIdToSlug(post.id)}/`}>
@@ -59,6 +64,37 @@ const categories = [...new Set(posts.map((p) => p.data.category))].sort().map((n
           ))
         }
       </div>
+      {page.lastPage > 1 && (
+        <nav class="pagination" aria-label="Post pagination">
+          <a
+            class:list={['pagination-btn', { disabled: !page.url.prev }]}
+            href={page.url.prev ?? '#'}
+            aria-disabled={!page.url.prev ? 'true' : undefined}
+            tabindex={!page.url.prev ? -1 : undefined}
+          >
+            <i class="fa-solid fa-angles-left" aria-hidden="true"></i> Previous
+          </a>
+          <div class="pagination-pages">
+            {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((num) => (
+              <a
+                class:list={['pagination-page', { active: num === page.currentPage }]}
+                href={num === 1 ? '/posts/' : `/posts/${num}/`}
+                aria-current={num === page.currentPage ? 'page' : undefined}
+              >
+                {num}
+              </a>
+            ))}
+          </div>
+          <a
+            class:list={['pagination-btn', { disabled: !page.url.next }]}
+            href={page.url.next ?? '#'}
+            aria-disabled={!page.url.next ? 'true' : undefined}
+            tabindex={!page.url.next ? -1 : undefined}
+          >
+            Next <i class="fa-solid fa-angles-right" aria-hidden="true"></i>
+          </a>
+        </nav>
+      )}
     </div>
   </section>
 </BaseLayout>
