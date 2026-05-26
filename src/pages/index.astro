@@ -78,10 +78,11 @@ const heroResponsivePreloads = getResponsiveImagePreloads(
     <div class="container">
       <div class="section-head">
         <div><p class="eyebrow"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> Latest</p><h2>Recent posts</h2></div>
+        <a class="button" href="/posts/"><i class="fa-solid fa-newspaper" aria-hidden="true"></i> View all posts</a>
       </div>
       <div class="grid">
         {
-          posts.map((post) =>
+          posts.slice(0, 6).map((post) =>
             (() => {
               const postSlug = postIdToSlug(post.id);
               return (
