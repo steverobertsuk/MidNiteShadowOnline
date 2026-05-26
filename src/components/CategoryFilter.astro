@@ -1,0 +1,49 @@
+---
+interface Props {
+  categories: { name: string; slug: string }[];
+  currentCategory?: string;
+}
+
+const { categories, currentCategory } = Astro.props;
+const label = currentCategory ?? 'All categories';
+---
+
+<div class="category-filter">
+  <details class="filter-dropdown">
+    <summary class="button filter-dropdown-toggle">
+      <i class="fa-solid fa-filter" aria-hidden="true"></i>
+      {label}
+      <i class="fa-solid fa-chevron-down filter-dropdown-arrow" aria-hidden="true"></i>
+    </summary>
+    <ul class="filter-dropdown-menu" role="list">
+      <li>
+        <a
+          href="/posts/"
+          class:list={['filter-dropdown-item', { active: !currentCategory }]}
+        >
+          <i class="fa-solid fa-layer-group" aria-hidden="true"></i> All posts
+        </a>
+      </li>
+      {
+        categories.map(({ name, slug }) => (
+          <li>
+            <a
+              href={`/posts/category/${slug}/`}
+              class:list={['filter-dropdown-item', { active: currentCategory === name }]}
+            >
+              <i class="fa-solid fa-folder-open" aria-hidden="true"></i> {name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
+</div>
+
+<script>
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll<HTMLDetailsElement>('details.filter-dropdown[open]').forEach((el) => {
+      if (!el.contains(e.target as Node)) el.open = false;
+    });
+  });
+</script>

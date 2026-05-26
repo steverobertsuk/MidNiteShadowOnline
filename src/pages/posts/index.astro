@@ -1,11 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryFilter from '../../components/CategoryFilter.astro';
 import { formatPostDate, postIdToSlug, toSlug } from '../../lib/postCategory';
 
 const posts = (await getCollection('posts')).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
+const categories = [...new Set(posts.map((p) => p.data.category))].sort().map((name) => ({ name, slug: toSlug(name) }));
 ---
 
 <BaseLayout title="Posts | MidNiteShadow Online">
@@ -17,7 +19,8 @@ const posts = (await getCollection('posts')).sort(
         A chronological feed of site posts drawn from Roll20, STO Info, podcasts
         and more.
       </p>
-      <div class="grid" style="margin-top: 40px;">
+      <CategoryFilter categories={categories} />
+      <div class="grid">
         {
           posts.map((post) => (
             <article class="card large post-card">
