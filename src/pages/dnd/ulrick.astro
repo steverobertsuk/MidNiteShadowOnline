@@ -1,43 +1,18 @@
 ---
-import { Image } from 'astro:assets';
-import placeholderImage from '../../assets/images/placeholder.webp';
+import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getImageLoadingPolicy } from '../../lib/mediaPriority';
-
-const heroImagePolicy = getImageLoadingPolicy('hero');
 ---
 
 <BaseLayout
   title="Ulrick | D&D | MidNiteShadow Online"
   description="Campaign notes and character overview for Ulrick."
 >
-  <section class="hero">
-    <Image
-      class="hero-bg"
-      src={placeholderImage}
-      alt=""
-      loading={heroImagePolicy.loading}
-      fetchpriority={heroImagePolicy.fetchpriority}
-      decoding={heroImagePolicy.decoding}
-    />
-    <div class="container">
-      <div class="hero-text">
-        <p class="eyebrow">D&D Character</p>
-        <h1>Ulrick</h1>
-        <p class="lede">
-          A character page for major beats, session history, and longer-term arc
-          planning.
-        </p>
-        <div class="meta">
-          <span class="tag"
-            ><i class="fa-solid fa-tag" aria-hidden="true"></i> Character</span
-          ><span class="tag"
-            ><i class="fa-solid fa-tag" aria-hidden="true"></i> D&D</span
-          >
-        </div>
-      </div>
-    </div>
-  </section>
+  <Hero
+    eyebrow="D&D Character"
+    title="Ulrick"
+    lede="A character page for major beats, session history, and longer-term arc planning."
+    tags={['Character', 'D&D']}
+  />
   <section class="section">
     <div class="container prose">
       <h2>Overview</h2>

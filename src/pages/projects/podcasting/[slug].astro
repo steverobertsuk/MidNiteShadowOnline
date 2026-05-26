@@ -1,9 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
-import placeholderImage from '../../../assets/images/placeholder.webp';
+import Hero from '../../../components/Hero.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { getImageLoadingPolicy } from '../../../lib/mediaPriority';
 
 export async function getStaticPaths() {
   const podcasts = await getCollection('podcasts');
@@ -16,35 +14,19 @@ export async function getStaticPaths() {
 
 const { podcast } = Astro.props;
 const { Content } = await render(podcast);
-const heroImagePolicy = getImageLoadingPolicy('hero');
 ---
 
 <BaseLayout
   title={`${podcast.data.title} | Podcasting | MidNiteShadow Online`}
   description={podcast.data.summary}
 >
-  <section class="hero">
-    <Image
-      class="hero-bg"
-      src={podcast.data.hero ?? placeholderImage}
-      alt=""
-      loading={heroImagePolicy.loading}
-      fetchpriority={heroImagePolicy.fetchpriority}
-      decoding={heroImagePolicy.decoding}
-    />
-    <div class="container">
-      <div class="hero-text">
-        <p class="eyebrow">{podcast.data.category}</p>
-        <h1>{podcast.data.title}</h1>
-        <p class="lede">{podcast.data.summary}</p>
-        <div class="meta">
-          <span class="tag"
-            ><i class="fa-solid fa-tag" aria-hidden="true"></i>
-            {podcast.data.status}</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <Hero
+    eyebrow={podcast.data.category}
+    title={podcast.data.title}
+    lede={podcast.data.summary}
+    image={podcast.data.hero}
+    tags={[podcast.data.status]}
+  />
   <section class="section">
     <div class="container prose">
       <Content />

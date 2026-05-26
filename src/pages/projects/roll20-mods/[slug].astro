@@ -1,9 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
-import placeholderImage from '../../../assets/images/placeholder.webp';
+import Hero from '../../../components/Hero.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { getImageLoadingPolicy } from '../../../lib/mediaPriority';
 
 export async function getStaticPaths() {
   const mods = await getCollection('roll20Mods');
@@ -16,35 +14,19 @@ export async function getStaticPaths() {
 
 const { mod } = Astro.props;
 const { Content } = await render(mod);
-const heroImagePolicy = getImageLoadingPolicy('hero');
 ---
 
 <BaseLayout
   title={`${mod.data.title} | Roll20 Mods | MidNiteShadow Online`}
   description={mod.data.summary}
 >
-  <section class="hero">
-    <Image
-      class="hero-bg"
-      src={mod.data.hero ?? placeholderImage}
-      alt=""
-      loading={heroImagePolicy.loading}
-      fetchpriority={heroImagePolicy.fetchpriority}
-      decoding={heroImagePolicy.decoding}
-    />
-    <div class="container">
-      <div class="hero-text">
-        <p class="eyebrow">{mod.data.category}</p>
-        <h1>{mod.data.title}</h1>
-        <p class="lede">{mod.data.summary}</p>
-        <div class="meta">
-          <span class="tag"
-            ><i class="fa-solid fa-tag" aria-hidden="true"></i>
-            {mod.data.status}</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <Hero
+    eyebrow={mod.data.category}
+    title={mod.data.title}
+    lede={mod.data.summary}
+    image={mod.data.hero}
+    tags={[mod.data.status]}
+  />
   <section class="section">
     <div class="container prose">
       <Content />

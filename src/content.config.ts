@@ -39,6 +39,8 @@ const posts = defineCollection({
       category: z.string(),
       hero: image().optional(),
       heroAlt: z.string().optional(),
+      heroForeground: image().optional(),
+      heroForegroundAlt: z.string().optional(),
       tags: z.array(z.string()).default([]),
     }),
 });

@@ -1,33 +1,19 @@
 ---
 import { Image } from 'astro:assets';
 import placeholderImage from '../../assets/images/placeholder.webp';
+import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getImageLoadingPolicy } from '../../lib/mediaPriority';
 
-const heroImagePolicy = getImageLoadingPolicy('hero');
 const cardImagePolicy = getImageLoadingPolicy('card');
 ---
 
 <BaseLayout title="D&D | MidNiteShadow Online">
-  <section class="hero">
-    <Image
-      class="hero-bg"
-      src={placeholderImage}
-      alt=""
-      loading={heroImagePolicy.loading}
-      fetchpriority={heroImagePolicy.fetchpriority}
-      decoding={heroImagePolicy.decoding}
-    /><div class="container">
-      <div class="hero-text">
-        <p class="eyebrow">D&D / Tabletop</p><h1>
-          Worldbuilding, characters and session design.
-        </h1><p class="lede">
-          A home for Midnight Realm, campaign notes, lore, mechanics, tokens,
-          one-shots and reusable tabletop material.
-        </p>
-      </div>
-    </div>
-  </section>
+  <Hero
+    eyebrow="D&D / Tabletop"
+    title="Worldbuilding, characters and session design."
+    lede="A home for Midnight Realm, campaign notes, lore, mechanics, tokens, one-shots and reusable tabletop material."
+  />
   <section class="section">
     <div class="container">
       <p class="eyebrow">Characters & tools</p>

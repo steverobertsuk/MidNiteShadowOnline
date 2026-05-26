@@ -1,43 +1,18 @@
 ---
-import { Image } from 'astro:assets';
-import placeholderImage from '../../assets/images/placeholder.webp';
+import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getImageLoadingPolicy } from '../../lib/mediaPriority';
-
-const heroImagePolicy = getImageLoadingPolicy('hero');
 ---
 
 <BaseLayout
   title="Star Trek Fleet Command | Gaming | MidNiteShadow Online"
   description="Gaming notes and links for Star Trek Fleet Command."
 >
-  <section class="hero">
-    <Image
-      class="hero-bg"
-      src={placeholderImage}
-      alt=""
-      loading={heroImagePolicy.loading}
-      fetchpriority={heroImagePolicy.fetchpriority}
-      decoding={heroImagePolicy.decoding}
-    />
-    <div class="container">
-      <div class="hero-text">
-        <p class="eyebrow">Gaming</p>
-        <h1>Star Trek Fleet Command</h1>
-        <p class="lede">
-          A home for Fleet Command notes, progression ideas, and future guides
-          or supporting resources.
-        </p>
-        <div class="meta">
-          <span class="tag"
-            ><i class="fa-solid fa-tag" aria-hidden="true"></i> Mobile</span
-          ><span class="tag"
-            ><i class="fa-solid fa-tag" aria-hidden="true"></i> Star Trek</span
-          >
-        </div>
-      </div>
-    </div>
-  </section>
+  <Hero
+    eyebrow="Gaming"
+    title="Star Trek Fleet Command"
+    lede="A home for Fleet Command notes, progression ideas, and future guides or supporting resources."
+    tags={['Mobile', 'Star Trek']}
+  />
   <section class="section">
     <div class="container prose">
       <h2>Overview</h2>

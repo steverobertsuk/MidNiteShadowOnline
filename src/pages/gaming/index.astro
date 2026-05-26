@@ -1,33 +1,19 @@
 ---
 import { Image } from 'astro:assets';
 import placeholderImage from '../../assets/images/placeholder.webp';
+import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getImageLoadingPolicy } from '../../lib/mediaPriority';
 
-const heroImagePolicy = getImageLoadingPolicy('hero');
 const cardImagePolicy = getImageLoadingPolicy('card');
 ---
 
 <BaseLayout title="Gaming | MidNiteShadow Online">
-  <section class="hero">
-    <Image
-      class="hero-bg"
-      src={placeholderImage}
-      alt=""
-      loading={heroImagePolicy.loading}
-      fetchpriority={heroImagePolicy.fetchpriority}
-      decoding={heroImagePolicy.decoding}
-    /><div class="container">
-      <div class="hero-text">
-        <p class="eyebrow">Gaming</p><h1>
-          Online games, fandoms and communities.
-        </h1><p class="lede">
-          A broad home for Star Trek Online, sci-fi gaming, community spaces,
-          screenshots, tools and gaming-related experiments.
-        </p>
-      </div>
-    </div>
-  </section>
+  <Hero
+    eyebrow="Gaming"
+    title="Online games, fandoms and communities."
+    lede="A broad home for Star Trek Online, sci-fi gaming, community spaces, screenshots, tools and gaming-related experiments."
+  />
   <section class="section">
     <div class="container">
       <p class="eyebrow">Game spaces</p>
