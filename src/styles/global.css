@@ -229,6 +229,12 @@ pre {
 .nav-links a:not(.button):hover::after {
   width: 100%;
 }
+.nav-links a[aria-current='page'] {
+  color: var(--violet);
+}
+.nav-links a[aria-current='page']:not(.button)::after {
+  width: 100%;
+}
 .button,
 .tag {
   border: 1px solid var(--line);
@@ -762,6 +768,10 @@ h3 {
 .footer-nav a:hover {
   color: var(--white);
 }
+.footer-nav a[aria-current='page'] {
+  color: var(--violet);
+  text-shadow: 0 0 12px rgba(179, 136, 255, 0.5);
+}
 .footer-icon {
   width: 96px;
   height: 96px;
@@ -1103,6 +1113,10 @@ h6 a:hover {
 .mobile-nav-links a:hover {
   color: var(--white);
   background: rgba(179, 136, 255, 0.07);
+}
+.mobile-nav-links a[aria-current='page'] {
+  color: var(--violet);
+  background: rgba(179, 136, 255, 0.1);
 }
 .mobile-nav-links a i {
   color: var(--violet);

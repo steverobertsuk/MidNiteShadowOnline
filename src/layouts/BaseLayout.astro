@@ -22,6 +22,8 @@ const imageAlt = `${siteName} — ${description}`;
 const gaId = (import.meta as any).env?.GA_MEASUREMENT_ID ?? '';
 const pageBackgroundVideoPolicy = getVideoLoadingPolicy('decorative');
 const brandImagePolicy = getImageLoadingPolicy('brand');
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.startsWith(href);
 const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
   ? responsiveImagePreloads
   : [];
@@ -121,12 +123,12 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
           <span>MidNite Shadow Online</span>
         </a>
         <nav class="nav-links" aria-label="Primary navigation">
-          <a href="/gaming/" aria-label="Gaming"><i class="fa-solid fa-gamepad" aria-hidden="true"></i> Gaming</a>
-          <a href="/projects/sto-info/" aria-label="STO Info"><i class="fa-solid fa-star" aria-hidden="true"></i> STO Info</a>
-          <a href="/dnd/" aria-label="D and D"><i class="fa-solid fa-dice-d20" aria-hidden="true"></i> D&D</a>
-          <a href="/projects/roll20-mods/" aria-label="Roll20 Mods"><i class="fa-solid fa-gears" aria-hidden="true"></i> Roll20 Mods</a>
-          <a href="/projects/podcasting/" aria-label="Podcasting"><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> Podcasting</a>
-          <a href="/posts/" aria-label="Posts"><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a>
+          <a href="/gaming/" aria-label="Gaming" aria-current={isActive('/gaming/') ? 'page' : undefined}><i class="fa-solid fa-gamepad" aria-hidden="true"></i> Gaming</a>
+          <a href="/projects/sto-info/" aria-label="STO Info" aria-current={isActive('/projects/sto-info/') ? 'page' : undefined}><i class="fa-solid fa-star" aria-hidden="true"></i> STO Info</a>
+          <a href="/dnd/" aria-label="D and D" aria-current={isActive('/dnd/') ? 'page' : undefined}><i class="fa-solid fa-dice-d20" aria-hidden="true"></i> D&D</a>
+          <a href="/projects/roll20-mods/" aria-label="Roll20 Mods" aria-current={isActive('/projects/roll20-mods/') ? 'page' : undefined}><i class="fa-solid fa-gears" aria-hidden="true"></i> Roll20 Mods</a>
+          <a href="/projects/podcasting/" aria-label="Podcasting" aria-current={isActive('/projects/podcasting/') ? 'page' : undefined}><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> Podcasting</a>
+          <a href="/posts/" aria-label="Posts" aria-current={isActive('/posts/') ? 'page' : undefined}><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a>
         </nav>
         <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
           <i class="fa-solid fa-bars" aria-hidden="true"></i>
@@ -143,12 +145,12 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
           </button>
         </div>
         <nav class="mobile-nav-links" aria-label="Mobile navigation">
-          <a href="/gaming/" aria-label="Gaming"><i class="fa-solid fa-gamepad" aria-hidden="true"></i> Gaming</a>
-          <a href="/projects/sto-info/" aria-label="STO Info"><i class="fa-solid fa-star" aria-hidden="true"></i> STO Info</a>
-          <a href="/dnd/" aria-label="D and D"><i class="fa-solid fa-dice-d20" aria-hidden="true"></i> D&D</a>
-          <a href="/projects/roll20-mods/" aria-label="Roll20 Mods"><i class="fa-solid fa-gears" aria-hidden="true"></i> Roll20 Mods</a>
-          <a href="/projects/podcasting/" aria-label="Podcasting"><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> Podcasting</a>
-          <a href="/posts/" aria-label="Posts"><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a>
+          <a href="/gaming/" aria-label="Gaming" aria-current={isActive('/gaming/') ? 'page' : undefined}><i class="fa-solid fa-gamepad" aria-hidden="true"></i> Gaming</a>
+          <a href="/projects/sto-info/" aria-label="STO Info" aria-current={isActive('/projects/sto-info/') ? 'page' : undefined}><i class="fa-solid fa-star" aria-hidden="true"></i> STO Info</a>
+          <a href="/dnd/" aria-label="D and D" aria-current={isActive('/dnd/') ? 'page' : undefined}><i class="fa-solid fa-dice-d20" aria-hidden="true"></i> D&D</a>
+          <a href="/projects/roll20-mods/" aria-label="Roll20 Mods" aria-current={isActive('/projects/roll20-mods/') ? 'page' : undefined}><i class="fa-solid fa-gears" aria-hidden="true"></i> Roll20 Mods</a>
+          <a href="/projects/podcasting/" aria-label="Podcasting" aria-current={isActive('/projects/podcasting/') ? 'page' : undefined}><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> Podcasting</a>
+          <a href="/posts/" aria-label="Posts" aria-current={isActive('/posts/') ? 'page' : undefined}><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a>
         </nav>
       </div>
     </div>
@@ -164,13 +166,13 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
         </div>
         <div class="footer-nav-group">
           <nav class="footer-col footer-nav" aria-label="Pages">
-            <a href="/"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a>
-            <a href="/projects/"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Projects</a>
-            <a href="/posts/"><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a>
+            <a href="/" aria-current={isActive('/') ? 'page' : undefined}><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a>
+            <a href="/projects/" aria-current={isActive('/projects/') ? 'page' : undefined}><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Projects</a>
+            <a href="/posts/" aria-current={isActive('/posts/') ? 'page' : undefined}><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a>
           </nav>
           <nav class="footer-col footer-nav" aria-label="Info">
-            <a href="/about/"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About</a>
-            <a href="/privacy/"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Privacy</a>
+            <a href="/about/" aria-current={isActive('/about/') ? 'page' : undefined}><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About</a>
+            <a href="/privacy/" aria-current={isActive('/privacy/') ? 'page' : undefined}><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Privacy</a>
             {gaId && <a href="/privacy/#cookies" id="cookie-prefs-link"><i class="fa-solid fa-cookie-bite" aria-hidden="true"></i> Cookie Preferences</a>}
           </nav>
         </div>
