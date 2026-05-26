@@ -1,10 +1,10 @@
 ---
-import { Image } from "astro:assets";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import placeholderImage from "../../assets/images/placeholder.webp";
-import { getImageLoadingPolicy } from "../../lib/mediaPriority";
+import { Image } from 'astro:assets';
+import placeholderImage from '../../assets/images/placeholder.webp';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getImageLoadingPolicy } from '../../lib/mediaPriority';
 
-const heroImagePolicy = getImageLoadingPolicy("hero");
+const heroImagePolicy = getImageLoadingPolicy('hero');
 ---
 
 <BaseLayout
@@ -12,16 +12,29 @@ const heroImagePolicy = getImageLoadingPolicy("hero");
   description="Campaign notes and character overview for Ulrick."
 >
   <section class="hero">
-    <Image class="hero-bg" src={placeholderImage} alt="" loading={heroImagePolicy.loading} fetchpriority={heroImagePolicy.fetchpriority} decoding={heroImagePolicy.decoding} />
+    <Image
+      class="hero-bg"
+      src={placeholderImage}
+      alt=""
+      loading={heroImagePolicy.loading}
+      fetchpriority={heroImagePolicy.fetchpriority}
+      decoding={heroImagePolicy.decoding}
+    />
     <div class="container">
-      <p class="eyebrow">D&D Character</p>
-      <h1>Ulrick</h1>
-      <p class="lede">
-        A character page for major beats, session history, and longer-term arc
-        planning.
-      </p>
-      <div class="meta">
-        <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Character</span><span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> D&D</span>
+      <div class="hero-text">
+        <p class="eyebrow">D&D Character</p>
+        <h1>Ulrick</h1>
+        <p class="lede">
+          A character page for major beats, session history, and longer-term arc
+          planning.
+        </p>
+        <div class="meta">
+          <span class="tag"
+            ><i class="fa-solid fa-tag" aria-hidden="true"></i> Character</span
+          ><span class="tag"
+            ><i class="fa-solid fa-tag" aria-hidden="true"></i> D&D</span
+          >
+        </div>
       </div>
     </div>
   </section>

@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import BaseLayout from '../../layouts/BaseLayout.astro';
 import placeholderImage from '../../assets/images/placeholder.webp';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getImageLoadingPolicy } from '../../lib/mediaPriority';
 
 const heroImagePolicy = getImageLoadingPolicy('hero');
@@ -10,15 +10,22 @@ const cardImagePolicy = getImageLoadingPolicy('card');
 
 <BaseLayout title="D&D | MidNiteShadow Online">
   <section class="hero">
-    <Image class="hero-bg" src={placeholderImage} alt="" loading={heroImagePolicy.loading} fetchpriority={heroImagePolicy.fetchpriority} decoding={heroImagePolicy.decoding} /><div
-      class="container"
-    >
-      <p class="eyebrow">D&D / Tabletop</p><h1>
-        Worldbuilding, characters and session design.
-      </h1><p class="lede">
-        A home for Midnight Realm, campaign notes, lore, mechanics, tokens,
-        one-shots and reusable tabletop material.
-      </p>
+    <Image
+      class="hero-bg"
+      src={placeholderImage}
+      alt=""
+      loading={heroImagePolicy.loading}
+      fetchpriority={heroImagePolicy.fetchpriority}
+      decoding={heroImagePolicy.decoding}
+    /><div class="container">
+      <div class="hero-text">
+        <p class="eyebrow">D&D / Tabletop</p><h1>
+          Worldbuilding, characters and session design.
+        </h1><p class="lede">
+          A home for Midnight Realm, campaign notes, lore, mechanics, tokens,
+          one-shots and reusable tabletop material.
+        </p>
+      </div>
     </div>
   </section>
   <section class="section">
@@ -44,10 +51,17 @@ const cardImagePolicy = getImageLoadingPolicy('card');
             A dedicated page for Dorn's place in the campaign, role at the
             table, and future story hooks.
           </p>
-          <a class="button read-more-cta" href="/dnd/dorn/">Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+          <a class="button read-more-cta" href="/dnd/dorn/"
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
+            ></i></a
+          >
           <div class="card-tags">
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Character</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> D&D</span>
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Character</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> D&D</span
+            >
           </div>
         </article>
         <article class="card large post-card">
@@ -64,10 +78,17 @@ const cardImagePolicy = getImageLoadingPolicy('card');
             A dedicated page for Nox's backstory, party role, and key
             worldbuilding connections.
           </p>
-          <a class="button read-more-cta" href="/dnd/nox/">Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+          <a class="button read-more-cta" href="/dnd/nox/"
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
+            ></i></a
+          >
           <div class="card-tags">
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Character</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> D&D</span>
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Character</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> D&D</span
+            >
           </div>
         </article>
         <article class="card large post-card">
@@ -84,10 +105,17 @@ const cardImagePolicy = getImageLoadingPolicy('card');
             A dedicated page for Ulrick's campaign material, major beats, and
             developing character notes.
           </p>
-          <a class="button read-more-cta" href="/dnd/ulrick/">Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+          <a class="button read-more-cta" href="/dnd/ulrick/"
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
+            ></i></a
+          >
           <div class="card-tags">
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Character</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> D&D</span>
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Character</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> D&D</span
+            >
           </div>
         </article>
         <article class="card large post-card">
@@ -105,11 +133,16 @@ const cardImagePolicy = getImageLoadingPolicy('card');
             automation, health colour scripts, and related tabletop workflows.
           </p>
           <a class="button read-more-cta" href="/projects/roll20-mods/"
-            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
+            ></i></a
           >
           <div class="card-tags">
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Project</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Tabletop tooling</span>
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Project</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Tabletop tooling</span
+            >
           </div>
         </article>
       </div>

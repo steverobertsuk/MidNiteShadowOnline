@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import BaseLayout from '../../layouts/BaseLayout.astro';
 import placeholderImage from '../../assets/images/placeholder.webp';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getImageLoadingPolicy } from '../../lib/mediaPriority';
 
 const heroImagePolicy = getImageLoadingPolicy('hero');
@@ -10,15 +10,22 @@ const cardImagePolicy = getImageLoadingPolicy('card');
 
 <BaseLayout title="Gaming | MidNiteShadow Online">
   <section class="hero">
-    <Image class="hero-bg" src={placeholderImage} alt="" loading={heroImagePolicy.loading} fetchpriority={heroImagePolicy.fetchpriority} decoding={heroImagePolicy.decoding} /><div
-      class="container"
-    >
-      <p class="eyebrow">Gaming</p><h1>
-        Online games, fandoms and communities.
-      </h1><p class="lede">
-        A broad home for Star Trek Online, sci-fi gaming, community spaces,
-        screenshots, tools and gaming-related experiments.
-      </p>
+    <Image
+      class="hero-bg"
+      src={placeholderImage}
+      alt=""
+      loading={heroImagePolicy.loading}
+      fetchpriority={heroImagePolicy.fetchpriority}
+      decoding={heroImagePolicy.decoding}
+    /><div class="container">
+      <div class="hero-text">
+        <p class="eyebrow">Gaming</p><h1>
+          Online games, fandoms and communities.
+        </h1><p class="lede">
+          A broad home for Star Trek Online, sci-fi gaming, community spaces,
+          screenshots, tools and gaming-related experiments.
+        </p>
+      </div>
     </div>
   </section>
   <section class="section">
@@ -44,13 +51,26 @@ const cardImagePolicy = getImageLoadingPolicy('card');
             been involved in podcasting, community events, forum moderating, and
             the development of online tools.
           </p>
-          <a class="button read-more-cta" href="/gaming/star-trek-online/">Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+          <a class="button read-more-cta" href="/gaming/star-trek-online/"
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
+            ></i></a
+          >
           <div class="card-tags">
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Star Trek</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> PC</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Xbox</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> PlayStation</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> MMO</span>
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Star Trek</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> PC</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Xbox</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> PlayStation</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> MMO</span
+            >
           </div>
         </article>
         <article class="card large post-card">
@@ -72,11 +92,22 @@ const cardImagePolicy = getImageLoadingPolicy('card');
             participating in community play, progression planning, alliance
             management, and related activities.
           </p>
-          <a class="button read-more-cta" href="/gaming/star-trek-fleet-command/">Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+          <a
+            class="button read-more-cta"
+            href="/gaming/star-trek-fleet-command/"
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
+            ></i></a
+          >
           <div class="card-tags">
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Star Trek</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Mobile</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> PC</span>
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Star Trek</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Mobile</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> PC</span
+            >
           </div>
         </article>
         <article class="card large post-card">
@@ -94,14 +125,29 @@ const cardImagePolicy = getImageLoadingPolicy('card');
             have only played online using virtual tabletops. I quickly became
             involved in character creation, worldbuilding, and modding APIs.
           </p>
-          <a class="button read-more-cta" href="/dnd/">Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+          <a class="button read-more-cta" href="/dnd/"
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
+            ></i></a
+          >
           <div class="card-tags">
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Virtual Tabletops</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Campaigns</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Roll20</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> APIs</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Modding</span>
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Creative</span>
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Virtual Tabletops</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Campaigns</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Roll20</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> APIs</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Modding</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Creative</span
+            >
           </div>
         </article>
       </div>
@@ -122,7 +168,10 @@ const cardImagePolicy = getImageLoadingPolicy('card');
             The live community app for Star Trek Online players, covering
             account and character tracking plus a growing feature roadmap.
           </p>
-          <a class="button read-more-cta" href="https://startrekonline.info">Open site <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+          <a class="button read-more-cta" href="https://startrekonline.info"
+            >Open site <i class="fa-solid fa-angles-right" aria-hidden="true"
+            ></i></a
+          >
         </article>
         <article class="card large post-card">
           <h3><a href="/projects/sto-info/">STO Info project</a></h3>
@@ -130,7 +179,10 @@ const cardImagePolicy = getImageLoadingPolicy('card');
             Project notes, development context, and roadmap-oriented information
             for the Star Trek Online toolset.
           </p>
-          <a class="button read-more-cta" href="/projects/sto-info/">Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+          <a class="button read-more-cta" href="/projects/sto-info/"
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
+            ></i></a
+          >
         </article>
         <article class="card large post-card">
           <h3><a href="/projects/roll20-mods/">Roll20 Mods</a></h3>
@@ -138,7 +190,10 @@ const cardImagePolicy = getImageLoadingPolicy('card');
             Tabletop tooling that supports RPG play with automation, token
             utilities, and related project documentation.
           </p>
-          <a class="button read-more-cta" href="/projects/roll20-mods/">Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+          <a class="button read-more-cta" href="/projects/roll20-mods/"
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
+            ></i></a
+          >
         </article>
         <article class="card large post-card">
           <h3><a href="/projects/podcasting/">Podcasting project</a></h3>
@@ -146,7 +201,10 @@ const cardImagePolicy = getImageLoadingPolicy('card');
             Media and production work tied to community output, show planning,
             and wider geek-network activity.
           </p>
-          <a class="button read-more-cta" href="/projects/podcasting/">Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+          <a class="button read-more-cta" href="/projects/podcasting/"
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
+            ></i></a
+          >
         </article>
       </div>
     </div>
