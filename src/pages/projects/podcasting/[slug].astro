@@ -1,22 +1,22 @@
 ---
-import { Image } from "astro:assets";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { getCollection, render } from "astro:content";
-import placeholderImage from "../../../assets/images/placeholder.webp";
-import { getImageLoadingPolicy } from "../../../lib/mediaPriority";
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import placeholderImage from '../../../assets/images/placeholder.webp';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getImageLoadingPolicy } from '../../../lib/mediaPriority';
 
 export async function getStaticPaths() {
-  const podcasts = await getCollection("podcasts");
+  const podcasts = await getCollection('podcasts');
 
   return podcasts.map((podcast) => ({
-    params: { slug: podcast.id.replace(/\.(md|mdx)$/, "") },
+    params: { slug: podcast.id.replace(/\.(md|mdx)$/, '') },
     props: { podcast },
   }));
 }
 
 const { podcast } = Astro.props;
 const { Content } = await render(podcast);
-const heroImagePolicy = getImageLoadingPolicy("hero");
+const heroImagePolicy = getImageLoadingPolicy('hero');
 ---
 
 <BaseLayout
@@ -33,10 +33,16 @@ const heroImagePolicy = getImageLoadingPolicy("hero");
       decoding={heroImagePolicy.decoding}
     />
     <div class="container">
-      <p class="eyebrow">{podcast.data.category}</p>
-      <h1>{podcast.data.title}</h1>
-      <p class="lede">{podcast.data.summary}</p>
-      <div class="meta"><span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> {podcast.data.status}</span></div>
+      <div class="hero-text">
+        <p class="eyebrow">{podcast.data.category}</p>
+        <h1>{podcast.data.title}</h1>
+        <p class="lede">{podcast.data.summary}</p>
+        <div class="meta">
+          <span class="tag"
+            ><i class="fa-solid fa-tag" aria-hidden="true"></i>
+            {podcast.data.status}</span>
+        </div>
+      </div>
     </div>
   </section>
   <section class="section">

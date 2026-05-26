@@ -1,8 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
 import placeholderImage from '../../assets/images/placeholder.webp';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getImageLoadingPolicy } from '../../lib/mediaPriority';
 
 export async function getStaticPaths() {
@@ -47,10 +47,16 @@ const cardImagePolicy = getImageLoadingPolicy('card');
       decoding={heroImagePolicy.decoding}
     />
     <div class="container">
-      <p class="eyebrow">{project.data.category}</p>
-      <h1>{project.data.title}</h1>
-      <p class="lede">{project.data.summary}</p>
-      <div class="meta"><span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> {project.data.status}</span></div>
+      <div class="hero-text">
+        <p class="eyebrow">{project.data.category}</p>
+        <h1>{project.data.title}</h1>
+        <p class="lede">{project.data.summary}</p>
+        <div class="meta">
+          <span class="tag"
+            ><i class="fa-solid fa-tag" aria-hidden="true"></i>
+            {project.data.status}</span>
+        </div>
+      </div>
     </div>
   </section>
   <section class="section">
@@ -86,10 +92,19 @@ const cardImagePolicy = getImageLoadingPolicy('card');
                     <a
                       class="button read-more-cta"
                       href={`/projects/roll20-mods/${modSlug}/`}
-                    >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+                    >
+                      Read more{' '}
+                      <i class="fa-solid fa-angles-right" aria-hidden="true" />
+                    </a>
                     <div class="card-tags">
-                      <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> {mod.data.category}</span>
-                      <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> {mod.data.status}</span>
+                      <span class="tag">
+                        <i class="fa-solid fa-tag" aria-hidden="true" />{' '}
+                        {mod.data.category}
+                      </span>
+                      <span class="tag">
+                        <i class="fa-solid fa-tag" aria-hidden="true" />{' '}
+                        {mod.data.status}
+                      </span>
                     </div>
                   </article>
                 );
@@ -128,10 +143,19 @@ const cardImagePolicy = getImageLoadingPolicy('card');
                     <a
                       class="button read-more-cta"
                       href={`/projects/podcasting/${podcastSlug}/`}
-                    >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+                    >
+                      Read more{' '}
+                      <i class="fa-solid fa-angles-right" aria-hidden="true" />
+                    </a>
                     <div class="card-tags">
-                      <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> {podcast.data.category}</span>
-                      <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> {podcast.data.status}</span>
+                      <span class="tag">
+                        <i class="fa-solid fa-tag" aria-hidden="true" />{' '}
+                        {podcast.data.category}
+                      </span>
+                      <span class="tag">
+                        <i class="fa-solid fa-tag" aria-hidden="true" />{' '}
+                        {podcast.data.status}
+                      </span>
                     </div>
                   </article>
                 );
