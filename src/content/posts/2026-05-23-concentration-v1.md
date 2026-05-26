@@ -1,0 +1,59 @@
+---
+title: "Concentration v1.0.0"
+summary: "Version 1 of the Concentration API Mod that introduces dedicated support for managing concentration effects in Roll20, including spell detection, concentration tracking, and compatibility with both legacy and Beacon spell cards."
+date: 2026-05-23
+category: "Concentration"
+tags: ["Roll20 API Mod", "Feature Release"]
+---
+
+Version 1.0.0 is a major update to the Concentration API Mod as many forum users expressed interested in updates after Beacon's release. This update introduces dedicated support for managing concentration effects in Roll20, including spell detection, concentration tracking, and compatibility with both legacy and Beacon spell cards.
+
+## Change Log
+
+### Added
+
+- Dedicated legacy and Beacon spell-detection paths.
+- Support Mode for debug output with two levels:
+  - Basic: short support-friendly diagnostics.
+  - Detailed: structured diagnostics for troubleshooting.
+- Pending roll ID flow for Roll and Advantage buttons.
+- Pending roll cleanup for expired entries.
+- Guarded CON save modifier lookup helper.
+- Documentation set for compatibility and testing:
+  - `docs/beacon-compatibility.md`
+  - `docs/troubleshooting.md`
+  - `docs/testing-checklist.md`
+
+### Changed
+
+- Updated script and package versioning to `1.0.0`.
+- Hardened Beacon matching heuristics for concentration spell cards.
+- Improved character resolution using character ID first, then exact-name fallback.
+- Preferred represented tokens on the caster's current page before global fallback.
+- Refreshed README and metadata for current Roll20/Beacon behavior.
+- Refactored API input handling into dedicated parse/dispatch helpers.
+- Refactored HP-loss concentration flow into focused reminder/button/tracking helpers.
+- Added JSDoc typedefs and function docs for core detection, command, roll, and config flows.
+
+### Fixed
+
+- Fixed selected-token manual toggle whisper targeting for character mode.
+- Prevented brittle regex indexing assumptions on unmatched spell content.
+- Improved marker-change loop protection using tracking keys.
+- Added safer marker removal behavior for represented and unlinked tokens.
+- Improved handling of missing or expired pending roll IDs.
+
+### Security
+
+- Validates API command and config input values before applying state changes.
+- Escapes dynamic chat-rendered values to reduce markup injection risk.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (coming soon).
+- [Roll20 API GitHub master branch](https://github.com/Roll20/roll20-api-scripts/tree/master/Concentration).
+- [Download and install manually from Dropbox](https://www.dropbox.com/scl/fi/ie06zy5s370wt4dbqyfy4/Concentration_v1.0.0.zip?rlkey=nlti3d92xnb70og8cegd4wfqs&dl=0).
+
+---
+
+The mod API is offered under the MIT License, and it allows users to freely use, copy, modify, merge, publish, distribute, sublicense, and sell the software, provided the original copyright and license notice are included.

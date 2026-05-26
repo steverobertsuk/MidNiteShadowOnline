@@ -3,7 +3,7 @@ title: "Star Trek Online Info: From Spreadsheet to Web App"
 summary: "A look at how STO Info grew from a personal spreadsheet into a free community web app for Star Trek Online players."
 date: 2026-04-05
 category: "STO Info"
-tags: ["Star Trek Online", "STO Info", "LCARS UI"]
+tags: ["Star Trek Online", "LCARS UI"]
 ---
 
 This all started with a spreadsheet.
@@ -33,5 +33,3 @@ This video shows where it began, and what it has become: [https://youtu.be/pXSzM
 		allowfullscreen
 	></iframe>
 </div>
-
-[https://reddit.com/link/1scs8f8/video/kzeb1y99catg1/player](https://reddit.com/link/1scs8f8/video/kzeb1y99catg1/player)

@@ -31,13 +31,16 @@ const podcasts = defineCollection({
 
 const posts = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts" }),
-  schema: z.object({
-    title: z.string(),
-    summary: z.string(),
-    date: z.date(),
-    category: z.string(),
-    tags: z.array(z.string()).default([]),
-  }),
+  schema: ({ image }: SchemaContext) =>
+    z.object({
+      title: z.string(),
+      summary: z.string(),
+      date: z.date(),
+      category: z.string(),
+      hero: image().optional(),
+      heroAlt: z.string().optional(),
+      tags: z.array(z.string()).default([]),
+    }),
 });
 
 export const collections = { projects, posts, roll20Mods, podcasts };

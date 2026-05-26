@@ -1,0 +1,55 @@
+---
+title: "New SwapTokenPositions Mod API"
+summary: "A Roll20 mod update for swapping selected tokens, with staged FX pipelines, presets, and an instant-swap path."
+date: 2026-04-21
+category: "SwapTokenPositions"
+tags: ["Roll20 API Mod", "Initial Release"]
+---
+
+SwapTokenPositions version 1.0.0 is a Roll20 Mod (API script) that allows GMs and players to quickly swap the positions of two selected tokens on the same page. It features customizable animation effects, persistent global settings, and clear chat feedback.
+
+Discussions on the additions, changes and fixes can be found on the Roll20 forums: [https://app.roll20.net/forum/post/12727681/new-swaptokenpositions](https://app.roll20.net/forum/post/12727681/new-swaptokenpositions).
+
+## Change Log
+
+### Added
+
+- Arcane-themed styled messaging for whispers and announcements.
+- Persistent state management for GM settings (saves between sessions).
+- One-time override support for duration, animation mode, and FX types.
+- New `--install-macro` command to automatically create a "SwapTokens" macro.
+- "Beams" and "transport" animation modes with customizable beam FX.
+- "Transport" animation mode for immediate magical relocation.
+- New `none` option for beam and burst FX to allow for silent, instantaneous swaps.
+- Strict selection validation with clear feedback on required token counts.
+- Silent management commands (Help/Settings) that don't require token selection.
+- Improved whisper delivery using reliable player display name resolution.
+
+## Introduction Video
+
+You can view the introduction video on YouTube: [https://youtu.be/hjQWF3KYuow](https://youtu.be/hjQWF3KYuow).
+
+<div class="video-embed">
+	<iframe
+		src="https://www.youtube.com/embed/hjQWF3KYuow?rel=0&modestbranding=1"
+		title="SwapTokenPositions v1 Introduction"
+		loading="eager"
+		fetchpriority="high"
+		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+		referrerpolicy="strict-origin-when-cross-origin"
+		allowfullscreen
+	></iframe>
+</div>
+
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer - Coming soon.
+- [Roll20 API GitHub master branch](https://github.com/Roll20/roll20-api-scripts/tree/master/SwapTokenPositions).
+- [Download and install manually from Dropbox](https://www.dropbox.com/scl/fi/dljxit965zx62kphoh716/SwapTokenPositions_v1.0.0.zip?rlkey=lopi9woy3fvatk7u6xu5hh68z&dl=0).
+
+---
+
+The mod API is offered under the MIT License, and it allows users to freely use, copy, modify, merge, publish, distribute, sublicense, and sell the software, provided the original copyright and license notice are included.
+
+Music in the video is "Fantasy" from alexshulgin and licensed via Envato.

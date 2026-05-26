@@ -3,18 +3,15 @@ title: "STO Info App - Production Update (Email Fix for Outlook/Hotmail + Major 
 summary: "A production release that fixed Microsoft email delivery and rolled out a large batch of backend and frontend improvements."
 date: 2026-02-25
 category: "STO Info"
-tags: ["Star Trek Online", "STO Info", "Production Update"]
+tags: ["Star Trek Online", "Production Update"]
 ---
 
 Hi everyone,
 
-I’ve pushed new production releases for both the backend and frontend of STO Info.
-
-### Backend: v1.0.71 → v1.0.102
-
-### Frontend: v1.0.96 → v1.0.132
+I've pushed new production releases for both the backend and frontend of [**STO Info**](https://startrekonline.info/).
 
 These releases include a significant number of commits focused on security hardening, CI improvements, dependency maintenance, and infrastructure upgrades.
+
 
 ### Important: Microsoft Email Delivery Fixed
 
@@ -48,7 +45,5 @@ If you previously attempted to register and did not receive an email, please try
 - Documentation updates
 
 Overall, this release cycle focused heavily on reliability, maintainability and security rather than major feature expansion.
-
-As always, feedback is welcome.
 
 — Steve

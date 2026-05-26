@@ -3,10 +3,10 @@ title: "STO Info - Frontend & Backend Update Deployed"
 summary: "An STO Info release focused on privacy, security, accessibility, and user feedback features."
 date: 2026-02-10
 category: "STO Info"
-tags: ["Star Trek Online", "STO Info", "Frontend and Backend"]
+tags: ["Star Trek Online", "Frontend and Backend"]
 ---
 
-We’ve just rolled out a new update across both the frontend and backend, with a strong focus on **privacy, security, accessibility, and community feedback**.
+We've just rolled out a new [**STO Info**](https://startrekonline.info/) update across both the frontend and backend, with a strong focus on **privacy, security, accessibility, and community feedback**.
 
 **Backend highlights**
 

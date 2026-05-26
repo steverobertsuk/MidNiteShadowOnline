@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { formatPostDate, toSlug } from '../../../lib/postCategory';
+import { formatPostDate, postIdToSlug, toSlug } from '../../../lib/postCategory';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -34,7 +34,7 @@ const { category, posts } = Astro.props;
           posts.map((post) => (
             <article class="card large post-card">
               <h3>
-                <a href={`/posts/${post.id.replace(/\.(md|mdx)$/, '')}/`}>
+                <a href={`/posts/${postIdToSlug(post.id)}/`}>
                   {post.data.title}
                 </a>
               </h3>
@@ -53,7 +53,7 @@ const { category, posts } = Astro.props;
               <p>{post.data.summary}</p>
               <a
                 class="button read-more-cta"
-                href={`/posts/${post.id.replace(/\.(md|mdx)$/, '')}/`}
+                href={`/posts/${postIdToSlug(post.id)}/`}
               >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
               {post.data.tags.length > 0 && (
                 <div class="card-tags">

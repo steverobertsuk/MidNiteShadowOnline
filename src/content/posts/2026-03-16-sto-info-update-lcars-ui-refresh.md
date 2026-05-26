@@ -1,9 +1,11 @@
 ---
-title: "STO Info Update - LCARS UI Refresh (Frontend v1.0.162 / Backend v1.0.141)"
+title: "STO Info Update - LCARS UI Refresh"
 summary: "A visual refresh for STO Info that pushed the interface further toward a LCARS-inspired look."
 date: 2026-03-16
 category: "STO Info"
-tags: ["Star Trek Online", "STO Info", "LCARS UI"]
+tags: ["Star Trek Online", "LCARS UI"]
+hero: "../../assets/posts/2026-03-16/20260314_sto_info_update.webp"
+heroAlt: "STO Info update preview showing the character dashboard with a refreshed LCARS-inspired design, featuring new colors, typography, and layout adjustments for a more authentic Star Trek aesthetic."
 ---
 
 A new update has been released for the **STO Info community project**, introducing a **refactored user interface, moving the site toward a more LCARS-inspired design**.
@@ -20,5 +22,3 @@ For anyone unfamiliar with the project, **STO Info** is a free community resourc
 - Backend v1.0.141: [https://github.com/sto-info-app/sto-info-backend/releases/tag/v1.0.141](https://github.com/sto-info-app/sto-info-backend/releases/tag/v1.0.141)
 
 The project is open source, and community feedback is always welcome.
-
-![STO Info LCARS refresh preview](https://preview.redd.it/hg47q13ovbpg1.png?width=1920&format=png&auto=webp&s=29b4898c64b6092e65ea1fcf41c09d8e9d525914)

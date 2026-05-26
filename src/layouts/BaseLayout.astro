@@ -218,6 +218,38 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
         document.addEventListener('keydown', function (e) {
           if (e.key === 'Escape') closeMenu();
         });
+
+        var links = document.querySelectorAll('a[href]');
+        links.forEach(function (link) {
+          if (link.dataset.externalManaged === 'true') return;
+          if (link.getAttribute('data-no-external') === 'true') return;
+          var href = link.getAttribute('href');
+          if (!href || href.startsWith('#')) return;
+
+          var url;
+          try {
+            url = new URL(href, window.location.href);
+          } catch {
+            return;
+          }
+
+          var isWebLink = url.protocol === 'http:' || url.protocol === 'https:';
+          var isExternal = isWebLink && url.origin !== window.location.origin;
+          if (!isExternal) return;
+
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.classList.add('external-link');
+
+          if (!link.querySelector('.external-link-icon')) {
+            var icon = document.createElement('i');
+            icon.className = 'fa-solid fa-arrow-up-right-from-square external-link-icon';
+            icon.setAttribute('aria-hidden', 'true');
+            link.appendChild(icon);
+          }
+
+          link.dataset.externalManaged = 'true';
+        });
       })();
     </script>
   </body>

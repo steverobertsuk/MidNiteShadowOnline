@@ -3,7 +3,9 @@ title: "STO Info App Update - Continued LCARS UI Improvements & Enhancements"
 summary: "A follow-up STO Info update focused on continued LCARS-style UI refinements, usability improvements, and backend stability work."
 date: 2026-03-30
 category: "STO Info"
-tags: ["Star Trek Online", "STO Info", "LCARS UI"]
+tags: ["Star Trek Online", "LCARS UI"]
+hero: "../../assets/posts/2026-03-30/20260329_sto_info_update.webp"
+heroAlt: "STO Info update preview showing the character dashboard with further LCARS-inspired design refinements, including enhanced color schemes, typography adjustments, and improved layout consistency for a more immersive Star Trek experience."
 ---
 
 Hi all 👋
@@ -22,5 +24,3 @@ This is part of the ongoing effort to evolve the app's visual design while keepi
 🌐 You can check it out here: [https://startrekonline.info](https://startrekonline.info)
 
 As always, feedback is very welcome - especially as the LCARS styling continues to evolve!
-
-![STO Info update preview](https://preview.redd.it/9owlby65x3sg1.png?width=1920&format=png&auto=webp&s=54bf07991ec76e4170475b5a4476685d0b54e4a1)

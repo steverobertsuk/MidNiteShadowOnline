@@ -2,6 +2,18 @@
 import { Image } from 'astro:assets';
 import placeholderImage from '../assets/images/placeholder.webp';
 import { getImageLoadingPolicy, getVideoLoadingPolicy } from '../lib/mediaPriority';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lede?: string;
+  video?: boolean;
+  videoPoster?: string;
+  image?: ImageMetadata | string;
+  heroImage?: ImageMetadata;
+  heroImageAlt?: string;
+}
 
 const {
   eyebrow,
@@ -10,6 +22,8 @@ const {
   video = false,
   videoPoster = '/assets/images/hero_purple_embers.webp',
   image = placeholderImage,
+  heroImage,
+  heroImageAlt = '',
 } = Astro.props;
 const heroImagePolicy = getImageLoadingPolicy('hero');
 const heroVideoPolicy = getVideoLoadingPolicy('hero');
@@ -31,12 +45,25 @@ const heroVideoPolicy = getVideoLoadingPolicy('hero');
     )
   }
   <div class="container">
-    <p class="eyebrow">{eyebrow}</p>
-    <h1>{title}</h1>
-    <p class="lede">{lede}</p>
-    <div class="hero-actions">
-      <a class="button primary" href="/projects/"><i class="fa-solid fa-compass" aria-hidden="true"></i> Explore projects</a>
-      <a class="button" href="/about/"><i class="fa-solid fa-user-astronaut" aria-hidden="true"></i> About MidNiteShadow</a>
+    <div class="hero-text">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p class="lede">{lede}</p>
+      <div class="hero-actions">
+        <a class="button primary" href="/projects/"><i class="fa-solid fa-compass" aria-hidden="true"></i> Explore projects</a>
+        <a class="button" href="/about/"><i class="fa-solid fa-user-astronaut" aria-hidden="true"></i> About MidNiteShadow</a>
+      </div>
     </div>
+    {heroImage && (
+      <div class="hero-portrait">
+        <Image
+          src={heroImage}
+          alt={heroImageAlt}
+          loading={heroImagePolicy.loading}
+          fetchpriority={heroImagePolicy.fetchpriority}
+          decoding={heroImagePolicy.decoding}
+        />
+      </div>
+    )}
   </div>
 </section>

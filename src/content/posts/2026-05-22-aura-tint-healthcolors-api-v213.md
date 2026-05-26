@@ -1,0 +1,26 @@
+---
+title: "Aura/Tint HealthColors API v2.1.3"
+summary: "Version 2.1.3 of the HealthColors API that hardens input validation for editable settings and fixes a critical bug with the `USEBLOOD` attribute."
+date: 2026-05-22
+category: "HealthColors"
+tags: ["Roll20 API Mod", "Feature Release"]
+---
+
+Version 2.1.3 is an update focused on hardening input validation for the remaining editable settings and fixing a critical bug where an empty or whitespace-only `USEBLOOD` attribute value was treated as a custom FX name, causing unintended warnings and no FX to play on damage.
+
+## Change Log
+
+### Fixed
+
+- Fixed HealthColors treating an empty or whitespace-only `USEBLOOD` value as a custom FX name. The script now trims and validates the attribute before FX lookup, so fetched/imported characters with a blank override fall back to the default hurt FX instead of whispering a missing custom FX warning.
+- Hardened `!aura` setting validation for the remaining editable values. Percentage thresholds now reject invalid input, heal/hurt colors require valid hex values, yes/no/off settings are normalized, and blank death sound names no longer overwrite the previous value.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer.
+- [Roll20 API GitHub master branch](https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors).
+- [Download and install manually from Dropbox](https://www.dropbox.com/scl/fi/2y3txg8unn87vki2khd07/HealthColors_v2.1.3.zip?rlkey=c62uinkjqr69xx4t5wfep12nk&dl=0).
+
+---
+
+The mod API is offered under the MIT License, and it allows users to freely use, copy, modify, merge, publish, distribute, sublicense, and sell the software, provided the original copyright and license notice are included.

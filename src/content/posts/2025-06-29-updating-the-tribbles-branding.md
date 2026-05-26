@@ -1,0 +1,15 @@
+---
+title: "Updating the Tribbles branding!"
+summary: "A branding refresh for Tribbles in Ecstasy, hinting at a return."
+date: 2025-06-29
+category: "Tribbles in Ecstasy"
+hero: "../../assets/posts/2025-06-29/tribbles-in-ecstasy-logo.webp"
+heroAlt: "The new Tribbles in Ecstasy logo, featuring a stylized tribble with a starry, cosmic pattern, set against a background with subtle nebulae and sparkles."
+tags: ["Podcast", "Star Trek"]
+---
+
+There is still a lot of work to be done, but we're excited for what's to come.
+
+The podcast is getting a refreshed branding for a refreshed show that hopes to return in late 2026.
+
+Stay tuned for more information!

@@ -3,10 +3,12 @@ title: "STO Info Update: Character Statistics Filtering, Dashboard Improvements 
 summary: "A STO Info release with character statistics filtering, release-note automation, contributor automation, and other dashboard improvements."
 date: 2026-03-09
 category: "STO Info"
-tags: ["Star Trek Online", "STO Info", "Character Statistics"]
+tags: ["Star Trek Online", "Character Statistics"]
+hero: "../../assets/posts/2026-03-09/20260309_sto_info_update.webp"
+heroAlt: "STO Info update preview showing the character dashboard with new statistics and filtering options, along with improved UI alignment and a refreshed look."
 ---
 
-A new update has been released for **STO Info** with a number of improvements to the dashboard and behind-the-scenes systems.
+A new update has been released for [**STO Info**](https://startrekonline.info/) with a number of improvements to the dashboard and behind-the-scenes systems.
 
 ### 🚀 New Features
 
@@ -34,5 +36,3 @@ Full release notes:
 - Backend v1.0.131: [https://github.com/sto-info-app/sto-info-backend/releases/tag/v1.0.131](https://github.com/sto-info-app/sto-info-backend/releases/tag/v1.0.131)
 
 As always, feedback and suggestions from the STO community are welcome.
-
-![STO Info dashboard update](https://preview.redd.it/6uv0ywap9yng1.png?width=1920&format=png&auto=webp&s=bf3866e19b5c391c6b321d197d026f187e871326)

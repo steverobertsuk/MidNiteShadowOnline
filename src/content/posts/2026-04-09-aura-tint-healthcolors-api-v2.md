@@ -3,20 +3,18 @@ title: "Aura/Tint HealthColors API v2.0.0"
 summary: "A major modernization of the Aura/Tint HealthColors script with stability fixes, configuration cleanup, and improved visual behavior."
 date: 2026-04-09
 category: "HealthColors"
-tags: ["Roll20 API Mod", "HealthColors", "Tabletop Tools"]
+tags: ["Roll20 API Mod", "Feature Release"]
 ---
 
 A couple of DMs whose games I play in mentioned that they wish this API had its bugs fixed, especially the ones where the aura would not show, and the animations no longer had colour.
 
 As I am a developer, I thought I would go about fixing this API to help in the games I play, and I'm posting it here to hopefully help others here, as I've seen other threads and posts where the community have been asking about fixes, as the author has not been able to maintain it in the past several years.
 
-I've posted the new version to the Roll20 API Scripts GitHub repository, and I am awaiting its review and merge, hopefully to be brought into Roll20 properly as version 2.0.0. The pull request is here: [https://github.com/Roll20/roll20-api-scripts/pull/2202](https://github.com/Roll20/roll20-api-scripts/pull/2202)
-
-If you'd like to manually install this API, you can download it from Dropbox here: [https://www.dropbox.com/scl/fi/t4ymkhnz157g3u4s0pfuf/HealthColors_v2.0.0.zip?rlkey=6zxqrd6zn7lkuinnhhnn5dyr7&dl=0](https://www.dropbox.com/scl/fi/t4ymkhnz157g3u4s0pfuf/HealthColors_v2.0.0.zip?rlkey=6zxqrd6zn7lkuinnhhnn5dyr7&dl=0)
-
 As part of the update, I have added a README file and a changelog; the manual installation instructions are in the README.
 
 Regarding the changes version 2 brings to this API, it is a major modernization and stability refactor of the entire script, consolidating performance improvements, critical bug fixes, and new user control features. This version represents a complete overhaul from the v1.6.x series.
+
+## Change Log
 
 ### Added
 
@@ -54,3 +52,35 @@ Regarding the changes version 2 brings to this API, it is a major modernization 
 - Aura 2 output values are now sourced from state-backed defaults (`Aura2Size`, `Aura2Shape`, `Aura2Color`) instead of hardcoded labels.
 - Added Aura 1 Shape/Tint rows to settings output and backed them with default state values (`Aura1Shape`, `Aura1Color`).
 - Default heal/hurt custom FX definitions are now synchronized proactively on install/reset and when FX colors change, preventing delayed/stale visual updates after color edits or token lifecycle events.
+
+## Introduction Video
+
+You can view the introduction video on YouTube: [https://youtu.be/07x_Md085YA](https://youtu.be/07x_Md085YA)
+
+<div class="video-embed">
+	<iframe
+		src="https://www.youtube.com/embed/07x_Md085YA?rel=0&modestbranding=1"
+		title="Aura/Tint HealthColors v2 Introduction"
+		loading="eager"
+		fetchpriority="high"
+		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+		referrerpolicy="strict-origin-when-cross-origin"
+		allowfullscreen
+	></iframe>
+</div>
+
+
+I've posted the new version to the Roll20 API Scripts GitHub repository, and I am awaiting its review and merge, hopefully to be brought into Roll20 properly as version 2.0.0. The pull request is here: [https://github.com/Roll20/roll20-api-scripts/pull/2202](https://github.com/Roll20/roll20-api-scripts/pull/2202)
+
+If you'd like to manually install this API, you can download it from Dropbox here: [https://www.dropbox.com/scl/fi/t4ymkhnz157g3u4s0pfuf/HealthColors_v2.0.0.zip?rlkey=6zxqrd6zn7lkuinnhhnn5dyr7&dl=0](https://www.dropbox.com/scl/fi/t4ymkhnz157g3u4s0pfuf/HealthColors_v2.0.0.zip?rlkey=6zxqrd6zn7lkuinnhhnn5dyr7&dl=0)
+
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer.
+- [Roll20 API GitHub master branch](https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors).
+- [Download and install manually from Dropbox](https://www.dropbox.com/scl/fi/t4ymkhnz157g3u4s0pfuf/HealthColors_v2.0.0.zip?rlkey=6zxqrd6zn7lkuinnhhnn5dyr7&dl=0).
+
+---
+
+The mod API is offered under the MIT License, and it allows users to freely use, copy, modify, merge, publish, distribute, sublicense, and sell the software, provided the original copyright and license notice are included.

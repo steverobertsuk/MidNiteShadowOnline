@@ -52,3 +52,11 @@ npm run watch
 - The Angular template has not been retained as an Angular app.
 - This project uses Astro pages, components and Markdown content.
 - Font files from the source template are intentionally not included.
+- External `http/https` links are automatically enhanced at runtime with `target="_blank"`, `rel="noopener noreferrer"`, and a Font Awesome external-link icon.
+- To opt out for a specific link, set `data-no-external="true"` on that anchor.
+
+Example:
+
+```html
+<a href="https://example.com" data-no-external="true">Example</a>
+```

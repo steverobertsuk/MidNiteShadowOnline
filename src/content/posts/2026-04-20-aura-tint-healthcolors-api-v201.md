@@ -1,0 +1,32 @@
+---
+title: "Aura/Tint HealthColors API v2.0.1"
+summary: "Version 2.0.1 of the HealthColors API that fixes aura visibility, settings menu behavior, and a few lingering stability issues."
+date: 2026-04-20
+category: "HealthColors"
+tags: ["Roll20 API Mod", "Bug Fix Release"]
+---
+
+Version 2.0.1 is an update focused on fixing critical bugs related to aura visibility thresholds, settings menu behavior, and stability issues.
+
+## Change Log
+
+### Fixed
+
+- Corrected behavior for tokens with health below zero to ensure the "dead" marker is applied consistently.
+- Clamped negative health values to zero for accurate color mapping and consistent visual feedback.
+- Refactored `applyAuraAndDead` to separate dead-marker logic from aura updates, ensuring proper handling of edge cases.
+
+### Changed
+
+- Updated `percentToHex` to normalize input values, preventing invalid color calculations.
+- Improved code readability and maintainability by restructuring health percentage calculations.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer.
+- [Roll20 API GitHub master branch](https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors).
+- [Download and install manually from Dropbox](https://www.dropbox.com/scl/fi/zjypjwy63bvi1qy5w0n4q/HealthColors_v2.0.1.zip?rlkey=0lthvun0m89iscfx21kgpvanc&dl=0).
+
+---
+
+The mod API is offered under the MIT License, and it allows users to freely use, copy, modify, merge, publish, distribute, sublicense, and sell the software, provided the original copyright and license notice are included.
