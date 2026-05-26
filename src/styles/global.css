@@ -714,18 +714,54 @@ h3 {
   color: var(--muted);
   background: rgba(5, 7, 15, 0.86);
 }
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 0.5rem;
-  margin: 12px 0 0;
+  gap: 32px;
 }
-.footer-links a {
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.footer-site-name {
+  font-size: 1rem;
+  margin: 0;
+}
+.footer-nav-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.footer-nav {
+  gap: 8px;
+}
+.footer-nav a {
   color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
 }
-.footer-links a:hover {
+.footer-nav a:hover {
   color: var(--white);
+}
+.footer-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.footer-copy {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 .prose {
   max-width: 860px;

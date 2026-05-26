@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import brandMarkIcon from '../assets/icons/mns7-icon.png';
+import mns7RoundIcon from '../assets/icons/mns7_round_icon.webp';
 import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
 import {
@@ -153,34 +154,26 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
     </div>
     <main><slot /></main>
     <footer class="footer">
-      <div class="container">
-        <strong>MidNite Shadow Online</strong>
-        <p>
-          Gaming projects, tabletop worlds, Roll20 tools, podcast production and
-          technical creativity.
-        </p>
-        <p class="footer-links">
-          <a href="/">Home</a>
-          <span aria-hidden="true"> · </span>
-          <a href="/about/">About</a>
-          <span aria-hidden="true"> · </span>
-          <a href="/projects/">Projects</a>
-          {gaId && (
-            <>
-              <span aria-hidden="true"> · </span>
-              <a href="/privacy/#cookies" id="cookie-prefs-link">Cookie Preferences</a>
-            </>
-          )}
-        </p>
-        <p class="footer-links">
-          <a href="/privacy/">Privacy Policy</a>
-          {gaId && (
-            <>
-              <span aria-hidden="true"> · </span>
-              <a href="/privacy/#cookies">Cookies</a>
-            </>
-          )}
-        </p>
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <Image class="footer-icon" src={mns7RoundIcon} loading="lazy" decoding="async" alt="" width={96} height={96} />
+          <div class="footer-col">
+            <strong class="footer-site-name">MidNite Shadow Online</strong>
+            <p class="footer-copy">&copy; {new Date().getFullYear()} MidNite Shadow Online</p>
+          </div>
+        </div>
+        <div class="footer-nav-group">
+          <nav class="footer-col footer-nav" aria-label="Pages">
+            <a href="/"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a>
+            <a href="/projects/"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Projects</a>
+            <a href="/posts/"><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a>
+          </nav>
+          <nav class="footer-col footer-nav" aria-label="Info">
+            <a href="/about/"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About</a>
+            <a href="/privacy/"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Privacy</a>
+            {gaId && <a href="/privacy/#cookies" id="cookie-prefs-link"><i class="fa-solid fa-cookie-bite" aria-hidden="true"></i> Cookie Preferences</a>}
+          </nav>
+        </div>
       </div>
     </footer>
     {gaId && <CookieBanner gaId={gaId} />}
