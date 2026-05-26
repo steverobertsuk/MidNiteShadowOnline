@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AlertNotice from "../components/AlertNotice.astro";
+---
+<BaseLayout
+  title="500 — Server Error | MidNite Shadow Online"
+  description="An unexpected server error occurred."
+>
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">Error 500</p>
+      <h1>Server Error</h1>
+      <p class="lede">
+        Something went wrong in the arcane machinery — an unexpected error has occurred.
+      </p>
+      <AlertNotice variant="error" title="Internal Server Error">
+        <p>
+          The server encountered an unexpected condition. This is not your fault.
+          Please try again in a moment, or return to the home page.
+        </p>
+      </AlertNotice>
+      <p>
+        <a href="/" class="button primary">
+          <i class="fa-solid fa-house" aria-hidden="true"></i> Return Home
+        </a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

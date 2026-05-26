@@ -1,0 +1,18 @@
+---
+interface Props {
+  variant: 'warning' | 'error';
+  title?: string;
+}
+const { variant, title } = Astro.props;
+const icon = variant === 'error' ? 'fa-circle-xmark' : 'fa-triangle-exclamation';
+const role = variant === 'error' ? 'alert' : 'note';
+---
+<aside class={`alert-notice alert-notice--${variant}`} role={role}>
+  <div class="alert-notice-icon">
+    <i class={`fa-solid ${icon}`} aria-hidden="true"></i>
+  </div>
+  <div class="alert-notice-body">
+    {title && <p class="alert-notice-title">{title}</p>}
+    <slot />
+  </div>
+</aside>
