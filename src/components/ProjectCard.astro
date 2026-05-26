@@ -23,8 +23,4 @@ const cardImagePolicy = getImageLoadingPolicy('card');
   <h3><a href={`/projects/${slug}/`}>{project.data.title}</a></h3>
   <p>{project.data.summary}</p>
   <a class="button read-more-cta" href={`/projects/${slug}/`}>Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
-  <div class="card-tags">
-    <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> {project.data.category}</span>
-    <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> {project.data.status}</span>
-  </div>
 </article>
