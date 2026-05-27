@@ -1,21 +1,24 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import { getCollection } from "astro:content";
+import mns7Profile from "../../assets/images/mns7_profile.webp";
 const projects = (await getCollection("projects")).sort(
   (a, b) => a.data.order - b.data.order,
 );
 ---
 
 <BaseLayout title="Projects | MidNiteShadow Online">
+  <Hero
+    eyebrow="Projects"
+    title="Projects, tools and worlds"
+    lede="A structured index of the main things MidNiteShadow Online is being built to support."
+    heroImage={mns7Profile}
+    heroImageAlt="MidNiteShadow7 profile portrait"
+  />
   <section class="section">
     <div class="container">
-      <p class="eyebrow">Projects</p>
-      <h1>Projects, tools and worlds</h1>
-      <p class="lede">
-        A structured index of the main things MidNiteShadow Online is being
-        built to support.
-      </p>
       <div class="grid" style="margin-top: 40px;">
         {projects.map((project) => <ProjectCard project={project} />)}
       </div>

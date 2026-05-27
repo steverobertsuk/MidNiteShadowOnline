@@ -3,8 +3,10 @@ import { getCollection } from "astro:content";
 import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
 import CategoryFilter from "../../components/CategoryFilter.astro";
 import { formatPostDate, postIdToSlug, toSlug } from "../../lib/postCategory";
+import tribblesLogo from "../../assets/images/tribbles-in-ecstasy-logo.webp";
 
 type Post = CollectionEntry<"posts">;
 type CategoryLink = { name: string; slug: string };
@@ -31,14 +33,19 @@ const { page, categories } = Astro.props as InferGetStaticPropsType<
     ? "Posts | MidNiteShadow Online"
     : `Posts — Page ${page.currentPage} | MidNiteShadow Online`}
 >
+  <Hero
+    eyebrow="Posts"
+    title={
+      page.currentPage === 1
+        ? "News, Updates and Releases"
+        : `News, Updates and Releases - Page ${page.currentPage}`
+    }
+    lede="A chronological feed of site posts drawn from Roll20, STO Info, podcasts and more."
+    heroImage={tribblesLogo}
+    heroImageAlt="Tribbles in Ecstasy podcast logo"
+  />
   <section class="section">
     <div class="container">
-      <p class="eyebrow">Posts</p>
-      <h1>News, Updates and Releases</h1>
-      <p class="lede">
-        A chronological feed of site posts drawn from Roll20, STO Info, podcasts
-        and more.
-      </p>
       <CategoryFilter categories={categories} />
       <div class="grid">
         {

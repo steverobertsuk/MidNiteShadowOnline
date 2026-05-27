@@ -1,18 +1,22 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AlertNotice from "../components/AlertNotice.astro";
+import Hero from "../components/Hero.astro";
+import placeholderImage from "../assets/images/placeholder.webp";
 ---
 <BaseLayout
   title="500 — Server Error | MidNite Shadow Online"
   description="An unexpected server error occurred."
 >
+  <Hero
+    eyebrow="Error 500"
+    title="Server Error"
+    lede="Something went wrong in the arcane machinery - an unexpected error has occurred."
+    heroImage={placeholderImage}
+    heroImageAlt="Arcane placeholder image"
+  />
   <section class="section">
     <div class="container prose">
-      <p class="eyebrow">Error 500</p>
-      <h1>Server Error</h1>
-      <p class="lede">
-        Something went wrong in the arcane machinery — an unexpected error has occurred.
-      </p>
       <AlertNotice variant="error" title="Internal Server Error">
         <p>
           The server encountered an unexpected condition. This is not your fault.

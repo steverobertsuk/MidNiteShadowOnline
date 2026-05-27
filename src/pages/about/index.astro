@@ -1,20 +1,22 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import mns7Profile from "../../assets/images/mns7_profile.webp";
 ---
 
 <BaseLayout
   title="About | MidNite Shadow Online"
   description="Learn more about MidNite Shadow, the creator behind the content and projects featured on this site."
 >
+  <Hero
+    eyebrow="About"
+    title="MidNite Shadow"
+    lede="MidNite Shadow is a online alias/handle used by a content creator and developer with a passion for gaming, storytelling, and community engagement."
+    heroImage={mns7Profile}
+    heroImageAlt="MidNiteShadow7 — hooded figure with glowing purple eyes"
+  />
   <section class="section">
     <div class="container prose">
-      <p class="eyebrow">About</p>
-      <h1>MidNite Shadow</h1>
-      <p class="lede">
-        MidNite Shadow is a online alias/handle used by a content creator and
-        developer with a passion for gaming, storytelling, and community
-        engagement.
-      </p>
       <p>
         I'm Steve, a UK-based software engineer, long-time gamer, virtual
         tabletop enthusiast, and creator operating online under the name MidNite

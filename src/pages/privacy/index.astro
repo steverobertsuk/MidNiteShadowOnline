@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import stoInfoIcon from "../../assets/images/sto-info-icon.webp";
 
 const title = "Privacy Policy | MidNite Shadow Online";
 const description =
@@ -7,14 +9,15 @@ const description =
 ---
 
 <BaseLayout title={title} description={description}>
+  <Hero
+    eyebrow="Legal"
+    title="Privacy Policy"
+    lede="How MidNite Shadow Online collects, uses, and protects personal data."
+    heroImage={stoInfoIcon}
+    heroImageAlt="STO Info emblem"
+  />
   <section class="section">
     <div class="container prose">
-      <p class="eyebrow">Legal</p>
-      <h1>Privacy Policy</h1>
-      <p class="lede">
-        How MidNite Shadow Online collects, uses, and protects personal data.
-      </p>
-
       <p><strong>Last updated:</strong> 24th May 2026</p>
 
       <h2>Who we are</h2>
