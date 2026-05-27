@@ -29,9 +29,12 @@ const { Content } = await render(post);
     eyebrow={post.data.category}
     title={post.data.title}
     lede={post.data.summary}
+    video={post.data.video}
+    videoSrc={post.data.videoSrc}
+    videoPoster={post.data.videoPoster}
     image={post.data.hero}
     heroImage={post.data.heroForeground}
-    heroImageAlt={post.data.heroForegroundAlt}
+    heroImageAlt={post.data.heroForegroundAlt ?? post.data.heroAlt ?? ''}
   />
   <section class="section">
     <div class="container post-layout">

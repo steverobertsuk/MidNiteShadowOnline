@@ -41,7 +41,12 @@ const cardImagePolicy = getImageLoadingPolicy('card');
     eyebrow={project.data.category}
     title={project.data.title}
     lede={project.data.summary}
+    video={project.data.video}
+    videoSrc={project.data.videoSrc}
+    videoPoster={project.data.videoPoster}
     image={project.data.hero}
+    heroImage={project.data.heroForeground}
+    heroImageAlt={project.data.heroForegroundAlt ?? project.data.heroAlt ?? ''}
     tags={[project.data.status]}
   />
   <section class="section">

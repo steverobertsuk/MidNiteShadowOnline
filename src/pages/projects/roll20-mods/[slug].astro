@@ -24,7 +24,12 @@ const { Content } = await render(mod);
     eyebrow={mod.data.category}
     title={mod.data.title}
     lede={mod.data.summary}
+    video={mod.data.video}
+    videoSrc={mod.data.videoSrc}
+    videoPoster={mod.data.videoPoster}
     image={mod.data.hero}
+    heroImage={mod.data.heroForeground}
+    heroImageAlt={mod.data.heroForegroundAlt ?? mod.data.heroAlt ?? ''}
     tags={[mod.data.status]}
   />
   <section class="section">

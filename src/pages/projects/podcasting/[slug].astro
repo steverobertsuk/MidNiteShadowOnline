@@ -24,7 +24,12 @@ const { Content } = await render(podcast);
     eyebrow={podcast.data.category}
     title={podcast.data.title}
     lede={podcast.data.summary}
+    video={podcast.data.video}
+    videoSrc={podcast.data.videoSrc}
+    videoPoster={podcast.data.videoPoster}
     image={podcast.data.hero}
+    heroImage={podcast.data.heroForeground}
+    heroImageAlt={podcast.data.heroForegroundAlt ?? podcast.data.heroAlt ?? ''}
     tags={[podcast.data.status]}
   />
   <section class="section">
