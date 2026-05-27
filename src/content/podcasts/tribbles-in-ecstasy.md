@@ -5,6 +5,8 @@ category: "Show"
 status: "Active"
 order: 2
 links: []
+heroForeground: '../../assets/images/tribbles-in-ecstasy-logo.webp'
+heroAlt: 'The new Tribbles in Ecstasy logo, featuring a stylized tribble with a starry, cosmic pattern, set against a background with subtle nebulae and sparkles.'
 ---
 
 ## Overview
