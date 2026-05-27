@@ -3,7 +3,6 @@ title: "Roll20 Mods"
 summary: "API scripts and mod ideas for improving tabletop play, automation, condition tracking, token workflows and accessibility."
 category: "Tabletop tooling"
 status: "In progress"
-hero: "../../assets/images/placeholder.webp"
 order: 2
 links: []
 ---

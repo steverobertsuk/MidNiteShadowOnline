@@ -15,7 +15,7 @@ const posts = (await getCollection('posts')).sort(
 );
 const categories = [...new Set(posts.map((p) => p.data.category))].sort().map((name) => ({ name, slug: toSlug(name) }));
 const heroResponsivePreloads = getResponsiveImagePreloads(
-  '/assets/images/placeholder.webp',
+  '/assets/images/hero_purple_embers.webp',
   '/assets/images/hero_purple_embers.webp',
 );
 ---

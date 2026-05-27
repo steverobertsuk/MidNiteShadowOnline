@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import placeholderImage from '../assets/images/placeholder.webp';
 import { getImageLoadingPolicy } from '../lib/mediaPriority';
 
 const { project } = Astro.props;
@@ -8,18 +9,14 @@ const cardImagePolicy = getImageLoadingPolicy('card');
 ---
 
 <article class="card large post-card">
-  {
-    project.data.hero && (
-      <Image
-        class="project-image"
-        src={project.data.hero}
-        alt=""
-        loading={cardImagePolicy.loading}
-        fetchpriority={cardImagePolicy.fetchpriority}
-        decoding={cardImagePolicy.decoding}
-      />
-    )
-  }
+  <Image
+    class="project-image"
+    src={project.data.hero ?? placeholderImage}
+    alt=""
+    loading={cardImagePolicy.loading}
+    fetchpriority={cardImagePolicy.fetchpriority}
+    decoding={cardImagePolicy.decoding}
+  />
   <h3><a href={`/projects/${slug}/`}>{project.data.title}</a></h3>
   <p>{project.data.summary}</p>
   <a class="button read-more-cta" href={`/projects/${slug}/`}>Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>

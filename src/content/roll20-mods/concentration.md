@@ -3,7 +3,6 @@ title: "Concentration"
 summary: "Keeps concentration effects visible and easier to maintain, especially when damage checks and linked spell effects need to stay in sync."
 category: "Spell support"
 status: "Planned"
-hero: "../../assets/images/placeholder.webp"
 order: 4
 links: []
 ---

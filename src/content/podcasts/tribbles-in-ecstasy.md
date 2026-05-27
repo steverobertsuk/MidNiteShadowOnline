@@ -3,7 +3,6 @@ title: "Tribbles in Ecstasy"
 summary: "Star Trek coverage with episode and theme discussions, community perspectives, and fandom-driven commentary."
 category: "Show"
 status: "Active"
-hero: "../../assets/images/placeholder.webp"
 order: 2
 links: []
 ---

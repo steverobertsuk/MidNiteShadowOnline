@@ -4,6 +4,7 @@ import { getCollection, render } from 'astro:content';
 import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getImageLoadingPolicy } from '../../lib/mediaPriority';
+import placeholderImage from '../../assets/images/placeholder.webp';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -57,16 +58,14 @@ const cardImagePolicy = getImageLoadingPolicy('card');
 
                 return (
                   <article class="card large post-card">
-                    {mod.data.hero && (
-                      <Image
-                        class="project-image"
-                        src={mod.data.hero}
-                        alt=""
-                        loading={cardImagePolicy.loading}
-                        fetchpriority={cardImagePolicy.fetchpriority}
-                        decoding={cardImagePolicy.decoding}
-                      />
-                    )}
+                    <Image
+                      class="project-image"
+                      src={mod.data.hero ?? placeholderImage}
+                      alt=""
+                      loading={cardImagePolicy.loading}
+                      fetchpriority={cardImagePolicy.fetchpriority}
+                      decoding={cardImagePolicy.decoding}
+                    />
                     <h3>
                       <a href={`/projects/roll20-mods/${modSlug}/`}>
                         {mod.data.title}
@@ -108,16 +107,14 @@ const cardImagePolicy = getImageLoadingPolicy('card');
 
                 return (
                   <article class="card large post-card">
-                    {podcast.data.hero && (
-                      <Image
-                        class="project-image"
-                        src={podcast.data.hero}
-                        alt=""
-                        loading={cardImagePolicy.loading}
-                        fetchpriority={cardImagePolicy.fetchpriority}
-                        decoding={cardImagePolicy.decoding}
-                      />
-                    )}
+                    <Image
+                      class="project-image"
+                      src={podcast.data.hero ?? placeholderImage}
+                      alt=""
+                      loading={cardImagePolicy.loading}
+                      fetchpriority={cardImagePolicy.fetchpriority}
+                      decoding={cardImagePolicy.decoding}
+                    />
                     <h3>
                       <a href={`/projects/podcasting/${podcastSlug}/`}>
                         {podcast.data.title}
