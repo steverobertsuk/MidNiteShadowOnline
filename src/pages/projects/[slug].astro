@@ -1,10 +1,8 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getImageLoadingPolicy } from '../../lib/mediaPriority';
-import placeholderImage from '../../assets/images/placeholder.webp';
+import CardMedia from '../../components/CardMedia.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -30,7 +28,6 @@ const podcasts =
         (a, b) => a.data.order - b.data.order,
       )
     : [];
-const cardImagePolicy = getImageLoadingPolicy('card');
 ---
 
 <BaseLayout
@@ -63,13 +60,15 @@ const cardImagePolicy = getImageLoadingPolicy('card');
 
                 return (
                   <article class="card large post-card">
-                    <Image
-                      class="project-image"
-                      src={mod.data.hero ?? placeholderImage}
-                      alt=""
-                      loading={cardImagePolicy.loading}
-                      fetchpriority={cardImagePolicy.fetchpriority}
-                      decoding={cardImagePolicy.decoding}
+                    <CardMedia
+                      indexMedia={mod.data.indexMedia}
+                      indexMediaAlt={mod.data.indexMediaAlt}
+                      indexVideo={mod.data.indexVideo}
+                      indexVideoSrc={mod.data.indexVideoSrc}
+                      hero={mod.data.hero}
+                      video={mod.data.video}
+                      videoSrc={mod.data.videoSrc}
+                      videoPoster={mod.data.videoPoster}
                     />
                     <h3>
                       <a href={`/projects/roll20-mods/${modSlug}/`}>
@@ -84,16 +83,6 @@ const cardImagePolicy = getImageLoadingPolicy('card');
                       Read more{' '}
                       <i class="fa-solid fa-angles-right" aria-hidden="true" />
                     </a>
-                    <div class="card-tags">
-                      <span class="tag">
-                        <i class="fa-solid fa-tag" aria-hidden="true" />{' '}
-                        {mod.data.category}
-                      </span>
-                      <span class="tag">
-                        <i class="fa-solid fa-tag" aria-hidden="true" />{' '}
-                        {mod.data.status}
-                      </span>
-                    </div>
                   </article>
                 );
               })}
@@ -112,13 +101,15 @@ const cardImagePolicy = getImageLoadingPolicy('card');
 
                 return (
                   <article class="card large post-card">
-                    <Image
-                      class="project-image"
-                      src={podcast.data.hero ?? placeholderImage}
-                      alt=""
-                      loading={cardImagePolicy.loading}
-                      fetchpriority={cardImagePolicy.fetchpriority}
-                      decoding={cardImagePolicy.decoding}
+                    <CardMedia
+                      indexMedia={podcast.data.indexMedia}
+                      indexMediaAlt={podcast.data.indexMediaAlt}
+                      indexVideo={podcast.data.indexVideo}
+                      indexVideoSrc={podcast.data.indexVideoSrc}
+                      hero={podcast.data.hero}
+                      video={podcast.data.video}
+                      videoSrc={podcast.data.videoSrc}
+                      videoPoster={podcast.data.videoPoster}
                     />
                     <h3>
                       <a href={`/projects/podcasting/${podcastSlug}/`}>

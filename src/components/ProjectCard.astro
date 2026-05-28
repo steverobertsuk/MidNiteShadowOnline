@@ -1,21 +1,20 @@
----
-import { Image } from 'astro:assets';
-import placeholderImage from '../assets/images/placeholder.webp';
-import { getImageLoadingPolicy } from '../lib/mediaPriority';
+﻿---
+import CardMedia from './CardMedia.astro';
 
 const { project } = Astro.props;
 const slug = project.id.replace(/\.(md|mdx)$/, '');
-const cardImagePolicy = getImageLoadingPolicy('card');
 ---
 
 <article class="card large post-card">
-  <Image
-    class="project-image"
-    src={project.data.hero ?? placeholderImage}
-    alt=""
-    loading={cardImagePolicy.loading}
-    fetchpriority={cardImagePolicy.fetchpriority}
-    decoding={cardImagePolicy.decoding}
+  <CardMedia
+    indexMedia={project.data.indexMedia}
+    indexMediaAlt={project.data.indexMediaAlt}
+    indexVideo={project.data.indexVideo}
+    indexVideoSrc={project.data.indexVideoSrc}
+    hero={project.data.hero}
+    video={project.data.video}
+    videoSrc={project.data.videoSrc}
+    videoPoster={project.data.videoPoster}
   />
   <h3><a href={`/projects/${slug}/`}>{project.data.title}</a></h3>
   <p>{project.data.summary}</p>

@@ -3,8 +3,10 @@ title: "Condition Tracker"
 summary: "Tracks active conditions, durations, and turn-by-turn cleanup so status effects are easier to manage in live play."
 category: "Combat automation"
 status: "In development"
-order: 3
+order: 1
 links: []
+indexMedia: '../../assets/images/mods/ConditionTracker_Cover.jpg'
+indexMediaAlt: 'Condition Tracker mod cover image'
 ---
 
 ## Overview

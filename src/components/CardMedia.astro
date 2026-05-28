@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+import { getImageLoadingPolicy, getVideoLoadingPolicy } from '../lib/mediaPriority';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  indexMedia?: ImageMetadata;
+  indexMediaAlt?: string;
+  indexVideo?: boolean;
+  indexVideoSrc?: string;
+  hero?: ImageMetadata;
+  video?: boolean;
+  videoSrc?: string;
+  videoPoster?: string;
+}
+
+const {
+  indexMedia,
+  indexMediaAlt = '',
+  indexVideo = false,
+  indexVideoSrc,
+  hero,
+  video = false,
+  videoSrc,
+  videoPoster,
+} = Astro.props;
+
+const cardImagePolicy = getImageLoadingPolicy('card');
+const cardVideoPolicy = getVideoLoadingPolicy('decorative');
+
+// Fallback chain:
+// 1. indexVideo + indexVideoSrc  -> explicit index video
+// 2. indexMedia                  -> explicit index image
+// 3. video + videoSrc            -> hero video as fallback
+// 4. hero                        -> hero image as fallback
+// 5. purple-embers video         -> final site fallback
+const siteFallbackVideoSrc = '/assets/video/hero-purple-embers.webm';
+
+const useIndexVideo = indexVideo && !!indexVideoSrc;
+const useIndexImage = !useIndexVideo && !!indexMedia;
+const useHeroVideo = !useIndexVideo && !useIndexImage && video && !!videoSrc;
+const useHeroImage = !useIndexVideo && !useIndexImage && !useHeroVideo && !!hero;
+const useFallback = !useIndexVideo && !useIndexImage && !useHeroVideo && !useHeroImage;
+---
+
+{useIndexVideo && (
+  <video
+    class="project-image"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload={cardVideoPolicy.preload}
+    src={indexVideoSrc}
+    aria-hidden="true"
+  />
+)}
+{useIndexImage && (
+  <Image
+    class="project-image"
+    src={indexMedia!}
+    alt={indexMediaAlt}
+    loading={cardImagePolicy.loading}
+    fetchpriority={cardImagePolicy.fetchpriority}
+    decoding={cardImagePolicy.decoding}
+  />
+)}
+{useHeroVideo && (
+  <video
+    class="project-image"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload={cardVideoPolicy.preload}
+    poster={videoPoster}
+    src={videoSrc}
+    aria-hidden="true"
+  />
+)}
+{useHeroImage && (
+  <Image
+    class="project-image"
+    src={hero!}
+    alt=""
+    loading={cardImagePolicy.loading}
+    fetchpriority={cardImagePolicy.fetchpriority}
+    decoding={cardImagePolicy.decoding}
+  />
+)}
+{useFallback && (
+  <video
+    class="project-image"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload={cardVideoPolicy.preload}
+    src={siteFallbackVideoSrc}
+    aria-hidden="true"
+  />
+)}

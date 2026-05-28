@@ -708,13 +708,13 @@ h3 {
 .post-card > .project-image {
   width: calc(100% + 52px);
   max-width: calc(100% + 52px);
-  height: clamp(180px, 22vw, 260px);
+  height: auto;
   margin: -26px -26px 20px;
   border-radius: 28px 28px 0 0;
   border: 0;
   border-bottom: 1px solid var(--line);
-  object-fit: cover;
-  object-position: center;
+  display: block;
+  aspect-ratio: 16/9;
 }
 .timeline {
   display: grid;

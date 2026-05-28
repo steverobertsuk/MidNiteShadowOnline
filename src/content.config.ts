@@ -16,6 +16,10 @@ const collectionSchema = ({ image }: SchemaContext) =>
     heroForeground: image().optional(),
     heroForegroundAlt: z.string().optional(),
     heroAlt: z.string().optional(),
+    indexMedia: image().optional(),
+    indexMediaAlt: z.string().optional(),
+    indexVideo: z.boolean().optional(),
+    indexVideoSrc: z.string().optional(),
     order: z.number().default(0),
     links: z.array(z.object({ label: z.string(), url: z.string() })).default([]),
   });

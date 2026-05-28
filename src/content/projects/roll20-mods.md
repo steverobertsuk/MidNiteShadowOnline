@@ -5,16 +5,8 @@ category: "Tabletop tooling"
 status: "In progress"
 order: 2
 links: []
+indexMedia: '../../assets/images/mods/Roll20_Mods_Cover.jpg'
+indexMediaAlt: 'Roll20 Mods cover image'
 ---
 
-The Roll20 Mods section should become the main home for API scripting work, mod documentation and development notes.
-
-This includes existing and planned work around condition tracking, token movement, health colours, Beacon compatibility and system-flexible utilities that are not locked to one game sheet.
-
-## Candidate mod pages
-
-- Condition Tracker
-- Swap Token Positions
-- Aura/Tint HealthColors
-- Beacon-compatible Concentration support
-- Shared token classification helper
+Here is a list of Roll20 API Mods that are created by or now maintained by Steve Roberts, the MidNite Shadow.

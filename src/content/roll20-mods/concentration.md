@@ -5,6 +5,8 @@ category: "Spell support"
 status: "Planned"
 order: 4
 links: []
+indexMedia: '../../assets/images/mods/Concentration_Cover.jpg'
+indexMediaAlt: 'Concentration mod cover image'
 ---
 
 ## Overview

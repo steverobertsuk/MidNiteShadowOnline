@@ -3,8 +3,10 @@ title: "Aura/Tint HealthColor"
 summary: "Applies health-based aura and tint feedback so token state is readable at a glance without opening character sheets."
 category: "Visual feedback"
 status: "Planned"
-order: 1
+order: 3
 links: []
+indexMedia: '../../assets/images/mods/HealthColor_Cover.jpg'
+indexMediaAlt: 'Aura/Tint HealthColor mod cover image'
 ---
 
 ## Overview

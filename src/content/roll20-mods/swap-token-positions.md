@@ -1,10 +1,12 @@
 ---
 title: "SwapTokenPositions"
 summary: "Moves two selected tokens into each other's spaces without manual drag-and-drop cleanup or layer mistakes."
-category: "Token workflow"
-status: "Planned"
+category: "Token movement"
+status: "Version 2.1.0"
 order: 2
 links: []
+indexMedia: '../../assets/images/mods/SwapTokenPositions_Cover.jpg'
+indexMediaAlt: 'SwapTokenPositions mod cover image'
 ---
 
 ## Overview
