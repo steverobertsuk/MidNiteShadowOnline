@@ -6,7 +6,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import CategoryFilter from "../../components/CategoryFilter.astro";
 import { formatPostDate, postIdToSlug, toSlug } from "../../lib/postCategory";
-import tribblesLogo from "../../assets/images/tribbles-in-ecstasy-logo.webp";
 
 type Post = CollectionEntry<"posts">;
 type CategoryLink = { name: string; slug: string };
@@ -41,8 +40,6 @@ const { page, categories } = Astro.props as InferGetStaticPropsType<
         : `News, Updates and Releases - Page ${page.currentPage}`
     }
     lede="A chronological feed of site posts drawn from Roll20, STO Info, podcasts and more."
-    heroImage={tribblesLogo}
-    heroImageAlt="Tribbles in Ecstasy podcast logo"
   />
   <section class="section">
     <div class="container">
@@ -94,14 +91,15 @@ const { page, categories } = Astro.props as InferGetStaticPropsType<
       {
         page.lastPage > 1 && (
           <nav class="pagination" aria-label="Post pagination">
-            <a
-              class:list={["pagination-btn", { disabled: !page.url.prev }]}
-              href={page.url.prev ?? "#"}
-              aria-disabled={!page.url.prev ? "true" : undefined}
-              tabindex={!page.url.prev ? -1 : undefined}
-            >
-              <i class="fa-solid fa-angles-left" aria-hidden="true" /> Previous
-            </a>
+            {page.url.prev ? (
+              <a class="pagination-btn" href={page.url.prev}>
+                <i class="fa-solid fa-angles-left" aria-hidden="true" /> Previous
+              </a>
+            ) : (
+              <span class="pagination-btn disabled" aria-disabled="true">
+                <i class="fa-solid fa-angles-left" aria-hidden="true" /> Previous
+              </span>
+            )}
             <div class="pagination-pages">
               {Array.from({ length: page.lastPage }, (_, i) => i + 1).map(
                 (num) => (
@@ -118,14 +116,15 @@ const { page, categories } = Astro.props as InferGetStaticPropsType<
                 ),
               )}
             </div>
-            <a
-              class:list={["pagination-btn", { disabled: !page.url.next }]}
-              href={page.url.next ?? "#"}
-              aria-disabled={!page.url.next ? "true" : undefined}
-              tabindex={!page.url.next ? -1 : undefined}
-            >
-              Next <i class="fa-solid fa-angles-right" aria-hidden="true" />
-            </a>
+            {page.url.next ? (
+              <a class="pagination-btn" href={page.url.next}>
+                Next <i class="fa-solid fa-angles-right" aria-hidden="true" />
+              </a>
+            ) : (
+              <span class="pagination-btn disabled" aria-disabled="true">
+                Next <i class="fa-solid fa-angles-right" aria-hidden="true" />
+              </span>
+            )}
           </nav>
         )
       }
