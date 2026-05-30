@@ -4,11 +4,15 @@ summary: "A free community app for Star Trek Online players, combining account a
 category: "Star Trek Online"
 status: "Active development"
 heroForeground: '../../assets/images/sto-info-icon.webp'
-heroAlt: 'The STO Info logo, featuring a Star Trek delta with a stylized design and an information icon.'
+heroForegroundAlt: 'The STO Info logo, featuring a Star Trek delta with a stylized design and an information icon.'
 order: 1
 links:
   - label: "Website"
     url: "https://startrekonline.info"
+indexMedia: '../../assets/images/sto-info-cover.jpg'
+indexMediaAlt: 'Star Trek Online Info Portal cover image'
+hero: '../../assets/images/sto-info-hero.jpg'
+heroAlt: 'A stylized representation of the Star Trek Online Info Portal, featuring a Starfleet insignia and UI screenshot.'
 ---
 
 STO Info is a substantial development project sitting at the intersection of Star Trek Online, community tooling and modern web engineering.

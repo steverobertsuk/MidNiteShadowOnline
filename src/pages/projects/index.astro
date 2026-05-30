@@ -4,6 +4,7 @@ import Hero from "../../components/Hero.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import { getCollection } from "astro:content";
 import mns7Profile from "../../assets/images/mns7_profile.webp";
+import projectsHero from "../../assets/images/projects-hero.jpg";
 const projects = (await getCollection("projects")).sort(
   (a, b) => a.data.order - b.data.order,
 );
@@ -14,6 +15,7 @@ const projects = (await getCollection("projects")).sort(
     eyebrow="Projects"
     title="Projects, tools and worlds"
     lede="A structured index of the main things MidNiteShadow Online is being built to support."
+    image={projectsHero}
     heroImage={mns7Profile}
     heroImageAlt="MidNiteShadow7 profile portrait"
   />

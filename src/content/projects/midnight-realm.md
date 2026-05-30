@@ -5,6 +5,8 @@ category: "D&D / Worldbuilding"
 status: "Concept development"
 order: 3
 links: []
+indexMedia: '../../assets/images/the-midnight-realm-cover.jpg'
+indexMediaAlt: 'The Midnight Realm cover image'
 ---
 
 Midnight Realm is a homebrew tabletop concept designed as a modular series of one-shots with a strong atmosphere and repeatable structure.

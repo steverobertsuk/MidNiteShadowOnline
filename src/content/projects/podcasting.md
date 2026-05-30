@@ -5,6 +5,10 @@ category: "Media production"
 status: "Ongoing"
 order: 4
 links: []
+indexMedia: '../../assets/images/podcasting-and-media-cover.jpg'
+indexMediaAlt: 'Podcasting & Media cover image'
+hero: '../../assets/images/podcasting-and-media-hero.jpg'
+heroAlt: 'A stylized microphone with sound waves, representing podcasting and media production.'
 ---
 
 Podcasting and media production bring together fandom, discussion, technical setup, audio/video editing, graphics and community spaces.
