@@ -16,6 +16,9 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 const slug = project.id.replace(/\.(md|mdx)$/, '');
+const heroTags = project.data.status ? [project.data.status] : [];
+const heroImageAltText =
+  project.data.heroForegroundAlt || project.data.heroAlt || '';
 const roll20Mods =
   slug === 'roll20-mods'
     ? (await getCollection('roll20Mods')).sort(
@@ -43,8 +46,8 @@ const podcasts =
     videoPoster={project.data.videoPoster}
     image={project.data.hero}
     heroImage={project.data.heroForeground}
-    heroImageAlt={project.data.heroForegroundAlt ?? project.data.heroAlt ?? ''}
-    tags={[project.data.status]}
+    heroImageAlt={heroImageAltText}
+    tags={heroTags}
   />
   <section class="section">
     <div class="container prose">
@@ -129,10 +132,12 @@ const podcasts =
                         <i class="fa-solid fa-tag" aria-hidden="true" />{' '}
                         {podcast.data.category}
                       </span>
-                      <span class="tag">
-                        <i class="fa-solid fa-tag" aria-hidden="true" />{' '}
-                        {podcast.data.status}
-                      </span>
+                      {podcast.data.status && (
+                        <span class="tag">
+                          <i class="fa-solid fa-tag" aria-hidden="true" />{' '}
+                          {podcast.data.status}
+                        </span>
+                      )}
                     </div>
                   </article>
                 );

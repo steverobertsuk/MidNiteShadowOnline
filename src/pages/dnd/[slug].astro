@@ -1,0 +1,60 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Hero from '../../components/Hero.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const dndEntries = await getCollection('dnd');
+
+  return dndEntries.map((entry) => ({
+    params: { slug: entry.id.replace(/\.(md|mdx)$/, '') },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'dnd'> };
+const { Content } = await render(entry);
+const heroImageAltText =
+  entry.data.heroForegroundAlt || entry.data.heroAlt || '';
+---
+
+<BaseLayout
+  title={`${entry.data.title} | D&D | MidNiteShadow Online`}
+  description={entry.data.summary}
+>
+  <Hero
+    eyebrow={entry.data.category}
+    title={entry.data.title}
+    lede={entry.data.summary}
+    image={entry.data.hero}
+    heroImage={entry.data.heroForeground}
+    heroImageAlt={heroImageAltText}
+    tags={entry.data.tags}
+  />
+  <section class="section">
+    <div class="container prose">
+      <Content />
+
+      {entry.data.gallery && entry.data.gallery.length > 0 && (
+        <div class="character-gallery">
+          {entry.data.gallery.map((item) => (
+            <figure>
+              <Image src={item.src} alt={item.alt} loading="lazy" />
+            </figure>
+          ))}
+        </div>
+      )}
+
+      {entry.data.links.length > 0 && <h2>Links</h2>}
+      {
+        entry.data.links.map((link) => (
+          <p>
+            <a href={link.url}>{link.label}</a>
+          </p>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

@@ -30,7 +30,7 @@ const { Content } = await render(podcast);
     image={podcast.data.hero}
     heroImage={podcast.data.heroForeground}
     heroImageAlt={podcast.data.heroForegroundAlt ?? podcast.data.heroAlt ?? ''}
-    tags={[podcast.data.status]}
+    tags={podcast.data.status ? [podcast.data.status] : []}
   />
   <section class="section">
     <div class="container prose">

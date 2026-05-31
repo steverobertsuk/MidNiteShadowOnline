@@ -8,7 +8,7 @@ const collectionSchema = ({ image }: SchemaContext) =>
     title: z.string(),
     summary: z.string(),
     category: z.string(),
-    status: z.string(),
+    status: z.string().optional(),
     video: z.boolean().optional(),
     videoSrc: z.string().optional(),
     videoPoster: z.string().optional(),
@@ -39,6 +39,25 @@ const podcasts = defineCollection({
   schema: collectionSchema,
 });
 
+const gaming = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/gaming" }),
+  schema: ({ image }: SchemaContext) =>
+    collectionSchema({ image }).extend({
+      tags: z.array(z.string()).default([]),
+    }),
+});
+
+const dnd = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/dnd" }),
+  schema: ({ image }: SchemaContext) =>
+    collectionSchema({ image }).extend({
+      tags: z.array(z.string()).default([]),
+      gallery: z
+        .array(z.object({ src: image(), alt: z.string() }))
+        .optional(),
+    }),
+});
+
 const posts = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts" }),
   schema: ({ image }: SchemaContext) =>
@@ -58,4 +77,11 @@ const posts = defineCollection({
     }),
 });
 
-export const collections = { projects, posts, roll20Mods, podcasts };
+export const collections = {
+  projects,
+  posts,
+  roll20Mods,
+  podcasts,
+  gaming,
+  dnd,
+};

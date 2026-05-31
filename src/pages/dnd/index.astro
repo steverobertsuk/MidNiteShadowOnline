@@ -1,11 +1,14 @@
 ---
-import { Image } from 'astro:assets';
-import placeholderImage from '../../assets/images/placeholder.webp';
+import CardMedia from '../../components/CardMedia.astro';
 import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getImageLoadingPolicy } from '../../lib/mediaPriority';
+import { getCollection } from 'astro:content';
+import dndImage from "../../assets/images/dnd-characters/dnd-cover.jpg";
+import modsImage from "../../assets/images/mods/roll20-mods-cover.jpg";
 
-const cardImagePolicy = getImageLoadingPolicy('card');
+const dndEntries = (await getCollection('dnd')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
 <BaseLayout title="D&D | MidNiteShadow Online">
@@ -13,6 +16,7 @@ const cardImagePolicy = getImageLoadingPolicy('card');
     eyebrow="D&D / Tabletop"
     title="Worldbuilding, characters and session design."
     lede="A home for Midnight Realm, campaign notes, lore, mechanics, tokens, one-shots and reusable tabletop material."
+    image={dndImage}
   />
   <section class="section">
     <div class="container">
@@ -23,95 +27,40 @@ const cardImagePolicy = getImageLoadingPolicy('card');
         project for tabletop automation and supporting utilities.
       </p>
       <div class="grid" style="margin-top: 40px;">
+        {
+          dndEntries.map((entry) => {
+            const slug = entry.id.replace(/\.(md|mdx)$/, '');
+
+            return (
+              <article class="card large post-card">
+                <CardMedia
+                  indexMedia={entry.data.indexMedia}
+                  indexMediaAlt={entry.data.indexMediaAlt}
+                  hero={entry.data.hero}
+                />
+                <h3><a href={`/dnd/${slug}/`}>{entry.data.title}</a></h3>
+                <p>{entry.data.summary}</p>
+                <a class="button read-more-cta" href={`/dnd/${slug}/`}>
+                  Read more{' '}
+                  <i class="fa-solid fa-angles-right" aria-hidden="true" />
+                </a>
+                {entry.data.tags.length > 0 && (
+                  <div class="card-tags">
+                    {entry.data.tags.map((tag) => (
+                      <span class="tag">
+                        <i class="fa-solid fa-tag" aria-hidden="true" /> {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </article>
+            );
+          })
+        }
         <article class="card large post-card">
-          <Image
-            class="project-image"
-            src={placeholderImage}
-            alt=""
-            loading={cardImagePolicy.loading}
-            fetchpriority={cardImagePolicy.fetchpriority}
-            decoding={cardImagePolicy.decoding}
-          />
-          <h3><a href="/dnd/dorn/">Dorn</a></h3>
-          <p>
-            A dedicated page for Dorn's place in the campaign, role at the
-            table, and future story hooks.
-          </p>
-          <a class="button read-more-cta" href="/dnd/dorn/"
-            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
-            ></i></a
-          >
-          <div class="card-tags">
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Character</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> D&D</span
-            >
-          </div>
-        </article>
-        <article class="card large post-card">
-          <Image
-            class="project-image"
-            src={placeholderImage}
-            alt=""
-            loading={cardImagePolicy.loading}
-            fetchpriority={cardImagePolicy.fetchpriority}
-            decoding={cardImagePolicy.decoding}
-          />
-          <h3><a href="/dnd/nox/">Nox</a></h3>
-          <p>
-            A dedicated page for Nox's backstory, party role, and key
-            worldbuilding connections.
-          </p>
-          <a class="button read-more-cta" href="/dnd/nox/"
-            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
-            ></i></a
-          >
-          <div class="card-tags">
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Character</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> D&D</span
-            >
-          </div>
-        </article>
-        <article class="card large post-card">
-          <Image
-            class="project-image"
-            src={placeholderImage}
-            alt=""
-            loading={cardImagePolicy.loading}
-            fetchpriority={cardImagePolicy.fetchpriority}
-            decoding={cardImagePolicy.decoding}
-          />
-          <h3><a href="/dnd/ulrick/">Ulrick</a></h3>
-          <p>
-            A dedicated page for Ulrick's campaign material, major beats, and
-            developing character notes.
-          </p>
-          <a class="button read-more-cta" href="/dnd/ulrick/"
-            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
-            ></i></a
-          >
-          <div class="card-tags">
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Character</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> D&D</span
-            >
-          </div>
-        </article>
-        <article class="card large post-card">
-          <Image
-            class="project-image"
-            src={placeholderImage}
-            alt=""
-            loading={cardImagePolicy.loading}
-            fetchpriority={cardImagePolicy.fetchpriority}
-            decoding={cardImagePolicy.decoding}
+          <CardMedia
+            indexMedia={modsImage}
+            indexMediaAlt="Roll20 Mods cover image"
           />
           <h3><a href="/projects/roll20-mods/">Roll20 Mods</a></h3>
           <p>

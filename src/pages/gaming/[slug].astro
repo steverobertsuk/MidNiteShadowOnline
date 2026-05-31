@@ -1,0 +1,48 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Hero from '../../components/Hero.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const games = await getCollection('gaming');
+
+  return games.map((game) => ({
+    params: { slug: game.id.replace(/\.(md|mdx)$/, '') },
+    props: { game },
+  }));
+}
+
+const { game } = Astro.props as { game: CollectionEntry<'gaming'> };
+const { Content } = await render(game);
+const heroImageAltText = game.data.heroForegroundAlt || game.data.heroAlt || '';
+---
+
+<BaseLayout
+  title={`${game.data.title} | Gaming | MidNiteShadow Online`}
+  description={game.data.summary}
+>
+  <Hero
+    eyebrow={game.data.category}
+    title={game.data.title}
+    lede={game.data.summary}
+    image={game.data.hero}
+    heroImage={game.data.heroForeground}
+    heroImageAlt={heroImageAltText}
+    tags={game.data.tags}
+  />
+  <section class="section">
+    <div class="container prose">
+      <Content />
+
+      {game.data.links.length > 0 && <h2>Links</h2>}
+      {
+        game.data.links.map((link) => (
+          <p>
+            <a href={link.url}>{link.label}</a>
+          </p>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

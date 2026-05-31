@@ -30,7 +30,7 @@ const { Content } = await render(mod);
     image={mod.data.hero}
     heroImage={mod.data.heroForeground}
     heroImageAlt={mod.data.heroForegroundAlt ?? mod.data.heroAlt ?? ''}
-    tags={[mod.data.status]}
+    tags={mod.data.status ? [mod.data.status] : []}
   />
   <section class="section">
     <div class="container prose">

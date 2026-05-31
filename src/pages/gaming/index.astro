@@ -1,11 +1,13 @@
 ---
-import { Image } from 'astro:assets';
-import placeholderImage from '../../assets/images/placeholder.webp';
+import CardMedia from '../../components/CardMedia.astro';
 import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getImageLoadingPolicy } from '../../lib/mediaPriority';
+import { getCollection } from 'astro:content';
+import dndImage from "../../assets/images/dnd-characters/dnd-cover.jpg";
 
-const cardImagePolicy = getImageLoadingPolicy('card');
+const games = (await getCollection('gaming')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
 <BaseLayout title="Gaming | MidNiteShadow Online">
@@ -22,89 +24,41 @@ const cardImagePolicy = getImageLoadingPolicy('card');
         Browse the main online games that I am currently involved with.
       </p>
       <div class="grid" style="margin-top: 40px;">
+        {
+          games.map((game) => {
+            const slug = game.id.replace(/\.(md|mdx)$/, '');
+
+            return (
+              <article class="card large post-card">
+                <CardMedia
+                  indexMedia={game.data.indexMedia}
+                  indexMediaAlt={game.data.indexMediaAlt}
+                  hero={game.data.hero}
+                />
+                <h3><a href={`/gaming/${slug}/`}>{game.data.title}</a></h3>
+                <p>{game.data.summary}</p>
+                <a class="button read-more-cta" href={`/gaming/${slug}/`}>
+                  Read more{' '}
+                  <i class="fa-solid fa-angles-right" aria-hidden="true" />
+                </a>
+                {game.data.tags.length > 0 && (
+                  <div class="card-tags">
+                    {game.data.tags.map((tag) => (
+                      <span class="tag">
+                        <i class="fa-solid fa-tag" aria-hidden="true" /> {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </article>
+            );
+          })
+        }
         <article class="card large post-card">
-          <Image
-            class="project-image"
-            src={placeholderImage}
-            alt=""
-            loading={cardImagePolicy.loading}
-            fetchpriority={cardImagePolicy.fetchpriority}
-            decoding={cardImagePolicy.decoding}
-          />
-          <h3><a href="/gaming/star-trek-online/">Star Trek Online</a></h3>
-          <p>
-            I started playing Star Trek Online in 2011, and since then, I've
-            been involved in podcasting, community events, forum moderating, and
-            the development of online tools.
-          </p>
-          <a class="button read-more-cta" href="/gaming/star-trek-online/"
-            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
-            ></i></a
-          >
-          <div class="card-tags">
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Star Trek</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> PC</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Xbox</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> PlayStation</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> MMO</span
-            >
-          </div>
-        </article>
-        <article class="card large post-card">
-          <Image
-            class="project-image"
-            src={placeholderImage}
-            alt=""
-            loading={cardImagePolicy.loading}
-            fetchpriority={cardImagePolicy.fetchpriority}
-            decoding={cardImagePolicy.decoding}
-          />
-          <h3>
-            <a href="/gaming/star-trek-fleet-command/"
-              >Star Trek Fleet Command</a
-            >
-          </h3>
-          <p>
-            I began playing Star Trek Fleet Command in 2018, where I have been
-            participating in community play, progression planning, alliance
-            management, and related activities.
-          </p>
-          <a
-            class="button read-more-cta"
-            href="/gaming/star-trek-fleet-command/"
-            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
-            ></i></a
-          >
-          <div class="card-tags">
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Star Trek</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Mobile</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> PC</span
-            >
-          </div>
-        </article>
-        <article class="card large post-card">
-          <Image
-            class="project-image"
-            src={placeholderImage}
-            alt=""
-            loading={cardImagePolicy.loading}
-            fetchpriority={cardImagePolicy.fetchpriority}
-            decoding={cardImagePolicy.decoding}
-          />
+          <CardMedia
+          indexMedia={dndImage}
+          indexMediaAlt="Dungeons & Dragons cover image"
+        />
           <h3><a href="/dnd/">Dungeons &amp; Dragons</a></h3>
           <p>
             I did not start playing D&amp;D until the summer of 2025, where I
@@ -126,6 +80,9 @@ const cardImagePolicy = getImageLoadingPolicy('card');
               ><i class="fa-solid fa-tag" aria-hidden="true"></i> Roll20</span
             >
             <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> FoundryVTT</span
+            >
+            <span class="tag"
               ><i class="fa-solid fa-tag" aria-hidden="true"></i> APIs</span
             >
             <span class="tag"
@@ -133,6 +90,9 @@ const cardImagePolicy = getImageLoadingPolicy('card');
             >
             <span class="tag"
               ><i class="fa-solid fa-tag" aria-hidden="true"></i> Creative</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Roll Play</span
             >
           </div>
         </article>
