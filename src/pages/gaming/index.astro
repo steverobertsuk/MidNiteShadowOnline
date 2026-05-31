@@ -4,6 +4,7 @@ import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import dndImage from "../../assets/images/dnd-characters/dnd-cover.jpg";
+import gamingImage from "../../assets/images/gaming-hero.jpg";
 
 const games = (await getCollection('gaming')).sort(
   (a, b) => a.data.order - b.data.order,
@@ -15,6 +16,7 @@ const games = (await getCollection('gaming')).sort(
     eyebrow="Gaming"
     title="Online games, fandoms and communities."
     lede="A broad home for Star Trek Online, sci-fi gaming, community spaces, screenshots, tools and gaming-related experiments."
+    image={gamingImage}
   />
   <section class="section">
     <div class="container">
