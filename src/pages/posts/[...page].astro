@@ -6,6 +6,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import CategoryFilter from "../../components/CategoryFilter.astro";
 import { formatPostDate, postIdToSlug, toSlug } from "../../lib/postCategory";
+import heroImage from "../../assets/images/posts-cover.jpg";
 
 type Post = CollectionEntry<"posts">;
 type CategoryLink = { name: string; slug: string };
@@ -40,6 +41,7 @@ const { page, categories } = Astro.props as InferGetStaticPropsType<
         : `News, Updates and Releases - Page ${page.currentPage}`
     }
     lede="A chronological feed of site posts drawn from Roll20, STO Info, podcasts and more."
+    image={heroImage}
   />
   <section class="section">
     <div class="container">
