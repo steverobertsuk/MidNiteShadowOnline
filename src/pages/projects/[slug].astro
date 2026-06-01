@@ -4,18 +4,22 @@ import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CardMedia from '../../components/CardMedia.astro';
 
+function contentIdToSlug(id: string) {
+  return id.replace(/\.(md|mdx)$/i, '').replace(/\/index$/i, '');
+}
+
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
 
   return projects.map((project) => ({
-    params: { slug: project.id.replace(/\.(md|mdx)$/, '') },
+    params: { slug: project.id.replace(/\.(md|mdx)$/i, '').replace(/\/index$/i, '') },
     props: { project },
   }));
 }
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const slug = project.id.replace(/\.(md|mdx)$/, '');
+const slug = contentIdToSlug(project.id);
 const heroTags = project.data.status ? [project.data.status] : [];
 const heroImageAltText =
   project.data.heroForegroundAlt || project.data.heroAlt || '';
@@ -59,7 +63,7 @@ const podcasts =
             <h2>Current mods</h2>
             <div class="grid" style="margin-top: 24px;">
               {roll20Mods.map((mod) => {
-                const modSlug = mod.id.replace(/\.(md|mdx)$/, '');
+                const modSlug = contentIdToSlug(mod.id);
 
                 return (
                   <article class="card large post-card">
@@ -100,7 +104,7 @@ const podcasts =
             <h2>Current podcasts</h2>
             <div class="grid" style="margin-top: 24px;">
               {podcasts.map((podcast) => {
-                const podcastSlug = podcast.id.replace(/\.(md|mdx)$/, '');
+                const podcastSlug = contentIdToSlug(podcast.id);
 
                 return (
                   <article class="card large post-card">

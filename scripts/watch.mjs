@@ -22,6 +22,7 @@ const accessibleNameCheckScript = resolve(
   "check-accessible-names.mjs",
 );
 const ignoredSegments = new Set([".astro", "dist", "node_modules", ".git"]);
+const enableBackgroundBuild = process.env.ASTRO_BACKGROUND_BUILD === "1";
 
 let buildProcess = null;
 let buildQueued = false;
@@ -139,17 +140,19 @@ function queueBuild(reason) {
   }, 250);
 }
 
-const watcher = watch(
-  projectRoot,
-  { recursive: true },
-  (eventType, filename) => {
-    if (!filename || isIgnoredPath(filename)) {
-      return;
-    }
+const watcher = enableBackgroundBuild
+  ? watch(
+      projectRoot,
+      { recursive: true },
+      (eventType, filename) => {
+        if (!filename || isIgnoredPath(filename)) {
+          return;
+        }
 
-    queueBuild(`${eventType}: ${filename}`);
-  },
-);
+        queueBuild(`${eventType}: ${filename}`);
+      },
+    )
+  : null;
 
 function shutdown(signal) {
   if (shuttingDown) {
@@ -158,7 +161,7 @@ function shutdown(signal) {
 
   shuttingDown = true;
   clearTimeout(buildTimer);
-  watcher.close();
+  watcher?.close();
 
   if (buildProcess) {
     buildProcess.cancelled = true;
@@ -169,7 +172,7 @@ function shutdown(signal) {
 
 devProcess.on("exit", (code) => {
   shuttingDown = true;
-  watcher.close();
+  watcher?.close();
   clearTimeout(buildTimer);
 
   if (buildProcess) {
@@ -188,4 +191,11 @@ devProcess.on("error", (error) => {
 process.on("SIGINT", () => shutdown("SIGINT"));
 process.on("SIGTERM", () => shutdown("SIGTERM"));
 
-startBuild();
+if (enableBackgroundBuild) {
+  console.log(
+    "Background check/build enabled (ASTRO_BACKGROUND_BUILD=1).",
+  );
+  startBuild();
+} else {
+  console.log("Background check/build disabled for stable dev routing.");
+}

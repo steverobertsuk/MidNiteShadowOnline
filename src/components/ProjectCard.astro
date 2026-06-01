@@ -2,7 +2,7 @@
 import CardMedia from './CardMedia.astro';
 
 const { project } = Astro.props;
-const slug = project.id.replace(/\.(md|mdx)$/, '');
+const slug = project.id.replace(/\.(md|mdx)$/i, '').replace(/\/index$/i, '');
 ---
 
 <article class="card large post-card">

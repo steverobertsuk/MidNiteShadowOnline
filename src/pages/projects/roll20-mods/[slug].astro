@@ -6,9 +6,11 @@ import { formatPostDate } from '../../../lib/postCategory';
 
 export async function getStaticPaths() {
   const mods = await getCollection('roll20Mods');
+  const entryToSlug = (id: string) =>
+    id.replace(/\.(md|mdx)$/i, '').replace(/\/index$/i, '');
 
   return mods.map((mod) => ({
-    params: { slug: mod.id.replace(/\.(md|mdx)$/, '') },
+    params: { slug: entryToSlug(mod.id) },
     props: { mod },
   }));
 }
@@ -93,13 +95,13 @@ const { Content } = await render(mod);
   </section>
   <section class="section">
     <div class="container prose">
-      <h2>Download links</h2>
+      <h2>Useful links</h2>
       {mod.data.links.length > 0 ? (
         mod.data.links.map((link) => (
           <p><a href={link.url}>{link.label}</a></p>
         ))
       ) : (
-        <p>Download links will be added here when the packaged release is published.</p>
+        <p>Useful links will be added here when the packaged release is published.</p>
       )}
     </div>
   </section>
