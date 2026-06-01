@@ -1,12 +1,16 @@
 ---
-title: "Holosuite Media"
-summary: "Production umbrella for Star Trek and genre-focused podcasting with coordinated publishing and host collaboration."
-category: "Network"
-status: "Active"
+title: 'Holosuite Media'
+summary: 'Production umbrella for Star Trek and genre-focused podcasting based on science fiction and fantasy TV, film, books and games.'
+category: 'Network'
+status: 'Active'
 order: 1
+indexMedia: '../../assets/images/podcasting/holosuitemedia_cover.jpg'
+hero: '../../assets/images/podcasting/holosuitemedia_hero.jpg'
+heroForeground: '../../assets/images/podcasting/holosuitemedia-logo.svg'
+heroAlt: 'The Holosuite Media Network logo'
 links:
-  - label: "Holosuite Media website"
-    url: "https://holosuite.media/"
+  - label: 'Holosuite Media website'
+    url: 'https://holosuite.media/'
 ---
 
 ## Overview
