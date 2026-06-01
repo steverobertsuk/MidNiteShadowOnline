@@ -9,6 +9,9 @@ const collectionSchema = ({ image }: SchemaContext) =>
     summary: z.string(),
     category: z.string(),
     status: z.string().optional(),
+    version: z.string().optional(),
+    lastUpdated: z.date().optional(),
+    maintainer: z.array(z.object({ name: z.string(), url: z.string() })).default([]),
     video: z.boolean().optional(),
     videoSrc: z.string().optional(),
     videoPoster: z.string().optional(),
@@ -21,6 +24,7 @@ const collectionSchema = ({ image }: SchemaContext) =>
     indexVideo: z.boolean().optional(),
     indexVideoSrc: z.string().optional(),
     order: z.number().default(0),
+    featuredLinks: z.array(z.object({ label: z.string(), url: z.string() })).default([]),
     links: z.array(z.object({ label: z.string(), url: z.string() })).default([]),
   });
 
