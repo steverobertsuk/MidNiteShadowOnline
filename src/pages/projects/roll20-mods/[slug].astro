@@ -2,7 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Hero from '../../../components/Hero.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { formatPostDate } from '../../../lib/postCategory';
+import { formatPostDate, postIdToSlug, toSlug } from '../../../lib/postCategory';
 
 export async function getStaticPaths() {
   const mods = await getCollection('roll20Mods');
@@ -17,6 +17,31 @@ export async function getStaticPaths() {
 
 const { mod } = Astro.props;
 const { Content } = await render(mod);
+const normalizedStatus = mod.data.status?.trim().toLowerCase() ?? '';
+const isLiveStatus = normalizedStatus === 'active' || normalizedStatus === 'online';
+const versionRows =
+  mod.data.versions.length > 0
+    ? mod.data.versions.map((entry) => ({
+        label: entry.label ?? entry.lablel ?? 'Version',
+        version: entry.version,
+        url: entry.url,
+      }))
+    : mod.data.version
+      ? [{ label: 'Version', version: mod.data.version, url: undefined }]
+      : [];
+const credits =
+  mod.data.credits.length > 0
+    ? mod.data.credits
+    : mod.data.developers.length > 0
+      ? mod.data.developers
+    : (mod.data.maintainer ?? []);
+const postCategorySlug = mod.data.postCategory ? toSlug(mod.data.postCategory) : undefined;
+const relatedPosts = postCategorySlug
+  ? (await getCollection('posts'))
+      .filter((post) => toSlug(post.data.category) === postCategorySlug)
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+      .slice(0, 5)
+  : [];
 ---
 
 <BaseLayout
@@ -33,32 +58,61 @@ const { Content } = await render(mod);
     image={mod.data.hero}
     heroImage={mod.data.heroForeground}
     heroImageAlt={mod.data.heroForegroundAlt ?? mod.data.heroAlt ?? ''}
-    tags={mod.data.status ? [mod.data.status] : []}
+    tags={[mod.data.category]}
   />
   <section class="section">
     <div class="container post-layout">
       <article class="prose post-content">
         <Content />
+        {relatedPosts.length > 0 && (
+          <>
+            <hr />
+            <h2>Recent posts</h2>
+            <ul>
+              {relatedPosts.map((post) => (
+                <li>
+                  <a href={`/posts/${postIdToSlug(post.id)}/`}>{post.data.title}</a>{' '}
+                  <span>({formatPostDate(post.data.date)})</span>
+                </li>
+              ))}
+            </ul>
+            <p>
+              <a href={`/posts/category/${postCategorySlug}/`}>
+                View all posts in this category
+              </a>
+            </p>
+          </>
+        )}
+        <hr />
+        <h2>Useful links</h2>
+        {mod.data.links.length > 0 ? (
+          <ul>
+            {mod.data.links.map((link) => (
+              <li><a href={link.url}>{link.label}</a></li>
+            ))}
+          </ul>
+        ) : (
+          <p>Useful links will be added here when the packaged release is published.</p>
+        )}
       </article>
       <aside class="post-details-box" aria-label="Mod details">
         <p class="post-details-title">Mod details</p>
         {mod.data.status && (
           <div class="post-details-block">
-            <p class="post-details-label"><i class="fa-solid fa-circle-dot" aria-hidden="true"></i> Status</p>
-            <span class="tag">{mod.data.status}</span>
-          </div>
-        )}
-        {mod.data.version && (
-          <div class="post-details-block">
-            <p class="post-details-label"><i class="fa-solid fa-code-branch" aria-hidden="true"></i> Version</p>
-            <span class="post-details-date">{mod.data.version}</span>
+            <p class="post-details-label post-details-label-inline">
+              <i class="fa-solid fa-circle-dot" aria-hidden="true"></i>
+              Status:
+              <span class:list={['post-details-date', 'post-details-value', { 'status-text-live': isLiveStatus }]}>
+                {mod.data.status}
+              </span>
+            </p>
           </div>
         )}
         {mod.data.lastUpdated && (
           <div class="post-details-block">
             <p class="post-details-label post-details-label-inline">
               <i class="fa-regular fa-calendar" aria-hidden="true"></i> Last updated:
-              <span class="post-details-date">
+              <span class="post-details-date post-details-value">
                 <time datetime={mod.data.lastUpdated.toISOString()}>
                   {formatPostDate(mod.data.lastUpdated)}
                 </time>
@@ -66,43 +120,68 @@ const { Content } = await render(mod);
             </p>
           </div>
         )}
-        <div class="post-details-block">
-          <p class="post-details-label"><i class="fa-solid fa-folder-open" aria-hidden="true"></i> Category</p>
-          <span class="tag">{mod.data.category}</span>
-        </div>
-        {mod.data.maintainer.length > 0 && (
+        {versionRows.length > 0 && (
           <div class="post-details-block">
-            <p class="post-details-label"><i class="fa-solid fa-user" aria-hidden="true"></i> Maintainer</p>
-            <div class="post-details-tags">
-              {mod.data.maintainer.map((m) => (
-                <a class="tag tag-cta" href={m.url}>{m.name}</a>
+            <p class="post-details-label"><i class="fa-solid fa-code-branch" aria-hidden="true"></i> Versions</p>
+            <ul class="post-details-list">
+              {versionRows.map((row) => (
+                <li>
+                  <span class="post-details-list-label post-details-value">{row.label}:</span>{' '}
+                  {row.url ? (
+                    <a href={row.url}>{row.version}</a>
+                  ) : (
+                    <span class="post-details-date post-details-value">{row.version}</span>
+                  )}
+                </li>
               ))}
-            </div>
+            </ul>
+          </div>
+        )}
+        {credits.length > 0 && (
+          <div class="post-details-block">
+            <p class="post-details-label"><i class="fa-solid fa-user" aria-hidden="true"></i> Credits</p>
+            <ul class="post-details-list">
+              {credits.map((m) => (
+                <li><a href={m.url}>{m.name}</a></li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {mod.data.compatibility.length > 0 && (
+          <div class="post-details-block">
+            <p class="post-details-label"><i class="fa-solid fa-plug" aria-hidden="true"></i> Compatibility</p>
+            <ul class="post-details-list">
+              {mod.data.compatibility.map((item) => (
+                <li>
+                  {item.url ? <a href={item.url}>{item.label}</a> : <span class="post-details-value">{item.label}</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {mod.data.requirements.length > 0 && (
+          <div class="post-details-block">
+            <p class="post-details-label"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Requirements</p>
+            <ul class="post-details-list">
+              {mod.data.requirements.map((item) => (
+                <li>
+                  {item.url ? <a href={item.url}>{item.label}</a> : <span class="post-details-value">{item.label}</span>}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
         {mod.data.featuredLinks.length > 0 && (
           <div class="post-details-block">
             <p class="post-details-label"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Links</p>
-            <div class="post-details-tags">
+            <ul class="post-details-list">
               {mod.data.featuredLinks.map((link) => (
-                <a class="tag tag-cta" href={link.url}>{link.label}</a>
+                <li><a href={link.url}>{link.label}</a></li>
               ))}
-            </div>
+            </ul>
           </div>
         )}
       </aside>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container prose">
-      <h2>Useful links</h2>
-      {mod.data.links.length > 0 ? (
-        mod.data.links.map((link) => (
-          <p><a href={link.url}>{link.label}</a></p>
-        ))
-      ) : (
-        <p>Useful links will be added here when the packaged release is published.</p>
-      )}
     </div>
   </section>
 </BaseLayout>

@@ -3,15 +3,63 @@ import { z } from "astro/zod";
 import { defineCollection } from "astro:content";
 import type { SchemaContext } from "astro:content";
 
+const isAllowedOptionalLink = (value: string) =>
+  /^https?:\/\/.+/i.test(value) || value.startsWith("/") || value.startsWith("#");
+
+const optionalUrlSchema = z.preprocess(
+  (value) => {
+    if (typeof value === "string") {
+      const trimmed = value.trim();
+
+      if (trimmed === "") {
+        return undefined;
+      }
+
+      return trimmed;
+    }
+
+    if (value == null) {
+      return undefined;
+    }
+
+    return value;
+  },
+  z
+    .string()
+    .refine(isAllowedOptionalLink, {
+      message:
+        "Expected a URL/path starting with https://, http://, /, or #",
+    })
+    .optional(),
+);
+
+const versionEntrySchema = z.object({
+  label: z.string().optional(),
+  // Accept the misspelling for compatibility with existing/frontmatter drafts.
+  lablel: z.string().optional(),
+  version: z.string(),
+  url: optionalUrlSchema,
+});
+
+const contributorSchema = z.object({ name: z.string(), url: z.string() });
+const linkedItemSchema = z.object({ label: z.string(), url: optionalUrlSchema });
+
 const collectionSchema = ({ image }: SchemaContext) =>
   z.object({
     title: z.string(),
     summary: z.string(),
     category: z.string(),
+    postCategory: z.string().optional(),
     status: z.string().optional(),
     version: z.string().optional(),
+    versions: z.array(versionEntrySchema).default([]),
     lastUpdated: z.date().optional(),
-    maintainer: z.array(z.object({ name: z.string(), url: z.string() })).default([]),
+    credits: z.array(contributorSchema).default([]),
+    developers: z.array(contributorSchema).default([]),
+    // Backward compatibility while migrating older content frontmatter.
+    maintainer: z.array(contributorSchema).optional(),
+    compatibility: z.array(linkedItemSchema).default([]),
+    requirements: z.array(linkedItemSchema).default([]),
     video: z.boolean().optional(),
     videoSrc: z.string().optional(),
     videoPoster: z.string().optional(),

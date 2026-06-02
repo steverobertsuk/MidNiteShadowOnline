@@ -843,18 +843,53 @@ h3 {
   color: var(--muted);
   font-weight: 700;
 }
+.post-details-label:not(.post-details-label-inline) {
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+  color: var(--arcane-silver);
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(179, 136, 255, 0.18);
+}
+.post-details-label:not(.post-details-label-inline) i {
+  color: var(--violet);
+  width: 14px;
+  text-align: center;
+}
 .post-details-label-inline {
   display: inline-flex;
   align-items: baseline;
   gap: 6px;
   white-space: nowrap;
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+  color: var(--arcane-silver);
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(179, 136, 255, 0.18);
+}
+.post-details-label-inline i {
+  color: var(--violet);
+  width: 14px;
+  text-align: center;
+}
+.status-text-live {
+  color: #22c55e;
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.45);
 }
 .post-details-date {
   text-transform: none;
   letter-spacing: normal;
   font-size: 0.9rem;
-  color: var(--arcane-silver);
-  font-weight: 600;
+  color: inherit;
+  font-weight: inherit;
+}
+.post-details-value {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.post-details-date.status-text-live {
+  color: #22c55e;
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.45);
 }
 .post-details-date time {
   display: inline;
@@ -864,6 +899,40 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+.prose hr,
+.content-divider {
+  border: 0;
+  height: 1px;
+  margin: 40px 0 30px;
+  background: linear-gradient(
+    90deg,
+    rgba(179, 136, 255, 0),
+    rgba(179, 136, 255, 0.55) 20%,
+    rgba(179, 136, 255, 0.55) 80%,
+    rgba(179, 136, 255, 0)
+  );
+}
+.post-details-list {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.post-details-list li + li {
+  margin-top: 6px;
+}
+.post-details-list li::marker {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.post-details-list a {
+  font-size: 0.85rem;
+  color: inherit;
+}
+.post-details-list-label {
+  color: inherit;
+  font-weight: inherit;
 }
 .mod-details-note {
   margin: 0;
