@@ -2,27 +2,74 @@
 title: "Concentration"
 summary: "Keeps concentration effects visible and easier to maintain, especially when damage checks and linked spell effects need to stay in sync."
 category: "Spell support"
+postCategory: "concentration"
 status: "Planned"
 order: 4
+versions: []
+lastUpdated:
+compatibility:
+  - label: "Jumpgate"
+    url: ""
+requirements:
+  - label: "Roll20 Pro"
+    url: "/"
+credits:
+  - name: "MidNiteShadow7"
+    url: ""
+featuredLinks:
+  - label: "GitHub"
+    url: "#"
+  - label: "Issues"
+    url: "#"
+  - label: "Changelog"
+    url: "#"
 links: []
-indexMedia: '../../assets/images/mods/Concentration_Cover.jpg'
-indexMediaAlt: 'Concentration mod cover image'
+indexMedia: "../../assets/images/mods/Concentration_Cover.jpg"
+indexMediaAlt: "Concentration mod cover image"
 ---
 
-## Overview
+## Concentration Overview
 
-Concentration is planned as a focused utility for tracking which token is concentrating, what effect is tied to that state, and when the concentration chain should end.
+Concentration is planned as a focused Roll20 API utility for tracking which creature is concentrating, what effect is tied to that state, and when that concentration chain should end.
 
-It is intended to work well alongside Beacon-compatible setups and mixed automation levels, giving the GM a clear way to audit or clear concentration without extra note-taking.
+It is intended to help Game Masters and players keep concentration visible during combat, especially when damage checks, spell effects, and linked token markers need to stay in sync.
 
-## Release notes
+The goal is to reduce missed concentration checks and make it easier to clear related effects when concentration breaks.
 
-### Planned release
+---
 
-- Mark concentrating tokens and record the linked effect name.
-- Surface prompts for damage-triggered concentration checks.
-- Provide one-command cleanup when concentration breaks or the effect ends.
+## Key Features
 
-## Download status
+### Concentration Visibility
 
-The first packaged release has not been published yet.
+The script is intended to make concentrating tokens easier to identify at a glance, reducing the chance that active concentration effects are forgotten.
+
+### Linked Effect Tracking
+
+Concentration can record or display the effect associated with the concentrating creature, helping the table understand what is currently being maintained.
+
+### Damage Check Prompts
+
+When a concentrating creature takes damage, the script can surface a reminder that a concentration check may be required.
+
+### One-Command Cleanup
+
+When concentration ends, the script is intended to provide a simple way to clear the concentration state and any linked effect information.
+
+### Beacon-Friendly Direction
+
+The project is intended to work well with modern Roll20 character sheet and automation setups, including Beacon-compatible workflows where possible.
+
+---
+
+## Why Use It?
+
+Concentration is one of the easiest combat mechanics to overlook during busy encounters.
+
+This script aims to keep concentration visible, remind the table when checks are needed, and reduce the clean-up work required when a spell or effect ends.
+
+---
+
+## Compatibility
+
+Concentration is planned for Roll20 API games and is intended to support modern Roll20 table setups.

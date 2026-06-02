@@ -73,14 +73,14 @@ Choose how health information is displayed:
 
 ### Automated Status Tracking
 
-HealthColor can automatically:
+Aura/Tint HealthColor can automatically:
 
 - Apply a dead status marker at 0 HP.
 - Remove the marker when health is restored.
 - Play optional death sounds through the Roll20 jukebox.
 - Update visuals immediately when health changes.
 
-HealthColor can also automatically apply and remove status indicators, update token visuals, and trigger optional audio cues as creatures enter or leave critical health states.
+It can also automatically apply and remove status indicators, update token visuals, and trigger optional audio cues as creatures enter or leave critical health states.
 
 ### Damage and Healing Effects
 
@@ -114,7 +114,7 @@ The script includes a dedicated colourblind palette and configurable thresholds 
 
 During large encounters, it can be difficult to track which creatures are close to defeat without repeatedly checking token bars or character sheets.
 
-HealthColor turns health information into a visual language that can be understood instantly across the battlefield, reducing bookkeeping and helping combat flow more smoothly.
+Aura/Tint HealthColor turns health information into a visual language that can be understood instantly across the battlefield, reducing bookkeeping and helping combat flow more smoothly.
 
 For Game Masters running large groups of enemies, the script provides immediate battlefield awareness while still allowing complete control over how much information is visible to players.
 
