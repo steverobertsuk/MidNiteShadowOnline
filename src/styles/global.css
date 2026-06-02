@@ -930,6 +930,29 @@ h3 {
   font-size: 0.85rem;
   color: inherit;
 }
+.mod-details-box a {
+  color: var(--violet-2);
+  text-decoration: underline;
+  text-decoration-color: rgba(179, 136, 255, 0.38);
+  text-underline-offset: 2px;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease,
+    text-shadow 0.2s ease;
+}
+.mod-details-box a:visited {
+  color: #c8a8ff;
+}
+.mod-details-box a:hover {
+  color: var(--white);
+  text-decoration-color: rgba(230, 223, 255, 0.78);
+  text-shadow: 0 0 10px rgba(179, 136, 255, 0.35);
+}
+.mod-details-box a:focus-visible {
+  outline: 2px solid rgba(179, 136, 255, 0.82);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 .post-details-list-label {
   color: inherit;
   font-weight: inherit;
