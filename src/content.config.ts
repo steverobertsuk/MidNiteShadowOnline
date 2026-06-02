@@ -53,7 +53,7 @@ const collectionSchema = ({ image }: SchemaContext) =>
     status: z.string().optional(),
     version: z.string().optional(),
     versions: z.array(versionEntrySchema).default([]),
-    lastUpdated: z.date().optional(),
+    lastUpdated: z.preprocess((v) => (v == null ? undefined : v), z.date().optional()),
     credits: z.array(contributorSchema).default([]),
     developers: z.array(contributorSchema).default([]),
     // Backward compatibility while migrating older content frontmatter.
