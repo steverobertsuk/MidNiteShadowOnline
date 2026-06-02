@@ -1,26 +1,39 @@
 ---
-title: 'Aura/Tint HealthColor'
-summary: 'Automatically colourises Roll20 tokens based on their remaining health, providing instant visual feedback through auras, tint overlays, particle effects and status automation.'
-category: 'Visual feedback'
-status: 'Active'
-version: '2.x'
-lastUpdated: 2026-06-01
-maintainer:
-  - name: 'MidNiteShadow7'
-    url: '#'
+title: "Aura/Tint HealthColor"
+summary: "Automatically colourises Roll20 tokens based on their remaining health, providing instant visual feedback through auras, tint overlays, particle effects and status automation."
 order: 3
+category: "Visual feedback"
+postCategory: "healthcolors"
+status: "Active"
+versions:
+  - label: "One-Click"
+    version: "v2.1.0"
+    url: ""
+  - label: "GitHub"
+    version: "v2.1.4"
+    url: "https://github.com/#"
+lastUpdated: 2026-06-01
+compatibility:
+  - label: "Jumpgate"
+    url: ""
+requirements:
+  - label: "Roll20 Pro"
+    url: "/"
+credits:
+  - name: "MidNiteShadow7"
+    url: ""
 featuredLinks:
-  - label: 'GitHub'
-    url: '#'
-  - label: 'Issues'
-    url: '#'
-  - label: 'Changelog'
-    url: '#'
+  - label: "GitHub"
+    url: "#"
+  - label: "Issues"
+    url: "#"
+  - label: "Changelog"
+    url: "#"
 links:
-  - label: 'Roll20 Forum Post'
-    url: '#'
-indexMedia: '../../assets/images/mods/HealthColor_Cover.jpg'
-indexMediaAlt: 'Aura/Tint HealthColor mod cover image'
+  - label: "Roll20 Forum Post"
+    url: "#"
+indexMedia: "../../assets/images/mods/HealthColor_Cover.jpg"
+indexMediaAlt: "Aura/Tint HealthColor mod cover image"
 ---
 
 ## Aura/Tint HealthColor Overview
@@ -30,6 +43,8 @@ Aura/Tint HealthColor is a Roll20 API script that provides instant visual feedba
 As combat progresses, token colours automatically update based on remaining hit points, making it easy to identify which creatures are healthy, wounded, bloodied, or near defeat at a glance.
 
 The script can apply these indicators using either coloured auras or full-token tint overlays, allowing groups to choose the visual style that best suits their table.
+
+Separate configuration options are available for player characters and NPCs, allowing each group to be managed independently.
 
 Originally created by DXWarlock and later updated by Surok, the project is now actively maintained and modernised by MidNiteShadow7.
 
@@ -65,6 +80,8 @@ HealthColor can automatically:
 - Play optional death sounds through the Roll20 jukebox.
 - Update visuals immediately when health changes.
 
+HealthColor can also automatically apply and remove status indicators, update token visuals, and trigger optional audio cues as creatures enter or leave critical health states.
+
 ### Damage and Healing Effects
 
 Optional particle effects provide additional visual feedback when a creature takes damage or receives healing.
@@ -87,7 +104,7 @@ Separate settings are available for:
 - Dead marker handling
 - Nameplate visibility
 
-### Accessibility Focus
+### Accessibility Features
 
 The script includes a dedicated colourblind palette and configurable thresholds to improve readability for a wider range of players and visual preferences.
 
@@ -101,23 +118,12 @@ HealthColor turns health information into a visual language that can be understo
 
 For Game Masters running large groups of enemies, the script provides immediate battlefield awareness while still allowing complete control over how much information is visible to players.
 
----
-
-## Recent Improvements
-
-The modern v2.x series includes significant refactoring and new functionality, including:
-
-- Colourblind-friendly health palettes
-- Improved particle effect handling
-- Better compatibility with other Roll20 API scripts
-- Automatic handling of HP changes made by scripts such as AlterBars
-- Enhanced validation and configuration management
-- Expanded token refresh and synchronisation tools
+The modern v2.x series has been extensively refactored to improve reliability, compatibility with other Roll20 API scripts, and long-term maintainability.
 
 ---
 
-## Download
+## Compatibility
 
-The latest version is available from the Roll20 API Scripts repository and the project's GitHub repository.
+Aura/Tint HealthColor is designed for Roll20 API games and is compatible with Jumpgate.
 
-See the README and changelog for full installation instructions and release history.
+The script also works alongside many other popular Roll20 API scripts and includes special handling for health changes made by external automation tools, helping ensure token visuals remain synchronised regardless of how health values are updated.
