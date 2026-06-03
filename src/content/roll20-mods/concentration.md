@@ -1,12 +1,18 @@
 ---
 title: "Concentration"
 summary: "Keeps concentration effects visible and easier to maintain, especially when damage checks and linked spell effects need to stay in sync."
+order: 4
 category: "Spell support"
 postCategory: "concentration"
 status: "Planned"
-order: 4
-versions: []
-lastUpdated:
+versions:
+  - label: "One-Click"
+    version: "v1.0.0"
+    url: ""
+  - label: "GitHub"
+    version: "v1.0.0"
+    url: "https://github.com/#"
+lastUpdated: 2026-06-01
 compatibility:
   - label: "Jumpgate"
     url: ""
@@ -23,7 +29,9 @@ featuredLinks:
     url: "#"
   - label: "Changelog"
     url: "#"
-links: []
+links:
+  - label: "Roll20 Forum Post"
+    url: "#"
 indexMedia: "../../assets/images/mods/Concentration_Cover.jpg"
 indexMediaAlt: "Concentration mod cover image"
 ---

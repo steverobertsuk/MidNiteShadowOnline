@@ -1,12 +1,18 @@
 ---
 title: "Condition Tracker"
-summary: "Tracks active conditions, durations, and turn-by-turn cleanup so status effects are easier to manage in live play."
+summary: "Advanced condition, effect, and status tracking for Roll20 campaigns with Turn Tracker integration, custom effects, saved conditions, localisation, and support for dozens of game systems."
+order: 1
 category: "Combat automation"
 postCategory: "condition-tracker"
 status: "In development"
-order: 1
-versions: []
-lastUpdated:
+versions:
+  - label: "One-Click"
+    version: "v1.0.0"
+    url: ""
+  - label: "GitHub"
+    version: "v1.0.0"
+    url: "https://github.com/#"
+lastUpdated: 2026-06-01
 compatibility:
   - label: "Jumpgate"
     url: ""
@@ -23,55 +29,183 @@ featuredLinks:
     url: "#"
   - label: "Changelog"
     url: "#"
-links: []
+links:
+  - label: "Roll20 Forum Post"
+    url: "#"
 indexMedia: "../../assets/images/mods/ConditionTracker_Cover.jpg"
 indexMediaAlt: "Condition Tracker mod cover image"
 ---
 
 ## Condition Tracker Overview
 
-Condition Tracker is a Roll20 API script designed to reduce the bookkeeping load around active combat conditions, timed effects, and turn-by-turn cleanup.
+Keeping track of conditions, spell effects, debuffs, buffs, and other temporary status effects can quickly become one of the most time-consuming parts of running combat in Roll20.
 
-It is intended for tables that regularly manage effects such as stunned, poisoned, restrained, blinded, frightened, or custom table-specific statuses, where remembering who is affected and when each effect ends can become difficult during live play.
+Condition Tracker was created to provide a structured, visual, and reliable way to manage those effects directly within the Roll20 Turn Tracker while remaining flexible enough to support a wide variety of tabletop roleplaying systems.
 
-The goal is to keep condition state visible, predictable, and easier to maintain as initiative advances.
+The mod allows Game Masters to apply conditions to tokens, automatically track durations, manage custom effects, generate reports, store long-term conditions, and maintain a clear overview of combat without relying on handwritten notes or external tools.
+
+Whether you are running Dungeons & Dragons, Pathfinder, Starfinder, or one of many other supported systems, Condition Tracker helps keep important status information visible and organised.
 
 ---
 
 ## Key Features
 
-### Token-Linked Condition Tracking
+### Condition Tracking
 
-Conditions are associated directly with affected tokens, helping Game Masters see which creatures are affected without relying on separate notes or memory.
+Apply standard conditions such as Grappled, Restrained, Prone, Poisoned, Stunned, Charmed, Frightened, Paralysed, Petrified, Unconscious, and many others.
+
+Each condition creates its own dedicated Turn Tracker entry, making it easy to see exactly which effects are currently active and who applied them.
+
+### Custom Effects
+
+Not every effect fits neatly into a predefined condition.
+
+Condition Tracker supports custom effect types including:
+
+* Spell effects
+* Abilities
+* Advantage
+* Disadvantage
+* Custom effects and homebrew mechanics
+
+This makes it ideal for tracking abilities such as Hunter's Mark, Hex, Booming Blade, class features, environmental hazards, and campaign-specific mechanics.
 
 ### Duration Management
 
-Condition Tracker is designed to support timed effects with optional round counters, making it easier to track conditions that expire after a set number of turns or rounds.
+Track effects that:
 
-### Turn Progression Support
+* Last until manually removed.
+* Expire at the end of a source creature's turn.
+* Expire at the end of a target creature's turn.
+* Last for a specified number of rounds.
 
-The script can hook into turn progression so timed effects can decrement automatically as combat advances.
+Durations are updated automatically as combat progresses.
 
-### GM-Facing Commands
+### Saved Effects
 
-Game Masters can add, remove, inspect, and clear active effects through chat commands, keeping condition management close to normal Roll20 play.
+Some effects exist outside normal combat encounters.
 
-### Custom Table Support
+Saved Effects allow Game Masters to record persistent conditions such as:
 
-Condition Tracker is intended to support both common rulebook conditions and custom effects created for a specific campaign, encounter, monster, or house rule.
+* Diseases
+* Curses
+* Long-term injuries
+* Hidden debuffs
+* Story-driven status effects
+
+Effects can be stored indefinitely and later promoted into active combat tracking when required.
+
+Visibility settings allow effects to be:
+
+* Fully visible to players.
+* Partially hidden from players.
+* Completely GM-only.
+
+### Multi-Target Support
+
+Apply a condition to multiple selected tokens at the same time.
+
+This is particularly useful for:
+
+* Area-of-effect spells
+* Environmental hazards
+* Group buffs
+* Mass debuffs
+
+### Token Reporting
+
+Generate detailed reports showing:
+
+* Conditions currently affecting a token.
+* Conditions applied by that token.
+* Active and saved effects.
+
+This gives Game Masters a quick overview without having to manually search the Turn Tracker.
+
+### Automatic Marker Management
+
+Condition Tracker can automatically apply and remove Roll20 status markers.
+
+Markers remain synchronised with active effects and are only removed when no longer required, preventing conflicts when multiple conditions share the same marker.
+
+### Actor Classification
+
+The built-in classification system automatically identifies:
+
+* Player characters
+* Non-player characters
+* Tokens that should be ignored
+
+This helps keep menus clean and reduces accidental application of conditions to scenery, spell templates, and utility tokens.
 
 ---
 
-## Why Use It?
+## Supported Game Systems
 
-Combat conditions are easy to forget, especially in larger encounters where several creatures may be affected by overlapping spells, abilities, or environmental effects.
+Condition Tracker includes support for a wide range of tabletop RPG systems, including:
 
-Condition Tracker provides a structured way to manage those effects so conditions remain visible, durations remain consistent, and clean-up is less likely to be missed.
+* Dungeons & Dragons 5th Edition
+* Dungeons & Dragons 4th Edition
+* Dungeons & Dragons 3.5
+* Pathfinder First Edition
+* Pathfinder Second Edition
+* Starfinder
+* Savage Worlds
+* Traveller
+* Call of Cthulhu
+* Delta Green
+* Cyberpunk RED
+* Alien RPG
+* Vampire: The Masquerade
+* Werewolf: The Apocalypse
+* and many more.
 
-It is designed to support smoother combat flow while reducing the amount of manual tracking required from the Game Master.
+Game-specific condition lists and marker defaults can be selected through the configuration menu.
 
 ---
 
-## Compatibility
+## Internationalisation
 
-Condition Tracker is designed for Roll20 API games and is intended to work alongside other combat and token-management scripts.
+Condition Tracker supports localisation for more than twenty languages.
+
+Chat messages, menus, help content, handouts, and configuration screens are translated, allowing Game Masters and players worldwide to use the mod in their preferred language.
+
+Right-to-left language support is also included for Hebrew.
+
+---
+
+## Quality of Life Features
+
+The mod includes numerous quality-of-life improvements designed to make campaign management easier:
+
+* Interactive setup wizard
+* Guided condition application workflow
+* Automatic macro installation
+* Built-in help handout generation
+* Duplicate condition prevention
+* Token deletion cleanup
+* Health-based condition cleanup prompts
+* Configurable status markers
+* Localised chat cards and menus
+
+These features reduce administrative overhead and allow Game Masters to focus on running the game rather than maintaining bookkeeping.
+
+---
+
+## Development Notes
+
+Condition Tracker is developed using a modular source architecture and modern JavaScript tooling. The project includes automated builds, extensive testing procedures, localisation support, and versioned releases to simplify future maintenance and community contributions.
+
+The project continues to evolve with new features, additional system support, localisation improvements, and quality-of-life enhancements based on real-world Roll20 campaign usage.
+
+---
+
+## Why I Use It
+
+Combat encounters often involve far more than simply tracking hit points.
+
+Modern tabletop RPGs frequently include concentration effects, temporary conditions, spell interactions, ongoing damage, environmental hazards, and long-term story effects. Condition Tracker provides a central place to manage all of that information while keeping the Roll20 Turn Tracker organised and easy to read.
+
+The addition of Saved Effects has made it particularly useful for campaign management, allowing important character conditions to persist between sessions without cluttering active combat encounters.
+
+For Game Masters running longer campaigns, it has become one of the most valuable quality-of-life tools in my Roll20 toolkit.
