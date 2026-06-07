@@ -1,18 +1,20 @@
 ---
-import { getCollection, render } from 'astro:content';
-import Hero from '../../components/Hero.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import CardMedia from '../../components/CardMedia.astro';
+import { getCollection, render } from "astro:content";
+import Hero from "../../components/Hero.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CardMedia from "../../components/CardMedia.astro";
 
 function contentIdToSlug(id: string) {
-  return id.replace(/\.(md|mdx)$/i, '').replace(/\/index$/i, '');
+  return id.replace(/\.(md|mdx)$/i, "").replace(/\/index$/i, "");
 }
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
+  const projects = await getCollection("projects");
 
   return projects.map((project) => ({
-    params: { slug: project.id.replace(/\.(md|mdx)$/i, '').replace(/\/index$/i, '') },
+    params: {
+      slug: project.id.replace(/\.(md|mdx)$/i, "").replace(/\/index$/i, ""),
+    },
     props: { project },
   }));
 }
@@ -22,16 +24,16 @@ const { Content } = await render(project);
 const slug = contentIdToSlug(project.id);
 const heroTags = project.data.status ? [project.data.status] : [];
 const heroImageAltText =
-  project.data.heroForegroundAlt || project.data.heroAlt || '';
+  project.data.heroForegroundAlt || project.data.heroAlt || "";
 const roll20Mods =
-  slug === 'roll20-mods'
-    ? (await getCollection('roll20Mods')).sort(
+  slug === "roll20-mods"
+    ? (await getCollection("roll20Mods")).sort(
         (a, b) => a.data.order - b.data.order,
       )
     : [];
 const podcasts =
-  slug === 'podcasting'
-    ? (await getCollection('podcasts')).sort(
+  slug === "podcasting"
+    ? (await getCollection("podcasts")).sort(
         (a, b) => a.data.order - b.data.order,
       )
     : [];
@@ -58,7 +60,7 @@ const podcasts =
       <Content />
 
       {
-        slug === 'roll20-mods' && (
+        slug === "roll20-mods" && (
           <>
             <h2>Current mods</h2>
             <div class="grid" style="margin-top: 24px;">
@@ -87,7 +89,7 @@ const podcasts =
                       class="button read-more-cta"
                       href={`/projects/roll20-mods/${modSlug}/`}
                     >
-                      Read more{' '}
+                      Read more{" "}
                       <i class="fa-solid fa-angles-right" aria-hidden="true" />
                     </a>
                   </article>
@@ -99,9 +101,9 @@ const podcasts =
       }
 
       {
-        slug === 'podcasting' && (
+        slug === "podcasting" && (
           <>
-            <h2>Current podcasts</h2>
+            <h2>Main Podcasts</h2>
             <div class="grid" style="margin-top: 24px;">
               {podcasts.map((podcast) => {
                 const podcastSlug = contentIdToSlug(podcast.id);
@@ -128,17 +130,17 @@ const podcasts =
                       class="button read-more-cta"
                       href={`/projects/podcasting/${podcastSlug}/`}
                     >
-                      Read more{' '}
+                      Read more{" "}
                       <i class="fa-solid fa-angles-right" aria-hidden="true" />
                     </a>
                     <div class="card-tags">
                       <span class="tag">
-                        <i class="fa-solid fa-tag" aria-hidden="true" />{' '}
+                        <i class="fa-solid fa-tag" aria-hidden="true" />{" "}
                         {podcast.data.category}
                       </span>
                       {podcast.data.status && (
                         <span class="tag">
-                          <i class="fa-solid fa-tag" aria-hidden="true" />{' '}
+                          <i class="fa-solid fa-tag" aria-hidden="true" />{" "}
                           {podcast.data.status}
                         </span>
                       )}
@@ -148,23 +150,224 @@ const podcasts =
               })}
             </div>
 
-            <h2>Audio editing and other appearances</h2>
+            <h2>Supporting Projects</h2>
             <div class="grid" style="margin-top: 24px;">
               <article class="card large">
-                <h3>Audio editing workflow</h3>
+                <h3>
+                  <a href="https://holosuitemedia.com/archived-podcasts/starbaseone/">
+                    Starbase One
+                  </a>
+                </h3>
                 <p>
-                  Editing notes include cleanup strategy, EQ and leveling
-                  preferences, mastering targets, and file handoff standards
-                  used for consistent releases.
+                  I was a guest and co-host for the Trek News and Views Podcast,
+                  a Star Trek Online podcast that covered news, reviews, and
+                  discussions about all things Star Trek Online.
                 </p>
+                <p>
+                  In 2020, I became one of the main podcast hosts and audio
+                  editor and as part of the show's relaunch on its new network
+                  <a href="https://holosuitemedia.com">Holosuite Media</a> where
+                  the show was renamed and rebranded as{" "}
+                  <a href="https://holosuitemedia.com/archived-podcasts/starbaseone/">
+                    Starbase One
+                  </a>
+                  .
+                </p>
+                <p>
+                  Assisting with the production and hosting of multiple other
+                  shows that started on Holosuite Media during COVID-19, plus
+                  the death of co-host Colin, the show was discontinued.
+                </p>
+                <div class="card-tags">
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    2016 - 2020
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Podcaster
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Web Hosting
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Podcast Network
+                  </span>
+                </div>
               </article>
               <article class="card large">
-                <h3>Other appearances</h3>
+                <h3>
+                  <a href="https://www.priorityonepodcast.com/">
+                    Priority One Podcast
+                  </a>
+                </h3>
                 <p>
-                  Guest spots, crossover episodes, and live panel appearances
-                  are tracked here with links, release dates, and quick context
-                  for each appearance.
+                  Support Staff and QA Consultant for the Priority One Podcast,
+                  a Star Trek-themed podcast that covered news, reviews, and
+                  discussions about all things Star Trek and Star Trek Online.
                 </p>
+                <p>
+                  Contributions included providing audio editing support for the
+                  Priority One Productions team, and quality assurance checks to
+                  ensure high production standards and listener satisfaction.
+                </p>
+                <p>
+                  I also moderated the Priority One Fleet forums, fostering
+                  community engagement and support for Star Trek Online MMO
+                  fleet members.
+                </p>
+                <div class="card-tags">
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    2017 - 2020
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Audio Editing
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Quality Assurance
+                  </span>
+                </div>
+              </article>
+              <article class="card large">
+                <h3>
+                  <a href="https://ussstarfinder.com/">Star Trek Starfinder</a>
+                </h3>
+                <p>
+                  Voice artist for the fan-production of Star Trek Starfinder,
+                  an audio drama where I portrayed the character of Chef aboard
+                  the U.S.S. Starfinder.
+                </p>
+                <p>
+                  Additionally, I hosted and maintained the project's website
+                  and I served as a community manager for Star Trek Starfinder,
+                  engaging with fans and providing support to enhance the gaming
+                  experience for players.
+                </p>
+                <div class="card-tags">
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    2014 - 2020
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    2025 - present
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Voice Acting
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Community Management
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Web Hosting
+                  </span>
+                </div>
+              </article>
+              <article class="card large">
+                <h3>
+                  <a href="https://starbaseugc.com">StarbaseUGC Podcast</a>
+                </h3>
+                <p>
+                  I was a guest host on the StarbaseUGC Podcast, a Star Trek
+                  Online podcast that covered all things Foundry (the
+                  user-generated content system) including Foundry's role in the
+                  Star Trek Online MMO.
+                </p>
+                <p>
+                  More recently, I have continued to contribute to the podcast
+                  by hosting the StarbaseUGC Podcast's website to allow
+                  listeners to access archived episodes and additional content
+                  such as Star Trek: Reliant, a podcast based on the Star Trek
+                  Adventures tabletop RPG.
+                </p>
+                <div class="card-tags">
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    2018 - 2019
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    2022 - present
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Podcaster
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Web Hosting
+                  </span>
+                </div>
+              </article>
+              <article class="card large">
+                <h3>G&amp;T Show Podcasts</h3>
+                <p>
+                  I was a co-host and audio engineer for the G&T Show's Book of
+                  the Celestial Temple Book Club, and a regular guest co-host of
+                  the main G&T Show. For both shows, I often assisted with that
+                  show's audio editing, broadcasting, publishing, and event
+                  management.
+                </p>
+                <div class="card-tags">
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    2017 - 2020
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Audio Editing
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Podcaster
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Broadcaster
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Content Contributor
+                  </span>
+                </div>
+              </article>
+              <article class="card large">
+                <h3>Perfect World Entertainment</h3>
+                <p>
+                  I was a Volunteer Forum Moderator for the Star Trek Online
+                  forums. I actively moderated and responded to user inquiries,
+                  online forums for the Star Trek Online MMO, ensuring a
+                  positive user experience. I removed spam and inappropriate
+                  messages to maintain community standards. I collaborated with
+                  other moderators to handle user issues and enforce forum
+                  guidelines, fostering a welcoming environment.
+                </p>
+                <div class="card-tags">
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    2018 - 2019
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Forum Moderation
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    Community Management
+                  </span>
+                  <span class="tag">
+                    <i class="fa-solid fa-tag" aria-hidden="true" />
+                    User Support
+                  </span>
+                </div>
               </article>
             </div>
           </>

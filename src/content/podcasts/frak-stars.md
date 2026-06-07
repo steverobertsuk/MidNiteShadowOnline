@@ -3,7 +3,7 @@ title: "Frak Stars"
 summary: "A Battlestar Galactica-focused podcast exploring the franchise's themes, characters, and lore."
 category: "Podcast"
 status: "On Hiatus"
-order: 3
+order: 4
 indexMedia: '../../assets/images/podcasting/frakstars_cover.jpg'
 hero: '../../assets/images/podcasting/frakstars_bg.jpg'
 heroForeground: "../../assets/images/podcasting/frakstars.jpg"

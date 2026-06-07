@@ -3,7 +3,7 @@ title: "The Fluffernutter"
 summary: "A podcast exploring the Expeditionary Force universe created by Craig Alanson, hosted by Steve and Nathan."
 category: "Podcast"
 status: "On Hiatus"
-order: 4
+order: 3
 indexMedia: '../../assets/images/podcasting/thefluffernutter_cover.jpg'
 hero: '../../assets/images/podcasting/thefluffernutter_bg.jpg'
 heroForeground: "../../assets/images/podcasting/thefluffernutter.jpg"

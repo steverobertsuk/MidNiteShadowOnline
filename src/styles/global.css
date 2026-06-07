@@ -487,6 +487,8 @@ h3 {
   box-shadow: var(--shadow);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .post-card {
   display: flex;
