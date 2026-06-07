@@ -1,6 +1,6 @@
 ---
 title: "Condition Tracker"
-summary: "Advanced condition, effect, and status tracking for Roll20 campaigns with Turn Tracker integration, custom effects, saved conditions, localisation, and support for dozens of game systems."
+summary: "Advanced condition, effect, and status tracking for campaigns with Turn Tracker integration, custom effects and saved conditions."
 order: 1
 category: "Combat automation"
 postCategory: "condition-tracker"
@@ -32,8 +32,10 @@ featuredLinks:
 links:
   - label: "Roll20 Forum Post"
     url: "#"
-indexMedia: "../../assets/images/mods/ConditionTracker_Cover.jpg"
+indexMedia: "../../assets/images/mods/mod-conditiontracker-cover.jpg"
 indexMediaAlt: "Condition Tracker mod cover image"
+hero: "../../assets/images/mods/mod-conditiontracker-cover.jpg"
+heroAlt: "Condition Tracker mod hero image"
 ---
 
 ## Condition Tracker Overview

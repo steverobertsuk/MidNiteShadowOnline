@@ -1,7 +1,7 @@
 ---
 title: "Swap Token Positions"
 summary: "Moves two selected tokens into each other's spaces without manual drag-and-drop cleanup or layer mistakes."
-order: 2
+order: 4
 category: "Token movement"
 postCategory: "swap-token-positions"
 status: "Active"
@@ -32,8 +32,10 @@ featuredLinks:
 links:
   - label: "Roll20 Forum Post"
     url: "#"
-indexMedia: "../../assets/images/mods/SwapTokenPositions_Cover.jpg"
+indexMedia: "../../assets/images/mods/mod-swaptokenpositions-cover.jpg"
 indexMediaAlt: "Swap Token Positions mod cover image"
+hero: "../../assets/images/mods/mod-swaptokenpositions-cover.jpg"
+heroAlt: "Swap Token Positions mod hero image"
 ---
 
 ## Swap Token Positions Overview

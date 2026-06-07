@@ -1,7 +1,7 @@
 ---
 title: "Concentration"
 summary: "Keeps concentration effects visible and easier to maintain, especially when damage checks and linked spell effects need to stay in sync."
-order: 4
+order: 5
 category: "Spell support"
 postCategory: "concentration"
 status: "Planned"
@@ -32,8 +32,10 @@ featuredLinks:
 links:
   - label: "Roll20 Forum Post"
     url: "#"
-indexMedia: "../../assets/images/mods/Concentration_Cover.jpg"
+indexMedia: "../../assets/images/mods/mod-concentration-cover.jpg"
 indexMediaAlt: "Concentration mod cover image"
+hero: "../../assets/images/mods/mod-concentration-cover.jpg"
+heroAlt: "Concentration mod hero image"
 ---
 
 ## Concentration Overview

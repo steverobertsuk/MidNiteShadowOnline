@@ -1,6 +1,6 @@
 ---
 title: "Aura/Tint HealthColor"
-summary: "Automatically colourises Roll20 tokens based on their remaining health, providing instant visual feedback through auras, tint overlays, particle effects and status automation."
+summary: "Automatically colourises tokens based on their remaining health, providing instant visual feedback through auras, tint overlays and effects."
 order: 3
 category: "Visual feedback"
 postCategory: "healthcolors"
@@ -32,8 +32,10 @@ featuredLinks:
 links:
   - label: "Roll20 Forum Post"
     url: "#"
-indexMedia: "../../assets/images/mods/HealthColor_Cover.jpg"
+indexMedia: "../../assets/images/mods/mod-healthcolors-cover.jpg"
 indexMediaAlt: "Aura/Tint HealthColor mod cover image"
+hero: "../../assets/images/mods/mod-healthcolors-cover.jpg"
+heroAlt: "Aura/Tint HealthColor mod hero image"
 ---
 
 ## Aura/Tint HealthColor Overview
