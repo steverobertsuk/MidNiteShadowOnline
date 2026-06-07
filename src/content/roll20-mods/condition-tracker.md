@@ -4,34 +4,36 @@ summary: "Advanced condition, effect, and status tracking for campaigns with Tur
 order: 1
 category: "Combat automation"
 postCategory: "condition-tracker"
-status: "In development"
+status: "Active"
 versions:
   - label: "One-Click"
-    version: "v1.0.0"
+    version: "v1.1.0"
     url: ""
   - label: "GitHub"
-    version: "v1.0.0"
-    url: "https://github.com/#"
-lastUpdated: 2026-06-01
+    version: "v1.1.0"
+    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/ConditionTracker/1.1.0"
+lastUpdated: 2026-05-15
 compatibility:
   - label: "Jumpgate"
-    url: ""
+    url: "https://pages.roll20.net/redesign"
 requirements:
   - label: "Roll20 Pro"
-    url: "/"
+    url: ""
+  - label: "Roll20 Elite"
+    url: ""
 credits:
   - name: "MidNiteShadow7"
-    url: ""
+    url: "https://app.roll20.net/users/16506286/midniteshadow7"
 featuredLinks:
   - label: "GitHub"
-    url: "#"
+    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/ConditionTracker"
   - label: "Issues"
-    url: "#"
+    url: "https://github.com/users/steverobertsuk/projects/3/views/1"
   - label: "Changelog"
-    url: "#"
+    url: "https://github.com/Roll20/roll20-api-scripts/blob/master/ConditionTracker/CHANGELOG.md"
 links:
   - label: "Roll20 Forum Post"
-    url: "#"
+    url: "https://app.roll20.net/forum/post/12736090/script-condition-tracker"
 indexMedia: "../../assets/images/mods/mod-conditiontracker-cover.jpg"
 indexMediaAlt: "Condition Tracker mod cover image"
 hero: "../../assets/images/mods/mod-conditiontracker-cover.jpg"
@@ -202,7 +204,7 @@ The project continues to evolve with new features, additional system support, lo
 
 ---
 
-## Why I Use It
+## Why Use It
 
 Combat encounters often involve far more than simply tracking hit points.
 

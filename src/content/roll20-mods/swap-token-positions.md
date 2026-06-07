@@ -7,28 +7,30 @@ postCategory: "swap-token-positions"
 status: "Active"
 versions:
   - label: "One-Click"
-    version: "v2.1.0"
+    version: "Unavailable"
     url: ""
   - label: "GitHub"
     version: "v2.1.0"
-    url: "https://github.com/#"
-lastUpdated: 2026-06-01
+    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/SwapTokenPositions/2.1.0"
+lastUpdated: 2026-05-19
 compatibility:
   - label: "Jumpgate"
-    url: ""
+    url: "https://pages.roll20.net/redesign"
 requirements:
   - label: "Roll20 Pro"
-    url: "/"
+    url: ""
+  - label: "Roll20 Elite"
+    url: ""
 credits:
   - name: "MidNiteShadow7"
-    url: ""
+    url: "https://app.roll20.net/users/16506286/midniteshadow7"
 featuredLinks:
   - label: "GitHub"
-    url: "#"
+    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/SwapTokenPositions"
   - label: "Issues"
-    url: "#"
+    url: "https://github.com/users/steverobertsuk/projects/4/views/1"
   - label: "Changelog"
-    url: "#"
+    url: "https://github.com/Roll20/roll20-api-scripts/blob/master/SwapTokenPositions/CHANGELOG.md"
 links:
   - label: "Roll20 Forum Post"
     url: "#"
