@@ -2,7 +2,7 @@ import { defineConfig, passthroughImageService } from "astro/config";
 import mdx from "@astrojs/mdx";
 export default defineConfig({
   integrations: [mdx()],
-  site: process.env.SITE_URL ?? "https://midniteshadow.online",
+  site: process.env.PUBLIC_SITE_URL ?? "https://midniteshadow.online",
   output: "static",
   image: {
     service: passthroughImageService(),
