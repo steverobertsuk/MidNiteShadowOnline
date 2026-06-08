@@ -17,6 +17,7 @@ const spawnOptions = {
   cwd: projectRoot,
   stdio: "inherit",
 };
+const ogScript = resolve(scriptDir, "generate-og-images.mjs");
 const accessibleNameCheckScript = resolve(
   scriptDir,
   "check-accessible-names.mjs",
@@ -77,24 +78,30 @@ function runBuildStep(args) {
   });
 }
 
-function runAccessibleNameAudit() {
-  return new Promise((resolveAudit, rejectAudit) => {
+function runScript(scriptPath, args = []) {
+  return new Promise((resolveStep, rejectStep) => {
     const childProcess = spawn(
       process.execPath,
-      [accessibleNameCheckScript, "dist"],
+      ["--use-system-ca", scriptPath, ...args],
       spawnOptions,
     );
-
-    childProcess.on("error", rejectAudit);
+    childProcess.on("error", rejectStep);
     childProcess.on("exit", (code) => {
       if (code === 0) {
-        resolveAudit();
+        resolveStep();
         return;
       }
-
-      rejectAudit(new Error(`Accessible-name audit exited with code ${code}.`));
+      rejectStep(new Error(`${scriptPath} exited with code ${code}.`));
     });
   });
+}
+
+function runOgImages() {
+  return runScript(ogScript, ["dist"]);
+}
+
+function runAccessibleNameAudit() {
+  return runScript(accessibleNameCheckScript, ["dist"]);
 }
 
 function startBuild() {
@@ -107,6 +114,7 @@ function startBuild() {
   Promise.resolve()
     .then(() => runBuildStep(["check"]))
     .then(() => runBuildStep(["build"]))
+    .then(() => runOgImages())
     .then(() => runAccessibleNameAudit())
     .catch((error) => {
       if (!buildProcess?.cancelled) {

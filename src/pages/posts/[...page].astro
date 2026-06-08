@@ -32,6 +32,7 @@ const { page, categories } = Astro.props as InferGetStaticPropsType<
   title={page.currentPage === 1
     ? "Posts | MidNiteShadow Online"
     : `Posts — Page ${page.currentPage} | MidNiteShadow Online`}
+  description="A chronological feed of site posts drawn from Roll20, STO Info, podcasts and more."
 >
   <Hero
     eyebrow="Posts"

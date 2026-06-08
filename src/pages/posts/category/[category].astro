@@ -24,7 +24,10 @@ export async function getStaticPaths() {
 const { category, categories, posts } = Astro.props;
 ---
 
-<BaseLayout title={`${category} Posts | MidNiteShadow Online`}>
+<BaseLayout
+  title={`${category} Posts | MidNiteShadow Online`}
+  description={`All posts filed under the ${category} category.`}
+>
   <section class="section">
     <div class="container">
       <p class="eyebrow">Posts</p>
