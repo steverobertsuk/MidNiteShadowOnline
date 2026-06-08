@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { getImageLoadingPolicy, getVideoLoadingPolicy } from '../lib/mediaPriority';
 import type { ImageMetadata } from 'astro';
 
@@ -47,9 +46,11 @@ const displayTags = tags.filter((tag) => tag && tag.trim().length > 0);
     useVideo ? (
       <video autoplay muted loop playsinline preload={heroVideoPolicy.preload} poster={videoPoster} src={videoSrc} />
     ) : (
-      <Image
+      <img
         class="hero-bg"
-        src={image!}
+        src={image!.src}
+        width={image!.width}
+        height={image!.height}
         alt=""
         loading={heroImagePolicy.loading}
         fetchpriority={heroImagePolicy.fetchpriority}
@@ -81,8 +82,10 @@ const displayTags = tags.filter((tag) => tag && tag.trim().length > 0);
     </div>
     {heroImage && (
       <div class="hero-portrait">
-        <Image
-          src={heroImage}
+        <img
+          src={heroImage.src}
+          width={heroImage.width}
+          height={heroImage.height}
           alt={heroImageAlt}
           loading={heroImagePolicy.loading}
           fetchpriority={heroImagePolicy.fetchpriority}

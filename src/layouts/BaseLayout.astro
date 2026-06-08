@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import brandMarkIcon from '../assets/icons/mns7-icon.png';
 import mns7RoundIcon from '../assets/icons/mns7_round_icon.webp';
 import '../styles/global.css';
@@ -119,9 +118,11 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
       <div class="container nav">
         <a class="brand" href="/">
           <span class="brand-mark" aria-hidden="true">
-            <Image
+            <img
               class="brand-mark-icon"
-              src={brandMarkIcon}
+              src={brandMarkIcon.src}
+              width={brandMarkIcon.width}
+              height={brandMarkIcon.height}
               loading={brandImagePolicy.loading}
               fetchpriority={brandImagePolicy.fetchpriority}
               decoding={brandImagePolicy.decoding}
@@ -166,7 +167,7 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
     <footer class="footer">
       <div class="container footer-inner">
         <div class="footer-brand">
-          <Image class="footer-icon" src={mns7RoundIcon} loading="lazy" decoding="async" alt="" width={96} height={96} />
+          <img class="footer-icon" src={mns7RoundIcon.src} width={96} height={96} loading="lazy" decoding="async" alt="" />
           <div class="footer-col">
             <strong class="footer-site-name">MidNite Shadow Online</strong>
             <p class="footer-copy">&copy; {new Date().getFullYear()} MidNite Shadow Online</p>

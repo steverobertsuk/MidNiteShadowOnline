@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
 import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -41,7 +40,7 @@ const heroImageAltText =
         <div class="character-gallery">
           {entry.data.gallery.map((item) => (
             <figure>
-              <Image src={item.src} alt={item.alt} loading="lazy" />
+              <img src={item.src.src} width={item.src.width} height={item.src.height} alt={item.alt} loading="lazy" />
             </figure>
           ))}
         </div>

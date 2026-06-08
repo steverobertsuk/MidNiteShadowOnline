@@ -1,11 +1,11 @@
 {
   "name": "midnite-shadow-online",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "type": "module",
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build && node --use-system-ca ./scripts/generate-og-images.mjs dist && node -e \"['dist/client/wrangler.json','.wrangler/deploy/config.json'].forEach(p=>{try{require('fs').rmSync(p)}catch(_){}})\"",
+    "build": "astro check && astro build && node --use-system-ca ./scripts/generate-og-images.mjs dist && node -e \"const fs=require('fs');try{const p='dist/client/wrangler.json';const c=JSON.parse(fs.readFileSync(p,'utf8'));c.kv_namespaces=[];if(c.previews)c.previews.kv_namespaces=[];fs.writeFileSync(p,JSON.stringify(c))}catch(_){}\"",
     "build:local": "npm run build && node ./scripts/check-accessible-names.mjs dist",
     "og:generate": "astro build && node --use-system-ca ./scripts/generate-og-images.mjs --force dist",
     "preview": "astro preview",

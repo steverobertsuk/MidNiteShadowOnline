@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { getImageLoadingPolicy, getVideoLoadingPolicy } from '../lib/mediaPriority';
 import type { ImageMetadata } from 'astro';
 
@@ -56,9 +55,11 @@ const useFallback = !useIndexVideo && !useIndexImage && !useHeroVideo && !useHer
   />
 )}
 {useIndexImage && (
-  <Image
+  <img
     class="project-image"
-    src={indexMedia!}
+    src={indexMedia!.src}
+    width={indexMedia!.width}
+    height={indexMedia!.height}
     alt={indexMediaAlt}
     loading={cardImagePolicy.loading}
     fetchpriority={cardImagePolicy.fetchpriority}
@@ -79,9 +80,11 @@ const useFallback = !useIndexVideo && !useIndexImage && !useHeroVideo && !useHer
   />
 )}
 {useHeroImage && (
-  <Image
+  <img
     class="project-image"
-    src={hero!}
+    src={hero!.src}
+    width={hero!.width}
+    height={hero!.height}
     alt=""
     loading={cardImagePolicy.loading}
     fetchpriority={cardImagePolicy.fetchpriority}
