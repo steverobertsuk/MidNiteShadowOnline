@@ -11,6 +11,7 @@ import {
   getVideoLoadingPolicy,
   type ResponsivePreload,
 } from '../lib/mediaPriority';
+import { getOgImageUrl } from '../lib/ogMeta';
 const {
   title = 'MidNite Shadow Online',
   description = 'Gaming, tabletop worlds, Roll20 mods, STO Info and podcasting projects.',
@@ -19,8 +20,14 @@ const {
 
 const siteName = 'MidNite Shadow Online';
 const author = 'Steve Roberts';
-const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://midniteshadow.online').href;
+const siteBase = Astro.site ?? 'https://midniteshadow.online';
+const canonical = new URL(Astro.url.pathname, siteBase).href;
 const imageAlt = `${siteName} — ${description}`;
+
+// Derive a slug from the current path for cache-busting; fall back to 'default'
+const pageSlug =
+  Astro.url.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'default';
+const ogImage = getOgImageUrl(siteBase, pageSlug, title, description);
 const gaId = GA_ID;
 const pageBackgroundVideoPolicy = getVideoLoadingPolicy('decorative');
 const brandImagePolicy = getImageLoadingPolicy('brand');
@@ -47,15 +54,14 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content="/assets/images/hero_purple_embers.webp" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta
-      name="twitter:image"
-      content="/assets/icons/android-chrome-512x512.png"
-    />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={imageAlt} />
     <meta
       name="msapplication-config"
