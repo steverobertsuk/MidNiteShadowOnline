@@ -5,6 +5,7 @@ import mns7RoundIcon from '../assets/icons/mns7_round_icon.webp';
 import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
 import pkg from '../../package.json';
+import { GA_ID } from '../config';
 import {
   getImageLoadingPolicy,
   getVideoLoadingPolicy,
@@ -20,7 +21,7 @@ const siteName = 'MidNite Shadow Online';
 const author = 'Steve Roberts';
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://midniteshadow.online').href;
 const imageAlt = `${siteName} — ${description}`;
-const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? process.env.PUBLIC_GA_MEASUREMENT_ID ?? '';
+const gaId = GA_ID;
 const pageBackgroundVideoPolicy = getVideoLoadingPolicy('decorative');
 const brandImagePolicy = getImageLoadingPolicy('brand');
 const pathname = Astro.url.pathname;
@@ -28,10 +29,6 @@ const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.st
 const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
   ? responsiveImagePreloads
   : [];
-const debugProcessEnv = JSON.stringify(
-  Object.fromEntries(Object.entries(process.env).filter(([k]) => k.startsWith('PUBLIC_'))),
-  null, 2
-);
 ---
 
 <!doctype html>
@@ -39,11 +36,6 @@ const debugProcessEnv = JSON.stringify(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="debug-ga-id" content={gaId || 'EMPTY'} />
-    <Fragment set:html={`<!-- ENV DEBUG (remove after confirming)
-      gaId resolved: ${gaId || 'EMPTY'}
-      process.env (PUBLIC_ only): ${debugProcessEnv}
-    -->`} />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
     <meta name="version" content={pkg.version} />
