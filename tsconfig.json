@@ -1,6 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "types": ["node"],
     "ignoreDeprecations": "6.0",
     "strictNullChecks": true,
     "baseUrl": ".",

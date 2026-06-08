@@ -28,6 +28,11 @@ const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.st
 const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
   ? responsiveImagePreloads
   : [];
+const debugImportMetaEnv = JSON.stringify(import.meta.env, null, 2);
+const debugProcessEnv = JSON.stringify(
+  Object.fromEntries(Object.entries(process.env).filter(([k]) => k.startsWith('PUBLIC_'))),
+  null, 2
+);
 ---
 
 <!doctype html>
@@ -35,6 +40,10 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ENV DEBUG (remove after confirming)
+      import.meta.env: {debugImportMetaEnv}
+      process.env (PUBLIC_ only): {debugProcessEnv}
+    -->
     <meta name="description" content={description} />
     <meta name="author" content={author} />
     <meta name="version" content={pkg.version} />
