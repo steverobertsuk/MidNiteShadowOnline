@@ -6,6 +6,7 @@ import { loadEnv } from "vite";
 const env = loadEnv("", process.cwd(), "");
 
 export default defineConfig({
+  output: "static",
   integrations: [mdx()],
   site: env.SITE ?? "https://midniteshadow.online",
   adapter: cloudflare({
