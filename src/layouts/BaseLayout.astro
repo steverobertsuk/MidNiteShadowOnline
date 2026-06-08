@@ -40,10 +40,10 @@ const debugProcessEnv = JSON.stringify(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- ENV DEBUG (remove after confirming)
-      import.meta.env: {debugImportMetaEnv}
-      process.env (PUBLIC_ only): {debugProcessEnv}
-    -->
+    <Fragment set:html={`<!-- ENV DEBUG (remove after confirming)
+      import.meta.env: ${debugImportMetaEnv}
+      process.env (PUBLIC_ only): ${debugProcessEnv}
+    -->`} />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
     <meta name="version" content={pkg.version} />
