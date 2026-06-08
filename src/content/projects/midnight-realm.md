@@ -7,7 +7,7 @@ order: 3
 links: []
 indexMedia: '../../assets/images/the-midnight-realm-cover.jpg'
 indexMediaAlt: 'The Midnight Realm cover image'
-hero: '../../assets/images/mods/the-midnight-realm-hero.jpg'
+hero: '../../assets/images/the-midnight-realm-hero.jpg'
 heroAlt: 'The Midnight Realm hero image'
 ---
 
