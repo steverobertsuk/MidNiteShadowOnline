@@ -6,6 +6,7 @@
   --line: rgba(179, 136, 255, 0.22);
   --text: #e6dfff;
   --muted: #b7aecb;
+  --primary: #8e44ff;
   --purple: #6a0dad;
   --violet: #b388ff;
   --blue: #3b82f6;
@@ -784,6 +785,27 @@ h3 {
   margin: 0;
   font-size: 0.8rem;
   color: var(--muted);
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  padding-top: 24px;
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.social-links a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 22px;
+  line-height: 1;
+  display: inline-flex;
+  transition: color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
+}
+.social-links a:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+  text-shadow: 0 0 10px rgba(142, 68, 255, 0.6);
 }
 .prose {
   max-width: 860px;
