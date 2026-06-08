@@ -28,7 +28,6 @@ const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.st
 const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
   ? responsiveImagePreloads
   : [];
-const debugImportMetaEnv = JSON.stringify(import.meta.env, null, 2);
 const debugProcessEnv = JSON.stringify(
   Object.fromEntries(Object.entries(process.env).filter(([k]) => k.startsWith('PUBLIC_'))),
   null, 2
@@ -40,8 +39,9 @@ const debugProcessEnv = JSON.stringify(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="debug-ga-id" content={gaId || 'EMPTY'} />
     <Fragment set:html={`<!-- ENV DEBUG (remove after confirming)
-      import.meta.env: ${debugImportMetaEnv}
+      gaId resolved: ${gaId || 'EMPTY'}
       process.env (PUBLIC_ only): ${debugProcessEnv}
     -->`} />
     <meta name="description" content={description} />
