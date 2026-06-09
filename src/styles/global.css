@@ -1,3 +1,10 @@
+@import '@fontsource-variable/cinzel';
+@import '@fontsource-variable/raleway';
+@import '@fontsource-variable/raleway/wght-italic.css';
+@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource-variable/jetbrains-mono/wght-italic.css';
+@import '@fontsource/marcellus-sc';
+
 :root {
   --bg: #05070f;
   --bg-2: #0a0a12;
@@ -27,7 +34,7 @@ html {
 body {
   margin: 0;
   font-family:
-    'Raleway',
+    'Raleway Variable',
     ui-sans-serif,
     system-ui,
     -apple-system,
@@ -107,7 +114,7 @@ code,
 pre,
 kbd {
   font-family:
-    'JetBrains Mono', ui-monospace, 'Cascadia Code', Menlo, Monaco, Consolas,
+    'JetBrains Mono Variable', ui-monospace, 'Cascadia Code', Menlo, Monaco, Consolas,
     monospace;
   font-size: 0.88em;
 }
@@ -155,7 +162,7 @@ pre {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel Variable', serif;
   font-weight: 700;
   letter-spacing: 0.06em;
   white-space: nowrap;
@@ -200,7 +207,7 @@ pre {
   display: flex;
   gap: 20px;
   align-items: center;
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel Variable', serif;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
   color: var(--text);
@@ -257,7 +264,7 @@ pre {
 .button {
   display: inline-flex;
   gap: 8px;
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel Variable', serif;
   color: var(--arcane-silver);
   text-decoration: none;
   cursor: pointer;
@@ -1231,7 +1238,7 @@ h6 a:hover {
   border-bottom: 1px solid var(--line);
 }
 .mobile-nav-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel Variable', serif;
   font-size: 0.85rem;
   letter-spacing: 0.12em;
   color: var(--violet);
@@ -1262,7 +1269,7 @@ h6 a:hover {
   flex: 1;
 }
 .mobile-nav-links a {
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel Variable', serif;
   font-size: 0.9rem;
   letter-spacing: 0.06em;
   color: var(--text);
@@ -1491,7 +1498,7 @@ h6 a:hover {
   gap: 8px;
   align-items: center;
   color: var(--muted);
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel Variable', serif;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -1528,7 +1535,7 @@ h6 a:hover {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel Variable', serif;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -1617,7 +1624,7 @@ details[open].filter-dropdown .filter-dropdown-arrow {
   border-radius: 10px;
   color: var(--muted);
   text-decoration: none;
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel Variable', serif;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -1662,7 +1669,7 @@ details[open].filter-dropdown .filter-dropdown-arrow {
   border: 1px solid var(--line);
   color: var(--muted);
   text-decoration: none;
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel Variable', serif;
   font-size: 0.82rem;
   font-weight: 700;
   transition:
@@ -1697,7 +1704,7 @@ details[open].filter-dropdown .filter-dropdown-arrow {
   );
   color: var(--white);
   text-decoration: none;
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel Variable', serif;
   font-size: 0.82rem;
   font-weight: 700;
   transition:
