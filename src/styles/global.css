@@ -236,6 +236,15 @@ pre {
 .nav-links a[aria-current='page']:not(.button)::after {
   width: 100%;
 }
+.nav-links a i,
+.nav-toggle i,
+.mobile-nav-close i,
+.mobile-nav-links a i {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
 .button,
 .tag {
   border: 1px solid var(--line);
