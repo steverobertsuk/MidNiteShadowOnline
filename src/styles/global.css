@@ -1756,3 +1756,10 @@ details[open].filter-dropdown .filter-dropdown-arrow {
     grid-template-columns: 1fr;
   }
 }
+
+/* Container for the Cloudflare custom error page tokens
+   (::CLOUDFLARE_ERROR_500S_BOX::, ::CAPTCHA_BOX::, etc.) — Cloudflare replaces
+   the token with its own widget when serving the page from an error slot. */
+.cf-error-details {
+  margin: 1.5rem 0;
+}

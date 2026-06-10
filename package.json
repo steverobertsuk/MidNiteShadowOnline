@@ -1,11 +1,11 @@
 {
   "name": "midnite-shadow-online",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "type": "module",
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build && node --use-system-ca ./scripts/generate-og-images.mjs dist && node -e \"const fs=require('fs');['.wrangler/deploy/config.json','dist/client/wrangler.json'].forEach(p=>{try{fs.unlinkSync(p)}catch(_){}})\"",
+    "build": "astro check && astro build && node --use-system-ca ./scripts/generate-og-images.mjs dist && node ./scripts/copy-error-pages.mjs dist && node -e \"const fs=require('fs');['.wrangler/deploy/config.json','dist/client/wrangler.json'].forEach(p=>{try{fs.unlinkSync(p)}catch(_){}})\"",
     "build:local": "npm run build && node ./scripts/check-accessible-names.mjs dist",
     "og:generate": "astro build && node --use-system-ca ./scripts/generate-og-images.mjs --force dist",
     "preview": "astro preview",
@@ -15,7 +15,7 @@
     "release:patch": "npm version patch --no-git-tag-version"
   },
   "dependencies": {
-    "@astrojs/check": "latest",
+    "@astrojs/check": "^0.9.9",
     "@astrojs/cloudflare": "^13.6.1",
     "@astrojs/mdx": "^6.0.2",
     "@fontsource-variable/cinzel": "^5.2.8",
@@ -23,9 +23,9 @@
     "@fontsource-variable/raleway": "^5.2.8",
     "@fontsource/marcellus-sc": "^5.2.8",
     "@resvg/resvg-wasm": "^2.6.2",
-    "astro": "latest",
+    "astro": "^6.4.5",
     "satori": "^0.26.0",
-    "typescript": "latest"
+    "typescript": "^6.0.3"
   },
   "overrides": {
     "yaml-language-server": {

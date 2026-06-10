@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AlertNotice from "../components/AlertNotice.astro";
+import Hero from "../components/Hero.astro";
+import profileImage from "../assets/images/mns7_profile.webp";
+---
+<BaseLayout
+  title="503 — Service Unavailable | MidNite Shadow Online"
+  description="The site is temporarily unavailable."
+>
+  <Hero
+    eyebrow="Error 503"
+    title="Service Unavailable"
+    lede="The realm rests for a moment - the site is temporarily unavailable."
+    heroImage={profileImage}
+    heroImageAlt="MidNite Shadow profile image"
+  />
+  <section class="section">
+    <div class="container prose">
+      <AlertNotice variant="warning" title="Temporarily Unavailable">
+        <p>
+          The site is undergoing maintenance or is briefly overloaded. This
+          should not last long - please try again in a few moments.
+        </p>
+      </AlertNotice>
+      <p>
+        <a href="/" class="button primary">
+          <i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Try Again
+        </a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

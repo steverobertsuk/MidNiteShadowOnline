@@ -5,27 +5,27 @@ import Hero from "../components/Hero.astro";
 import profileImage from "../assets/images/mns7_profile.webp";
 ---
 <BaseLayout
-  title="500 — Server Error | MidNite Shadow Online"
-  description="An unexpected server error occurred."
+  title="Connection Error | MidNite Shadow Online"
+  description="Cloudflare could not reach this destination."
 >
   <Hero
-    eyebrow="Error 500"
-    title="Server Error"
-    lede="Something went wrong in the arcane machinery - an unexpected error has occurred."
+    eyebrow="Error 1XXX"
+    title="Connection Error"
+    lede="The path between realms is broken - Cloudflare could not reach this destination."
     heroImage={profileImage}
     heroImageAlt="MidNite Shadow profile image"
   />
   <section class="section">
     <div class="container prose">
-      <AlertNotice variant="error" title="Internal Server Error">
+      <AlertNotice variant="error" title="Connection Error">
         <p>
-          The server encountered an unexpected condition. This is not your fault.
-          Please try again in a moment, or return to the home page.
+          Something went wrong between Cloudflare and this site. The details
+          below explain what happened - please try again in a moment.
         </p>
       </AlertNotice>
       <!-- Cloudflare replaces this token with its diagnostic box when this page
-           is served from the zone's "5XX Errors" custom error page slot. -->
-      <div class="cf-error-details">::CLOUDFLARE_ERROR_500S_BOX::</div>
+           is served from the zone's "1XXX Errors" custom error page slot. -->
+      <div class="cf-error-details">::CLOUDFLARE_ERROR_1000S_BOX::</div>
       <p>
         <a href="/" class="button primary">
           <i class="fa-solid fa-house" aria-hidden="true"></i> Return Home

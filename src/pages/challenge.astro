@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AlertNotice from "../components/AlertNotice.astro";
+import Hero from "../components/Hero.astro";
+import profileImage from "../assets/images/mns7_profile.webp";
+---
+<BaseLayout
+  title="Security Challenge | MidNite Shadow Online"
+  description="Complete the security check to continue to the site."
+>
+  <Hero
+    eyebrow="Security Check"
+    title="One Moment"
+    lede="The wards must verify you are mortal - complete the check below to continue."
+    heroImage={profileImage}
+    heroImageAlt="MidNite Shadow profile image"
+  />
+  <section class="section">
+    <div class="container prose">
+      <AlertNotice variant="warning" title="Verification Required">
+        <p>
+          This site is protected against automated traffic. Complete the
+          security check and you will be on your way.
+        </p>
+      </AlertNotice>
+      <!-- Cloudflare replaces this token with the challenge widget when this
+           page is served from the zone's Managed Challenge / Interactive
+           Challenge / Country Challenge custom page slots. -->
+      <div class="cf-error-details">::CAPTCHA_BOX::</div>
+    </div>
+  </section>
+</BaseLayout>
