@@ -1,9 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import AlertNotice from "../components/AlertNotice.astro";
-import Hero from "../components/Hero.astro";
-import profileImage from "../assets/images/mns7_profile.webp";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AlertNotice from '../components/AlertNotice.astro';
+import Hero from '../components/Hero.astro';
+import profileImage from '../assets/images/mns7_profile.webp';
 ---
+
 <BaseLayout
   title="Checking Your Browser | MidNite Shadow Online"
   description="Your browser is being checked before you continue to the site."
@@ -19,8 +20,8 @@ import profileImage from "../assets/images/mns7_profile.webp";
     <div class="container prose">
       <AlertNotice variant="warning" title="Automatic Check In Progress">
         <p>
-          This site is under heightened protection. The check completes on its
-          own within a few seconds - no action is needed.
+          This site is under heightened protection. The check completes on its own within a few
+          seconds - no action is needed.
         </p>
       </AlertNotice>
       <!-- Cloudflare replaces this token with the browser check widget when

@@ -17,10 +17,7 @@ const label = currentCategory ?? 'All categories';
     </summary>
     <ul class="filter-dropdown-menu" role="list">
       <li>
-        <a
-          href="/posts/"
-          class:list={['filter-dropdown-item', { active: !currentCategory }]}
-        >
+        <a href="/posts/" class:list={['filter-dropdown-item', { active: !currentCategory }]}>
           <i class="fa-solid fa-layer-group" aria-hidden="true"></i> All posts
         </a>
       </li>
@@ -31,7 +28,7 @@ const label = currentCategory ?? 'All categories';
               href={`/posts/category/${slug}/`}
               class:list={['filter-dropdown-item', { active: currentCategory === name }]}
             >
-              <i class="fa-solid fa-folder-open" aria-hidden="true"></i> {name}
+              <i class="fa-solid fa-folder-open" aria-hidden="true" /> {name}
             </a>
           </li>
         ))

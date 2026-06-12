@@ -1,16 +1,16 @@
 ---
-title: "Frak Stars"
+title: 'Frak Stars'
 summary: "A Battlestar Galactica-focused podcast exploring the franchise's themes, characters, and lore."
-category: "Podcast"
-status: "On Hiatus"
+category: 'Podcast'
+status: 'On Hiatus'
 order: 4
 indexMedia: '../../assets/images/podcasting/frakstars_cover.jpg'
 hero: '../../assets/images/podcasting/frakstars_bg.jpg'
-heroForeground: "../../assets/images/podcasting/frakstars.jpg"
-heroAlt: "The Frak Stars logo, featuring a stylized depiction of Battlestar Galactica elements with the eye of Jupiter in the background."
+heroForeground: '../../assets/images/podcasting/frakstars.jpg'
+heroAlt: 'The Frak Stars logo, featuring a stylized depiction of Battlestar Galactica elements with the eye of Jupiter in the background.'
 links:
-  - label: "Frak Stars podcast on Holosuite Media"
-    url: "https://holosuitemedia.com/podcasts/frakstars/"
+  - label: 'Frak Stars podcast on Holosuite Media'
+    url: 'https://holosuitemedia.com/podcasts/frakstars/'
 ---
 
 ## Frak Stars Overview

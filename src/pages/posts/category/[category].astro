@@ -7,7 +7,10 @@ import { formatPostDate, postIdToSlug, toSlug } from '../../../lib/postCategory'
 export async function getStaticPaths() {
   const allPosts = await getCollection('posts');
   const categoryNames = [...new Set(allPosts.map((post) => post.data.category))].sort();
-  const categories = categoryNames.map((name) => ({ name, slug: toSlug(name) }));
+  const categories = categoryNames.map((name) => ({
+    name,
+    slug: toSlug(name),
+  }));
 
   return categoryNames.map((category) => ({
     params: { category: toSlug(category) },
@@ -39,32 +42,30 @@ const { category, categories, posts } = Astro.props;
           posts.map((post) => (
             <article class="card large post-card">
               <h3>
-                <a href={`/posts/${postIdToSlug(post.id)}/`}>
-                  {post.data.title}
-                </a>
+                <a href={`/posts/${postIdToSlug(post.id)}/`}>{post.data.title}</a>
               </h3>
               <div class="post-meta-inline">
                 <time class="post-date" datetime={post.data.date.toISOString()}>
-                  <i class="fa-regular fa-calendar" aria-hidden="true"></i> Posted: {formatPostDate(post.data.date)}
+                  <i class="fa-regular fa-calendar" aria-hidden="true" /> Posted:{' '}
+                  {formatPostDate(post.data.date)}
                 </time>
                 <span class="post-meta-separator">•</span>
                 <a
                   class="category-meta-link"
                   href={`/posts/category/${toSlug(post.data.category)}/`}
                 >
-                  <i class="fa-solid fa-folder-open" aria-hidden="true"></i> {post.data.category}
+                  <i class="fa-solid fa-folder-open" aria-hidden="true" /> {post.data.category}
                 </a>
               </div>
               <p>{post.data.summary}</p>
-              <a
-                class="button read-more-cta"
-                href={`/posts/${postIdToSlug(post.id)}/`}
-              >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+              <a class="button read-more-cta" href={`/posts/${postIdToSlug(post.id)}/`}>
+                Read more <i class="fa-solid fa-angles-right" aria-hidden="true" />
+              </a>
               {post.data.tags.length > 0 && (
                 <div class="card-tags">
                   {post.data.tags.map((tag) => (
                     <a class="tag tag-cta" href={`/posts/tag/${toSlug(tag)}/`}>
-                      <i class="fa-solid fa-tag" aria-hidden="true"></i> {tag}
+                      <i class="fa-solid fa-tag" aria-hidden="true" /> {tag}
                     </a>
                   ))}
                 </div>

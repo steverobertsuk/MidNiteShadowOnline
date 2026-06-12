@@ -15,8 +15,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props as { entry: CollectionEntry<'dnd'> };
 const { Content } = await render(entry);
-const heroImageAltText =
-  entry.data.heroForegroundAlt || entry.data.heroAlt || '';
+const heroImageAltText = entry.data.heroForegroundAlt || entry.data.heroAlt || '';
 ---
 
 <BaseLayout
@@ -36,15 +35,23 @@ const heroImageAltText =
     <div class="container prose">
       <Content />
 
-      {entry.data.gallery && entry.data.gallery.length > 0 && (
-        <div class="character-gallery">
-          {entry.data.gallery.map((item) => (
-            <figure>
-              <img src={item.src.src} width={item.src.width} height={item.src.height} alt={item.alt} loading="lazy" />
-            </figure>
-          ))}
-        </div>
-      )}
+      {
+        entry.data.gallery && entry.data.gallery.length > 0 && (
+          <div class="character-gallery">
+            {entry.data.gallery.map((item) => (
+              <figure>
+                <img
+                  src={item.src.src}
+                  width={item.src.width}
+                  height={item.src.height}
+                  alt={item.alt}
+                  loading="lazy"
+                />
+              </figure>
+            ))}
+          </div>
+        )
+      }
 
       {entry.data.links.length > 0 && <h2>Links</h2>}
       {

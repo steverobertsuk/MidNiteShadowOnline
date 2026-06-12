@@ -1,6 +1,6 @@
-import type { APIRoute } from "astro";
+import type { APIRoute } from 'astro';
 
-import { version } from "../../package.json";
+import { version } from '../../package.json';
 
 // Health endpoint for uptime monitoring (UptimeRobot keyword check on "ok").
 // This is a fully static site, so the handler runs at build time and the
@@ -8,12 +8,12 @@ import { version } from "../../package.json";
 export const GET: APIRoute = () =>
   new Response(
     JSON.stringify({
-      status: "ok",
-      site: "midniteshadow.online",
+      status: 'ok',
+      site: 'midniteshadow.online',
       version,
       builtAt: new Date().toISOString(),
     }),
     {
-      headers: { "Content-Type": "application/json" },
-    },
+      headers: { 'Content-Type': 'application/json' },
+    }
   );

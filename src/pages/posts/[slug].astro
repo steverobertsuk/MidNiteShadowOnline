@@ -3,10 +3,12 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import { formatPostDate, postIdToSlug, toSlug } from '../../lib/postCategory';
+import { FALLBACK_SITE } from '../../lib/site';
+import { blogPostingGraph } from '../../lib/structuredData';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('posts')).sort(
-    (a, b) => a.data.date.getTime() - b.data.date.getTime(),
+    (a, b) => a.data.date.getTime() - b.data.date.getTime()
   );
   return posts.map((post, index) => ({
     params: { slug: postIdToSlug(post.id) },
@@ -19,11 +21,22 @@ export async function getStaticPaths() {
 }
 const { post, prev, next } = Astro.props;
 const { Content } = await render(post);
+
+const siteBase = Astro.site ?? FALLBACK_SITE;
+const jsonLd = blogPostingGraph(siteBase, {
+  url: new URL(`/posts/${postIdToSlug(post.id)}/`, siteBase).href,
+  title: post.data.title,
+  summary: post.data.summary,
+  datePublished: post.data.date,
+  category: post.data.category,
+  tags: post.data.tags,
+});
 ---
 
 <BaseLayout
   title={`${post.data.title} | MidNiteShadow Online`}
   description={post.data.summary}
+  jsonLd={jsonLd}
 >
   <Hero
     eyebrow={post.data.category}
@@ -54,22 +67,23 @@ const { Content } = await render(post);
           </p>
         </div>
         <div class="post-details-block">
-          <p class="post-details-label"><i class="fa-solid fa-folder-open" aria-hidden="true"></i> Category</p>
-          <a
-            class="tag category-cta"
-            href={`/posts/category/${toSlug(post.data.category)}/`}
-          >
+          <p class="post-details-label">
+            <i class="fa-solid fa-folder-open" aria-hidden="true"></i> Category
+          </p>
+          <a class="tag category-cta" href={`/posts/category/${toSlug(post.data.category)}/`}>
             {post.data.category}
           </a>
         </div>
         {
           post.data.tags.length > 0 && (
             <div class="post-details-block">
-              <p class="post-details-label"><i class="fa-solid fa-tag" aria-hidden="true"></i> Tags</p>
+              <p class="post-details-label">
+                <i class="fa-solid fa-tag" aria-hidden="true" /> Tags
+              </p>
               <div class="post-details-tags">
                 {post.data.tags.map((tag) => (
                   <a class="tag tag-cta" href={`/posts/tag/${toSlug(tag)}/`}>
-                    <i class="fa-solid fa-tag" aria-hidden="true"></i> {tag}
+                    <i class="fa-solid fa-tag" aria-hidden="true" /> {tag}
                   </a>
                 ))}
               </div>
@@ -78,35 +92,41 @@ const { Content } = await render(post);
         }
       </aside>
     </div>
-    {(prev || next) && (
-      <nav class="post-nav" aria-label="Post navigation">
-        <div class="container">
-          <div class="post-nav-inner">
-            <div class="post-nav-slot post-nav-prev">
-              {prev && (
-                <a class="post-nav-link" href={`/posts/${postIdToSlug(prev.id)}/`}>
-                  <span class="post-nav-dir"><i class="fa-solid fa-angles-left" aria-hidden="true"></i> Previous</span>
-                  <span class="post-nav-title">{prev.data.title}</span>
+    {
+      (prev || next) && (
+        <nav class="post-nav" aria-label="Post navigation">
+          <div class="container">
+            <div class="post-nav-inner">
+              <div class="post-nav-slot post-nav-prev">
+                {prev && (
+                  <a class="post-nav-link" href={`/posts/${postIdToSlug(prev.id)}/`}>
+                    <span class="post-nav-dir">
+                      <i class="fa-solid fa-angles-left" aria-hidden="true" /> Previous
+                    </span>
+                    <span class="post-nav-title">{prev.data.title}</span>
+                  </a>
+                )}
+              </div>
+              <div class="post-nav-slot post-nav-home">
+                <a class="post-nav-link post-nav-home-link" href="/posts/">
+                  <i class="fa-solid fa-newspaper" aria-hidden="true" />
+                  <span>All posts</span>
                 </a>
-              )}
-            </div>
-            <div class="post-nav-slot post-nav-home">
-              <a class="post-nav-link post-nav-home-link" href="/posts/">
-                <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
-                <span>All posts</span>
-              </a>
-            </div>
-            <div class="post-nav-slot post-nav-next">
-              {next && (
-                <a class="post-nav-link" href={`/posts/${postIdToSlug(next.id)}/`}>
-                  <span class="post-nav-dir">Next <i class="fa-solid fa-angles-right" aria-hidden="true"></i></span>
-                  <span class="post-nav-title">{next.data.title}</span>
-                </a>
-              )}
+              </div>
+              <div class="post-nav-slot post-nav-next">
+                {next && (
+                  <a class="post-nav-link" href={`/posts/${postIdToSlug(next.id)}/`}>
+                    <span class="post-nav-dir">
+                      Next <i class="fa-solid fa-angles-right" aria-hidden="true" />
+                    </span>
+                    <span class="post-nav-title">{next.data.title}</span>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
-    )}
+        </nav>
+      )
+    }
   </section>
 </BaseLayout>

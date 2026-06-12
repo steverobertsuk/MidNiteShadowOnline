@@ -5,8 +5,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const podcasts = await getCollection('podcasts');
-  const entryToSlug = (id: string) =>
-    id.replace(/\.(md|mdx)$/i, '').replace(/\/index$/i, '');
+  const entryToSlug = (id: string) => id.replace(/\.(md|mdx)$/i, '').replace(/\/index$/i, '');
 
   return podcasts.map((podcast) => ({
     params: { slug: entryToSlug(podcast.id) },

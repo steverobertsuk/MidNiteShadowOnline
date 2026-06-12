@@ -1,18 +1,18 @@
 ---
-title: "The Fluffernutter"
-summary: "A podcast exploring the Expeditionary Force universe created by Craig Alanson, hosted by Steve and Nathan."
-category: "Podcast"
-status: "On Hiatus"
+title: 'The Fluffernutter'
+summary: 'A podcast exploring the Expeditionary Force universe created by Craig Alanson, hosted by Steve and Nathan.'
+category: 'Podcast'
+status: 'On Hiatus'
 order: 3
 indexMedia: '../../assets/images/podcasting/thefluffernutter_cover.jpg'
 hero: '../../assets/images/podcasting/thefluffernutter_bg.jpg'
-heroForeground: "../../assets/images/podcasting/thefluffernutter.jpg"
-heroAlt: "The Fluffernutter logo, featuring a stylized depiction of Skippy the Magnificent and Barney on a Fluffernutter sandwich with a cosmic wormhole background."
+heroForeground: '../../assets/images/podcasting/thefluffernutter.jpg'
+heroAlt: 'The Fluffernutter logo, featuring a stylized depiction of Skippy the Magnificent and Barney on a Fluffernutter sandwich with a cosmic wormhole background.'
 links:
-  - label: "The Fluffernutter podcast on Holosuite Media"
-    url: "https://holosuitemedia.com/podcasts/thefluffernutter/"
+  - label: 'The Fluffernutter podcast on Holosuite Media'
+    url: 'https://holosuitemedia.com/podcasts/thefluffernutter/'
   - label: "Craig Alanson's website"
-    url: "https://www.craigalanson.com/"
+    url: 'https://www.craigalanson.com/'
 ---
 
 ## The Fluffernutter Overview

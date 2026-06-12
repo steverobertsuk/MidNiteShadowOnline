@@ -1,13 +1,13 @@
 ---
-title: "Star Trek Fleet Command"
+title: 'Star Trek Fleet Command'
 summary: "I began playing Star Trek Fleet Command in 2018 when it was a mobile only game. I'm a level 66 commander and have been part of the Species 8472 alliance for many years."
-category: "Gaming"
+category: 'Gaming'
 order: 2
 tags:
-  - "Star Trek"
-  - "Mobile"
-  - "PC"
-  - "MMO"
+  - 'Star Trek'
+  - 'Mobile'
+  - 'PC'
+  - 'MMO'
 indexMedia: '../../assets/images/star-trek-fleet-command-cover.jpg'
 indexMediaAlt: 'Star Trek Fleet Command cover image'
 hero: '../../assets/images/star-trek-fleet-command-hero.jpg'

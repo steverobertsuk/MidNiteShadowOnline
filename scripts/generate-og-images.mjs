@@ -14,25 +14,25 @@
  * Exits with code 1 if any image fails to generate.
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
-import { readdir } from "node:fs/promises";
-import { join, relative } from "node:path";
-import { createRequire } from "node:module";
-import sharp from "sharp";
-import satori from "satori";
-import { initWasm, Resvg } from "@resvg/resvg-wasm";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readdir } from 'node:fs/promises';
+import { join, relative } from 'node:path';
+import { createRequire } from 'node:module';
+import sharp from 'sharp';
+import satori from 'satori';
+import { initWasm, Resvg } from '@resvg/resvg-wasm';
 const args = process.argv.slice(2);
-const force = args.includes("--force");
-const distArg = args.find((a) => !a.startsWith("--")) ?? "dist";
-const clientDir = join(process.cwd(), distArg, "client");
-const publicOgDir = join(process.cwd(), "public", "assets", "og");
-const distOgDir = join(clientDir, "assets", "og");
+const force = args.includes('--force');
+const distArg = args.find((a) => !a.startsWith('--')) ?? 'dist';
+const clientDir = join(process.cwd(), distArg, 'client');
+const publicOgDir = join(process.cwd(), 'public', 'assets', 'og');
+const distOgDir = join(clientDir, 'assets', 'og');
 
 // ---------------------------------------------------------------------------
 // WASM initialisation — read from disk; no dynamic-compile restrictions in Node
 // ---------------------------------------------------------------------------
 const require = createRequire(import.meta.url);
-const wasmPath = require.resolve("@resvg/resvg-wasm/index_bg.wasm");
+const wasmPath = require.resolve('@resvg/resvg-wasm/index_bg.wasm');
 await initWasm(readFileSync(wasmPath));
 
 // ---------------------------------------------------------------------------
@@ -42,25 +42,25 @@ await initWasm(readFileSync(wasmPath));
 /** Convert any image buffer to a JPEG data URI (satori v0.26 lacks WebP support). */
 async function toJpegDataUrl(buffer) {
   const jpeg = await sharp(buffer).jpeg({ quality: 92 }).toBuffer();
-  return `data:image/jpeg;base64,${jpeg.toString("base64")}`;
+  return `data:image/jpeg;base64,${jpeg.toString('base64')}`;
 }
 
 function extractMeta(html, property) {
   const re = new RegExp(
     `<meta[^>]+property="${property}"[^>]+content="([^"]*)"` +
       `|<meta[^>]+content="([^"]*)"[^>]+property="${property}"`,
-    "i"
+    'i'
   );
   const m = html.match(re);
-  return (m?.[1] ?? m?.[2] ?? "").replace(/&amp;/g, "&").replace(/&#039;/g, "'");
+  return (m?.[1] ?? m?.[2] ?? '').replace(/&amp;/g, '&').replace(/&#039;/g, "'");
 }
 
 /** Convert a file path inside clientDir to the same slug BaseLayout uses. */
 function pathToSlug(htmlPath) {
-  const rel = relative(clientDir, htmlPath).replace(/\\/g, "/");
-  const withoutIndex = rel.replace(/(?:^|\/)index\.html$/, "").replace(/\.html$/, "");
-  if (!withoutIndex) return "default";
-  return withoutIndex.replace(/\//g, "-");
+  const rel = relative(clientDir, htmlPath).replace(/\\/g, '/');
+  const withoutIndex = rel.replace(/(?:^|\/)index\.html$/, '').replace(/\.html$/, '');
+  if (!withoutIndex) return 'default';
+  return withoutIndex.replace(/\//g, '-');
 }
 
 /** Recursively yield all .html files under dir. */
@@ -68,7 +68,7 @@ async function* findHtml(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const p = join(dir, entry.name);
     if (entry.isDirectory()) yield* findHtml(p);
-    else if (entry.name.endsWith(".html")) yield p;
+    else if (entry.name.endsWith('.html')) yield p;
   }
 }
 
@@ -78,7 +78,7 @@ async function* findHtml(dir) {
 async function loadGoogleFont(family, weight) {
   const css = await fetch(
     `https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:wght@${weight}&display=swap`,
-    { headers: { "User-Agent": "Mozilla/5.0 (compatible; OGBot/1.0)" } }
+    { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; OGBot/1.0)' } }
   ).then((r) => r.text());
 
   const match = css.match(/src:\s*url\(([^)]+)\)\s+format\('(?:truetype|opentype|woff2)'\)/);
@@ -91,9 +91,7 @@ async function loadGoogleFont(family, weight) {
 // ---------------------------------------------------------------------------
 function el(type, props, ...children) {
   const resolvedChildren =
-    children.length === 0 ? undefined
-    : children.length === 1 ? children[0]
-    : children;
+    children.length === 0 ? undefined : children.length === 1 ? children[0] : children;
   return {
     type,
     key: null,
@@ -104,16 +102,23 @@ function el(type, props, ...children) {
 // ---------------------------------------------------------------------------
 // OG image generation
 // ---------------------------------------------------------------------------
-async function generateOgImage({ title, description, bgDataUrl, logoDataUrl, cinzelFont, ralewayFont }) {
+async function generateOgImage({
+  title,
+  description,
+  bgDataUrl,
+  logoDataUrl,
+  cinzelFont,
+  ralewayFont,
+}) {
   const textChildren = [
     el(
-      "div",
+      'div',
       {
         style: {
-          fontFamily: "Cinzel",
-          fontSize: title.length > 50 ? "52px" : "64px",
+          fontFamily: 'Cinzel',
+          fontSize: title.length > 50 ? '52px' : '64px',
           fontWeight: 700,
-          color: "#ffffff",
+          color: '#ffffff',
           lineHeight: 1.15,
         },
       },
@@ -124,15 +129,15 @@ async function generateOgImage({ title, description, bgDataUrl, logoDataUrl, cin
   if (description) {
     textChildren.push(
       el(
-        "div",
+        'div',
         {
           style: {
-            fontFamily: "Raleway",
-            fontSize: "28px",
+            fontFamily: 'Raleway',
+            fontSize: '28px',
             fontWeight: 400,
-            color: "rgba(255,255,255,0.82)",
+            color: 'rgba(255,255,255,0.82)',
             lineHeight: 1.45,
-            marginTop: "24px",
+            marginTop: '24px',
           },
         },
         description
@@ -141,90 +146,90 @@ async function generateOgImage({ title, description, bgDataUrl, logoDataUrl, cin
   }
 
   const node = el(
-    "div",
+    'div',
     {
       style: {
-        width: "1200px",
-        height: "630px",
-        display: "flex",
-        position: "relative",
-        overflow: "hidden",
+        width: '1200px',
+        height: '630px',
+        display: 'flex',
+        position: 'relative',
+        overflow: 'hidden',
       },
     },
     // Full-bleed background
-    el("img", {
+    el('img', {
       src: bgDataUrl,
       style: {
-        position: "absolute",
-        top: "0px",
-        left: "0px",
-        width: "1200px",
-        height: "630px",
-        objectFit: "cover",
+        position: 'absolute',
+        top: '0px',
+        left: '0px',
+        width: '1200px',
+        height: '630px',
+        objectFit: 'cover',
       },
     }),
     // Gradient: heavy on the left where text sits, fades toward the right
-    el("div", {
+    el('div', {
       style: {
-        position: "absolute",
-        top: "0px",
-        left: "0px",
-        width: "1200px",
-        height: "630px",
+        position: 'absolute',
+        top: '0px',
+        left: '0px',
+        width: '1200px',
+        height: '630px',
         background:
-          "linear-gradient(to right, rgba(5,3,18,0.93) 0%, rgba(5,3,18,0.86) 55%, rgba(5,3,18,0.60) 73%, rgba(5,3,18,0.25) 100%)",
+          'linear-gradient(to right, rgba(5,3,18,0.93) 0%, rgba(5,3,18,0.86) 55%, rgba(5,3,18,0.60) 73%, rgba(5,3,18,0.25) 100%)',
       },
     }),
     // Content row
     el(
-      "div",
+      'div',
       {
         style: {
-          position: "absolute",
-          top: "0px",
-          left: "0px",
-          width: "1200px",
-          height: "630px",
-          display: "flex",
-          flexDirection: "row",
+          position: 'absolute',
+          top: '0px',
+          left: '0px',
+          width: '1200px',
+          height: '630px',
+          display: 'flex',
+          flexDirection: 'row',
         },
       },
       // Left 73%: title + description, vertically centred
       el(
-        "div",
+        'div',
         {
           style: {
-            width: "876px",
-            height: "630px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            paddingTop: "60px",
-            paddingRight: "56px",
-            paddingBottom: "60px",
-            paddingLeft: "80px",
+            width: '876px',
+            height: '630px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            paddingTop: '60px',
+            paddingRight: '56px',
+            paddingBottom: '60px',
+            paddingLeft: '80px',
           },
         },
         ...textChildren
       ),
       // Right 27%: profile image, centred
       el(
-        "div",
+        'div',
         {
           style: {
-            width: "324px",
-            height: "630px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            width: '324px',
+            height: '630px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           },
         },
-        el("img", {
+        el('img', {
           src: logoDataUrl,
           style: {
-            width: "290px",
-            height: "290px",
-            objectFit: "contain",
+            width: '290px',
+            height: '290px',
+            objectFit: 'contain',
           },
         })
       )
@@ -235,30 +240,30 @@ async function generateOgImage({ title, description, bgDataUrl, logoDataUrl, cin
     width: 1200,
     height: 630,
     fonts: [
-      { name: "Cinzel", data: cinzelFont, weight: 700, style: "normal" },
-      { name: "Raleway", data: ralewayFont, weight: 400, style: "normal" },
+      { name: 'Cinzel', data: cinzelFont, weight: 700, style: 'normal' },
+      { name: 'Raleway', data: ralewayFont, weight: 400, style: 'normal' },
     ],
   });
 
-  return new Resvg(svg, { fitTo: { mode: "width", value: 1200 } }).render().asPng();
+  return new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } }).render().asPng();
 }
 
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
-console.log(`Generating OG images${force ? "" : " (skipping existing)"}…`);
+console.log(`Generating OG images${force ? '' : ' (skipping existing)'}…`);
 
 mkdirSync(publicOgDir, { recursive: true });
 mkdirSync(distOgDir, { recursive: true });
 
 // Load shared assets once
 const [cinzelFont, ralewayFont] = await Promise.all([
-  loadGoogleFont("Cinzel", 700),
-  loadGoogleFont("Raleway", 400),
+  loadGoogleFont('Cinzel', 700),
+  loadGoogleFont('Raleway', 400),
 ]);
 
-const bgBuffer = readFileSync(join(clientDir, "assets/images/hero_purple_embers.webp"));
-const logoBuffer = readFileSync(join(clientDir, "assets/images/mns7_profile.webp"));
+const bgBuffer = readFileSync(join(clientDir, 'assets/images/hero_purple_embers.webp'));
+const logoBuffer = readFileSync(join(clientDir, 'assets/images/mns7_profile.webp'));
 const [bgDataUrl, logoDataUrl] = await Promise.all([
   toJpegDataUrl(bgBuffer),
   toJpegDataUrl(logoBuffer),
@@ -284,11 +289,18 @@ for (const htmlFile of htmlFiles) {
   }
 
   try {
-    const html = readFileSync(htmlFile, "utf8");
-    const rawTitle = extractMeta(html, "og:title") || "MidNite Shadow Online";
-    const title = rawTitle.replace(/\s*\|.*$/, "").trim() || rawTitle;
-    const description = extractMeta(html, "og:description") || undefined;
-    const png = await generateOgImage({ title, description, bgDataUrl, logoDataUrl, cinzelFont, ralewayFont });
+    const html = readFileSync(htmlFile, 'utf8');
+    const rawTitle = extractMeta(html, 'og:title') || 'MidNite Shadow Online';
+    const title = rawTitle.replace(/\s*\|.*$/, '').trim() || rawTitle;
+    const description = extractMeta(html, 'og:description') || undefined;
+    const png = await generateOgImage({
+      title,
+      description,
+      bgDataUrl,
+      logoDataUrl,
+      cinzelFont,
+      ralewayFont,
+    });
     writeFileSync(publicOut, png);
     writeFileSync(distOut, png);
     generated++;
@@ -310,13 +322,15 @@ const summary = [
   generated > 0 && `${generated} generated`,
   skipped > 0 && `${skipped} skipped`,
   failed > 0 && `${failed} failed`,
-].filter(Boolean).join(", ");
-console.log(`OG images: ${summary || "nothing to do"}.`);
+]
+  .filter(Boolean)
+  .join(', ');
+console.log(`OG images: ${summary || 'nothing to do'}.`);
 
 if (unverified.length > 0) {
-  console.error("Missing OG images for routes:");
+  console.error('Missing OG images for routes:');
   unverified.forEach((s) => console.error(`  /og/${s}.png`));
   process.exit(1);
 }
 
-console.log("OG image audit passed — all routes have an image.");
+console.log('OG image audit passed — all routes have an image.');

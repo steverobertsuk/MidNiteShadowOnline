@@ -1,17 +1,17 @@
-import { glob } from "astro/loaders";
-import { z } from "astro/zod";
-import { defineCollection } from "astro:content";
-import type { SchemaContext } from "astro:content";
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
+import { defineCollection } from 'astro:content';
+import type { SchemaContext } from 'astro:content';
 
 const isAllowedOptionalLink = (value: string) =>
-  /^https?:\/\/.+/i.test(value) || value.startsWith("/") || value.startsWith("#");
+  /^https?:\/\/.+/i.test(value) || value.startsWith('/') || value.startsWith('#');
 
 const optionalUrlSchema = z.preprocess(
   (value) => {
-    if (typeof value === "string") {
+    if (typeof value === 'string') {
       const trimmed = value.trim();
 
-      if (trimmed === "") {
+      if (trimmed === '') {
         return undefined;
       }
 
@@ -27,10 +27,9 @@ const optionalUrlSchema = z.preprocess(
   z
     .string()
     .refine(isAllowedOptionalLink, {
-      message:
-        "Expected a URL/path starting with https://, http://, /, or #",
+      message: 'Expected a URL/path starting with https://, http://, /, or #',
     })
-    .optional(),
+    .optional()
 );
 
 const versionEntrySchema = z.object({
@@ -42,7 +41,10 @@ const versionEntrySchema = z.object({
 });
 
 const contributorSchema = z.object({ name: z.string(), url: z.string() });
-const linkedItemSchema = z.object({ label: z.string(), url: optionalUrlSchema });
+const linkedItemSchema = z.object({
+  label: z.string(),
+  url: optionalUrlSchema,
+});
 
 const collectionSchema = ({ image }: SchemaContext) =>
   z.object({
@@ -77,22 +79,22 @@ const collectionSchema = ({ image }: SchemaContext) =>
   });
 
 const projects = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
   schema: collectionSchema,
 });
 
 const roll20Mods = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/roll20-mods" }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/roll20-mods' }),
   schema: collectionSchema,
 });
 
 const podcasts = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/podcasts" }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/podcasts' }),
   schema: collectionSchema,
 });
 
 const gaming = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/gaming" }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/gaming' }),
   schema: ({ image }: SchemaContext) =>
     collectionSchema({ image }).extend({
       tags: z.array(z.string()).default([]),
@@ -100,18 +102,16 @@ const gaming = defineCollection({
 });
 
 const dnd = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/dnd" }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/dnd' }),
   schema: ({ image }: SchemaContext) =>
     collectionSchema({ image }).extend({
       tags: z.array(z.string()).default([]),
-      gallery: z
-        .array(z.object({ src: image(), alt: z.string() }))
-        .optional(),
+      gallery: z.array(z.object({ src: image(), alt: z.string() })).optional(),
     }),
 });
 
 const posts = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts" }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts' }),
   schema: ({ image }: SchemaContext) =>
     z.object({
       title: z.string(),

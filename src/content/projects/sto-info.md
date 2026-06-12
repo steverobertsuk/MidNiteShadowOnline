@@ -1,16 +1,16 @@
 ---
-title: "STO Info"
-summary: "A free community app for Star Trek Online players, combining account and character tracking with a growing roadmap for fleet management."
-category: "Star Trek Online"
-status: ""
+title: 'STO Info'
+summary: 'A free community app for Star Trek Online players, combining account and character tracking with a growing roadmap for fleet management.'
+category: 'Star Trek Online'
+status: ''
 heroForeground: '../../assets/images/sto-info-icon.webp'
 heroForegroundAlt: 'The STO Info logo, featuring a Star Trek delta with a stylized design and an information icon.'
 order: 1
 links:
-  - label: "Star Trek Online Info Portal"
-    url: "https://startrekonline.info"
-  - label: "STO Info news and updates"
-    url: "/posts/category/sto-info/"
+  - label: 'Star Trek Online Info Portal'
+    url: 'https://startrekonline.info'
+  - label: 'STO Info news and updates'
+    url: '/posts/category/sto-info/'
 indexMedia: '../../assets/images/sto-info-cover.jpg'
 indexMediaAlt: 'Star Trek Online Info Portal cover image'
 hero: '../../assets/images/sto-info-hero.jpg'

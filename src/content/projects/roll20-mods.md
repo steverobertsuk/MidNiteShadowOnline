@@ -1,7 +1,7 @@
 ---
-title: "Roll20 Mods"
-summary: "API scripts and mod ideas for improving tabletop play, automation, condition tracking, token workflows and accessibility."
-category: "Tabletop tooling"
+title: 'Roll20 Mods'
+summary: 'API scripts and mod ideas for improving tabletop play, automation, condition tracking, token workflows and accessibility.'
+category: 'Tabletop tooling'
 order: 2
 links: []
 indexMedia: '../../assets/images/mods/roll20-mods-cover.jpg'

@@ -1,46 +1,46 @@
 ---
-title: "A.D.A.M."
-summary: "Provides directional movement, token facing, and animation states for creating more dynamic and immersive encounters."
+title: 'A.D.A.M.'
+summary: 'Provides directional movement, token facing, and animation states for creating more dynamic and immersive encounters.'
 order: 6
-category: "Token control"
-postCategory: "adam"
-status: "In Development"
+category: 'Token control'
+postCategory: 'adam'
+status: 'In Development'
 versions:
-  - label: "One-Click"
-    version: "Unavailable"
-    url: ""
-  - label: "GitHub"
-    version: "Unavailable"
+  - label: 'One-Click'
+    version: 'Unavailable'
+    url: ''
+  - label: 'GitHub'
+    version: 'Unavailable'
     # url: "https://github.com/#"
-  - label: "Development Download"
-    version: "v1.0.0.alpha.1"
-    url: "https://www.dropbox.com/scl/fi/rbaq9a4lyg2e1te7kayr2/ADAM_v1.0.0.alpha.1.zip?rlkey=o0gwj91m98zgzkher2xd01zyi&dl=0"
+  - label: 'Development Download'
+    version: 'v1.0.0.alpha.1'
+    url: 'https://www.dropbox.com/scl/fi/rbaq9a4lyg2e1te7kayr2/ADAM_v1.0.0.alpha.1.zip?rlkey=o0gwj91m98zgzkher2xd01zyi&dl=0'
 lastUpdated: 2026-06-07
 compatibility:
-  - label: "Jumpgate"
-    url: "https://pages.roll20.net/redesign"
+  - label: 'Jumpgate'
+    url: 'https://pages.roll20.net/redesign'
 requirements:
-  - label: "Roll20 Pro"
-    url: ""
-  - label: "Roll20 Elite"
-    url: ""
+  - label: 'Roll20 Pro'
+    url: ''
+  - label: 'Roll20 Elite'
+    url: ''
 credits:
-  - name: "MidNiteShadow7"
-    url: "https://app.roll20.net/users/16506286/midniteshadow7"
+  - name: 'MidNiteShadow7'
+    url: 'https://app.roll20.net/users/16506286/midniteshadow7'
 featuredLinks:
   # - label: "GitHub"
   #   url: "#"
-  - label: "Issues"
-    url: "https://github.com/users/steverobertsuk/projects/7"
+  - label: 'Issues'
+    url: 'https://github.com/users/steverobertsuk/projects/7'
   # - label: "Changelog"
   #   url: "#"
 # links:
 #   - label: "Roll20 Forum Post"
 #     url: "#"
-indexMedia: "../../assets/images/mods/mod-adam-cover.jpg"
-indexMediaAlt: "Automated Direction and Animation Manager mod cover image"
-hero: "../../assets/images/mods/mod-adam-cover.jpg"
-heroAlt: "Automated Direction and Animation Manager mod hero image"
+indexMedia: '../../assets/images/mods/mod-adam-cover.jpg'
+indexMediaAlt: 'Automated Direction and Animation Manager mod cover image'
+hero: '../../assets/images/mods/mod-adam-cover.jpg'
+heroAlt: 'Automated Direction and Animation Manager mod hero image'
 ---
 
 ## Automated Direction & Animation Manager Overview
@@ -61,14 +61,14 @@ Move selected tokens using simple directional commands.
 
 Supported movement includes:
 
-* North
-* North-East
-* East
-* South-East
-* South
-* South-West
-* West
-* North-West
+- North
+- North-East
+- East
+- South-East
+- South
+- South-West
+- West
+- North-West
 
 Movement respects configurable distances, making it suitable for a variety of grid scales and game systems.
 
@@ -84,14 +84,14 @@ A.D.A.M. supports multiple animation and behavioural states, allowing tokens to 
 
 Available states include:
 
-* Idle
-* Combat
-* Walk
-* Dash
-* Sneak
-* Rage
-* Spellcasting
-* Help
+- Idle
+- Combat
+- Walk
+- Dash
+- Sneak
+- Rage
+- Spellcasting
+- Help
 
 These states can be applied directly or triggered through higher-level actions.
 
@@ -103,9 +103,9 @@ Profiles allow Game Masters to establish consistent behaviours across different 
 
 Configurable permissions determine whether profiles may be created by:
 
-* Game Masters only.
-* GM-approved users.
-* All users.
+- Game Masters only.
+- GM-approved users.
+- All users.
 
 ### Interactive Menus
 
@@ -149,12 +149,12 @@ A.D.A.M. has been developed using a modular architecture and modern JavaScript d
 
 The project includes:
 
-* Extensive localisation support.
-* Modular source organisation.
-* Automated build processes.
-* Detailed testing procedures.
-* Persistent configuration management.
-* Robust command validation.
+- Extensive localisation support.
+- Modular source organisation.
+- Automated build processes.
+- Detailed testing procedures.
+- Persistent configuration management.
+- Robust command validation.
 
 The project continues to evolve through practical Roll20 usage and community feedback.
 

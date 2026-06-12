@@ -42,64 +42,74 @@ const useHeroImage = !useIndexVideo && !useIndexImage && !useHeroVideo && !!hero
 const useFallback = !useIndexVideo && !useIndexImage && !useHeroVideo && !useHeroImage;
 ---
 
-{useIndexVideo && (
-  <video
-    class="project-image"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload={cardVideoPolicy.preload}
-    src={indexVideoSrc}
-    aria-hidden="true"
-  />
-)}
-{useIndexImage && (
-  <img
-    class="project-image"
-    src={indexMedia!.src}
-    width={indexMedia!.width}
-    height={indexMedia!.height}
-    alt={indexMediaAlt}
-    loading={cardImagePolicy.loading}
-    fetchpriority={cardImagePolicy.fetchpriority}
-    decoding={cardImagePolicy.decoding}
-  />
-)}
-{useHeroVideo && (
-  <video
-    class="project-image"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload={cardVideoPolicy.preload}
-    poster={videoPoster}
-    src={videoSrc}
-    aria-hidden="true"
-  />
-)}
-{useHeroImage && (
-  <img
-    class="project-image"
-    src={hero!.src}
-    width={hero!.width}
-    height={hero!.height}
-    alt=""
-    loading={cardImagePolicy.loading}
-    fetchpriority={cardImagePolicy.fetchpriority}
-    decoding={cardImagePolicy.decoding}
-  />
-)}
-{useFallback && (
-  <video
-    class="project-image"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload={cardVideoPolicy.preload}
-    src={siteFallbackVideoSrc}
-    aria-hidden="true"
-  />
-)}
+{
+  useIndexVideo && (
+    <video
+      class="project-image"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload={cardVideoPolicy.preload}
+      src={indexVideoSrc}
+      aria-hidden="true"
+    />
+  )
+}
+{
+  useIndexImage && (
+    <img
+      class="project-image"
+      src={indexMedia!.src}
+      width={indexMedia!.width}
+      height={indexMedia!.height}
+      alt={indexMediaAlt}
+      loading={cardImagePolicy.loading}
+      fetchpriority={cardImagePolicy.fetchpriority}
+      decoding={cardImagePolicy.decoding}
+    />
+  )
+}
+{
+  useHeroVideo && (
+    <video
+      class="project-image"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload={cardVideoPolicy.preload}
+      poster={videoPoster}
+      src={videoSrc}
+      aria-hidden="true"
+    />
+  )
+}
+{
+  useHeroImage && (
+    <img
+      class="project-image"
+      src={hero!.src}
+      width={hero!.width}
+      height={hero!.height}
+      alt=""
+      loading={cardImagePolicy.loading}
+      fetchpriority={cardImagePolicy.fetchpriority}
+      decoding={cardImagePolicy.decoding}
+    />
+  )
+}
+{
+  useFallback && (
+    <video
+      class="project-image"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload={cardVideoPolicy.preload}
+      src={siteFallbackVideoSrc}
+      aria-hidden="true"
+    />
+  )
+}

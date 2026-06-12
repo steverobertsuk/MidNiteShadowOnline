@@ -1,16 +1,16 @@
 ---
-title: "Tribbles in Ecstasy"
-summary: "Star Trek coverage with episode and theme discussions, community perspectives, and fandom-driven commentary."
-category: "Podcast"
-status: "On Hiatus"
+title: 'Tribbles in Ecstasy'
+summary: 'Star Trek coverage with episode and theme discussions, community perspectives, and fandom-driven commentary.'
+category: 'Podcast'
+status: 'On Hiatus'
 order: 2
-links: 
-  - label: "Tribbles in Ecstasy podcast on Holosuite Media"
-    url: "https://holosuitemedia.com/podcasts/tribblesinecstasy/"
+links:
+  - label: 'Tribbles in Ecstasy podcast on Holosuite Media'
+    url: 'https://holosuitemedia.com/podcasts/tribblesinecstasy/'
 indexMedia: '../../assets/images/podcasting/tribblesinecstasy_cover.jpg'
 hero: '../../assets/images/podcasting/tribblesinecstasy_bg.jpg'
-heroForeground: "../../assets/images/podcasting/tribblesinecstasy.jpg"
-heroAlt: "The new Tribbles in Ecstasy logo, featuring a stylized tribble with a starry, cosmic pattern, set against a background with subtle nebulae and sparkles."
+heroForeground: '../../assets/images/podcasting/tribblesinecstasy.jpg'
+heroAlt: 'The new Tribbles in Ecstasy logo, featuring a stylized tribble with a starry, cosmic pattern, set against a background with subtle nebulae and sparkles.'
 ---
 
 ## Tribbles in Ecstasy Overview
@@ -23,14 +23,14 @@ Unlike many Star Trek podcasts of the time, Tribbles in Ecstasy embraced a relax
 
 Topics regularly covered included:
 
-* Star Trek television and films
-* Star Trek novels and comics
-* Star Trek Online
-* Star Trek mobile games
-* Fan productions and community projects
-* Convention and event coverage
-* Merchandise and collectibles
-* Breaking Star Trek news
+- Star Trek television and films
+- Star Trek novels and comics
+- Star Trek Online
+- Star Trek mobile games
+- Fan productions and community projects
+- Convention and event coverage
+- Merchandise and collectibles
+- Breaking Star Trek news
 
 ## A Personal Milestone
 

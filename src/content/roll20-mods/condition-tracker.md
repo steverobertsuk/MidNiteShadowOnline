@@ -1,43 +1,43 @@
 ---
-title: "Condition Tracker"
-summary: "Advanced condition, effect, and status tracking for campaigns with Turn Tracker integration, custom effects and saved conditions."
+title: 'Condition Tracker'
+summary: 'Advanced condition, effect, and status tracking for campaigns with Turn Tracker integration, custom effects and saved conditions.'
 order: 1
-category: "Combat automation"
-postCategory: "condition-tracker"
-status: "Active"
+category: 'Combat automation'
+postCategory: 'condition-tracker'
+status: 'Active'
 versions:
-  - label: "One-Click"
-    version: "v1.1.0"
-    url: ""
-  - label: "GitHub"
-    version: "v1.1.0"
-    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/ConditionTracker/1.1.0"
+  - label: 'One-Click'
+    version: 'v1.1.0'
+    url: ''
+  - label: 'GitHub'
+    version: 'v1.1.0'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/ConditionTracker/1.1.0'
 lastUpdated: 2026-05-15
 compatibility:
-  - label: "Jumpgate"
-    url: "https://pages.roll20.net/redesign"
+  - label: 'Jumpgate'
+    url: 'https://pages.roll20.net/redesign'
 requirements:
-  - label: "Roll20 Pro"
-    url: ""
-  - label: "Roll20 Elite"
-    url: ""
+  - label: 'Roll20 Pro'
+    url: ''
+  - label: 'Roll20 Elite'
+    url: ''
 credits:
-  - name: "MidNiteShadow7"
-    url: "https://app.roll20.net/users/16506286/midniteshadow7"
+  - name: 'MidNiteShadow7'
+    url: 'https://app.roll20.net/users/16506286/midniteshadow7'
 featuredLinks:
-  - label: "GitHub"
-    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/ConditionTracker"
-  - label: "Issues"
-    url: "https://github.com/users/steverobertsuk/projects/3/views/1"
-  - label: "Changelog"
-    url: "https://github.com/Roll20/roll20-api-scripts/blob/master/ConditionTracker/CHANGELOG.md"
+  - label: 'GitHub'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/ConditionTracker'
+  - label: 'Issues'
+    url: 'https://github.com/users/steverobertsuk/projects/3/views/1'
+  - label: 'Changelog'
+    url: 'https://github.com/Roll20/roll20-api-scripts/blob/master/ConditionTracker/CHANGELOG.md'
 links:
-  - label: "Roll20 Forum Post"
-    url: "https://app.roll20.net/forum/post/12736090/script-condition-tracker"
-indexMedia: "../../assets/images/mods/mod-conditiontracker-cover.jpg"
-indexMediaAlt: "Condition Tracker mod cover image"
-hero: "../../assets/images/mods/mod-conditiontracker-cover.jpg"
-heroAlt: "Condition Tracker mod hero image"
+  - label: 'Roll20 Forum Post'
+    url: 'https://app.roll20.net/forum/post/12736090/script-condition-tracker'
+indexMedia: '../../assets/images/mods/mod-conditiontracker-cover.jpg'
+indexMediaAlt: 'Condition Tracker mod cover image'
+hero: '../../assets/images/mods/mod-conditiontracker-cover.jpg'
+heroAlt: 'Condition Tracker mod hero image'
 ---
 
 ## Condition Tracker Overview
@@ -66,11 +66,11 @@ Not every effect fits neatly into a predefined condition.
 
 Condition Tracker supports custom effect types including:
 
-* Spell effects
-* Abilities
-* Advantage
-* Disadvantage
-* Custom effects and homebrew mechanics
+- Spell effects
+- Abilities
+- Advantage
+- Disadvantage
+- Custom effects and homebrew mechanics
 
 This makes it ideal for tracking abilities such as Hunter's Mark, Hex, Booming Blade, class features, environmental hazards, and campaign-specific mechanics.
 
@@ -78,10 +78,10 @@ This makes it ideal for tracking abilities such as Hunter's Mark, Hex, Booming B
 
 Track effects that:
 
-* Last until manually removed.
-* Expire at the end of a source creature's turn.
-* Expire at the end of a target creature's turn.
-* Last for a specified number of rounds.
+- Last until manually removed.
+- Expire at the end of a source creature's turn.
+- Expire at the end of a target creature's turn.
+- Last for a specified number of rounds.
 
 Durations are updated automatically as combat progresses.
 
@@ -91,19 +91,19 @@ Some effects exist outside normal combat encounters.
 
 Saved Effects allow Game Masters to record persistent conditions such as:
 
-* Diseases
-* Curses
-* Long-term injuries
-* Hidden debuffs
-* Story-driven status effects
+- Diseases
+- Curses
+- Long-term injuries
+- Hidden debuffs
+- Story-driven status effects
 
 Effects can be stored indefinitely and later promoted into active combat tracking when required.
 
 Visibility settings allow effects to be:
 
-* Fully visible to players.
-* Partially hidden from players.
-* Completely GM-only.
+- Fully visible to players.
+- Partially hidden from players.
+- Completely GM-only.
 
 ### Multi-Target Support
 
@@ -111,18 +111,18 @@ Apply a condition to multiple selected tokens at the same time.
 
 This is particularly useful for:
 
-* Area-of-effect spells
-* Environmental hazards
-* Group buffs
-* Mass debuffs
+- Area-of-effect spells
+- Environmental hazards
+- Group buffs
+- Mass debuffs
 
 ### Token Reporting
 
 Generate detailed reports showing:
 
-* Conditions currently affecting a token.
-* Conditions applied by that token.
-* Active and saved effects.
+- Conditions currently affecting a token.
+- Conditions applied by that token.
+- Active and saved effects.
 
 This gives Game Masters a quick overview without having to manually search the Turn Tracker.
 
@@ -136,9 +136,9 @@ Markers remain synchronised with active effects and are only removed when no lon
 
 The built-in classification system automatically identifies:
 
-* Player characters
-* Non-player characters
-* Tokens that should be ignored
+- Player characters
+- Non-player characters
+- Tokens that should be ignored
 
 This helps keep menus clean and reduces accidental application of conditions to scenery, spell templates, and utility tokens.
 
@@ -148,21 +148,21 @@ This helps keep menus clean and reduces accidental application of conditions to 
 
 Condition Tracker includes support for a wide range of tabletop RPG systems, including:
 
-* Dungeons & Dragons 5th Edition
-* Dungeons & Dragons 4th Edition
-* Dungeons & Dragons 3.5
-* Pathfinder First Edition
-* Pathfinder Second Edition
-* Starfinder
-* Savage Worlds
-* Traveller
-* Call of Cthulhu
-* Delta Green
-* Cyberpunk RED
-* Alien RPG
-* Vampire: The Masquerade
-* Werewolf: The Apocalypse
-* and many more.
+- Dungeons & Dragons 5th Edition
+- Dungeons & Dragons 4th Edition
+- Dungeons & Dragons 3.5
+- Pathfinder First Edition
+- Pathfinder Second Edition
+- Starfinder
+- Savage Worlds
+- Traveller
+- Call of Cthulhu
+- Delta Green
+- Cyberpunk RED
+- Alien RPG
+- Vampire: The Masquerade
+- Werewolf: The Apocalypse
+- and many more.
 
 Game-specific condition lists and marker defaults can be selected through the configuration menu.
 
@@ -182,15 +182,15 @@ Right-to-left language support is also included for Hebrew.
 
 The mod includes numerous quality-of-life improvements designed to make campaign management easier:
 
-* Interactive setup wizard
-* Guided condition application workflow
-* Automatic macro installation
-* Built-in help handout generation
-* Duplicate condition prevention
-* Token deletion cleanup
-* Health-based condition cleanup prompts
-* Configurable status markers
-* Localised chat cards and menus
+- Interactive setup wizard
+- Guided condition application workflow
+- Automatic macro installation
+- Built-in help handout generation
+- Duplicate condition prevention
+- Token deletion cleanup
+- Health-based condition cleanup prompts
+- Configurable status markers
+- Localised chat cards and menus
 
 These features reduce administrative overhead and allow Game Masters to focus on running the game rather than maintaining bookkeeping.
 

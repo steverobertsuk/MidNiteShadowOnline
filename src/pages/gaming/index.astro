@@ -3,12 +3,10 @@ import CardMedia from '../../components/CardMedia.astro';
 import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import dndImage from "../../assets/images/dnd-characters/dnd-cover.jpg";
-import gamingImage from "../../assets/images/gaming-hero.jpg";
+import dndImage from '../../assets/images/dnd-characters/dnd-cover.jpg';
+import gamingImage from '../../assets/images/gaming-hero.jpg';
 
-const games = (await getCollection('gaming')).sort(
-  (a, b) => a.data.order - b.data.order,
-);
+const games = (await getCollection('gaming')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
@@ -25,9 +23,7 @@ const games = (await getCollection('gaming')).sort(
     <div class="container">
       <p class="eyebrow">Game spaces</p>
       <h1>Current games and connected projects</h1>
-      <p class="lede">
-        Browse the main online games that I am currently involved with.
-      </p>
+      <p class="lede">Browse the main online games that I am currently involved with.</p>
       <div class="grid" style="margin-top: 40px;">
         {
           games.map((game) => {
@@ -40,11 +36,12 @@ const games = (await getCollection('gaming')).sort(
                   indexMediaAlt={game.data.indexMediaAlt}
                   hero={game.data.hero}
                 />
-                <h3><a href={`/gaming/${slug}/`}>{game.data.title}</a></h3>
+                <h3>
+                  <a href={`/gaming/${slug}/`}>{game.data.title}</a>
+                </h3>
                 <p>{game.data.summary}</p>
                 <a class="button read-more-cta" href={`/gaming/${slug}/`}>
-                  Read more{' '}
-                  <i class="fa-solid fa-angles-right" aria-hidden="true" />
+                  Read more <i class="fa-solid fa-angles-right" aria-hidden="true" />
                 </a>
                 {game.data.tags.length > 0 && (
                   <div class="card-tags">
@@ -60,45 +57,27 @@ const games = (await getCollection('gaming')).sort(
           })
         }
         <article class="card large post-card">
-          <CardMedia
-          indexMedia={dndImage}
-          indexMediaAlt="Dungeons & Dragons cover image"
-        />
+          <CardMedia indexMedia={dndImage} indexMediaAlt="Dungeons & Dragons cover image" />
           <h3><a href="/dnd/">Dungeons &amp; Dragons</a></h3>
           <p>
-            I did not start playing D&amp;D until the summer of 2025, where I
-            have only played online using virtual tabletops. I quickly became
-            involved in character creation, worldbuilding, and modding APIs.
+            I did not start playing D&amp;D until the summer of 2025, where I have only played
+            online using virtual tabletops. I quickly became involved in character creation,
+            worldbuilding, and modding APIs.
           </p>
           <a class="button read-more-cta" href="/dnd/"
-            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
-            ></i></a
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a
           >
           <div class="card-tags">
             <span class="tag"
               ><i class="fa-solid fa-tag" aria-hidden="true"></i> Virtual Tabletops</span
             >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Campaigns</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Roll20</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> FoundryVTT</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> APIs</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Modding</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Creative</span
-            >
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Roll Play</span
-            >
+            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Campaigns</span>
+            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Roll20</span>
+            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> FoundryVTT</span>
+            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> APIs</span>
+            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Modding</span>
+            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Creative</span>
+            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Roll Play</span>
           </div>
         </article>
       </div>
@@ -109,51 +88,45 @@ const games = (await getCollection('gaming')).sort(
       <p class="eyebrow">Network links</p>
       <h2>Gaming network links</h2>
       <p class="lede">
-        Quick links to current gaming hubs, project spaces, and connected
-        sections across the site.
+        Quick links to current gaming hubs, project spaces, and connected sections across the site.
       </p>
       <div class="grid" style="margin-top: 24px;">
         <article class="card large post-card">
           <h3><a href="https://startrekonline.info">STO Info</a></h3>
           <p>
-            The live community app for Star Trek Online players, covering
-            account and character tracking plus a growing feature roadmap.
+            The live community app for Star Trek Online players, covering account and character
+            tracking plus a growing feature roadmap.
           </p>
-          <a class="button read-more-cta" href="https://startrekonline.info"
-            >Open site</a
-          >
+          <a class="button read-more-cta" href="https://startrekonline.info">Open site</a>
         </article>
         <article class="card large post-card">
           <h3><a href="/projects/sto-info/">STO Info project</a></h3>
           <p>
-            Project notes, development context, and roadmap-oriented information
-            for the Star Trek Online toolset.
+            Project notes, development context, and roadmap-oriented information for the Star Trek
+            Online toolset.
           </p>
           <a class="button read-more-cta" href="/projects/sto-info/"
-            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
-            ></i></a
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a
           >
         </article>
         <article class="card large post-card">
           <h3><a href="/projects/roll20-mods/">Roll20 Mods</a></h3>
           <p>
-            Tabletop tooling that supports RPG play with automation, token
-            utilities, and related project documentation.
+            Tabletop tooling that supports RPG play with automation, token utilities, and related
+            project documentation.
           </p>
           <a class="button read-more-cta" href="/projects/roll20-mods/"
-            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
-            ></i></a
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a
           >
         </article>
         <article class="card large post-card">
           <h3><a href="/projects/podcasting/">Podcasting project</a></h3>
           <p>
-            Media and production work tied to community output, show planning,
-            and wider geek-network activity.
+            Media and production work tied to community output, show planning, and wider
+            geek-network activity.
           </p>
           <a class="button read-more-cta" href="/projects/podcasting/"
-            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
-            ></i></a
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a
           >
         </article>
       </div>

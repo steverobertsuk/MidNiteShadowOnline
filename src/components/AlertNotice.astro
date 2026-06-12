@@ -7,6 +7,7 @@ const { variant, title } = Astro.props;
 const icon = variant === 'error' ? 'fa-circle-xmark' : 'fa-triangle-exclamation';
 const role = variant === 'error' ? 'alert' : 'note';
 ---
+
 <aside class={`alert-notice alert-notice--${variant}`} role={role}>
   <div class="alert-notice-icon">
     <i class={`fa-solid ${icon}`} aria-hidden="true"></i>

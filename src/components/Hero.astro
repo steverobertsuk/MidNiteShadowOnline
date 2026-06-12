@@ -44,7 +44,15 @@ const displayTags = tags.filter((tag) => tag && tag.trim().length > 0);
 <section class="hero">
   {
     useVideo ? (
-      <video autoplay muted loop playsinline preload={heroVideoPolicy.preload} poster={videoPoster} src={videoSrc} />
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload={heroVideoPolicy.preload}
+        poster={videoPoster}
+        src={videoSrc}
+      />
     ) : (
       <img
         class="hero-bg"
@@ -63,35 +71,43 @@ const displayTags = tags.filter((tag) => tag && tag.trim().length > 0);
       {eyebrow && <p class="eyebrow">{eyebrow}</p>}
       <h1>{title}</h1>
       {lede && <p class="lede">{lede}</p>}
-      {displayTags.length > 0 && (
-        <div class="meta">
-          {displayTags.map((tag) => (
-            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> {tag}</span>
-          ))}
-        </div>
-      )}
-      {buttons.length > 0 && (
-        <div class="hero-actions">
-          {buttons.map((btn) => (
-            <a class="button" href={btn.href}>
-              {btn.icon && <i class={btn.icon} aria-hidden="true"></i>} {btn.label}
-            </a>
-          ))}
-        </div>
-      )}
+      {
+        displayTags.length > 0 && (
+          <div class="meta">
+            {displayTags.map((tag) => (
+              <span class="tag">
+                <i class="fa-solid fa-tag" aria-hidden="true" /> {tag}
+              </span>
+            ))}
+          </div>
+        )
+      }
+      {
+        buttons.length > 0 && (
+          <div class="hero-actions">
+            {buttons.map((btn) => (
+              <a class="button" href={btn.href}>
+                {btn.icon && <i class={btn.icon} aria-hidden="true" />} {btn.label}
+              </a>
+            ))}
+          </div>
+        )
+      }
     </div>
-    {heroImage && (
-      <div class="hero-portrait">
-        <img
-          src={heroImage.src}
-          width={heroImage.width}
-          height={heroImage.height}
-          alt={heroImageAlt}
-          loading={heroImagePolicy.loading}
-          fetchpriority={heroImagePolicy.fetchpriority}
-          decoding={heroImagePolicy.decoding}
-        />
-      </div>
-    )}
+    {
+      heroImage && (
+        <div class="hero-portrait">
+          <img
+            src={heroImage.src}
+            width={heroImage.width}
+            height={heroImage.height}
+            alt={heroImageAlt}
+            loading={heroImagePolicy.loading}
+            fetchpriority={heroImagePolicy.fetchpriority}
+            decoding={heroImagePolicy.decoding}
+          />
+        </div>
+      )
+    }
   </div>
 </section>

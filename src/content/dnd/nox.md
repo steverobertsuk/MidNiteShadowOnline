@@ -1,14 +1,13 @@
 ---
-
-title: "Nox Hollowman"
+title: 'Nox Hollowman'
 summary: "A Lightfoot Halfling rogue whose journey from the streets of Baldur's Gate to the halls of Candlekeep is built on second chances, loyalty, and life in the shadows."
-category: "D&D Character"
+category: 'D&D Character'
 order: 1
 tags:
-  - "Character"
-  - "D&D5e"
-  - "Roll20"
-  - "In Progress"
+  - 'Character'
+  - 'D&D5e'
+  - 'Roll20'
+  - 'In Progress'
 links: []
 gallery:
   - src: '../../assets/images/dnd-characters/nox-portrait.jpg'
@@ -21,7 +20,6 @@ indexMedia: '../../assets/images/dnd-characters/nox-cover.jpg'
 indexMediaAlt: 'Nox Hollowman cover image'
 hero: '../../assets/images/dnd-characters/nox-hero.jpg'
 heroAlt: 'Nox Hollowman hero image'
-
 ---
 
 ## Overview
@@ -127,17 +125,17 @@ Behind the sharp comments and cautious attitude lies someone who genuinely wants
 
 ### Strengths
 
-* Observant and attentive
-* Quick-thinking under pressure
-* Fiercely loyal once trust is earned
-* Resourceful and adaptable
+- Observant and attentive
+- Quick-thinking under pressure
+- Fiercely loyal once trust is earned
+- Resourceful and adaptable
 
 ### Weaknesses
 
-* Slow to trust strangers
-* Struggles to ask for help
-* Often assumes the worst of people
-* Can be stubborn and overly cautious
+- Slow to trust strangers
+- Struggles to ask for help
+- Often assumes the worst of people
+- Can be stubborn and overly cautious
 
 ---
 
@@ -193,12 +191,12 @@ Although he escaped years ago, the shadow of the Gallowkin still lingers over pa
 
 ## Connections
 
-* Candlekeep
-* Baldur's Gate
-* Janussi
-* The Hands of the Keeper
-* Shade
-* The Gallowkin
+- Candlekeep
+- Baldur's Gate
+- Janussi
+- The Hands of the Keeper
+- Shade
+- The Gallowkin
 
 ---
 

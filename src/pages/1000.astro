@@ -1,9 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import AlertNotice from "../components/AlertNotice.astro";
-import Hero from "../components/Hero.astro";
-import profileImage from "../assets/images/mns7_profile.webp";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AlertNotice from '../components/AlertNotice.astro';
+import Hero from '../components/Hero.astro';
+import profileImage from '../assets/images/mns7_profile.webp';
 ---
+
 <BaseLayout
   title="Connection Error | MidNite Shadow Online"
   description="Cloudflare could not reach this destination."
@@ -19,8 +20,8 @@ import profileImage from "../assets/images/mns7_profile.webp";
     <div class="container prose">
       <AlertNotice variant="error" title="Connection Error">
         <p>
-          Something went wrong between Cloudflare and this site. The details
-          below explain what happened - please try again in a moment.
+          Something went wrong between Cloudflare and this site. The details below explain what
+          happened - please try again in a moment.
         </p>
       </AlertNotice>
       <!-- Cloudflare replaces this token with its diagnostic box when this page

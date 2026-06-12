@@ -1,14 +1,14 @@
 ---
-title: "Star Trek Online"
-summary: "Star Trek Online is a free-to-play MMO that I started playing in 2011 and have been involved with ever since. I have been a player, fleet member, fleet leader, community moderator, content creator, and developer of a companion app for the game."
-category: "Gaming"
+title: 'Star Trek Online'
+summary: 'Star Trek Online is a free-to-play MMO that I started playing in 2011 and have been involved with ever since. I have been a player, fleet member, fleet leader, community moderator, content creator, and developer of a companion app for the game.'
+category: 'Gaming'
 order: 1
 tags:
-  - "Star Trek"
-  - "PC"
-  - "Xbox"
-  - "PlayStation"
-  - "MMO"
+  - 'Star Trek'
+  - 'PC'
+  - 'Xbox'
+  - 'PlayStation'
+  - 'MMO'
 indexMedia: '../../assets/images/star-trek-online-cover.jpg'
 indexMediaAlt: 'Star Trek Online cover image'
 hero: '../../assets/images/star-trek-online-hero.jpg'
@@ -16,14 +16,14 @@ heroAlt: 'An in-game screenshot from Star Trek Online'
 heroForeground: '../../assets/images/star-trek-online-logo.png'
 heroForegroundAlt: 'Star Trek Online logo'
 links:
-  - label: "Play Star Trek Online"
-    url: "https://playstarkonline.com/"
-  - label: " About STO Info"
-    url: "/projects/sto-info/"
-  - label: "About Tribbles in Ecstasy"
-    url: "/projects/podcasting/tribbles-in-ecstasy/"
-  - label: "STO Info App"
-    url: "https://startrekonline.info/"
+  - label: 'Play Star Trek Online'
+    url: 'https://playstarkonline.com/'
+  - label: ' About STO Info'
+    url: '/projects/sto-info/'
+  - label: 'About Tribbles in Ecstasy'
+    url: '/projects/podcasting/tribbles-in-ecstasy/'
+  - label: 'STO Info App'
+    url: 'https://startrekonline.info/'
 ---
 
 ## Overview
@@ -76,10 +76,10 @@ This section of MidNite Shadow Online is dedicated to my Star Trek Online journe
 
 Eventually I also hope to include more general STO content such as:
 
-* game guides and tutorials
-* fleet and community resources
-* screenshots and other creative projects
-* commentary on game updates and events
-* development articles relating to STO-related tools and applications
+- game guides and tutorials
+- fleet and community resources
+- screenshots and other creative projects
+- commentary on game updates and events
+- development articles relating to STO-related tools and applications
 
 Time will tell how much of this I can actually deliver on, but I am excited to share my love of Star Trek Online and the projects it inspires.

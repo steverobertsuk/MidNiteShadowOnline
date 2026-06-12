@@ -1,8 +1,8 @@
 ---
-title: "Podcasting & Media"
-summary: "Behind-the-scenes notes for podcast production, Holosuite Media, Tribbles in Ecstasy, overlays, streaming and creative workflows."
-category: "Media production"
-status: "Ongoing"
+title: 'Podcasting & Media'
+summary: 'Behind-the-scenes notes for podcast production, Holosuite Media, Tribbles in Ecstasy, overlays, streaming and creative workflows.'
+category: 'Media production'
+status: 'Ongoing'
 order: 4
 links: []
 indexMedia: '../../assets/images/podcasting-and-media-cover.jpg'

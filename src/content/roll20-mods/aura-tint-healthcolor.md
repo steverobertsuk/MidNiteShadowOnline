@@ -1,46 +1,46 @@
 ---
-title: "Aura/Tint HealthColor"
-summary: "Automatically colourises tokens based on their remaining health, providing instant visual feedback through auras, tint overlays and effects."
+title: 'Aura/Tint HealthColor'
+summary: 'Automatically colourises tokens based on their remaining health, providing instant visual feedback through auras, tint overlays and effects.'
 order: 3
-category: "Visual feedback"
-postCategory: "healthcolors"
-status: "Active"
+category: 'Visual feedback'
+postCategory: 'healthcolors'
+status: 'Active'
 versions:
-  - label: "One-Click"
-    version: "v2.1.3"
-    url: ""
-  - label: "GitHub"
-    version: "v2.1.3"
-    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors/2.1.3"
-  - label: "Development Download"
-    version: "v2.1.4.beta.1"
-    url: "https://www.dropbox.com/scl/fi/gteg92lz330dpk0wjujiz/HealthColors_v2.1.4.beta.1.zip?rlkey=pe35742kf9gwn0baqfj8w38uj&dl=0"
+  - label: 'One-Click'
+    version: 'v2.1.3'
+    url: ''
+  - label: 'GitHub'
+    version: 'v2.1.3'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors/2.1.3'
+  - label: 'Development Download'
+    version: 'v2.1.4.beta.1'
+    url: 'https://www.dropbox.com/scl/fi/gteg92lz330dpk0wjujiz/HealthColors_v2.1.4.beta.1.zip?rlkey=pe35742kf9gwn0baqfj8w38uj&dl=0'
 lastUpdated: 2026-05-22
 compatibility:
-  - label: "Jumpgate"
-    url: "https://pages.roll20.net/redesign"
+  - label: 'Jumpgate'
+    url: 'https://pages.roll20.net/redesign'
 requirements:
-  - label: "Roll20 Pro"
-    url: ""
-  - label: "Roll20 Elite"
-    url: ""
+  - label: 'Roll20 Pro'
+    url: ''
+  - label: 'Roll20 Elite'
+    url: ''
 credits:
-  - name: "MidNiteShadow7"
-    url: "https://app.roll20.net/users/16506286/midniteshadow7"
+  - name: 'MidNiteShadow7'
+    url: 'https://app.roll20.net/users/16506286/midniteshadow7'
 featuredLinks:
-  - label: "GitHub"
-    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors"
-  - label: "Issues"
-    url: "https://github.com/users/steverobertsuk/projects/2/views/1"
-  - label: "Changelog"
-    url: "https://github.com/Roll20/roll20-api-scripts/blob/master/HealthColors/CHANGELOG.md"
+  - label: 'GitHub'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors'
+  - label: 'Issues'
+    url: 'https://github.com/users/steverobertsuk/projects/2/views/1'
+  - label: 'Changelog'
+    url: 'https://github.com/Roll20/roll20-api-scripts/blob/master/HealthColors/CHANGELOG.md'
 links:
-  - label: "Roll20 Forum Post"
-    url: "https://app.roll20.net/forum/post/12719378/aura-slash-tint-healthcolors-api-v2-dot-0-0"
-indexMedia: "../../assets/images/mods/mod-healthcolors-cover.jpg"
-indexMediaAlt: "Aura/Tint HealthColor mod cover image"
-hero: "../../assets/images/mods/mod-healthcolors-cover.jpg"
-heroAlt: "Aura/Tint HealthColor mod hero image"
+  - label: 'Roll20 Forum Post'
+    url: 'https://app.roll20.net/forum/post/12719378/aura-slash-tint-healthcolors-api-v2-dot-0-0'
+indexMedia: '../../assets/images/mods/mod-healthcolors-cover.jpg'
+indexMediaAlt: 'Aura/Tint HealthColor mod cover image'
+hero: '../../assets/images/mods/mod-healthcolors-cover.jpg'
+heroAlt: 'Aura/Tint HealthColor mod hero image'
 ---
 
 ## Aura/Tint HealthColor Overview

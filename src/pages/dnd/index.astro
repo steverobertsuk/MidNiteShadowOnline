@@ -3,12 +3,10 @@ import CardMedia from '../../components/CardMedia.astro';
 import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import dndImage from "../../assets/images/dnd-characters/dnd-cover.jpg";
-import modsImage from "../../assets/images/mods/roll20-mods-cover.jpg";
+import dndImage from '../../assets/images/dnd-characters/dnd-cover.jpg';
+import modsImage from '../../assets/images/mods/roll20-mods-cover.jpg';
 
-const dndEntries = (await getCollection('dnd')).sort(
-  (a, b) => a.data.order - b.data.order,
-);
+const dndEntries = (await getCollection('dnd')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
@@ -26,8 +24,8 @@ const dndEntries = (await getCollection('dnd')).sort(
       <p class="eyebrow">Characters & tools</p>
       <h1>Campaign leads and supporting tools</h1>
       <p class="lede">
-        Explore the current D&D character pages, then jump to the Roll20 Mods
-        project for tabletop automation and supporting utilities.
+        Explore the current D&D character pages, then jump to the Roll20 Mods project for tabletop
+        automation and supporting utilities.
       </p>
       <div class="grid" style="margin-top: 40px;">
         {
@@ -41,11 +39,12 @@ const dndEntries = (await getCollection('dnd')).sort(
                   indexMediaAlt={entry.data.indexMediaAlt}
                   hero={entry.data.hero}
                 />
-                <h3><a href={`/dnd/${slug}/`}>{entry.data.title}</a></h3>
+                <h3>
+                  <a href={`/dnd/${slug}/`}>{entry.data.title}</a>
+                </h3>
                 <p>{entry.data.summary}</p>
                 <a class="button read-more-cta" href={`/dnd/${slug}/`}>
-                  Read more{' '}
-                  <i class="fa-solid fa-angles-right" aria-hidden="true" />
+                  Read more <i class="fa-solid fa-angles-right" aria-hidden="true" />
                 </a>
                 {entry.data.tags.length > 0 && (
                   <div class="card-tags">
@@ -61,23 +60,17 @@ const dndEntries = (await getCollection('dnd')).sort(
           })
         }
         <article class="card large post-card">
-          <CardMedia
-            indexMedia={modsImage}
-            indexMediaAlt="Roll20 Mods cover image"
-          />
+          <CardMedia indexMedia={modsImage} indexMediaAlt="Roll20 Mods cover image" />
           <h3><a href="/projects/roll20-mods/">Roll20 Mods</a></h3>
           <p>
-            Open the Roll20 Mods project page for token tools, condition
-            automation, health colour scripts, and related tabletop workflows.
+            Open the Roll20 Mods project page for token tools, condition automation, health colour
+            scripts, and related tabletop workflows.
           </p>
           <a class="button read-more-cta" href="/projects/roll20-mods/"
-            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"
-            ></i></a
+            >Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a
           >
           <div class="card-tags">
-            <span class="tag"
-              ><i class="fa-solid fa-tag" aria-hidden="true"></i> Project</span
-            >
+            <span class="tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> Project</span>
             <span class="tag"
               ><i class="fa-solid fa-tag" aria-hidden="true"></i> Tabletop tooling</span
             >

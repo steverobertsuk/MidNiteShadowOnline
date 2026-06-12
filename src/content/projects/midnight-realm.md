@@ -1,8 +1,8 @@
 ---
-title: "Midnight Realm"
-summary: "A dark episodic tabletop setting built around a floating island, perpetual night, the Orb of Osuvox and modular one-shot adventures."
-category: "D&D / Worldbuilding"
-status: "Concept development"
+title: 'Midnight Realm'
+summary: 'A dark episodic tabletop setting built around a floating island, perpetual night, the Orb of Osuvox and modular one-shot adventures.'
+category: 'D&D / Worldbuilding'
+status: 'Concept development'
 order: 3
 links: []
 indexMedia: '../../assets/images/the-midnight-realm-cover.jpg'
@@ -25,11 +25,11 @@ Every episode of The Midnight Realm is intended to stand on its own while contri
 
 The structure has been designed to support:
 
-* New and experienced players alike
-* Convention-style games and community events
-* Flexible player attendance
-* Consistent session lengths
-* Repeatable preparation processes for Game Masters
+- New and experienced players alike
+- Convention-style games and community events
+- Flexible player attendance
+- Consistent session lengths
+- Repeatable preparation processes for Game Masters
 
 This approach allows the setting to grow organically without requiring every participant to attend every session.
 
@@ -41,13 +41,13 @@ Rather than consisting of disconnected regions, the island follows a spiralling 
 
 Players may explore locations such as:
 
-* Forgotten settlements consumed by darkness
-* Twisted forests where strange creatures hunt beneath blackened canopies
-* Ancient fortresses abandoned by their creators
-* Frozen highlands battered by unnatural storms
-* Crystal caverns infused with unstable magic
-* Volcanic landscapes scarred by ancient conflicts
-* The looming fortress that crowns the mountain at the island's heart
+- Forgotten settlements consumed by darkness
+- Twisted forests where strange creatures hunt beneath blackened canopies
+- Ancient fortresses abandoned by their creators
+- Frozen highlands battered by unnatural storms
+- Crystal caverns infused with unstable magic
+- Volcanic landscapes scarred by ancient conflicts
+- The looming fortress that crowns the mountain at the island's heart
 
 The Midnight Realm should feel ancient, wounded and slowly collapsing under the weight of forces beyond mortal understanding.
 
@@ -73,13 +73,13 @@ The Midnight Realm has been developed with online play in mind from the very beg
 
 The project provides an opportunity to explore many aspects of tabletop creation, including:
 
-* Custom Roll20 implementations
-* Original API scripts and automation
-* Encounter design methodologies
-* Maps and environmental storytelling
-* Token creation and asset management
-* House rules and streamlined mechanics
-* Session preparation workflows
+- Custom Roll20 implementations
+- Original API scripts and automation
+- Encounter design methodologies
+- Maps and environmental storytelling
+- Token creation and asset management
+- House rules and streamlined mechanics
+- Session preparation workflows
 
 As development continues, these resources will be showcased alongside the adventures themselves.
 

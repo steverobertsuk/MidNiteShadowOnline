@@ -1,6 +1,6 @@
 {
   "name": "midnite-shadow-online",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "type": "module",
   "private": true,
   "scripts": {
@@ -20,6 +20,8 @@
     "@astrojs/check": "^0.9.9",
     "@astrojs/cloudflare": "^13.7.0",
     "@astrojs/mdx": "^6.0.3",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/cinzel": "^5.2.8",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource-variable/raleway": "^5.2.8",

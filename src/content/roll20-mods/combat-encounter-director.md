@@ -1,29 +1,29 @@
 ---
-title: "Combat Encounter Director"
-summary: "Provides a powerful command centre for scaling encounters, managing reinforcements, controlling battlefield visibility."
+title: 'Combat Encounter Director'
+summary: 'Provides a powerful command centre for scaling encounters, managing reinforcements, controlling battlefield visibility.'
 order: 2
-category: "Encounter management"
-postCategory: "combat-encounter-director"
-status: "Beta Testing"
+category: 'Encounter management'
+postCategory: 'combat-encounter-director'
+status: 'Beta Testing'
 versions:
-  - label: "One-Click"
-    version: "Unavailable"
-    url: ""
-  - label: "Direcct Download"
-    version: "v1.0.0.beta.1"
-    url: "https://www.dropbox.com/scl/fi/130l98xeq0w2nt4e7kb5m/CombatEncounterDirector_v1.0.0.beta.1.zip?rlkey=4vdsvviqm27ijvfgq3i7uk86e&dl=0"
+  - label: 'One-Click'
+    version: 'Unavailable'
+    url: ''
+  - label: 'Direcct Download'
+    version: 'v1.0.0.beta.1'
+    url: 'https://www.dropbox.com/scl/fi/130l98xeq0w2nt4e7kb5m/CombatEncounterDirector_v1.0.0.beta.1.zip?rlkey=4vdsvviqm27ijvfgq3i7uk86e&dl=0'
 lastUpdated: 2026-06-07
 compatibility:
-  - label: "Jumpgate"
-    url: "https://pages.roll20.net/redesign"
+  - label: 'Jumpgate'
+    url: 'https://pages.roll20.net/redesign'
 requirements:
-  - label: "Roll20 Pro"
-    url: ""
-  - label: "Roll20 Elite"
-    url: ""
+  - label: 'Roll20 Pro'
+    url: ''
+  - label: 'Roll20 Elite'
+    url: ''
 credits:
-  - name: "MidNiteShadow7"
-    url: "https://app.roll20.net/users/16506286/midniteshadow7"
+  - name: 'MidNiteShadow7'
+    url: 'https://app.roll20.net/users/16506286/midniteshadow7'
 # featuredLinks:
 #   - label: "GitHub"
 #     url: "#"
@@ -34,10 +34,10 @@ credits:
 # links:
 #   - label: "Roll20 Forum Post"
 #     url: "#"
-indexMedia: "../../assets/images/mods/mod-combatencounterdirector-cover.jpg"
-indexMediaAlt: "Combat Encounter Director mod cover image"
-hero: "../../assets/images/mods/mod-combatencounterdirector-cover.jpg"
-heroAlt: "Combat Encounter Director mod hero image"
+indexMedia: '../../assets/images/mods/mod-combatencounterdirector-cover.jpg'
+indexMediaAlt: 'Combat Encounter Director mod cover image'
+hero: '../../assets/images/mods/mod-combatencounterdirector-cover.jpg'
+heroAlt: 'Combat Encounter Director mod hero image'
 ---
 
 ## Combat Encounter Director Overview
@@ -66,10 +66,10 @@ Transform ordinary creatures into memorable encounters.
 
 Apply presets such as:
 
-* Minion
-* Elite
-* Boss
-* Legendary
+- Minion
+- Elite
+- Boss
+- Legendary
 
 Each preset adjusts creature statistics to reflect the intended role within the encounter.
 
@@ -85,10 +85,10 @@ Move tokens between layers with a single command.
 
 Game Masters can quickly:
 
-* Hide creatures on the GM layer.
-* Reveal ambushes.
-* Shift scenery to the map layer.
-* Restore normal battlefield visibility.
+- Hide creatures on the GM layer.
+- Reveal ambushes.
+- Shift scenery to the map layer.
+- Restore normal battlefield visibility.
 
 ### Position Recovery
 
@@ -102,10 +102,10 @@ Store the state of an encounter and restore it later.
 
 Templates preserve information such as:
 
-* Token positions
-* Layer assignments
-* Health values
-* Armour Class values
+- Token positions
+- Layer assignments
+- Health values
+- Armour Class values
 
 This makes it easy to prepare reusable encounters or reset failed encounters during testing.
 
@@ -149,11 +149,11 @@ Combat Encounter Director has been developed using modern JavaScript practices a
 
 The project includes:
 
-* Comprehensive manual testing procedures.
-* Extensive validation and error handling.
-* Persistent configuration management.
-* Automated localisation workflows.
-* Journal-driven user interfaces designed for rapid in-game use.
+- Comprehensive manual testing procedures.
+- Extensive validation and error handling.
+- Persistent configuration management.
+- Automated localisation workflows.
+- Journal-driven user interfaces designed for rapid in-game use.
 
 The mod continues to evolve based on practical Roll20 campaign experience and feedback from the wider community.
 

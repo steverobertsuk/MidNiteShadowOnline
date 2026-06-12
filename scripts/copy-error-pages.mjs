@@ -15,21 +15,21 @@
  *   /under-attack/index.html → /_errors/under-attack.html (Non-Interactive Challenge slot)
  */
 
-import { copyFileSync, existsSync, mkdirSync } from "node:fs";
-import { join } from "node:path";
+import { copyFileSync, existsSync, mkdirSync } from 'node:fs';
+import { join } from 'node:path';
 
-const distArg = process.argv[2] ?? "dist";
-const clientDir = join(process.cwd(), distArg, "client");
-const errorsDir = join(clientDir, "_errors");
+const distArg = process.argv[2] ?? 'dist';
+const clientDir = join(process.cwd(), distArg, 'client');
+const errorsDir = join(clientDir, '_errors');
 
 const sources = {
-  "404.html": "404.html",
-  "500.html": "500.html",
-  "403/index.html": "403.html",
-  "503/index.html": "503.html",
-  "1000/index.html": "1000.html",
-  "challenge/index.html": "challenge.html",
-  "under-attack/index.html": "under-attack.html",
+  '404.html': '404.html',
+  '500.html': '500.html',
+  '403/index.html': '403.html',
+  '503/index.html': '503.html',
+  '1000/index.html': '1000.html',
+  'challenge/index.html': 'challenge.html',
+  'under-attack/index.html': 'under-attack.html',
 };
 
 mkdirSync(errorsDir, { recursive: true });
@@ -49,4 +49,4 @@ if (failed > 0) {
   process.exit(1);
 }
 
-console.log("Error pages copied to /_errors/.");
+console.log('Error pages copied to /_errors/.');

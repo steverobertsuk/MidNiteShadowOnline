@@ -1,9 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import AlertNotice from "../components/AlertNotice.astro";
-import Hero from "../components/Hero.astro";
-import profileImage from "../assets/images/mns7_profile.webp";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AlertNotice from '../components/AlertNotice.astro';
+import Hero from '../components/Hero.astro';
+import profileImage from '../assets/images/mns7_profile.webp';
 ---
+
 <BaseLayout
   title="500 — Server Error | MidNite Shadow Online"
   description="An unexpected server error occurred."
@@ -19,8 +20,8 @@ import profileImage from "../assets/images/mns7_profile.webp";
     <div class="container prose">
       <AlertNotice variant="error" title="Internal Server Error">
         <p>
-          The server encountered an unexpected condition. This is not your fault.
-          Please try again in a moment, or return to the home page.
+          The server encountered an unexpected condition. This is not your fault. Please try again
+          in a moment, or return to the home page.
         </p>
       </AlertNotice>
       <!-- Cloudflare replaces this token with its diagnostic box when this page

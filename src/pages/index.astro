@@ -6,23 +6,30 @@ import ProjectCard from '../components/ProjectCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { formatPostDate, postIdToSlug, toSlug } from '../lib/postCategory';
 import { getResponsiveImagePreloads } from '../lib/mediaPriority';
+import { FALLBACK_SITE } from '../lib/site';
+import { websiteGraph } from '../lib/structuredData';
 import CategoryFilter from '../components/CategoryFilter.astro';
-const projects = (await getCollection('projects')).sort(
-  (a, b) => a.data.order - b.data.order,
-);
+
+const homeDescription =
+  'MidNiteShadow Online is the home for gaming projects, STO Info, tabletop worlds, Roll20 mods and podcasting production notes.';
+const jsonLd = websiteGraph(Astro.site ?? FALLBACK_SITE, homeDescription);
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const posts = (await getCollection('posts')).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
-const categories = [...new Set(posts.map((p) => p.data.category))].sort().map((name) => ({ name, slug: toSlug(name) }));
+const categories = [...new Set(posts.map((p) => p.data.category))]
+  .sort()
+  .map((name) => ({ name, slug: toSlug(name) }));
 const heroResponsivePreloads = getResponsiveImagePreloads(
   '/assets/images/hero_purple_embers.webp',
-  '/assets/images/hero_purple_embers.webp',
+  '/assets/images/hero_purple_embers.webp'
 );
 ---
 
 <BaseLayout
-  description="MidNiteShadow Online is the home for gaming projects, STO Info, tabletop worlds, Roll20 mods and podcasting production notes."
+  description={homeDescription}
   responsiveImagePreloads={heroResponsivePreloads}
+  jsonLd={jsonLd}
 >
   <Hero
     eyebrow="Gaming · Tools · Worlds · Media"
@@ -31,7 +38,13 @@ const heroResponsivePreloads = getResponsiveImagePreloads(
     video={true}
     heroImage={mns7Profile}
     heroImageAlt="MidNiteShadow7 — hooded figure with glowing purple eyes"
-    buttons={[{ label: 'About MidNiteShadow', href: '/about/', icon: 'fa-solid fa-user-astronaut' }]}
+    buttons={[
+      {
+        label: 'About MidNiteShadow',
+        href: '/about/',
+        icon: 'fa-solid fa-user-astronaut',
+      },
+    ]}
   />
 
   <section class="section">
@@ -41,7 +54,9 @@ const heroResponsivePreloads = getResponsiveImagePreloads(
           <p class="eyebrow">Featured work</p>
           <h2>Projects and worlds</h2>
         </div>
-        <a class="button" href="/projects/"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> View all projects</a>
+        <a class="button" href="/projects/"
+          ><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> View all projects</a
+        >
       </div>
       <div class="grid">
         {projects.map((project) => <ProjectCard project={project} />)}
@@ -52,10 +67,16 @@ const heroResponsivePreloads = getResponsiveImagePreloads(
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <div><p class="eyebrow"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> Latest</p><h2>Recent posts</h2></div>
+        <div>
+          <p class="eyebrow">
+            <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> Latest
+          </p><h2>Recent posts</h2>
+        </div>
         <div class="section-head-actions">
           <CategoryFilter categories={categories} />
-          <a class="button" href="/posts/"><i class="fa-solid fa-newspaper" aria-hidden="true"></i> View all posts</a>
+          <a class="button" href="/posts/"
+            ><i class="fa-solid fa-newspaper" aria-hidden="true"></i> View all posts</a
+          >
         </div>
       </div>
       <div class="grid posts-grid">
@@ -66,40 +87,37 @@ const heroResponsivePreloads = getResponsiveImagePreloads(
               return (
                 <article class="card post-card">
                   <div class="post-meta-inline">
-                    <time
-                      class="post-date"
-                      datetime={post.data.date.toISOString()}
-                    >
-                      <i class="fa-regular fa-calendar" aria-hidden="true"></i> Posted: {formatPostDate(post.data.date)}
+                    <time class="post-date" datetime={post.data.date.toISOString()}>
+                      <i class="fa-regular fa-calendar" aria-hidden="true" /> Posted:{' '}
+                      {formatPostDate(post.data.date)}
                     </time>
                     <span class="post-meta-separator">•</span>
                     <a
                       class="category-meta-link"
                       href={`/posts/category/${toSlug(post.data.category)}/`}
                     >
-                      <i class="fa-solid fa-folder-open" aria-hidden="true"></i> {post.data.category}
+                      <i class="fa-solid fa-folder-open" aria-hidden="true" /> {post.data.category}
                     </a>
                   </div>
                   <h3>
                     <a href={`/posts/${postSlug}/`}>{post.data.title}</a>
                   </h3>
                   <p>{post.data.summary}</p>
-                  <a class="button read-more-cta" href={`/posts/${postSlug}/`}>Read more <i class="fa-solid fa-angles-right" aria-hidden="true"></i></a>
+                  <a class="button read-more-cta" href={`/posts/${postSlug}/`}>
+                    Read more <i class="fa-solid fa-angles-right" aria-hidden="true" />
+                  </a>
                   {post.data.tags.length > 0 && (
                     <div class="card-tags">
                       {post.data.tags.map((tag) => (
-                        <a
-                          class="tag tag-cta"
-                          href={`/posts/tag/${toSlug(tag)}/`}
-                        >
-                          <i class="fa-solid fa-tag" aria-hidden="true"></i> {tag}
+                        <a class="tag tag-cta" href={`/posts/tag/${toSlug(tag)}/`}>
+                          <i class="fa-solid fa-tag" aria-hidden="true" /> {tag}
                         </a>
                       ))}
                     </div>
                   )}
                 </article>
               );
-            })(),
+            })()
           )
         }
       </div>

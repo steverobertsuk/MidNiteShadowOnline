@@ -1,14 +1,13 @@
 ---
-
-title: "Sir William Thatcher Ulrich"
-summary: "A knight of the Vigilant Order who carries the burden of a village lost to darkness and the broken lantern of a fallen mentor."
-category: "D&D Character"
+title: 'Sir William Thatcher Ulrich'
+summary: 'A knight of the Vigilant Order who carries the burden of a village lost to darkness and the broken lantern of a fallen mentor.'
+category: 'D&D Character'
 order: 3
 tags:
-  - "Character"
-  - "D&D5e"
-  - "FoundryVTT"
-  - "In Development"
+  - 'Character'
+  - 'D&D5e'
+  - 'FoundryVTT'
+  - 'In Development'
 links: []
 gallery:
   - src: '../../assets/images/dnd-characters/ulrich-portrait.jpg'
@@ -17,7 +16,6 @@ indexMedia: '../../assets/images/dnd-characters/ulrich-cover.jpg'
 indexMediaAlt: 'Sir William Thatcher Ulrich cover image'
 hero: '../../assets/images/dnd-characters/ulrich-hero.jpg'
 heroAlt: 'Sir William Thatcher Ulrich hero image'
-
 ---
 
 ## Overview
@@ -144,7 +142,7 @@ Though the divine light ultimately forced the creature to retreat, the cost was 
 
 Before dying, Sir Colville spoke his final words:
 
-*"Protect the innocent."*
+_"Protect the innocent."_
 
 Those words became the guiding principle of William's life.
 
@@ -242,19 +240,19 @@ Though he often appears fearless, he carries deep emotional scars from the loss 
 
 ### Strengths
 
-* Courageous in the face of danger
-* Natural leader and protector
-* Deeply compassionate
-* Strong sense of duty
-* Inspires confidence in others
+- Courageous in the face of danger
+- Natural leader and protector
+- Deeply compassionate
+- Strong sense of duty
+- Inspires confidence in others
 
 ### Weaknesses
 
-* Carries significant survivor's guilt
-* Often blames himself for failures
-* Will risk himself too readily to save others
-* Haunted by memories of the Shadow Demon
-* Finds it difficult to forgive his own mistakes
+- Carries significant survivor's guilt
+- Often blames himself for failures
+- Will risk himself too readily to save others
+- Haunted by memories of the Shadow Demon
+- Finds it difficult to forgive his own mistakes
 
 ---
 
@@ -332,15 +330,15 @@ Undead, fiends, shadow entities, and other supernatural horrors that threaten in
 
 ## Connections
 
-* Vigilant Order
-* John Thatcher
-* Sir Colville
-* Roland
-* Wat
-* Kate
-* Geoffrey
-* Shadow Demon
-* Lantern of Saint Jocelyn
+- Vigilant Order
+- John Thatcher
+- Sir Colville
+- Roland
+- Wat
+- Kate
+- Geoffrey
+- Shadow Demon
+- Lantern of Saint Jocelyn
 
 ---
 

@@ -1,43 +1,43 @@
 ---
-title: "Swap Token Positions"
+title: 'Swap Token Positions'
 summary: "Moves two selected tokens into each other's spaces without manual drag-and-drop cleanup or layer mistakes."
 order: 4
-category: "Token movement"
-postCategory: "swap-token-positions"
-status: "Active"
+category: 'Token movement'
+postCategory: 'swap-token-positions'
+status: 'Active'
 versions:
-  - label: "One-Click"
-    version: "Unavailable"
-    url: ""
-  - label: "GitHub"
-    version: "v2.1.0"
-    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/SwapTokenPositions/2.1.0"
+  - label: 'One-Click'
+    version: 'Unavailable'
+    url: ''
+  - label: 'GitHub'
+    version: 'v2.1.0'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/SwapTokenPositions/2.1.0'
 lastUpdated: 2026-05-19
 compatibility:
-  - label: "Jumpgate"
-    url: "https://pages.roll20.net/redesign"
+  - label: 'Jumpgate'
+    url: 'https://pages.roll20.net/redesign'
 requirements:
-  - label: "Roll20 Pro"
-    url: ""
-  - label: "Roll20 Elite"
-    url: ""
+  - label: 'Roll20 Pro'
+    url: ''
+  - label: 'Roll20 Elite'
+    url: ''
 credits:
-  - name: "MidNiteShadow7"
-    url: "https://app.roll20.net/users/16506286/midniteshadow7"
+  - name: 'MidNiteShadow7'
+    url: 'https://app.roll20.net/users/16506286/midniteshadow7'
 featuredLinks:
-  - label: "GitHub"
-    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/SwapTokenPositions"
-  - label: "Issues"
-    url: "https://github.com/users/steverobertsuk/projects/4/views/1"
-  - label: "Changelog"
-    url: "https://github.com/Roll20/roll20-api-scripts/blob/master/SwapTokenPositions/CHANGELOG.md"
+  - label: 'GitHub'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/SwapTokenPositions'
+  - label: 'Issues'
+    url: 'https://github.com/users/steverobertsuk/projects/4/views/1'
+  - label: 'Changelog'
+    url: 'https://github.com/Roll20/roll20-api-scripts/blob/master/SwapTokenPositions/CHANGELOG.md'
 links:
-  - label: "Roll20 Forum Post"
-    url: "#"
-indexMedia: "../../assets/images/mods/mod-swaptokenpositions-cover.jpg"
-indexMediaAlt: "Swap Token Positions mod cover image"
-hero: "../../assets/images/mods/mod-swaptokenpositions-cover.jpg"
-heroAlt: "Swap Token Positions mod hero image"
+  - label: 'Roll20 Forum Post'
+    url: '#'
+indexMedia: '../../assets/images/mods/mod-swaptokenpositions-cover.jpg'
+indexMediaAlt: 'Swap Token Positions mod cover image'
+hero: '../../assets/images/mods/mod-swaptokenpositions-cover.jpg'
+heroAlt: 'Swap Token Positions mod hero image'
 ---
 
 ## Swap Token Positions Overview
@@ -60,12 +60,12 @@ The process is fully automated, allowing players and Game Masters to reposition 
 
 This makes it ideal for:
 
-* Teleportation abilities
-* Tactical movement powers
-* Magical item effects
-* Trap and puzzle mechanics
-* NPC and monster abilities
-* Narrative scene transitions
+- Teleportation abilities
+- Tactical movement powers
+- Magical item effects
+- Trap and puzzle mechanics
+- NPC and monster abilities
+- Narrative scene transitions
 
 ### Cinematic Teleportation Effects
 
@@ -73,11 +73,11 @@ Version 2 introduced a completely redesigned animation system built around a sta
 
 Each swap can be customised with:
 
-* Origin effects
-* Travel effects
-* Destination effects
-* Adjustable timing controls
-* Visibility options during transit
+- Origin effects
+- Travel effects
+- Destination effects
+- Adjustable timing controls
+- Visibility options during transit
 
 The result is a movement system that can feel dramatically different depending on the effect being used.
 
@@ -87,13 +87,13 @@ A teleportation spell can appear as an arcane portal, while a monster ability mi
 
 Several ready-to-use presets are included for common use cases:
 
-* Portal
-* Lightning
-* Shadow
-* Fire
-* Magic
-* Transport
-* Instant
+- Portal
+- Lightning
+- Shadow
+- Fire
+- Magic
+- Transport
+- Instant
 
 These presets allow Game Masters to quickly create distinctive visual styles without configuring individual effects.
 
@@ -103,10 +103,10 @@ In addition to traditional token selection, the mod can target tokens directly b
 
 This makes it particularly useful for:
 
-* Character abilities
-* Macro-driven actions
-* Automated encounters
-* Custom API integrations
+- Character abilities
+- Macro-driven actions
+- Automated encounters
+- Custom API integrations
 
 Game Masters can also control who has access to this functionality, allowing it to remain a GM-only tool or be shared with selected players.
 

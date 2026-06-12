@@ -1,23 +1,21 @@
 ---
-
-title: "Dorn MacThar"
-summary: "An exiled half-orc warrior whose unwavering sense of honour cost him his home but forged him into a protector of the innocent."
-category: "D&D Character"
+title: 'Dorn MacThar'
+summary: 'An exiled half-orc warrior whose unwavering sense of honour cost him his home but forged him into a protector of the innocent.'
+category: 'D&D Character'
 order: 2
 tags:
-  - "Character"
-  - "D&D5e"
-  - "Roll20"
-  - "In Progress"
+  - 'Character'
+  - 'D&D5e'
+  - 'Roll20'
+  - 'In Progress'
 links: []
 gallery:
-    - src: '../../assets/images/dnd-characters/dorn-portrait.jpg'
-      alt: 'Dorn MacThar portrait'
+  - src: '../../assets/images/dnd-characters/dorn-portrait.jpg'
+    alt: 'Dorn MacThar portrait'
 indexMedia: '../../assets/images/dnd-characters/dorn-cover.jpg'
 indexMediaAlt: 'Dorn MacThar cover image'
 hero: '../../assets/images/dnd-characters/dorn-hero.jpg'
 heroAlt: 'Dorn MacThar hero image'
-
 ---
 
 ## Overview
@@ -172,17 +170,17 @@ He believes strength should serve others rather than dominate them and has littl
 
 ### Strengths
 
-* Courageous in the face of danger
-* Deeply loyal to trusted companions
-* Strong moral compass
-* Protective of the vulnerable
+- Courageous in the face of danger
+- Deeply loyal to trusted companions
+- Strong moral compass
+- Protective of the vulnerable
 
 ### Weaknesses
 
-* Carries guilt over his exile
-* Struggles to forgive himself
-* Often places others before his own wellbeing
-* Slow to adapt when honour conflicts with practicality
+- Carries guilt over his exile
+- Struggles to forgive himself
+- Often places others before his own wellbeing
+- Slow to adapt when honour conflicts with practicality
 
 ---
 
@@ -242,13 +240,13 @@ Though Varek is dead, the consequences of his actions continue to echo across th
 
 ## Connections
 
-* Wyrmtooth Highlands
-* MacThar Clan
-* Lake of Dragons
-* Darkhold
-* Zhentarim
-* Tuma
-* The Adventuring Party
+- Wyrmtooth Highlands
+- MacThar Clan
+- Lake of Dragons
+- Darkhold
+- Zhentarim
+- Tuma
+- The Adventuring Party
 
 ---
 

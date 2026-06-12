@@ -1,19 +1,19 @@
 ---
-import { getCollection, render } from "astro:content";
-import Hero from "../../components/Hero.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import CardMedia from "../../components/CardMedia.astro";
+import { getCollection, render } from 'astro:content';
+import Hero from '../../components/Hero.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CardMedia from '../../components/CardMedia.astro';
 
 function contentIdToSlug(id: string) {
-  return id.replace(/\.(md|mdx)$/i, "").replace(/\/index$/i, "");
+  return id.replace(/\.(md|mdx)$/i, '').replace(/\/index$/i, '');
 }
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
+  const projects = await getCollection('projects');
 
   return projects.map((project) => ({
     params: {
-      slug: project.id.replace(/\.(md|mdx)$/i, "").replace(/\/index$/i, ""),
+      slug: project.id.replace(/\.(md|mdx)$/i, '').replace(/\/index$/i, ''),
     },
     props: { project },
   }));
@@ -23,19 +23,14 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 const slug = contentIdToSlug(project.id);
 const heroTags = project.data.status ? [project.data.status] : [];
-const heroImageAltText =
-  project.data.heroForegroundAlt || project.data.heroAlt || "";
+const heroImageAltText = project.data.heroForegroundAlt || project.data.heroAlt || '';
 const roll20Mods =
-  slug === "roll20-mods"
-    ? (await getCollection("roll20Mods")).sort(
-        (a, b) => a.data.order - b.data.order,
-      )
+  slug === 'roll20-mods'
+    ? (await getCollection('roll20Mods')).sort((a, b) => a.data.order - b.data.order)
     : [];
 const podcasts =
-  slug === "podcasting"
-    ? (await getCollection("podcasts")).sort(
-        (a, b) => a.data.order - b.data.order,
-      )
+  slug === 'podcasting'
+    ? (await getCollection('podcasts')).sort((a, b) => a.data.order - b.data.order)
     : [];
 ---
 
@@ -60,7 +55,7 @@ const podcasts =
       <Content />
 
       {
-        slug === "roll20-mods" && (
+        slug === 'roll20-mods' && (
           <>
             <h2>Current mods</h2>
             <div class="grid" style="margin-top: 24px;">
@@ -80,17 +75,11 @@ const podcasts =
                       videoPoster={mod.data.videoPoster}
                     />
                     <h3>
-                      <a href={`/projects/roll20-mods/${modSlug}/`}>
-                        {mod.data.title}
-                      </a>
+                      <a href={`/projects/roll20-mods/${modSlug}/`}>{mod.data.title}</a>
                     </h3>
                     <p>{mod.data.summary}</p>
-                    <a
-                      class="button read-more-cta"
-                      href={`/projects/roll20-mods/${modSlug}/`}
-                    >
-                      Read more{" "}
-                      <i class="fa-solid fa-angles-right" aria-hidden="true" />
+                    <a class="button read-more-cta" href={`/projects/roll20-mods/${modSlug}/`}>
+                      Read more <i class="fa-solid fa-angles-right" aria-hidden="true" />
                     </a>
                   </article>
                 );
@@ -101,7 +90,7 @@ const podcasts =
       }
 
       {
-        slug === "podcasting" && (
+        slug === 'podcasting' && (
           <>
             <h2>Main Podcasts</h2>
             <div class="grid" style="margin-top: 24px;">
@@ -121,27 +110,19 @@ const podcasts =
                       videoPoster={podcast.data.videoPoster}
                     />
                     <h3>
-                      <a href={`/projects/podcasting/${podcastSlug}/`}>
-                        {podcast.data.title}
-                      </a>
+                      <a href={`/projects/podcasting/${podcastSlug}/`}>{podcast.data.title}</a>
                     </h3>
                     <p>{podcast.data.summary}</p>
-                    <a
-                      class="button read-more-cta"
-                      href={`/projects/podcasting/${podcastSlug}/`}
-                    >
-                      Read more{" "}
-                      <i class="fa-solid fa-angles-right" aria-hidden="true" />
+                    <a class="button read-more-cta" href={`/projects/podcasting/${podcastSlug}/`}>
+                      Read more <i class="fa-solid fa-angles-right" aria-hidden="true" />
                     </a>
                     <div class="card-tags">
                       <span class="tag">
-                        <i class="fa-solid fa-tag" aria-hidden="true" />{" "}
-                        {podcast.data.category}
+                        <i class="fa-solid fa-tag" aria-hidden="true" /> {podcast.data.category}
                       </span>
                       {podcast.data.status && (
                         <span class="tag">
-                          <i class="fa-solid fa-tag" aria-hidden="true" />{" "}
-                          {podcast.data.status}
+                          <i class="fa-solid fa-tag" aria-hidden="true" /> {podcast.data.status}
                         </span>
                       )}
                     </div>
@@ -159,24 +140,24 @@ const podcasts =
                   </a>
                 </h3>
                 <p>
-                  I was a guest and co-host for the Trek News and Views Podcast,
-                  a Star Trek Online podcast that covered news, reviews, and
-                  discussions about all things Star Trek Online.
+                  I was a guest and co-host for the Trek News and Views Podcast, a Star Trek Online
+                  podcast that covered news, reviews, and discussions about all things Star Trek
+                  Online.
                 </p>
                 <p>
-                  In 2020, I became one of the main podcast hosts and audio
-                  editor and as part of the show's relaunch on its new network
-                  <a href="https://holosuitemedia.com">Holosuite Media</a> where
-                  the show was renamed and rebranded as{" "}
+                  In 2020, I became one of the main podcast hosts and audio editor and as part of
+                  the show's relaunch on its new network
+                  <a href="https://holosuitemedia.com">Holosuite Media</a> where the show was
+                  renamed and rebranded as{' '}
                   <a href="https://holosuitemedia.com/archived-podcasts/starbaseone/">
                     Starbase One
                   </a>
                   .
                 </p>
                 <p>
-                  Assisting with the production and hosting of multiple other
-                  shows that started on Holosuite Media during COVID-19, plus
-                  the death of co-host Colin, the show was discontinued.
+                  Assisting with the production and hosting of multiple other shows that started on
+                  Holosuite Media during COVID-19, plus the death of co-host Colin, the show was
+                  discontinued.
                 </p>
                 <div class="card-tags">
                   <span class="tag">
@@ -199,24 +180,21 @@ const podcasts =
               </article>
               <article class="card large">
                 <h3>
-                  <a href="https://www.priorityonepodcast.com/">
-                    Priority One Podcast
-                  </a>
+                  <a href="https://www.priorityonepodcast.com/">Priority One Podcast</a>
                 </h3>
                 <p>
-                  Support Staff and QA Consultant for the Priority One Podcast,
-                  a Star Trek-themed podcast that covered news, reviews, and
-                  discussions about all things Star Trek and Star Trek Online.
+                  Support Staff and QA Consultant for the Priority One Podcast, a Star Trek-themed
+                  podcast that covered news, reviews, and discussions about all things Star Trek and
+                  Star Trek Online.
                 </p>
                 <p>
-                  Contributions included providing audio editing support for the
-                  Priority One Productions team, and quality assurance checks to
-                  ensure high production standards and listener satisfaction.
+                  Contributions included providing audio editing support for the Priority One
+                  Productions team, and quality assurance checks to ensure high production standards
+                  and listener satisfaction.
                 </p>
                 <p>
-                  I also moderated the Priority One Fleet forums, fostering
-                  community engagement and support for Star Trek Online MMO
-                  fleet members.
+                  I also moderated the Priority One Fleet forums, fostering community engagement and
+                  support for Star Trek Online MMO fleet members.
                 </p>
                 <div class="card-tags">
                   <span class="tag">
@@ -238,15 +216,13 @@ const podcasts =
                   <a href="https://ussstarfinder.com/">Star Trek Starfinder</a>
                 </h3>
                 <p>
-                  Voice artist for the fan-production of Star Trek Starfinder,
-                  an audio drama where I portrayed the character of Chef aboard
-                  the U.S.S. Starfinder.
+                  Voice artist for the fan-production of Star Trek Starfinder, an audio drama where
+                  I portrayed the character of Chef aboard the U.S.S. Starfinder.
                 </p>
                 <p>
-                  Additionally, I hosted and maintained the project's website
-                  and I served as a community manager for Star Trek Starfinder,
-                  engaging with fans and providing support to enhance the gaming
-                  experience for players.
+                  Additionally, I hosted and maintained the project's website and I served as a
+                  community manager for Star Trek Starfinder, engaging with fans and providing
+                  support to enhance the gaming experience for players.
                 </p>
                 <div class="card-tags">
                   <span class="tag">
@@ -276,16 +252,14 @@ const podcasts =
                   <a href="https://starbaseugc.com">StarbaseUGC Podcast</a>
                 </h3>
                 <p>
-                  I was a guest host on the StarbaseUGC Podcast, a Star Trek
-                  Online podcast that covered all things Foundry (the
-                  user-generated content system) including Foundry's role in the
-                  Star Trek Online MMO.
+                  I was a guest host on the StarbaseUGC Podcast, a Star Trek Online podcast that
+                  covered all things Foundry (the user-generated content system) including Foundry's
+                  role in the Star Trek Online MMO.
                 </p>
                 <p>
-                  More recently, I have continued to contribute to the podcast
-                  by hosting the StarbaseUGC Podcast's website to allow
-                  listeners to access archived episodes and additional content
-                  such as Star Trek: Reliant, a podcast based on the Star Trek
+                  More recently, I have continued to contribute to the podcast by hosting the
+                  StarbaseUGC Podcast's website to allow listeners to access archived episodes and
+                  additional content such as Star Trek: Reliant, a podcast based on the Star Trek
                   Adventures tabletop RPG.
                 </p>
                 <div class="card-tags">
@@ -310,10 +284,9 @@ const podcasts =
               <article class="card large">
                 <h3>G&amp;T Show Podcasts</h3>
                 <p>
-                  I was a co-host and audio engineer for the G&T Show's Book of
-                  the Celestial Temple Book Club, and a regular guest co-host of
-                  the main G&T Show. For both shows, I often assisted with that
-                  show's audio editing, broadcasting, publishing, and event
+                  I was a co-host and audio engineer for the G&T Show's Book of the Celestial Temple
+                  Book Club, and a regular guest co-host of the main G&T Show. For both shows, I
+                  often assisted with that show's audio editing, broadcasting, publishing, and event
                   management.
                 </p>
                 <div class="card-tags">
@@ -342,13 +315,12 @@ const podcasts =
               <article class="card large">
                 <h3>Perfect World Entertainment</h3>
                 <p>
-                  I was a Volunteer Forum Moderator for the Star Trek Online
-                  forums. I actively moderated and responded to user inquiries,
-                  online forums for the Star Trek Online MMO, ensuring a
-                  positive user experience. I removed spam and inappropriate
-                  messages to maintain community standards. I collaborated with
-                  other moderators to handle user issues and enforce forum
-                  guidelines, fostering a welcoming environment.
+                  I was a Volunteer Forum Moderator for the Star Trek Online forums. I actively
+                  moderated and responded to user inquiries, online forums for the Star Trek Online
+                  MMO, ensuring a positive user experience. I removed spam and inappropriate
+                  messages to maintain community standards. I collaborated with other moderators to
+                  handle user issues and enforce forum guidelines, fostering a welcoming
+                  environment.
                 </p>
                 <div class="card-tags">
                   <span class="tag">

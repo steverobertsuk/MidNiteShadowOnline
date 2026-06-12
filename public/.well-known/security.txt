@@ -1,0 +1,5 @@
+# Security contact for midniteshadow.online (RFC 9116)
+Contact: mailto:webmaster@midniteshadow.online
+Expires: 2027-06-12T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://midniteshadow.online/.well-known/security.txt

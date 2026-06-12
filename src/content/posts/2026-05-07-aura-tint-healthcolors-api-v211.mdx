@@ -1,10 +1,11 @@
 ---
-title: "Aura/Tint HealthColors API v2.1.1"
-summary: "A follow-up Roll20 update that fixes aura visibility, settings menu behavior, and a few lingering stability issues."
+title: 'Aura/Tint HealthColors API v2.1.1'
+summary: 'A follow-up Roll20 update that fixes aura visibility, settings menu behavior, and a few lingering stability issues.'
 date: 2026-05-07
-category: "HealthColors"
-tags: ["Roll20 API Mod", "Bug Fix Release"]
+category: 'HealthColors'
+tags: ['Roll20 API Mod', 'Bug Fix Release']
 ---
+
 import InfoNotice from '../../components/InfoNotice.astro';
 
 Version 2.1.1 is a follow-up update focused on fixing critical bugs related to aura visibility thresholds, settings menu behavior, and stability issues.
@@ -31,5 +32,8 @@ Version 2.1.1 is a follow-up update focused on fixing critical bugs related to a
 - `showSettingsInGameChat` refactored to reduce cognitive complexity: extracted `boolPill` and `namePill` module-level helpers (read-only counterparts to the existing `toggleBtn`/`nameBtn`), replacing 8 repeated inline ternary expressions and an inline `pickNameStyle` closure.
 - JSDoc corrections: removed stale `@param [update]` from `applyAuraAndDead` (parameter was removed in an earlier refactor); corrected `spawnDefaultFxById` description which falsely claimed to tighten particle profile settings; corrected `boolPill` description (background colour, not text colour); corrected `registerEventHandlers` listing `change:token` instead of `change:graphic`; documented the missing British/American colour-key variants on `FX_PARAM_DEFAULTS`; removed stale `pColor` return-type entry from `resolveTypeConfig`.
 
-
-<InfoNotice>The mod API is offered under the MIT License, and it allows users to freely use, copy, modify, merge, publish, distribute, sublicense, and sell the software, provided the original copyright and license notice are included.</InfoNotice>
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>

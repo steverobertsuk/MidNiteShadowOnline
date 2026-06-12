@@ -10,27 +10,34 @@ import {
   getVideoLoadingPolicy,
   type ResponsivePreload,
 } from '../lib/mediaPriority';
+import {
+  FALLBACK_SITE,
+  MASTODON_HANDLE,
+  MASTODON_PROFILE,
+  ogImageUrl,
+  SITE_AUTHOR,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+} from '../lib/site';
 const {
-  title = 'MidNite Shadow Online',
-  description = 'Gaming, tabletop worlds, Roll20 mods, STO Info and podcasting projects.',
+  title = SITE_NAME,
+  description = SITE_DESCRIPTION,
   responsiveImagePreloads = [],
+  jsonLd,
 } = Astro.props;
 
-const siteName = 'MidNite Shadow Online';
-const author = 'Steve Roberts';
-const siteBase = Astro.site ?? 'https://midniteshadow.online';
+const siteName = SITE_NAME;
+const author = SITE_AUTHOR;
+const siteBase = Astro.site ?? FALLBACK_SITE;
 const canonical = new URL(Astro.url.pathname, siteBase).href;
 const imageAlt = `${siteName} — ${description}`;
 
-// Slug mirrors the derivation in scripts/generate-og-images.mjs
-const pageSlug =
-  Astro.url.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'default';
-const ogImage = new URL(`/assets/og/${pageSlug}.png`, siteBase).href;
+const ogImage = ogImageUrl(Astro.url.pathname, siteBase);
 const gaId = GA_ID;
 const pageBackgroundVideoPolicy = getVideoLoadingPolicy('decorative');
 const brandImagePolicy = getImageLoadingPolicy('brand');
 const pathname = Astro.url.pathname;
-const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.startsWith(href);
+const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
 const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
   ? responsiveImagePreloads
   : [];
@@ -40,12 +47,25 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
 <html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
+    <meta name="version" content={pkg.version} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
-    <meta name="version" content={pkg.version} />
     <meta name="theme-color" content="#0a0a12" />
     <link rel="canonical" href={canonical} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${siteName} — RSS`}
+      href={new URL('/rss.xml', siteBase).href}
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title={`${siteName} — JSON Feed`}
+      href={new URL('/feed.json', siteBase).href}
+    />
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <meta property="og:locale" content="en_GB" />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={title} />
@@ -57,41 +77,27 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@midniteshadow7" />
+    <meta name="twitter:creator" content="@midniteshadow7" />
+    <meta name="fediverse:creator" content={MASTODON_HANDLE} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={imageAlt} />
-    <meta
-      name="msapplication-config"
-      content="/assets/icons/browserconfig.xml"
-    />
+    <meta name="msapplication-config" content="/assets/icons/browserconfig.xml" />
     <link rel="icon" href="/assets/icons/favicon.ico" sizes="any" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/assets/icons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/icons/favicon-16x16.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/assets/icons/apple-touch-icon.png"
-    />
-    <link
-      rel="mask-icon"
-      href="/assets/icons/safari-pinned-tab.svg"
-      color="#6a0dad"
-    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#6a0dad" />
     <link rel="manifest" href="/assets/icons/site.webmanifest" />
     <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin />
     <link rel="preconnect" href="https://ka-p.fontawesome.com" crossorigin />
-    <script is:inline src="https://kit.fontawesome.com/997e87a249.js" crossorigin="anonymous" data-cfasync="false"></script>
+    <script
+      is:inline
+      src="https://kit.fontawesome.com/997e87a249.js"
+      crossorigin="anonymous"
+      data-cfasync="false"></script>
     {
       preloadLinks.map((item) => (
         <link
@@ -107,7 +113,15 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
     <title>{title}</title>
   </head>
   <body>
-    <video class="page-bg-video" autoplay muted loop playsinline aria-hidden="true" preload={pageBackgroundVideoPolicy.preload}>
+    <video
+      class="page-bg-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      aria-hidden="true"
+      preload={pageBackgroundVideoPolicy.preload}
+    >
       <source src="/assets/video/hero-purple-smoke.webm" type="video/webm" />
     </video>
     <div class="smoke-css" aria-hidden="true"></div>
@@ -129,14 +143,46 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
           <span>MidNite Shadow Online</span>
         </a>
         <nav class="nav-links" aria-label="Primary navigation">
-          <a href="/gaming/" aria-label="Gaming" aria-current={isActive('/gaming/') ? 'page' : undefined}><i class="fa-solid fa-gamepad" aria-hidden="true"></i> Gaming</a>
-          <a href="/projects/sto-info/" aria-label="STO Info" aria-current={isActive('/projects/sto-info/') ? 'page' : undefined}><i class="fa-kit fa-sto-info" aria-hidden="true"></i> STO Info</a>
-          <a href="/dnd/" aria-label="D and D" aria-current={isActive('/dnd/') ? 'page' : undefined}><i class="fa-solid fa-dice-d20" aria-hidden="true"></i> D&D</a>
-          <a href="/projects/roll20-mods/" aria-label="Roll20 Mods" aria-current={isActive('/projects/roll20-mods/') ? 'page' : undefined}><i class="fa-solid fa-gears" aria-hidden="true"></i> Roll20 Mods</a>
-          <a href="/projects/podcasting/" aria-label="Podcasting" aria-current={isActive('/projects/podcasting/') ? 'page' : undefined}><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> Podcasting</a>
-          <a href="/posts/" aria-label="Posts" aria-current={isActive('/posts/') ? 'page' : undefined}><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a>
+          <a
+            href="/gaming/"
+            aria-label="Gaming"
+            aria-current={isActive('/gaming/') ? 'page' : undefined}
+            ><i class="fa-solid fa-gamepad" aria-hidden="true"></i> Gaming</a
+          >
+          <a
+            href="/projects/sto-info/"
+            aria-label="STO Info"
+            aria-current={isActive('/projects/sto-info/') ? 'page' : undefined}
+            ><i class="fa-kit fa-sto-info" aria-hidden="true"></i> STO Info</a
+          >
+          <a href="/dnd/" aria-label="D and D" aria-current={isActive('/dnd/') ? 'page' : undefined}
+            ><i class="fa-solid fa-dice-d20" aria-hidden="true"></i> D&D</a
+          >
+          <a
+            href="/projects/roll20-mods/"
+            aria-label="Roll20 Mods"
+            aria-current={isActive('/projects/roll20-mods/') ? 'page' : undefined}
+            ><i class="fa-solid fa-gears" aria-hidden="true"></i> Roll20 Mods</a
+          >
+          <a
+            href="/projects/podcasting/"
+            aria-label="Podcasting"
+            aria-current={isActive('/projects/podcasting/') ? 'page' : undefined}
+            ><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> Podcasting</a
+          >
+          <a
+            href="/posts/"
+            aria-label="Posts"
+            aria-current={isActive('/posts/') ? 'page' : undefined}
+            ><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a
+          >
         </nav>
-        <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+        <button
+          class="nav-toggle"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
           <i class="fa-solid fa-bars" aria-hidden="true"></i>
         </button>
       </div>
@@ -151,12 +197,39 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
           </button>
         </div>
         <nav class="mobile-nav-links" aria-label="Mobile navigation">
-          <a href="/gaming/" aria-label="Gaming" aria-current={isActive('/gaming/') ? 'page' : undefined}><i class="fa-solid fa-gamepad" aria-hidden="true"></i> Gaming</a>
-          <a href="/projects/sto-info/" aria-label="STO Info" aria-current={isActive('/projects/sto-info/') ? 'page' : undefined}><i class="fa-kit fa-sto-info" aria-hidden="true"></i> STO Info</a>
-          <a href="/dnd/" aria-label="D and D" aria-current={isActive('/dnd/') ? 'page' : undefined}><i class="fa-solid fa-dice-d20" aria-hidden="true"></i> D&D</a>
-          <a href="/projects/roll20-mods/" aria-label="Roll20 Mods" aria-current={isActive('/projects/roll20-mods/') ? 'page' : undefined}><i class="fa-solid fa-gears" aria-hidden="true"></i> Roll20 Mods</a>
-          <a href="/projects/podcasting/" aria-label="Podcasting" aria-current={isActive('/projects/podcasting/') ? 'page' : undefined}><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> Podcasting</a>
-          <a href="/posts/" aria-label="Posts" aria-current={isActive('/posts/') ? 'page' : undefined}><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a>
+          <a
+            href="/gaming/"
+            aria-label="Gaming"
+            aria-current={isActive('/gaming/') ? 'page' : undefined}
+            ><i class="fa-solid fa-gamepad" aria-hidden="true"></i> Gaming</a
+          >
+          <a
+            href="/projects/sto-info/"
+            aria-label="STO Info"
+            aria-current={isActive('/projects/sto-info/') ? 'page' : undefined}
+            ><i class="fa-kit fa-sto-info" aria-hidden="true"></i> STO Info</a
+          >
+          <a href="/dnd/" aria-label="D and D" aria-current={isActive('/dnd/') ? 'page' : undefined}
+            ><i class="fa-solid fa-dice-d20" aria-hidden="true"></i> D&D</a
+          >
+          <a
+            href="/projects/roll20-mods/"
+            aria-label="Roll20 Mods"
+            aria-current={isActive('/projects/roll20-mods/') ? 'page' : undefined}
+            ><i class="fa-solid fa-gears" aria-hidden="true"></i> Roll20 Mods</a
+          >
+          <a
+            href="/projects/podcasting/"
+            aria-label="Podcasting"
+            aria-current={isActive('/projects/podcasting/') ? 'page' : undefined}
+            ><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> Podcasting</a
+          >
+          <a
+            href="/posts/"
+            aria-label="Posts"
+            aria-current={isActive('/posts/') ? 'page' : undefined}
+            ><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a
+          >
         </nav>
       </div>
     </div>
@@ -164,36 +237,123 @@ const preloadLinks: ResponsivePreload[] = Array.isArray(responsiveImagePreloads)
     <footer class="footer">
       <div class="container footer-inner">
         <div class="footer-brand">
-          <img class="footer-icon" src={mns7RoundIcon.src} width={96} height={96} loading="lazy" decoding="async" alt="" />
+          <img
+            class="footer-icon"
+            src={mns7RoundIcon.src}
+            width={96}
+            height={96}
+            loading="lazy"
+            decoding="async"
+            alt=""
+          />
           <div class="footer-col">
             <strong class="footer-site-name">MidNite Shadow Online</strong>
-            <p class="footer-copy">&copy; {new Date().getFullYear()} MidNite Shadow Online</p>
+            <p class="footer-copy">
+              &copy; {new Date().getFullYear()} MidNite Shadow Online
+            </p>
           </div>
         </div>
         <div class="footer-nav-group">
           <nav class="footer-col footer-nav" aria-label="Pages">
-            <a href="/" aria-current={isActive('/') ? 'page' : undefined}><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a>
-            <a href="/projects/" aria-current={isActive('/projects/') ? 'page' : undefined}><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Projects</a>
-            <a href="/posts/" aria-current={isActive('/posts/') ? 'page' : undefined}><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a>
+            <a href="/" aria-current={isActive('/') ? 'page' : undefined}
+              ><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a
+            >
+            <a href="/projects/" aria-current={isActive('/projects/') ? 'page' : undefined}
+              ><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Projects</a
+            >
+            <a href="/posts/" aria-current={isActive('/posts/') ? 'page' : undefined}
+              ><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Posts</a
+            >
           </nav>
           <nav class="footer-col footer-nav" aria-label="Info">
-            <a href="/about/" aria-current={isActive('/about/') ? 'page' : undefined}><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About</a>
-            <a href="/privacy/" aria-current={isActive('/privacy/') ? 'page' : undefined}><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Privacy</a>
-            {gaId && <a href="/privacy/#cookies" id="cookie-prefs-link"><i class="fa-solid fa-cookie-bite" aria-hidden="true"></i> Cookie Preferences</a>}
+            <a href="/about/" aria-current={isActive('/about/') ? 'page' : undefined}
+              ><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About</a
+            >
+            <a href="/privacy/" aria-current={isActive('/privacy/') ? 'page' : undefined}
+              ><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Privacy</a
+            >
+            {
+              gaId && (
+                <a href="/privacy/#cookies" id="cookie-prefs-link">
+                  <i class="fa-solid fa-cookie-bite" aria-hidden="true" /> Cookie Preferences
+                </a>
+              )
+            }
           </nav>
         </div>
       </div>
       <div class="container">
         <div class="social-links">
-          <a href="https://www.youtube.com/@SteveRobertsUK" aria-label="YouTube" target="_blank" rel="noopener noreferrer" data-no-external="true"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
-          <a href="https://discord.gg/jHtd8JDuhC" aria-label="Discord" target="_blank" rel="noopener noreferrer" data-no-external="true"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
-          <a href="https://github.com/steverobertsuk" aria-label="GitHub" target="_blank" rel="noopener noreferrer" data-no-external="true"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
-          <a href="https://www.facebook.com/steverobertsuk" aria-label="Facebook" target="_blank" rel="noopener noreferrer" data-no-external="true"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
-          <a href="https://www.instagram.com/midniteshadow7/" aria-label="Instagram" target="_blank" rel="noopener noreferrer" data-no-external="true"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-          <a href="https://www.tiktok.com/@midniteshadowsteve" aria-label="TikTok" target="_blank" rel="noopener noreferrer" data-no-external="true"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
-          <a href="https://bsky.app/profile/midniteshadow.online" aria-label="Bluesky" target="_blank" rel="noopener noreferrer" data-no-external="true"><i class="fa-brands fa-bluesky" aria-hidden="true"></i></a>
-          <a href="https://twitter.com/midniteshadow7" aria-label="Twitter" target="_blank" rel="noopener noreferrer" data-no-external="true"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
-          <a href="https://www.threads.com/@midniteshadow7" aria-label="Threads" target="_blank" rel="noopener noreferrer" data-no-external="true"><i class="fa-brands fa-threads" aria-hidden="true"></i></a>
+          <a
+            href="https://www.youtube.com/@SteveRobertsUK"
+            aria-label="YouTube"
+            target="_blank"
+            rel="me noopener noreferrer"
+            data-no-external="true"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a
+          >
+          <a
+            href="https://discord.gg/jHtd8JDuhC"
+            aria-label="Discord"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-no-external="true"><i class="fa-brands fa-discord" aria-hidden="true"></i></a
+          >
+          <a
+            href="https://github.com/steverobertsuk"
+            aria-label="GitHub"
+            target="_blank"
+            rel="me noopener noreferrer"
+            data-no-external="true"><i class="fa-brands fa-github" aria-hidden="true"></i></a
+          >
+          <a
+            href="https://www.facebook.com/steverobertsuk"
+            aria-label="Facebook"
+            target="_blank"
+            rel="me noopener noreferrer"
+            data-no-external="true"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a
+          >
+          <a
+            href="https://www.instagram.com/midniteshadow7/"
+            aria-label="Instagram"
+            target="_blank"
+            rel="me noopener noreferrer"
+            data-no-external="true"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a
+          >
+          <a
+            href="https://www.tiktok.com/@midniteshadowsteve"
+            aria-label="TikTok"
+            target="_blank"
+            rel="me noopener noreferrer"
+            data-no-external="true"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a
+          >
+          <a
+            href="https://bsky.app/profile/midniteshadow.online"
+            aria-label="Bluesky"
+            target="_blank"
+            rel="me noopener noreferrer"
+            data-no-external="true"><i class="fa-brands fa-bluesky" aria-hidden="true"></i></a
+          >
+          <a
+            href={MASTODON_PROFILE}
+            aria-label="Mastodon"
+            target="_blank"
+            rel="me noopener noreferrer"
+            data-no-external="true"><i class="fa-brands fa-mastodon" aria-hidden="true"></i></a
+          >
+          <a
+            href="https://twitter.com/midniteshadow7"
+            aria-label="Twitter"
+            target="_blank"
+            rel="me noopener noreferrer"
+            data-no-external="true"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a
+          >
+          <a
+            href="https://www.threads.com/@midniteshadow7"
+            aria-label="Threads"
+            target="_blank"
+            rel="me noopener noreferrer"
+            data-no-external="true"><i class="fa-brands fa-threads" aria-hidden="true"></i></a
+          >
         </div>
       </div>
     </footer>

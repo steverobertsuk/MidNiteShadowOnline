@@ -1,43 +1,43 @@
 ---
-title: "Concentration"
-summary: "Keeps concentration effects visible and easier to maintain, especially when damage checks and linked spell effects need to stay in sync."
+title: 'Concentration'
+summary: 'Keeps concentration effects visible and easier to maintain, especially when damage checks and linked spell effects need to stay in sync.'
 order: 5
-category: "Spell support"
-postCategory: "concentration"
-status: "Active"
+category: 'Spell support'
+postCategory: 'concentration'
+status: 'Active'
 versions:
-  - label: "One-Click"
-    version: "v1.0.0"
-    url: ""
-  - label: "GitHub"
-    version: "v1.0.0"
-    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/Concentration/1.0.0"
+  - label: 'One-Click'
+    version: 'v1.0.0'
+    url: ''
+  - label: 'GitHub'
+    version: 'v1.0.0'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/Concentration/1.0.0'
 lastUpdated: 2026-05-23
 compatibility:
-  - label: "Jumpgate"
-    url: "https://pages.roll20.net/redesign"
+  - label: 'Jumpgate'
+    url: 'https://pages.roll20.net/redesign'
 requirements:
-  - label: "Roll20 Pro"
-    url: ""
-  - label: "Roll20 Elite"
-    url: ""
+  - label: 'Roll20 Pro'
+    url: ''
+  - label: 'Roll20 Elite'
+    url: ''
 credits:
-  - name: "MidNiteShadow7"
-    url: "https://app.roll20.net/users/16506286/midniteshadow7"
+  - name: 'MidNiteShadow7'
+    url: 'https://app.roll20.net/users/16506286/midniteshadow7'
 featuredLinks:
-  - label: "GitHub"
-    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/Concentration"
-  - label: "Issues"
-    url: "https://github.com/users/steverobertsuk/projects/6/views/1"
-  - label: "Changelog"
-    url: "https://github.com/Roll20/roll20-api-scripts/blob/master/Concentration/CHANGELOG.md"
+  - label: 'GitHub'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/Concentration'
+  - label: 'Issues'
+    url: 'https://github.com/users/steverobertsuk/projects/6/views/1'
+  - label: 'Changelog'
+    url: 'https://github.com/Roll20/roll20-api-scripts/blob/master/Concentration/CHANGELOG.md'
 links:
-  - label: "v1 Release via Roll20 Forum Support Post"
-    url: "https://app.roll20.net/forum/post/12727019/concentration-mod-slash-api-spells-do-not-trigger-it-dnd-2024-sheet/?pageforid=12761476#post-12761476"
-indexMedia: "../../assets/images/mods/mod-concentration-cover.jpg"
-indexMediaAlt: "Concentration mod cover image"
-hero: "../../assets/images/mods/mod-concentration-cover.jpg"
-heroAlt: "Concentration mod hero image"
+  - label: 'v1 Release via Roll20 Forum Support Post'
+    url: 'https://app.roll20.net/forum/post/12727019/concentration-mod-slash-api-spells-do-not-trigger-it-dnd-2024-sheet/?pageforid=12761476#post-12761476'
+indexMedia: '../../assets/images/mods/mod-concentration-cover.jpg'
+indexMediaAlt: 'Concentration mod cover image'
+hero: '../../assets/images/mods/mod-concentration-cover.jpg'
+heroAlt: 'Concentration mod hero image'
 ---
 
 ## Concentration Overview

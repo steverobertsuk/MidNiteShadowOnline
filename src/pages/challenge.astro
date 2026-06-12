@@ -1,9 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import AlertNotice from "../components/AlertNotice.astro";
-import Hero from "../components/Hero.astro";
-import profileImage from "../assets/images/mns7_profile.webp";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AlertNotice from '../components/AlertNotice.astro';
+import Hero from '../components/Hero.astro';
+import profileImage from '../assets/images/mns7_profile.webp';
 ---
+
 <BaseLayout
   title="Security Challenge | MidNite Shadow Online"
   description="Complete the security check to continue to the site."
@@ -19,8 +20,8 @@ import profileImage from "../assets/images/mns7_profile.webp";
     <div class="container prose">
       <AlertNotice variant="warning" title="Verification Required">
         <p>
-          This site is protected against automated traffic. Complete the
-          security check and you will be on your way.
+          This site is protected against automated traffic. Complete the security check and you will
+          be on your way.
         </p>
       </AlertNotice>
       <!-- Cloudflare replaces this token with the challenge widget when this

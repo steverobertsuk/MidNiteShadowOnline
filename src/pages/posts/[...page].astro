@@ -1,46 +1,40 @@
 ---
-import { getCollection } from "astro:content";
-import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
-import type { CollectionEntry } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Hero from "../../components/Hero.astro";
-import CategoryFilter from "../../components/CategoryFilter.astro";
-import { formatPostDate, postIdToSlug, toSlug } from "../../lib/postCategory";
-import heroImage from "../../assets/images/posts-cover.jpg";
+import { getCollection } from 'astro:content';
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CategoryFilter from '../../components/CategoryFilter.astro';
+import { formatPostDate, postIdToSlug, toSlug } from '../../lib/postCategory';
+import heroImage from '../../assets/images/posts-cover.jpg';
 
-type Post = CollectionEntry<"posts">;
+type Post = CollectionEntry<'posts'>;
 type CategoryLink = { name: string; slug: string };
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const allPosts = (await getCollection("posts")).sort(
-    (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+  const allPosts = (await getCollection('posts')).sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime()
   );
-  const categories: CategoryLink[] = [
-    ...new Set(allPosts.map((p) => p.data.category)),
-  ]
+  const categories: CategoryLink[] = [...new Set(allPosts.map((p) => p.data.category))]
     .sort()
     .map((name) => ({ name, slug: toSlug(name) }));
   return paginate(allPosts, { pageSize: 6, props: { categories } });
 }) satisfies GetStaticPaths;
 
-const { page, categories } = Astro.props as InferGetStaticPropsType<
-  typeof getStaticPaths
->;
+const { page, categories } = Astro.props as InferGetStaticPropsType<typeof getStaticPaths>;
 ---
 
 <BaseLayout
   title={page.currentPage === 1
-    ? "Posts | MidNiteShadow Online"
+    ? 'Posts | MidNiteShadow Online'
     : `Posts — Page ${page.currentPage} | MidNiteShadow Online`}
   description="A chronological feed of site posts drawn from Roll20, STO Info, podcasts and more."
 >
   <Hero
     eyebrow="Posts"
-    title={
-      page.currentPage === 1
-        ? "News, Updates and Releases"
-        : `News, Updates and Releases - Page ${page.currentPage}`
-    }
+    title={page.currentPage === 1
+      ? 'News, Updates and Releases'
+      : `News, Updates and Releases - Page ${page.currentPage}`}
     lede="A chronological feed of site posts drawn from Roll20, STO Info, podcasts and more."
     image={heroImage}
   />
@@ -52,31 +46,24 @@ const { page, categories } = Astro.props as InferGetStaticPropsType<
           page.data.map((post: Post) => (
             <article class="card large post-card">
               <h3>
-                <a href={`/posts/${postIdToSlug(post.id)}/`}>
-                  {post.data.title}
-                </a>
+                <a href={`/posts/${postIdToSlug(post.id)}/`}>{post.data.title}</a>
               </h3>
               <div class="post-meta-inline">
                 <time class="post-date" datetime={post.data.date.toISOString()}>
-                  <i class="fa-regular fa-calendar" aria-hidden="true" />{" "}
-                  Posted: {formatPostDate(post.data.date)}
+                  <i class="fa-regular fa-calendar" aria-hidden="true" /> Posted:{' '}
+                  {formatPostDate(post.data.date)}
                 </time>
                 <span class="post-meta-separator">•</span>
                 <a
                   class="category-meta-link"
                   href={`/posts/category/${toSlug(post.data.category)}/`}
                 >
-                  <i class="fa-solid fa-folder-open" aria-hidden="true" />{" "}
-                  {post.data.category}
+                  <i class="fa-solid fa-folder-open" aria-hidden="true" /> {post.data.category}
                 </a>
               </div>
               <p>{post.data.summary}</p>
-              <a
-                class="button read-more-cta"
-                href={`/posts/${postIdToSlug(post.id)}/`}
-              >
-                Read more{" "}
-                <i class="fa-solid fa-angles-right" aria-hidden="true" />
+              <a class="button read-more-cta" href={`/posts/${postIdToSlug(post.id)}/`}>
+                Read more <i class="fa-solid fa-angles-right" aria-hidden="true" />
               </a>
               {post.data.tags.length > 0 && (
                 <div class="card-tags">
@@ -104,20 +91,15 @@ const { page, categories } = Astro.props as InferGetStaticPropsType<
               </span>
             )}
             <div class="pagination-pages">
-              {Array.from({ length: page.lastPage }, (_, i) => i + 1).map(
-                (num) => (
-                  <a
-                    class:list={[
-                      "pagination-page",
-                      { active: num === page.currentPage },
-                    ]}
-                    href={num === 1 ? "/posts/" : `/posts/${num}/`}
-                    aria-current={num === page.currentPage ? "page" : undefined}
-                  >
-                    {num}
-                  </a>
-                ),
-              )}
+              {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((num) => (
+                <a
+                  class:list={['pagination-page', { active: num === page.currentPage }]}
+                  href={num === 1 ? '/posts/' : `/posts/${num}/`}
+                  aria-current={num === page.currentPage ? 'page' : undefined}
+                >
+                  {num}
+                </a>
+              ))}
             </div>
             {page.url.next ? (
               <a class="pagination-btn" href={page.url.next}>
