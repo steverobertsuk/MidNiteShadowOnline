@@ -7,12 +7,12 @@ postCategory: 'swap-token-positions'
 status: 'Active'
 versions:
   - label: 'One-Click'
-    version: 'Unavailable'
+    version: 'v2.1.0'
     url: ''
   - label: 'GitHub'
     version: 'v2.1.0'
     url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/SwapTokenPositions/2.1.0'
-lastUpdated: 2026-05-19
+lastUpdated: 2026-06-14
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
