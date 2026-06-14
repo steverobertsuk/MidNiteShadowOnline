@@ -4,15 +4,18 @@ summary: 'Provides a powerful command centre for scaling encounters, managing re
 order: 2
 category: 'Encounter management'
 postCategory: 'combat-encounter-director'
-status: 'Beta Testing'
+status: 'Active'
 versions:
   - label: 'One-Click'
-    version: 'Unavailable'
+    version: 'v1.0.0'
     url: ''
-  - label: 'Direcct Download'
-    version: 'v1.0.0.beta.1'
-    url: 'https://www.dropbox.com/scl/fi/130l98xeq0w2nt4e7kb5m/CombatEncounterDirector_v1.0.0.beta.1.zip?rlkey=4vdsvviqm27ijvfgq3i7uk86e&dl=0'
-lastUpdated: 2026-06-07
+  - label: 'GitHub'
+    version: 'v1.0.0'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/CombatEncounterDirector/1.0.0'
+  - label: 'Direct Download'
+    version: 'v1.0.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CombatEncounterDirector-v1.0.0/CombatEncounterDirector_v1.0.0.zip'
+lastUpdated: 2026-06-09
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -24,16 +27,16 @@ requirements:
 credits:
   - name: 'MidNiteShadow7'
     url: 'https://app.roll20.net/users/16506286/midniteshadow7'
-# featuredLinks:
-#   - label: "GitHub"
-#     url: "#"
-#   - label: "Issues"
-#     url: "#"
-#   - label: "Changelog"
-#     url: "#"
-# links:
-#   - label: "Roll20 Forum Post"
-#     url: "#"
+featuredLinks:
+  - label: "GitHub"
+    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/CombatEncounterDirector"
+  - label: "Issues"
+    url: 'https://github.com/users/steverobertsuk/projects/6/views/1'
+  - label: "Changelog"
+    url: "https://github.com/Roll20/roll20-api-scripts/blob/master/CombatEncounterDirector/CHANGELOG.md"
+links:
+  - label: "Roll20 Forum Post"
+    url: "https://app.roll20.net/forum/post/12765964/script-combat-encounter-director"
 indexMedia: '../../assets/images/mods/mod-combatencounterdirector-cover.jpg'
 indexMediaAlt: 'Combat Encounter Director mod cover image'
 hero: '../../assets/images/mods/mod-combatencounterdirector-cover.jpg'
