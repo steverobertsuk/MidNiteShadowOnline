@@ -1,0 +1,74 @@
+---
+title: 'Combat Encounter Director v1.0.1 Released'
+summary: 'A powerful new Roll20 Mod designed to help Game Masters scale encounters, manage reinforcements and adapt combat on the fly.'
+date: 2026-06-15
+category: 'Combat Encounter Director'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-combatencounterdirector-cover.jpg'
+heroAlt: 'Combat Encounter Director mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+Version 1.0.1 updates the primary command for the Combat Encounter Director, as it has been migrated from `!director` to `!ced` to prevent conflicts with other Roll20 API scripts. To ensure a smooth transition, this update includes backward compatibility: macros using !director will still function as expected unless a conflict with another "Director" mod is detected. In such cases, Game Masters will receive a clear warning instructing them to update their macros to use !ced.
+
+## Release Notes
+
+### Added
+
+- Legacy command compatibility for `!director` when no conflicting Director mod is detected.
+
+### Changed
+
+- Primary command changed from `!director` to `!ced` to avoid command collisions.
+- Localized help and error hints now reference `!ced` in command examples.
+- Command Deck and Status handouts now consistently render with the intended dark theme.
+- One-Click language configuration is now a select list with all supported locale options.
+
+### Fixed
+
+- If a conflicting Director mod is installed, using `!director` now warns the GM to use `!ced`.
+
+### Developer Notes
+
+- Command migration:
+  - Primary command constant changed to `!ced`.
+  - Legacy alias `!director` is still accepted for backwards compatibility.
+  - Conflict detection uses `DIRECTOR_CONFLICT_STATE_KEY = 'DIRECTOR_STATE'`; when present, legacy alias usage triggers a GM warning instead of routing under the legacy name.
+
+- i18n updates:
+  - Locale hint strings and command examples were updated from `!director` to `!ced` across locale files used in the generated bundle.
+
+- Journal rendering:
+  - Command Deck and Status handout HTML now uses an explicit wrapper/background container to prevent white default journal rendering and preserve intended theme styling.
+
+- One-Click metadata and options:
+  - `script.json` select-style options were normalized to remove pipe-delimited labels.
+  - `language` useroption was changed to a select option containing all supported locale codes.
+
+- Build/versioning pipeline:
+  - Build flow now bumps/sets version before loading version-dependent config, preventing stale version output paths.
+  - Explicit version builds now write snapshots to the matching `<version>/CombatEncounterDirector.js` directory.
+  - Prerelease versions are excluded from `previousversions` history handling.
+
+- Code quality hardening:
+  - Source files feeding the generated bundle were refactored to address SonarQube warnings and improve maintainability.
+  - JSDoc coverage and placement were reviewed and corrected in source modules.
+
+## Available now
+
+[Combat Encounter Director version 1.0.1 is downloadable via direct download](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CombatEncounterDirector-v1.0.1/CombatEncounterDirector_v1.0.1.zip) and will be available soon via the Roll20 One-Click Installer.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Combat Encounter Director Project Page**](https://midniteshadow.online/projects/roll20-mods/combat-encounter-director/)
+
+Feedback and suggestions are always welcome, and future updates will continue to refine and expand the tools available to Game Masters.
+
+I hope Combat Encounter Director helps make encounter preparation and management a little easier, allowing you to spend less time wrestling with administration and more time focusing on the story unfolding at your table.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
