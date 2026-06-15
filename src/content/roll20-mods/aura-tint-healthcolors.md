@@ -1,5 +1,5 @@
 ---
-title: 'Aura/Tint HealthColor'
+title: 'Aura/Tint HealthColors'
 summary: 'Automatically colourises tokens based on their remaining health, providing instant visual feedback through auras, tint overlays and effects.'
 order: 3
 category: 'Visual feedback'
@@ -12,10 +12,13 @@ versions:
   - label: 'GitHub'
     version: 'v2.1.3'
     url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors/2.1.3'
-  - label: 'Development Download'
-    version: 'v2.1.4.beta.1'
-    url: 'https://www.dropbox.com/scl/fi/gteg92lz330dpk0wjujiz/HealthColors_v2.1.4.beta.1.zip?rlkey=pe35742kf9gwn0baqfj8w38uj&dl=0'
-lastUpdated: 2026-05-22
+  - label: 'GitHub (forked)'
+    version: 'v2.1.4'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/HealthColors-v2.1.4'
+  - label: 'Direct Download'
+    version: 'v2.1.4'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.1.4/HealthColors_v2.1.4.zip'
+lastUpdated: 2026-06-15
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
