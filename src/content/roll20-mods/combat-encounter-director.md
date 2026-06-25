@@ -7,18 +7,15 @@ postCategory: 'combat-encounter-director'
 status: 'Active'
 versions:
   - label: 'One-Click'
-    version: 'v1.0.0'
+    version: 'v1.0.1'
     url: ''
   - label: 'GitHub'
-    version: 'v1.0.0'
-    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/CombatEncounterDirector/1.0.1'
-  - label: 'GitHub (v1.0.1)'
     version: 'v1.0.1'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/sr/combatencounterdirector-v1-1/CombatEncounterDirector'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/CombatEncounterDirector/1.0.1'
   - label: 'Direct Download'
     version: 'v1.0.1'
     url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CombatEncounterDirector-v1.0.1/CombatEncounterDirector_v1.0.1.zip'
-lastUpdated: 2026-06-15
+lastUpdated: 2026-06-25
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
