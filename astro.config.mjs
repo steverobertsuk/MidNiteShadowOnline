@@ -5,6 +5,20 @@ import cloudflare from '@astrojs/cloudflare';
 import { loadEnv } from 'vite';
 
 const env = loadEnv('', process.cwd(), '');
+const defaultSiteUrl = 'https://midniteshadow.online';
+
+function resolveSiteUrl(rawSite) {
+  if (!rawSite) return defaultSiteUrl;
+
+  try {
+    return new URL(rawSite).toString();
+  } catch {
+    console.warn(
+      `[astro.config] Ignoring invalid SITE value "${rawSite}". Falling back to ${defaultSiteUrl}.`
+    );
+    return defaultSiteUrl;
+  }
+}
 
 // Error/utility pages that crawlers should not be sent to.
 const sitemapExcludedPaths = [
@@ -25,7 +39,7 @@ export default defineConfig({
       filter: (page) => !sitemapExcludedPaths.includes(new URL(page).pathname),
     }),
   ],
-  site: env.SITE ?? 'https://midniteshadow.online',
+  site: resolveSiteUrl(env.SITE),
   adapter: cloudflare({
     imageService: 'passthrough',
     configPath: 'wrangler.dev.toml',
@@ -34,10 +48,10 @@ export default defineConfig({
     service: passthroughImageService(),
   },
   server: {
-    port: 8080,
+    port: 7770,
   },
   preview: {
-    port: 8080,
+    port: 7770,
   },
   vite: {
     server: {
