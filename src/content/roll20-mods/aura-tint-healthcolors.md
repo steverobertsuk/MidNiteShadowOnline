@@ -7,15 +7,15 @@ postCategory: 'healthcolors'
 status: 'Active'
 versions:
   - label: 'One-Click'
-    version: 'v2.1.4'
+    version: 'v2.2.0'
     url: ''
   - label: 'GitHub'
-    version: 'v2.1.4'
-    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors/2.1.4'
+    version: 'v2.2.0'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors/2.2.0'
   - label: 'Direct Download'
-    version: 'v2.1.4'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.1.4/HealthColors_v2.1.4.zip'
-lastUpdated: 2026-06-25
+    version: 'v2.2.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.2.0/HealthColors_v2.2.0.zip'
+lastUpdated: 2026-06-29
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -27,6 +27,10 @@ requirements:
 credits:
   - name: 'MidNiteShadow7'
     url: 'https://app.roll20.net/users/16506286/midniteshadow7'
+  - name: 'Surok'
+    url: 'https://app.roll20.net/users/335573/surok'
+  - name: 'DXWarlock'
+    url: 'https://app.roll20.net/users/262130/dxwarlock'
 featuredLinks:
   - label: 'GitHub'
     url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors'
@@ -114,6 +118,28 @@ Separate settings are available for:
 ### Accessibility Features
 
 The script includes a dedicated colourblind palette and configurable thresholds to improve readability for a wider range of players and visual preferences.
+
+### Death Save Integration
+
+Version 2.2.X adds support for character death-state workflows while keeping existing campaigns stable during upgrades.
+
+- **Death Save Integration (Optional):** An off-by-default mode that separates PC states at 0 HP into **dying**, **stable**, and **dead**.
+- **Dying state marker:** Uses a configurable marker (default: `skull`) for player characters at 0 HP who are still making death saves.
+- **Stable state marker:** Applies a configurable green marker when a player character reaches 3 death-save successes.
+- **Dead state marker:** Applies the standard Red X when a player character reaches 3 death-save failures.
+- **NPC behaviour unchanged:** NPCs are not affected by death-save integration and continue using the normal dead Red X at 0 HP.
+
+Death saves are tracked automatically for supported character sheets, so checked boxes and direct death-save value updates immediately refresh token markers without macros or manual sync actions.
+
+Configuration is available in both the interactive GM menu and read-only settings output:
+
+- `!aura` interactive GM menu
+- `!aura settings` snapshot output
+- `!aura deathsaves` command group for enabling, watch controls, and marker configuration
+
+To prevent silent misconfiguration, marker validation now warns the GM when a configured `dying` or `stable` marker tag does not exist in the active campaign marker set.
+
+Upgrade handling has also been improved: campaigns migrating from the interim PC dying-marker build now keep existing dying-marker settings instead of resetting them.
 
 ---
 

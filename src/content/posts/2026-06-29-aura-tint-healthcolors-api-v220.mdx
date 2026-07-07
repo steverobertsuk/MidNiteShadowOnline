@@ -1,0 +1,43 @@
+---
+title: 'Aura/Tint HealthColors API v2.2.0'
+summary: 'Version 2.2.0 adds Death Save Integration to allow players to show the difference between dying, stable and dead.'
+date: 2026-06-29
+category: 'HealthColors'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-healthcolors-cover.jpg'
+heroAlt: 'HealthColors mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+Version 2.2.0 introduces support for character death-state workflows while keeping existing campaigns stable during upgrades.
+
+## Change Log
+
+### Added
+
+- **Death Save Integration** (Optional) — an off-by-default feature that distinguishes **dying** (configurable marker, default `skull`), **stable** (green marker, 3 successes), and **dead** (Red X, 3 failures) for player characters at 0 HP. NPCs are unaffected and keep the standard dead Red X.
+  - Automatic death-save tracking for supported sheets, so a checked or updated death-save value updates the token marker without any macro or manual refresh.
+  - Death Save Integration now appears in both the interactive `!aura` GM menu and the read-only `!aura settings` snapshot, with `!aura deathsaves` commands for enabling, watching, and configuring markers.
+  - Marker validation now warns the GM when the configured dying or stable marker tag does not exist in the current campaign.
+
+### Fixed
+
+- Upgrading from the interim PC dying marker build now preserves existing dying-marker settings.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer.
+- [Roll20 API GitHub master branch](https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/HealthColors-v2.2.0/HealthColors)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.2.0/HealthColors_v2.2.0.zip).
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Aura/Tint HealthColors Project Page**](https://midniteshadow.online/projects/roll20-mods/aura-tint-healthcolors/)
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
