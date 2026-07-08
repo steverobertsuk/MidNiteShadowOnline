@@ -7,15 +7,15 @@ postCategory: 'healthcolors'
 status: 'Active'
 versions:
   - label: 'One-Click'
-    version: 'v2.2.0'
+    version: 'v2.2.1'
     url: ''
   - label: 'GitHub'
-    version: 'v2.2.0'
-    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors/2.2.0'
+    version: 'v2.2.1'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors/2.2.1'
   - label: 'Direct Download'
-    version: 'v2.2.0'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.2.0/HealthColors_v2.2.0.zip'
-lastUpdated: 2026-06-29
+    version: 'v2.2.1'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.2.1/HealthColors_v2.2.1.zip'
+lastUpdated: 2026-07-08
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
