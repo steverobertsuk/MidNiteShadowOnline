@@ -1,5 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist", ".wrangler"],
   "compilerOptions": {
     "types": ["node"],
     "ignoreDeprecations": "6.0",
