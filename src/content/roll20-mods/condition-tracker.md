@@ -7,12 +7,12 @@ postCategory: 'condition-tracker'
 status: 'Active'
 versions:
   - label: 'One-Click'
-    version: 'v1.1.0'
+    version: 'v1.2.0'
     url: ''
   - label: 'GitHub'
-    version: 'v1.1.0'
-    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/ConditionTracker/1.1.0'
-lastUpdated: 2026-05-15
+    version: 'v1.2.0'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/ConditionTracker/1.2.0'
+lastUpdated: 2026-10-05
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -74,6 +74,17 @@ Condition Tracker supports custom effect types including:
 
 This makes it ideal for tracking abilities such as Hunter's Mark, Hex, Booming Blade, class features, environmental hazards, and campaign-specific mechanics.
 
+### Advantage and Disadvantage
+
+Version 1.2.0 makes Advantage and Disadvantage much more flexible:
+
+- **Any attacker**: record effects that apply to whoever attacks a target, such as Help, Faerie Fire or Dodge, as well as advantage held by one named creature.
+- **Single use**: mark an effect as used up by the next attack. The Turn Tracker row shows `1×`, and the GM gets a **Mark as Used** button.
+- **Reason labels**: add a short label such as `Help` that appears in the row and in chat.
+- **Presets**: the Help preset fills in any-attacker advantage, single use, the reason and the duration, so the GM only picks the helper and the creature being attacked.
+
+The guided wizard asks plain questions (**Who has advantage?**, **Against whom?** and **How many attacks?**), and re-applying an identical effect refreshes it instead of being rejected as a duplicate.
+
 ### Duration Management
 
 Track effects that:
@@ -81,6 +92,7 @@ Track effects that:
 - Last until manually removed.
 - Expire at the end of a source creature's turn.
 - Expire at the end of a target creature's turn.
+- Expire at the start of the source creature's next turn, matching Help, Dodge and similar effects.
 - Last for a specified number of rounds.
 
 Durations are updated automatically as combat progresses.
@@ -186,7 +198,7 @@ The mod includes numerous quality-of-life improvements designed to make campaign
 - Guided condition application workflow
 - Automatic macro installation
 - Built-in help handout generation
-- Duplicate condition prevention
+- Duplicate condition prevention (re-applying an identical effect refreshes it)
 - Token deletion cleanup
 - Health-based condition cleanup prompts
 - Configurable status markers
