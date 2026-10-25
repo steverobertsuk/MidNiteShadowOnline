@@ -7,15 +7,15 @@ postCategory: 'healthcolors'
 status: 'Active'
 versions:
   - label: 'One-Click'
-    version: 'v2.2.1'
+    version: 'v2.3.0'
     url: ''
   - label: 'GitHub'
-    version: 'v2.2.1'
-    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors/2.2.1'
+    version: 'v2.4.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/HealthColors-v2.4.0/HealthColors'
   - label: 'Direct Download'
-    version: 'v2.2.1'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.2.1/HealthColors_v2.2.1.zip'
-lastUpdated: 2026-07-08
+    version: 'v2.4.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.4.0/HealthColors_v2.4.0.zip'
+lastUpdated: 2026-10-25
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -82,6 +82,18 @@ Choose how health information is displayed:
 - Tint Mode applies colour directly to the token artwork.
 - Aura 2 remains available for spell effects, light sources, range indicators, or other game mechanics.
 
+### Aura Shapes and Appearance
+
+From v2.4.0 the Aura 1 health ring supports all six Roll20 aura shapes: Circle, Square, Hex, Circle Border, Square Border and Hex Border.
+
+- **Auto** (the default for new games) uses Hex on hex-grid maps once the ring is at least one grid cell wide, and Circle otherwise.
+- **Auto Border** does the same with the outline shapes.
+- **Keep** never changes a token's shape, so auras set by hand are left alone. Games upgrading from an older version keep their existing shapes.
+- **Opacity** (`!aura opacity`) makes the ring see-through, from 1 to 100 %.
+- **Player lock** (`!aura lock`, on by default) stops controlling players editing Aura 1 while HealthColors manages it.
+
+The health value can be read from any token bar, including bar 4 for games that use four bars.
+
 ### Automated Status Tracking
 
 Aura/Tint HealthColor can automatically:
@@ -99,10 +111,10 @@ Optional particle effects provide additional visual feedback when a creature tak
 
 Effects are fully configurable and support:
 
-- Custom damage colours
-- Custom healing colours
-- Roll20 custom FX integration
-- Per-character effect overrides
+- Custom damage and healing colours
+- Roll20 built-in effects by name (for example `glow-holy` or `explode-blood`)
+- Custom FX from your campaign's Effects menu, listed with one-click set buttons by `!aura listfx`
+- Per-character overrides through the `USEBLOOD` (damage) and `USEHEAL` (healing) attributes
 
 ### PC and NPC Controls
 
@@ -115,13 +127,23 @@ Separate settings are available for:
 - Dead marker handling
 - Nameplate visibility
 
+### GM Menu and Help Handout
+
+The `!aura` menu groups every setting into clear sections, with buttons to update the selected tokens, refresh every token or post a read-only copy of the settings to chat.
+
+A GM-only **HealthColors — Help & Reference** handout in the Journal lists every command, the aura shapes, colour palettes, character attributes, optional integrations, tips and the game's current settings. It is kept up to date automatically, and `!aura handout` rebuilds it on demand.
+
+### One-Click Install Options
+
+Every setting can be chosen from the Roll20 One-Click install dialog. Options are applied when the mod is installed and whenever the dialog is saved again, so changes made in game are not overwritten on every restart.
+
 ### Accessibility Features
 
 The script includes a dedicated colourblind palette and configurable thresholds to improve readability for a wider range of players and visual preferences.
 
 ### Death Save Integration
 
-Version 2.2.X adds support for character death-state workflows while keeping existing campaigns stable during upgrades.
+Since version 2.2.0, HealthColors supports character death-state workflows while keeping existing campaigns stable during upgrades.
 
 - **Death Save Integration (Optional):** An off-by-default mode that separates PC states at 0 HP into **dying**, **stable**, and **dead**.
 - **Dying state marker:** Uses a configurable marker (default: `skull`) for player characters at 0 HP who are still making death saves.
@@ -138,6 +160,8 @@ Configuration is available in both the interactive GM menu and read-only setting
 - `!aura deathsaves` command group for enabling, watch controls, and marker configuration
 
 To prevent silent misconfiguration, marker validation now warns the GM when a configured `dying` or `stable` marker tag does not exist in the active campaign marker set.
+
+Live death-save syncing for D&D 2024 (Beacon) sheets needs Roll20's Mod Script Sandbox v1.5. HealthColors detects the sandbox version and only shows a note when the game is on v1.0.
 
 Upgrade handling has also been improved: campaigns migrating from the interim PC dying-marker build now keep existing dying-marker settings instead of resetting them.
 
@@ -160,3 +184,6 @@ The modern v2.x series has been extensively refactored to improve reliability, c
 Aura/Tint HealthColor is designed for Roll20 API games and is compatible with Jumpgate.
 
 The script also works alongside many other popular Roll20 API scripts and includes special handling for health changes made by external automation tools, helping ensure token visuals remain synchronised regardless of how health values are updated.
+
+- **TokenMod** and **SmartAoE**: health changes made by these mods are picked up straight away. When SmartAoE marks a token with its own 0 HP marker, HealthColors leaves that marker in place and adds no dead marker of its own.
+- **Attribute scripts** such as AlterBars and ChatSetAttr: changes to linked health attributes are picked up through the attribute link.
