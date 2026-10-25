@@ -1,0 +1,53 @@
+---
+title: 'Aura/Tint HealthColors API v2.3.0'
+summary: 'HealthColors v2.3.0 lets you pick Roll20 built-in or custom effects for healing and damage, adds One-Click install options for every setting, and fixes new tokens staying uncoloured until a setting was changed.'
+date: 2026-10-06
+category: 'HealthColors'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-healthcolors-cover.jpg'
+heroAlt: 'HealthColors mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+HealthColors v2.3.0 makes the heal and hurt effects selectable: alongside a hex colour you can now choose any Roll20 built-in effect or a custom FX from your campaign, globally or per character. Every setting can also be configured from the Roll20 One-Click install dialog, the Death Save Integration guidance follows Roll20's new sandbox names, and newly placed tokens are coloured as soon as their health bar becomes usable.
+
+## Change Log
+
+### Added
+
+- **Selectable heal/hurt effects**: `!aura heal <effect>` and `!aura hurt <effect>` now accept a Roll20 built-in effect name (e.g. `glow-holy`, `explode-blood`, `splatter-blood`) or a custom FX name/id from the campaign's Effects menu, as well as the existing 6-digit hex colour. `!aura heal default` / `!aura hurt default` restore the shipped colours ([#5](https://github.com/steverobertsuk/roll20-api-scripts/issues/5)).
+- Added `!aura listfx` (and a **List FX** button in the GM menu), which lists the campaign's custom FX with their ids and one-click **Heal** / **Hurt** set buttons, plus a reference of the built-in `<type>-<colour>` effect names. This restores the `LISTFX` helper from the 1.7.1 forum build.
+- Added a per-character `USEHEAL` attribute mirroring `USEBLOOD`: `DEFAULT` (use the global setting), `OFF`/`NO` (no heal FX for that character), a hex colour, or a comma-separated list of built-in and/or custom effect names.
+- The GM menu and `!aura settings` snapshot now show the chosen heal/hurt effect (a colour swatch for hex values, the effect name otherwise).
+- **One-Click install options**: every setting (bar, aura/tint, palette, thresholds, PC/NPC toggles, nameplates, aura display values, FX, death sound and Death Save Integration) can now be set from the Roll20 One-Click install dialog. Options are applied on first install and whenever the dialog is saved again, so in-game `!aura` changes are not overwritten on every restart. `!aura reset` / `!aura reset-all` return to the One-Click values.
+- `script.json` now declares the objects and properties the script reads and writes at property level.
+
+### Changed
+
+- `USEBLOOD` now accepts Roll20 built-in effect names alongside custom FX names and hex colours. `OFF`/`NO` keep their long-standing meaning of disabling all HealthColors FX for that character and are now matched case-insensitively.
+- Unknown effect names given to `!aura heal` / `!aura hurt` are rejected with a GM warning instead of being silently ignored, and the previous setting is kept.
+- A configured custom FX that no longer exists now whispers the GM once per setting change rather than on every HP change, and the warning names the setting or attribute to fix.
+- Built-in effects are spawned by name with Roll20's own renderer, so they play at Roll20's fixed size. Custom FX and colour bursts keep the existing scaling.
+- Updated the Death Save Integration sandbox guidance for Roll20's September 2026 rename: "Experimental" is now **Mod Script Sandbox v1.5** and "Default" is **v1.0**. The script reads the running version, logs it at startup, reports it in `!aura deathsaves debug`, and only shows the Beacon sheet note when the game is on v1.0 (or the version cannot be determined).
+
+### Fixed
+
+- Fixed newly placed tokens staying uncoloured until a setting was toggled. This was reported on the Roll20 forum with the 5e Shaped sheet, where HP max is calculated by the sheet after the token exists. Changes to the health bar's max, its attribute link or the token's character now re-evaluate the token silently, so the aura or tint appears as soon as the bar becomes usable.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer.
+- [Roll20 API GitHub master branch](https://github.com/Roll20/roll20-api-scripts/tree/master/HealthColors).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/HealthColors-v2.3.0/HealthColors)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.3.0/HealthColors_v2.3.0.zip).
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Aura/Tint HealthColors Project Page**](https://midniteshadow.online/projects/roll20-mods/aura-tint-healthcolors/)
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
