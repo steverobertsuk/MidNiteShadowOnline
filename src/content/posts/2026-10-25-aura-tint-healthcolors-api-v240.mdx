@@ -1,0 +1,57 @@
+---
+title: 'Aura/Tint HealthColors API v2.4.0'
+summary: 'HealthColors v2.4.0 supports all six Roll20 aura shapes, adds opacity and player-lock controls, bar 4, a redesigned GM menu and an in-game help handout, and restores the SmartAoE integration.'
+date: 2026-10-25
+category: 'HealthColors'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-healthcolors-cover.jpg'
+heroAlt: 'HealthColors mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+HealthColors v2.4.0 catches up with Roll20's September 2026 aura update. The Aura 1 health ring can now use any of the six Roll20 shapes, including Hex and the new border styles, or pick Hex automatically on hex-grid maps, and it can be made see-through or locked so players can't edit it by accident. The GM menu has been redesigned, a GM-only help handout now lives in the Journal, and area damage from SmartAoE once again updates health colours straight away.
+
+## Change Log
+
+### Added
+
+- **All six Roll20 aura shapes**: Roll20's September 2026 update added Hex, Circle Border, Square Border and Hex Border auras alongside Circle and Square. `!aura a1shape` (and the GM menu prompt) now offers all six, plus three HealthColors choices: **Auto** (Hex on hex-grid pages once the radius is at least one grid cell, Circle otherwise, because Roll20 draws hex auras in whole cells), **Auto Border** (the outline versions) and **Keep** (never change a token's shape). Two-word shapes can be typed with or without the space, or with `-`/`_`.
+- `!aura opacity <1-100>` makes the Aura 1 health ring see-through. The default of `100` keeps the existing solid ring.
+- `!aura lock` (on by default) turns off the token's _players can edit Aura 1_ option while HealthColors manages the ring, so controlling players can't change it by accident.
+- The health bar can now be **bar 4** (`!aura bar 4`) for games that set _Maximum Token Bubbles/Bars_ to 4.
+- New One-Click options `auraOpacity` and `auraLockPlayers`; `Aura1Shape` and `Aura2Shape` list the new shapes.
+- **Redesigned GM menu** (`!aura`): an action bar with **Update Selected**, **Refresh All** and **Post Settings**; settings grouped into titled sections (General, Tracking & markers, Nameplates as a GM/Players × PCs/NPCs grid, Aura 1 ring, Effects & sound, Death Save Integration and Reference values); aligned rows with dark text on a light background; colour swatches on colour settings; and a footer with Open Help / Rebuild Help. The `!aura settings` snapshot is built from the same code, so it always matches the menu.
+- **Help handout**: a GM-only **HealthColors — Help & Reference** handout is created in the Journal with a command list, aura shapes and appearance, colour palettes with swatches, an attribute reference (`USECOLOR`, `USEBLOOD`, `USEHEAL`), optional integrations, tips & troubleshooting and a **Current settings** table. It is rebuilt when the script loads and after every setting change, `!aura handout` rebuilds it on demand, and it reads well in both Roll20 light and dark mode.
+
+### Changed
+
+- **The Aura 1 shape setting is now applied to tokens.** Before 2.4.0 it was only shown in the menu. New installs default to **Auto**.
+- **Upgrade migration**: a game whose Aura 1 Shape is still the old default `Circle` is switched to `Keep` on first load, so upgrading never reshapes auras set by hand. Any other stored shape was a deliberate choice and is now applied.
+- Switching to tint mode releases Aura 1: the ring is cleared, its shape returns to Roll20's default Circle (unless Shape is `Keep`) and players can edit it again.
+- Changing the Aura 1 radius, shape, opacity or player lock now refreshes every token straight away.
+- Aura 1 Color and the Aura 2 settings are now labelled **Reference values (not applied to tokens)**, and aura radii are labelled in page units rather than feet.
+
+### Fixed
+
+- **Restored the SmartAoE integration** that was dropped in the v2.0.0 rewrite, so area damage or healing applied by SmartAoE updates health colours and dead markers straight away. HealthColors logs which scripts it observes at startup, and the help handout shows whether TokenMod and SmartAoE are detected.
+- **SmartAoE's 0 HP marker takes precedence**: when a token at 0 HP carries the `zeroHPmarker` of a SmartAoE AoE (including `--instant` AoEs), HealthColors adds no dead marker of its own (the death sound still plays) and never removes SmartAoE's marker.
+- `!aura update` with nothing selected (or with a drawing selected) no longer throws an error. It reminds you to select a token and lists the tokens it updated.
+- Fixed TokenMod changes being processed twice (double FX) after `!aura reset`.
+- Fixed the health aura or tint being lost after the token settings dialog is saved.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v2.4.0; until then One-Click installs v2.3.0).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/HealthColors-v2.4.0/HealthColors)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.4.0/HealthColors_v2.4.0.zip).
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Aura/Tint HealthColors Project Page**](https://midniteshadow.online/projects/roll20-mods/aura-tint-healthcolors/)
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
