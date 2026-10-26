@@ -1,7 +1,7 @@
 ---
 title: 'Swap Token Positions'
 summary: "Moves two selected tokens into each other's spaces without manual drag-and-drop cleanup or layer mistakes."
-order: 4
+order: 6
 category: 'Token movement'
 postCategory: 'swap-token-positions'
 status: 'Active'

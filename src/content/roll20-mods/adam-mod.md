@@ -1,7 +1,7 @@
 ---
 title: 'A.D.A.M.'
 summary: 'Provides directional movement, token facing, and animation states for creating more dynamic and immersive encounters.'
-order: 6
+order: 7
 category: 'Token control'
 postCategory: 'adam'
 status: 'In Development'

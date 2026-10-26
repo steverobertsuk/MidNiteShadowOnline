@@ -1,7 +1,7 @@
 ---
 title: 'Concentration'
 summary: 'Keeps concentration effects visible and easier to maintain, especially when damage checks and linked spell effects need to stay in sync.'
-order: 5
+order: 4
 category: 'Spell support'
 postCategory: 'concentration'
 status: 'Active'
