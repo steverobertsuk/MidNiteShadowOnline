@@ -1,0 +1,68 @@
+---
+title: 'SmartAoE API v1.0.0'
+summary: 'SmartAoE reaches version 1.0.0 with Jumpgate fixes, reliable damage, healing and markers, a new help handout and a refactored codebase.'
+date: 2026-10-25
+category: 'SmartAoE'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-smartaoe-cover.jpg'
+heroAlt: 'SmartAoE mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+**SmartAoE**, the Roll20 Mod for drawing areas of effect on gridded maps, has reached version 1.0.0.
+
+SmartAoE was created by **David M.** (djmoorehead) and has been a favourite on the Roll20 One-Click library since 2022. Place a control token, aim it at any angle, and SmartAoE works out exactly which squares and creatures are inside the area. It can then roll saving throws, apply damage with resistances, vulnerabilities and immunities, add condition markers and post a results card to chat.
+
+The last release, v0.30, arrived in April 2024. Since then, Jumpgate and a number of long-standing bugs reported on the Roll20 forums have made SmartAoE harder to rely on. As the mod is open source, I have picked it up and worked through those reports. Version 1.0.0 has no breaking changes, so existing macros and AoEs work as before.
+
+## Change Log
+
+### Added
+
+- **Help handout**: a GM-only **SmartAoE — Help & Reference** handout is created in the Journal with an overview, a quick start, every command, every `!smartaoe` parameter, example macros, the integration API and tips. It is rebuilt every time the script loads, `!smarthelp` rebuilds it and whispers a link, and it reads well in both Roll20 light and dark mode.
+- `SmartAoE.ZeroHPMarkers()` lets other mods recognise SmartAoE's 0 HP markers. HealthColors v2.4.0 uses it to leave those markers to SmartAoE.
+- Errors in chat commands are logged with their stack trace in the API console, to make problems easier to diagnose.
+- README sections on Jumpgate, the 2024 D&D sheet and known limitations collected from the Roll20 forums.
+
+### Changed
+
+- **Refactored code**: the chat handler of about 1,400 lines is split into one handler per command, 35 variables that leaked into the shared Mod sandbox as globals are now declared, and every function has a JSDoc block.
+- **About 1,400 lines of duplicate and dead code removed**: circles, squares, walls and cones now share one routine for working out covered squares, and the 56 abilities of the `AoEControlToken` character come from one table. 28,500 random shape calculations and seven end-to-end game scenarios give identical results before and after.
+
+### Fixed
+
+- **Jumpgate**: AoE squares sit on top of the control token in Jumpgate, so clicking the control token often selects a square instead. Triggering then failed with an error; a selected square now triggers its own AoE.
+- **Trigger-Target** no longer stops with "Cannot read properties of undefined" for every target when an AoE on the page refers to a deleted square.
+- **`--damageFormula2`** now works with plain numbers and in every combination of numbers and rolls, and shows on the chat card without formula 1.
+- **Inline roll maths** such as `--damageFormula1|[[2*13d6]]` is rolled correctly, instead of dealing `2` damage.
+- **An AoE with no `--saveFormula` and no `--noSave`** no longer does nothing when triggered. It is treated as no save.
+- **`--removeAtZero`** now removes tokens at 0 HP, which had been broken since version 0.25.
+- **Healing**: negative plain-number damage such as `-5` heals, healing that cascades to a second bar passes on only the leftover amount, and the `(@Max)` note now appears.
+- **Status markers**: markers in a list are no longer skipped, existing markers are matched by their whole tag, markers with number badges can be removed, and other mods are only notified when something actually changed.
+- **Coverage**: squares at the edge of an AoE are no longer missed when the origin is off-centre, and a circle smaller than one square now covers that square.
+- **Separate cards**: two AoEs from the same caster now post separate results cards.
+- `!smartrotateorigin` redraws only the AoE it rotates.
+- Explicit colours passed by other scripts are no longer replaced with the player's colour, and `--noSave|false` no longer breaks saves.
+- Commands with nothing selected, or the wrong thing selected, now whisper what to do instead of throwing errors.
+- Many smaller fixes, including invalid control token sides, damage maths, ping commands and startup error reporting.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.0.0; until then One-Click installs v0.30).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/SmartAoE-v1.0.0/SmartAoE)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/SmartAoE-v1.0.0/SmartAoE_v1.0.0.zip).
+
+SmartAoE requires the **libInline** mod, which the One-Click installer adds automatically.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**SmartAoE Project Page**](https://midniteshadow.online/projects/roll20-mods/smartaoe/)
+
+A big thank you to David M. for creating SmartAoE. If you find it useful, you can support his work on [Patreon](https://www.patreon.com/djmoorehead).
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
