@@ -67,11 +67,7 @@ function runBuildStep(args) {
 
 function runScript(scriptPath, args = []) {
   return new Promise((resolveStep, rejectStep) => {
-    const childProcess = spawn(
-      process.execPath,
-      ['--use-system-ca', scriptPath, ...args],
-      spawnOptions
-    );
+    const childProcess = spawn(process.execPath, [scriptPath, ...args], spawnOptions);
     childProcess.on('error', rejectStep);
     childProcess.on('exit', (code) => {
       if (code === 0) {

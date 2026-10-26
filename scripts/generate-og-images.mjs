@@ -21,6 +21,25 @@ import { createRequire } from 'node:module';
 import sharp from 'sharp';
 import satori from 'satori';
 import { initWasm, Resvg } from '@resvg/resvg-wasm';
+import tls from 'node:tls';
+
+// ---------------------------------------------------------------------------
+// Certificates — trust the operating system's store as well as Node's bundled
+// CAs, so the Google Fonts download works behind HTTPS inspection on Windows.
+// Done here rather than with `node --use-system-ca`, because Node refuses that
+// flag alongside `--use-openssl-ca`, which the Cloudflare build adds through
+// NODE_OPTIONS.
+// ---------------------------------------------------------------------------
+if (typeof tls.setDefaultCACertificates === 'function') {
+  try {
+    tls.setDefaultCACertificates([
+      ...new Set([...tls.getCACertificates('default'), ...tls.getCACertificates('system')]),
+    ]);
+  } catch {
+    // Keep Node's default certificates.
+  }
+}
+
 const args = process.argv.slice(2);
 const force = args.includes('--force');
 const distArg = args.find((a) => !a.startsWith('--')) ?? 'dist';
