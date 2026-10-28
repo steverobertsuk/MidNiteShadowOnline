@@ -1,0 +1,51 @@
+---
+title: 'SmartAoE API v1.0.1'
+summary: 'SmartAoE v1.0.1 fixes D&D 2024 spell slots, resistances and Magic Resistance, ignores resistances to nonmagical attacks and adds grid rules for each game system.'
+date: 2026-10-28
+category: 'SmartAoE'
+tags: ['Roll20 API Mod', 'Bug Fix Release']
+hero: '../../assets/images/mods/mod-smartaoe-cover.jpg'
+heroAlt: 'SmartAoE mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+SmartAoE v1.0.1 follows up on the [forum report](https://app.roll20.net/forum/post/12842711/script-update-smartaoe/?pageforid=12843906#post-12843906) from players testing v1.0.0 on the D&D 2024 sheet. Spell slots now count the right way, leftover attributes no longer hide the sheet's resistances, and Magic Resistance is detected on 2024 creatures. Resistances to nonmagical attacks no longer reduce AoE damage on either sheet. There are no breaking changes.
+
+## Change Log
+
+### Added
+
+- **Grid rules by game system**, in the README and the help handout: the `--minGridArea`, `--minTokArea`, shape and origin settings that match D&D 5e 2014 and 2024, Pathfinder 1e and 2e, Starfinder and other systems, with notes on how creature size affects hits.
+
+### Changed
+
+- **2024 sheet spell slots count up without a limit.** On a 2024 sheet, `--resource|lvl3_slots_expended` (any level) now counts the slots used up to `lvl3_slots_total` when no limit is given. In v1.0.0 it counted down, so with no slots used it always said there weren't enough. 2014 sheets still count down.
+- The help handout's **2024 sheets** tip no longer says the `5eSTR` to `5eCHA` shortcuts need a custom `--saveFormula`, as they have worked on the 2024 sheet since v1.0.0. It now gives the Sandbox v1.5 and spell-slot notes.
+
+### Fixed
+
+- **Empty leftover attributes no longer hide 2024 sheet values.** A 2024 character can carry old attributes with the same names as its sheet values, for example after moving a 2014 character to the 2024 sheet. An empty `npc_immunities` was used instead of the sheet's value, so a Fire Giant took full fire damage. Empty leftover attributes are now skipped.
+- **Magic Resistance is detected on 2024 sheets.** A creature with a Magic Resistance feature, such as a Yuan-ti, now rolls its save twice and keeps the higher, shown as **A** on the card, as on the 2014 sheet. Only feature names are checked, so an item's description that mentions magic resistance doesn't count.
+- **Resistances to nonmagical attacks no longer apply to AoEs.** A 2014 stat block's "bludgeoning, piercing, and slashing from nonmagical attacks", found on gargoyles, many devils and lycanthropes, halved or cancelled a bludgeoning AoE. AoEs count as magical, as they already did for Magic Resistance, so these damage types are now ignored. Other damage types on the same line still apply.
+- **`!smarttrigger` before the control token has moved** no longer stops with "Cannot read properties of undefined". SmartAoE now whispers to move the control token first.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.0.1; until then One-Click installs v1.0.0).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/SmartAoE-v1.0.1/SmartAoE)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/SmartAoE-v1.0.1/SmartAoE_v1.0.1.zip).
+
+SmartAoE requires the **libInline** mod, which the One-Click installer adds automatically.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**SmartAoE Project Page**](https://midniteshadow.online/projects/roll20-mods/smartaoe/)
+
+Thank you to everyone on the Roll20 forums who tested v1.0.0 and reported these problems, and to David M. for creating SmartAoE. If you find it useful, you can support his work on [Patreon](https://www.patreon.com/djmoorehead).
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
