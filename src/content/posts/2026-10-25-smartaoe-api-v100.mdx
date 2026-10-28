@@ -1,6 +1,6 @@
 ---
 title: 'SmartAoE API v1.0.0'
-summary: 'SmartAoE reaches version 1.0.0 with Jumpgate fixes, reliable damage, healing and markers, a new help handout and a refactored codebase.'
+summary: 'SmartAoE reaches version 1.0.0 with Jumpgate fixes, D&D 2024 sheet support, reliable damage, healing and markers, a new help handout and a refactored codebase.'
 date: 2026-10-25
 category: 'SmartAoE'
 tags: ['Roll20 API Mod', 'Feature Release']
@@ -21,9 +21,10 @@ The last release, v0.30, arrived in April 2024. Since then, Jumpgate and a numbe
 ### Added
 
 - **Help handout**: a GM-only **SmartAoE — Help & Reference** handout is created in the Journal with an overview, a quick start, every command, every `!smartaoe` parameter, example macros, the integration API and tips. It is rebuilt every time the script loads, `!smarthelp` rebuilds it and whispers a link, and it reads well in both Roll20 light and dark mode.
+- **`--resource` limits**: an optional fourth value, `--resource|attrName, cost, alias, limit`, makes a resource count up to a limit instead of down to 0. The limit can be a number, `max` or another attribute. The 2024 sheet needs this for spell slots, because it counts the slots you've used: `--resource|lvl3_slots_expended, 1, Level 3 slots, lvl3_slots_total`.
 - `SmartAoE.ZeroHPMarkers()` lets other mods recognise SmartAoE's 0 HP markers. HealthColors v2.4.0 uses it to leave those markers to SmartAoE.
 - Errors in chat commands are logged with their stack trace in the API console, to make problems easier to diagnose.
-- README sections on Jumpgate, the 2024 D&D sheet and known limitations collected from the Roll20 forums.
+- README sections on Jumpgate, using the D&D 2024 sheet and known limitations collected from the Roll20 forums.
 
 ### Changed
 
@@ -32,10 +33,11 @@ The last release, v0.30, arrived in April 2024. Since then, Jumpgate and a numbe
 
 ### Fixed
 
-- **Jumpgate**: AoE squares sit on top of the control token in Jumpgate, so clicking the control token often selects a square instead. Triggering then failed with an error; a selected square now triggers its own AoE.
-- **Trigger-Target** no longer stops with "Cannot read properties of undefined" for every target when an AoE on the page refers to a deleted square.
+- **D&D 2024 sheets** ([forum report](https://app.roll20.net/forum/post/12842711/script-update-smartaoe/?pageforid=12843607#post-12843607)): SmartAoE couldn't read 2024 sheets. `--resource` always said the resource wasn't found, saves were a bare d20 without the target's bonus, and resistances, vulnerabilities and immunities were ignored. SmartAoE now reads these values from 2024 sheets and can spend spell slots on them. 2014-sheet games work as before. This needs the Mod Script Sandbox v1.5 (the current default).
+- **Jumpgate** ([forum](https://app.roll20.net/forum/post/12193888/script-smartaoe-anyone-using-it-in-a-jumpgate-campaign-successfully), [forum](https://app.roll20.net/forum/post/12349884/smartaoe-controltoken-spawns-behind-its-colored-squares), [forum](https://app.roll20.net/forum/post/12400598/smartaoe-and-jumpgate)): AoE squares sit on top of the control token in Jumpgate, so clicking the control token often selects a square instead. Triggering then failed with an error; a selected square now triggers its own AoE.
+- **Trigger-Target** no longer stops with "Cannot read properties of undefined" for every target when an AoE on the page refers to a deleted square ([reported several times](https://app.roll20.net/forum/post/10485883/script-smartaoe-graphical-interface-for-implementing-aoes-on-gridded-maps/?pagenum=16)).
 - **`--damageFormula2`** now works with plain numbers and in every combination of numbers and rolls, and shows on the chat card without formula 1.
-- **Inline roll maths** such as `--damageFormula1|[[2*13d6]]` is rolled correctly, instead of dealing `2` damage.
+- **Inline roll maths** such as `--damageFormula1|[[2*13d6]]` is rolled correctly, instead of dealing `2` damage ([forum report](https://app.roll20.net/forum/post/11924759/help-smartaoe-refuses-to-recognise-star-as-a-multiplier-any-ideas)).
 - **An AoE with no `--saveFormula` and no `--noSave`** no longer does nothing when triggered. It is treated as no save.
 - **`--removeAtZero`** now removes tokens at 0 HP, which had been broken since version 0.25.
 - **Healing**: negative plain-number damage such as `-5` heals, healing that cascades to a second bar passes on only the leftover amount, and the `(@Max)` note now appears.
