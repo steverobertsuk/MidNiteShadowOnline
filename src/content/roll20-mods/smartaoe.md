@@ -15,10 +15,14 @@ versions:
   - label: 'Direct Download'
     version: 'v1.0.0'
     url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/SmartAoE-v1.0.0/SmartAoE_v1.0.0.zip'
-lastUpdated: 2026-10-25
+lastUpdated: 2026-10-28
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
+  - label: 'D&D 5e 2014 sheet'
+    url: ''
+  - label: 'D&D 5e 2024 sheet'
+    url: ''
 requirements:
   - label: 'Roll20 Pro'
     url: ''
@@ -55,7 +59,7 @@ SmartAoE solves both problems. Place a control token, aim it at any angle, and S
 
 It can be used simply to draw areas of effect, or it can go much further: rolling saving throws for every creature caught in the blast, applying damage with resistances, vulnerabilities and immunities, adding condition markers and posting a results card to chat. Effects can be applied straight away, or later from buttons on the chat card.
 
-SmartAoE was created by **David M.** (djmoorehead), and version 1.0.0 is a maintenance release by MidNiteShadow7 that fixes long-standing bugs reported on the Roll20 forums, improves Jumpgate support and tidies up the code, with no breaking changes to existing macros.
+SmartAoE was created by **David M.** (djmoorehead), and version 1.0.0 is a maintenance release by me, MidNiteShadow7, that fixes long-standing bugs reported on the Roll20 forums, improves Jumpgate support, adds D&D 2024 sheet support and tidies up the code, with no breaking changes to existing macros.
 
 ---
 
@@ -82,7 +86,7 @@ A grid square counts as inside the area when at least a set fraction of it is co
 - Two damage formulas, each with its own damage type.
 - A rule for successful saves (half damage by default).
 - Resistance, vulnerability and immunity checks against each target's attributes.
-- 5e Magic Resistance is detected automatically, and the save is rolled with advantage.
+- 5e Magic Resistance is detected automatically on the 2014 sheet, and the save is rolled with advantage.
 - Negative damage heals, filling each bar to its maximum before moving on to the next.
 
 ### Condition Markers
@@ -107,7 +111,7 @@ On first start, SmartAoE sets everything up for you:
 - Particle FX on every affected square
 - Jukebox sounds when an AoE is spawned, moved, triggered or deleted
 - Turn Tracker entries, optionally linked to the control token
-- Resource costs, such as spell slots, that block the AoE if the caster can't pay
+- Resource costs, such as spell slots on either sheet, that block the AoE if the caster can't pay
 - Whisper options and a fully styleable results card
 - `!smartquery` to trigger only the AoEs covering a token, for start-of-turn and end-of-turn effects
 
@@ -129,6 +133,8 @@ Version 1.0.0 brings SmartAoE up to date after two and a half years without a re
 - **Healing** cascades correctly across several bars, and the `(@Max)` note now appears.
 - **Status markers** are added and removed reliably, including markers with number badges.
 - **Edge squares** of off-centre AoEs and circles smaller than one square are no longer missed.
+- **D&D 2024 sheets**: saves include the target's sheet bonus, resistances and immunities are applied, and spell slots are spent.
+- **`--resource` limits** let a resource count up to a limit, such as the 2024 sheet's spell slots.
 - **Commands with nothing selected** now whisper what to do instead of throwing errors.
 - The new **help handout** and the `SmartAoE.ZeroHPMarkers()` function for other mods.
 - The code has been refactored and about 1,400 lines of duplicate and dead code removed, with every shape calculation checked to give the same results as before.
@@ -144,7 +150,7 @@ SmartAoE's saves, damage and markers work in Jumpgate campaigns. Jumpgate has a 
 - Add `--aoeLayer|map` to your `!smartaoe` macros so the squares are drawn below all tokens.
 - Select one of the AoE's squares and trigger it: from version 1.0.0, a selected square triggers its own AoE.
 
-The built-in `5eSTR` to `5eCHA` save shorthands are designed for the 2014 D&D 5th Edition sheet. The 2024 sheet stores its data differently, so use a custom `--saveFormula` and `--dc` there. Custom formulas and attribute options also make SmartAoE usable with many other game systems.
+SmartAoE works with both the 2014 and 2024 D&D 5th Edition sheets. On the 2024 sheet, use the Mod Script Sandbox v1.5 (the current default) and give spell-slot costs a limit, for example `--resource|lvl3_slots_expended, 1, Level 3 slots, lvl3_slots_total`, because that sheet counts the slots you've used. 5e Magic Resistance is only detected on the 2014 sheet. Custom formulas and attribute options also make SmartAoE usable with many other game systems.
 
 SmartAoE requires the **libInline** mod, which the Roll20 One-Click installer adds automatically.
 
