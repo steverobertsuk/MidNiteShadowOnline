@@ -1,0 +1,174 @@
+---
+interface Props {
+  categories: string[];
+  total: number;
+}
+
+const { categories, total } = Astro.props;
+
+const sorts = [
+  { value: 'recommended', label: 'Recommended', icon: 'fa-star' },
+  { value: 'name', label: 'Name (A–Z)', icon: 'fa-arrow-down-a-z' },
+  { value: 'updated', label: 'Recently updated', icon: 'fa-clock-rotate-left' },
+];
+---
+
+<!-- Hidden until the script runs, so visitors without JavaScript don't see controls that do nothing. -->
+<div class="mod-list-controls" data-mod-controls hidden>
+  <details class="filter-dropdown" data-mod-menu="category">
+    <summary class="button filter-dropdown-toggle">
+      <i class="fa-solid fa-filter" aria-hidden="true"></i>
+      <span data-mod-menu-label>All categories</span>
+      <i class="fa-solid fa-chevron-down filter-dropdown-arrow" aria-hidden="true"></i>
+    </summary>
+    <ul class="filter-dropdown-menu" role="list">
+      <li>
+        <button type="button" class="filter-dropdown-item active" data-value="" aria-pressed="true">
+          <i class="fa-solid fa-layer-group" aria-hidden="true"></i> All categories
+        </button>
+      </li>
+      {
+        categories.map((category) => (
+          <li>
+            <button
+              type="button"
+              class="filter-dropdown-item"
+              data-value={category}
+              aria-pressed="false"
+            >
+              <i class="fa-solid fa-folder-open" aria-hidden="true" /> {category}
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
+
+  <details class="filter-dropdown" data-mod-menu="sort">
+    <summary class="button filter-dropdown-toggle">
+      <i class="fa-solid fa-sort" aria-hidden="true"></i>
+      <span data-mod-menu-label>Sort: Recommended</span>
+      <i class="fa-solid fa-chevron-down filter-dropdown-arrow" aria-hidden="true"></i>
+    </summary>
+    <ul class="filter-dropdown-menu" role="list">
+      {
+        sorts.map(({ value, label, icon }, index) => (
+          <li>
+            <button
+              type="button"
+              class:list={['filter-dropdown-item', { active: index === 0 }]}
+              data-value={value}
+              data-label={label}
+              aria-pressed={index === 0 ? 'true' : 'false'}
+            >
+              <i class={`fa-solid ${icon}`} aria-hidden="true" /> {label}
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
+
+  <p class="mod-list-count" data-mod-count aria-live="polite">Showing all {total} mods</p>
+</div>
+
+<script>
+  type SortKey = 'recommended' | 'name' | 'updated';
+
+  const controls = document.querySelector<HTMLElement>('[data-mod-controls]');
+  const grid = document.querySelector<HTMLElement>('[data-mod-grid]');
+
+  if (controls && grid) {
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>('[data-mod-card]'));
+    const count = controls.querySelector<HTMLElement>('[data-mod-count]');
+    const menus = {
+      category: controls.querySelector<HTMLDetailsElement>('[data-mod-menu="category"]'),
+      sort: controls.querySelector<HTMLDetailsElement>('[data-mod-menu="sort"]'),
+    };
+    const sortKeys: SortKey[] = ['recommended', 'name', 'updated'];
+    const categories = new Set(cards.map((card) => card.dataset.category ?? ''));
+
+    // Start from the URL so a filtered or sorted view can be shared.
+    const params = new URLSearchParams(window.location.search);
+    let category = categories.has(params.get('category') ?? '') ? params.get('category')! : '';
+    let sort: SortKey = sortKeys.includes(params.get('sort') as SortKey)
+      ? (params.get('sort') as SortKey)
+      : 'recommended';
+
+    const compare: Record<SortKey, (a: HTMLElement, b: HTMLElement) => number> = {
+      recommended: (a, b) => Number(a.dataset.order) - Number(b.dataset.order),
+      name: (a, b) => (a.dataset.title ?? '').localeCompare(b.dataset.title ?? ''),
+      updated: (a, b) =>
+        (b.dataset.updated ?? '').localeCompare(a.dataset.updated ?? '') ||
+        compare.recommended(a, b),
+    };
+
+    const syncMenu = (menu: HTMLDetailsElement | null, value: string, label: string) => {
+      if (!menu) return;
+      menu.querySelectorAll<HTMLButtonElement>('button[data-value]').forEach((item) => {
+        const selected = item.dataset.value === value;
+        item.classList.toggle('active', selected);
+        item.setAttribute('aria-pressed', String(selected));
+      });
+      const menuLabel = menu.querySelector('[data-mod-menu-label]');
+      if (menuLabel) menuLabel.textContent = label;
+    };
+
+    const apply = () => {
+      cards.sort(compare[sort]).forEach((card) => {
+        card.hidden = category !== '' && card.dataset.category !== category;
+        grid.append(card);
+      });
+
+      const shown = cards.filter((card) => !card.hidden).length;
+      if (count) {
+        count.textContent = category
+          ? `Showing ${shown} of ${cards.length} mods`
+          : `Showing all ${cards.length} mods`;
+      }
+
+      const sortButton = menus.sort?.querySelector<HTMLButtonElement>(`[data-value="${sort}"]`);
+      syncMenu(menus.category, category, category || 'All categories');
+      syncMenu(menus.sort, sort, `Sort: ${sortButton?.dataset.label ?? 'Recommended'}`);
+
+      const url = new URL(window.location.href);
+      url.searchParams.delete('category');
+      url.searchParams.delete('sort');
+      if (category) url.searchParams.set('category', category);
+      if (sort !== 'recommended') url.searchParams.set('sort', sort);
+      window.history.replaceState(null, '', url);
+    };
+
+    controls.addEventListener('click', (e) => {
+      const item = (e.target as Element).closest<HTMLButtonElement>('button[data-value]');
+      const menu = item?.closest<HTMLDetailsElement>('[data-mod-menu]');
+      if (!item || !menu) return;
+
+      if (menu.dataset.modMenu === 'category') category = item.dataset.value ?? '';
+      else sort = (item.dataset.value as SortKey) ?? 'recommended';
+
+      menu.open = false;
+      menu.querySelector('summary')?.focus();
+      apply();
+    });
+
+    document.addEventListener('click', (e) => {
+      Object.values(menus).forEach((menu) => {
+        if (menu?.open && !menu.contains(e.target as Node)) menu.open = false;
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      Object.values(menus).forEach((menu) => {
+        if (menu?.open) {
+          menu.open = false;
+          menu.querySelector('summary')?.focus();
+        }
+      });
+    });
+
+    controls.hidden = false;
+    apply();
+  }
+</script>

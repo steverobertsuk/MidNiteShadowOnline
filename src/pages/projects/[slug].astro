@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Hero from '../../components/Hero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CardMedia from '../../components/CardMedia.astro';
+import ModListControls from '../../components/ModListControls.astro';
 
 function contentIdToSlug(id: string) {
   return id.replace(/\.(md|mdx)$/i, '').replace(/\/index$/i, '');
@@ -28,6 +29,9 @@ const roll20Mods =
   slug === 'roll20-mods'
     ? (await getCollection('roll20Mods')).sort((a, b) => a.data.order - b.data.order)
     : [];
+const modCategories = [...new Set(roll20Mods.map((mod) => mod.data.category))].sort((a, b) =>
+  a.localeCompare(b)
+);
 const podcasts =
   slug === 'podcasting'
     ? (await getCollection('podcasts')).sort((a, b) => a.data.order - b.data.order)
@@ -58,12 +62,20 @@ const podcasts =
         slug === 'roll20-mods' && (
           <>
             <h2>Current mods</h2>
-            <div class="grid" style="margin-top: 24px;">
+            <ModListControls categories={modCategories} total={roll20Mods.length} />
+            <div class="grid" style="margin-top: 24px;" data-mod-grid>
               {roll20Mods.map((mod) => {
                 const modSlug = contentIdToSlug(mod.id);
 
                 return (
-                  <article class="card large post-card">
+                  <article
+                    class="card large post-card"
+                    data-mod-card
+                    data-category={mod.data.category}
+                    data-order={mod.data.order}
+                    data-title={mod.data.title}
+                    data-updated={mod.data.lastUpdated?.toISOString().slice(0, 10) ?? ''}
+                  >
                     <CardMedia
                       indexMedia={mod.data.indexMedia}
                       indexMediaAlt={mod.data.indexMediaAlt}
@@ -81,6 +93,16 @@ const podcasts =
                     <a class="button read-more-cta" href={`/projects/roll20-mods/${modSlug}/`}>
                       Read more <i class="fa-solid fa-angles-right" aria-hidden="true" />
                     </a>
+                    <div class="card-tags">
+                      <span class="tag">
+                        <i class="fa-solid fa-tag" aria-hidden="true" /> {mod.data.category}
+                      </span>
+                      {mod.data.status && (
+                        <span class="tag">
+                          <i class="fa-solid fa-tag" aria-hidden="true" /> {mod.data.status}
+                        </span>
+                      )}
+                    </div>
                   </article>
                 );
               })}

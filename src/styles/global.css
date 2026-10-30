@@ -1549,6 +1549,45 @@ details[open].filter-dropdown .filter-dropdown-arrow {
   color: var(--white);
 }
 
+button.filter-dropdown-item {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+button.filter-dropdown-item.active {
+  background: rgba(179, 136, 255, 0.18);
+}
+
+/* Roll20 Mods filter and sort */
+.mod-list-controls:not([hidden]) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.mod-list-controls .filter-dropdown-menu {
+  padding-left: 6px;
+}
+
+.mod-list-controls .filter-dropdown-menu li {
+  margin: 0;
+}
+
+.mod-list-count {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+[data-mod-card][hidden] {
+  display: none;
+}
+
 /* Pagination */
 .pagination {
   display: flex;
