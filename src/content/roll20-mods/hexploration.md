@@ -10,11 +10,11 @@ versions:
     version: 'v1.3'
     url: ''
   - label: 'GitHub'
-    version: 'v2.0.0'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/Hexploration-v2.0.0/Hexploration'
+    version: 'v2.0.1'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/Hexploration-v2.0.1/Hexploration'
   - label: 'Direct Download'
-    version: 'v2.0.0'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/Hexploration-v2.0.0/Hexploration_v2.0.0.zip'
+    version: 'v2.0.1'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/Hexploration-v2.0.1/Hexploration_v2.0.1.zip'
 lastUpdated: 2026-10-30
 compatibility:
   - label: 'Jumpgate'
@@ -37,7 +37,7 @@ featuredLinks:
   - label: 'GitHub'
     url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/Hexploration'
   - label: 'Changelog'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/Hexploration-v2.0.0/Hexploration/CHANGELOG.md'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/Hexploration-v2.0.1/Hexploration/CHANGELOG.md'
 links:
   - label: "Ada Lindberg's Art Packs"
     url: 'https://marketplace.roll20.net/browse/publisher/165/ada-lindberg'
@@ -53,7 +53,7 @@ Hex crawls are built on not knowing what lies over the next ridge. On a virtual 
 
 Hexploration covers the map for you. Draw a shape over the area to hide, fill it with hexes, and each hex a player token moves through is uncovered, along with the hexes it can see around it. Ruins, lairs and villages can be hidden under the hexes and announced in chat when the party finds them.
 
-Hexploration was created by **Ada Lindberg**. Version 2.0.0 is a full rewrite by me, MidNiteShadow7, after the Mod stopped working in Jumpgate games. It works in Jumpgate and Legacy games, no longer needs PathMath, MatrixMath, Vector Math or HTML Builder, and keeps version 1 hex maps, settings and `!hexploration_*` commands working.
+Hexploration was created by **Ada Lindberg**. Version 2 is a full rewrite by me, MidNiteShadow7, after the Mod stopped working in Jumpgate games. It works in Jumpgate and Legacy games, no longer needs PathMath, MatrixMath, Vector Math or HTML Builder, and keeps version 1 hex maps, settings and `!hexploration_*` commands working.
 
 ---
 
@@ -71,9 +71,10 @@ Hexploration was created by **Ada Lindberg**. Version 2.0.0 is a full rewrite by
 
 - A token reveals every hex it covers, so large creatures reveal several.
 - **Reveal Along Path** uncovers the whole route a token is dragged along, waypoints included, so fast moves don't skip hexes.
-- **Sight Distance** reveals the hexes around the token, and **Line of Sight** stops covered hexes from being seen through.
-- **Hex Reveal Distance** marks terrain that can only be revealed from close by, such as dense forest.
+- **Sight Distance** reveals the hexes around the token, nearest first.
+- **Hex Reveal Distance** and **Line of Sight** work together to make terrain, such as mountains or dense forest, that the party can't see into or past. Fill the mountains with a Hex Reveal Distance of 0, and they stay covered, along with everything behind them, until a token walks in.
 - **Glimpse** mode turns nearby hexes see-through instead of removing them, and clears them when a token enters.
+- Colours can be written as `#rrggbb`, `#rrggbbaa`, `rgb()` or `rgba()`, so see-through hexes work in Jumpgate and Legacy games alike.
 - **Tokens That Reveal** chooses player tokens (the default), character tokens or all tokens, so the GM can move monsters without giving the map away.
 
 ### Hidden Locations
@@ -109,6 +110,15 @@ Messages, menus and handouts are available in 24 languages, chosen with `!hexplo
 - Other Mods can call `Hexploration.revealAround(token)`.
 
 ---
+
+## What's New in Version 2.0.1
+
+Version 2.0.1 fixes problems found by players trying 2.0.0 in Jumpgate:
+
+- **Glimpse works in Jumpgate**, and `rgba()` fill colours make see-through hexes there too. Hexes left solid by 2.0.0 are repainted the next time a token sees them.
+- **Colour swatches** on the settings card show colours with transparency.
+- **Hex Reveal Distance and Line of Sight** are explained in the help, the settings card and the README, with a mountain range example, in all 24 languages.
+- The README lists the **colour formats** the settings accept.
 
 ## What's New in Version 2.0.0
 
