@@ -1,0 +1,71 @@
+---
+title: 'TaskAutomation v1.0.0 Released'
+summary: 'A new Roll20 Mod that automates your game without JavaScript: describe a task as data and let it run on time, on an event or at the press of a button, even across API restarts.'
+date: 2026-10-30
+category: 'TaskAutomation'
+tags: ['Roll20 API Mod', 'Initial Release']
+hero: '../../assets/images/mods/mod-taskautomation-cover.jpg'
+heroAlt: 'TaskAutomation mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+I'm pleased to announce the release of **TaskAutomation**, a new Roll20 Mod that lets Game Masters automate the little jobs that pile up during a session, without writing any JavaScript.
+
+Cycle a multi-sided token through a montage, remind a player that their torch is guttering, mark a token as dead when its hit points reach zero, ping the token whose turn it is, fade the music while a door creaks open, or remind the whole table every Friday that the session is about to start. Each of these is a **task**: a short description of what should happen, and when, written as data rather than code.
+
+## Why another automation Mod?
+
+Most timed effects in Roll20 Mods rely on a scattering of `setTimeout` calls, and they share the same weaknesses. When the API sandbox restarts, everything that was waiting is lost. When several things are waiting at once, the game carries a timer for each of them. And nobody can easily see what is due to happen next.
+
+TaskAutomation was built around those problems:
+
+- **One timer for everything.** All waiting work sits in a single queue with one timer, so an idle game costs nothing.
+- **Tasks survive restarts.** A run carries on from the step it had reached, on its original deadline.
+- **Nothing happens twice by accident.** If the sandbox stopped part-way through sending a message or changing a token, TaskAutomation checks what actually happened. When it can't be sure, it asks you rather than guessing.
+- **Missed work is handled your way.** Times that passed while the sandbox was off can be skipped, run once, caught up a little at a time, sent to you for a decision or dropped, and they are always reported.
+
+## What tasks can do
+
+- **Steps**: wait for a time or until a moment, wait for an event with a timeout, branch on a condition, loop, call other tasks and run branches in parallel.
+- **Actions**: chat messages, token properties and sides, status markers, attributes, pings, visual effects, jukebox tracks, and commands to other Mods.
+- **Triggers**: a button or command, a set time, an interval, a daily or weekly time, or a change to tokens, attributes, the turn order, the player page, players or signals.
+
+A GM-only **Dashboard** handout shows what is running, waiting, paused or missed, with buttons to pause, resume and cancel runs and to decide anything that needs your attention. A GM-only **Help** handout lists every command, step and trigger.
+
+## Ready-made examples
+
+You don't need to write a task to get started. TaskAutomation comes with templates you can add, try and adapt:
+
+- **Adventure montage**: cycle up to five multi-sided tokens through their sides.
+- **Torch reminder**: warn after 50 minutes and put the torch out after 10 more.
+- **HP threshold**: mark a token dead and tell the GM when bar 1 drops to 0.
+- **Turn response**: ping the token whose turn it is.
+- **Parallel scene**: fade a jukebox track while a door opens, then tidy up.
+- **Session reminder**: every Friday at 19:00, at the UTC offset you choose.
+- **Other-Mod command**: send a TokenMod command for the selected token.
+- **Door sequence**: wait up to a minute for the lever to be pulled.
+
+## Safe by default
+
+Everything is GM-only unless you choose otherwise. A task can be shared with named players, who can then use it only on tokens they control, and a player's run stops for your review if they lose control of its token part-way through. An emergency **Stop all** cancels every run and holds new starts until you allow them again.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.0.0).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/TaskAutomation-v1.0.0/TaskAutomation)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/TaskAutomation-v1.0.0/TaskAutomation_v1.0.0.zip).
+
+TaskAutomation works in Jumpgate and Legacy games and needs no other Mods.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**TaskAutomation Project Page**](https://midniteshadow.online/projects/roll20-mods/taskautomation/)
+
+Feedback and suggestions are always welcome. I hope TaskAutomation takes some of the bookkeeping off your hands, so you can spend more of the session on the story at your table.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
