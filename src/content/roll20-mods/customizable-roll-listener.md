@@ -14,7 +14,7 @@ versions:
     url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/CustomizableRollListener-v2.0.0/Customizable-Roll-Listener'
   - label: 'Direct Download'
     version: 'v2.0.0'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CustomizableRollListener-v2.0.0/CRL_v1.0.0.zip'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CustomizableRollListener-v2.0.0/CRL_v2.0.0.zip'
 lastUpdated: 2026-10-30
 compatibility:
   - label: 'Jumpgate'
