@@ -1,0 +1,79 @@
+---
+title: 'Customizable Roll Listener v2.0.0'
+summary: 'Customizable Roll Listener 2.0.0 is a full rewrite that reads every kind of roll, including D&D 2024 Beacon sheets, with chat menus, an inspector, placeholders and 24 languages. Version 1 listeners upgrade automatically.'
+date: 2026-10-30
+category: 'Customizable Roll Listener'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-customizablerolllistener-cover.jpg'
+heroAlt: 'Customizable Roll Listener mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+**Customizable Roll Listener** (CRL), the Roll20 Mod that runs chat commands automatically when a matching roll appears in chat, has reached version 2.0.0.
+
+CRL was created by **Scott C.** in 2016, with crit and fumble fixes by **The Aaron** in version 1.1. It lets a GM play a sound on a critical hit, roll on a fumble table on a natural 1, or post a reminder when a character uses a certain attack. Over the years it was reported as working on some chat output but not all, and once Beacon sheets such as D&D 2024 arrived, many listeners stopped triggering altogether. The mod is no longer supported, so I have rewritten it.
+
+Version 2.0.0 is a full rewrite. Version 1 listeners are upgraded automatically on the first start and keep their commands, and the version 1 `!crl \\create` style commands still work.
+
+## Change Log
+
+### Fixed
+
+- **"Not parseable" errors**: listeners with a roll result (`roll=critical` and so on) no longer fail with "CRL ERROR ||| Ability: … was not parseable". Version 1 crashed on any roll containing a modifier, a group or a comment, and on text without `##`, then skipped the listener and logged the error on every chat message.
+- **Beacon sheets**: rolls from sheets such as D&D 2024 are read. They arrive as `advancedroll` roll cards with no inline rolls or template name, so CRL reads the template, character, title and each roll from the card.
+- A roll result without text now checks the rolls. Version 1 skipped the check, so such listeners triggered on every message using the template.
+- `##` finds inline rolls at any position. Version 1 only found the first ten, so long roll templates were missed.
+- Text is plain text unless a listener asks for a regular expression. Version 1 used it as a regular expression, so text containing `(`, `+`, `?`, `.` and similar characters silently matched something else.
+- Dropped dice (advantage, disadvantage, `kh`/`kl`) and rerolled dice no longer count as crits or fumbles, and damage dice rolling their highest face are no longer crits when a d20 was rolled.
+- A roll exactly on its target is a success and not also a failure.
+- Rollable table results and `/roll` results can be matched.
+- Inline rolls and roll templates typed into a `!crl` command are kept in the listener's commands instead of being rolled once and lost.
+- Multi-line commands are sent one message per line, as a macro would be.
+- Malformed commands no longer crash the Mod sandbox; problems are whispered to the GM with a hint.
+- CRL no longer reacts to its own menus, and a listener that keeps triggering itself is switched off instead of looping.
+- GM cards never spill into public chat, and menus no longer go missing when they show `@{…}` or `%{…}` text.
+- Upgrading no longer wipes the mod's state.
+
+### Added
+
+- **Chat menus** with a card per listener and buttons to change every setting, and a **Command Deck** handout.
+- **Help handout** and full documentation, including how to find a sheet's roll template names.
+- **New `!crl <command> --option value` syntax**, with listeners named by name or ID.
+- **Filters** for message types, speakers and characters (including the character in the roll template) and players.
+- **Roll checks** for totals and natural die results (`>=15`, `<=2`, `19-20`), and a choice of which dice to check.
+- **Placeholders** in commands: `${who}`, `${character}`, `${player}`, `${template}`, `${total}`, `${natural}`, `${result}`, `${expression}`, `${table}`, `${listener}` and `${field:name}`.
+- Commands can be sent as CRL or as the character who rolled.
+- Per-listener on/off switch, cooldown, ordering and "stop after this one".
+- **`!crl inspect`**: explains the next chat message (type, template and fields, every roll with its dice) and why each listener did or did not trigger.
+- **`!crl test`**: runs a listener's commands with sample values.
+- An option to ignore chat sent by other mods.
+- Listener rules are stored with each listener, so they survive copying the game.
+- A public API for other mods: `CRL.analyse`, `CRL.matches` and `CRL.onMatch`.
+- **Available in 24 languages**, chosen with a language setting.
+
+### Changed
+
+- Text matching ignores upper and lower case.
+- `fail` means a target roll with no successes.
+- The code is split into modules, bundled with Rollup and covered by automated tests.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v2.0.0; until then One-Click installs v1.1).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/CustomizableRollListener-v2.0.0/Customizable-Roll-Listener)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CustomizableRollListener-v2.0.0/CRL_v1.0.0.zip).
+
+Customizable Roll Listener has no dependencies.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Customizable Roll Listener Project Page**](https://midniteshadow.online/projects/roll20-mods/customizable-roll-listener/)
+
+A big thank you to Scott C. for creating Customizable Roll Listener, and to The Aaron for keeping it going.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
