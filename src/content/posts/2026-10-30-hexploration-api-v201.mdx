@@ -1,0 +1,56 @@
+---
+title: 'Hexploration API v2.0.1'
+summary: 'Hexploration v2.0.1 fixes Glimpse and see-through hexes in Jumpgate, shows transparent colours on the settings card, and explains Hex Reveal Distance and Line of Sight.'
+date: 2026-10-30
+category: 'Hexploration'
+tags: ['Roll20 API Mod', 'Bug Fix Release']
+hero: '../../assets/images/mods/mod-hexploration-cover.jpg'
+heroAlt: 'Hexploration mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+Hexploration v2.0.1 follows up on reports from players trying v2.0.0 in Jumpgate. Glimpse mode now works in Jumpgate, see-through fill colours work too, and the settings card shows colours with transparency properly. The help also explains Hex Reveal Distance and Line of Sight, which could seem to do nothing. There are no breaking changes.
+
+## Change Log
+
+### Fixed
+
+- **Glimpse works in Jumpgate.** Jumpgate ignores `rgb()` and `rgba()` colours on drawn shapes, so glimpsed hexes kept their solid fill and Glimpse looked as though it did nothing. The fill, border and glimpse colours of Jumpgate hexes are now converted to `#rrggbb`, or `#rrggbbaa` when they have transparency, so `rgba()` fill colours make see-through hexes too. Legacy games use the colours unchanged.
+- **Hexes left solid by v2.0.0 are repainted** the next time a token sees them, so existing maps don't need filling again.
+- **Colour swatches on the settings card** show colours with transparency. Roll20 chat dropped `#rrggbbaa` colours and `rgb()` colours with a fourth value, leaving the swatch empty.
+
+### Changed
+
+- **Hex Reveal Distance and Line of Sight are explained** in the help handout, the settings card and the README, with a mountain range example, in all 24 languages:
+  - **Hex Reveal Distance** is stored on each hex when it's filled, so set it _before_ filling. Changing it later doesn't affect hexes already on the map.
+  - **Line of Sight** only blocks behind hexes that stay covered, such as terrain filled with a Hex Reveal Distance. Nearer hexes are revealed first, so in open country it changes nothing, and it needs a Sight Distance of 2 or more.
+- The README lists the **colour formats** the settings accept: `#rrggbb`, `#rrggbbaa`, `rgb()`, `rgba()` and colour names, with how each one is used in Jumpgate.
+
+## Making Mountains That Block Sight
+
+To add terrain the party can't see into or past:
+
+1. `!hexploration set revealDistance 3`
+2. `!hexploration set maxDistance 0`, then select the shapes over the mountains and fill them.
+3. `!hexploration set maxDistance none`, then fill the land beyond the mountains.
+
+A token walking up to the mountains reveals the open ground within 3 hexes, but the mountains stay covered and so does everything behind them. Each mountain hex is revealed when a token walks into it.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v2.0.1; until then One-Click offers v1.3).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/Hexploration-v2.0.1/Hexploration)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/Hexploration-v2.0.1/Hexploration_v2.0.1.zip).
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Hexploration Project Page**](https://midniteshadow.online/projects/roll20-mods/hexploration/)
+
+Thank you to everyone who tested v2.0.0 in Jumpgate and reported these problems, and to Ada Lindberg for creating Hexploration. If you find it useful, take a look at Ada's map and token art packs on the [Roll20 Marketplace](https://marketplace.roll20.net/browse/publisher/165/ada-lindberg).
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
