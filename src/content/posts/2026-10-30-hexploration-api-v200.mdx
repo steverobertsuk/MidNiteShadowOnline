@@ -1,0 +1,83 @@
+---
+title: 'Hexploration API v2.0.0'
+summary: 'Hexploration v2.0.0 is a full rewrite for Jumpgate and Legacy games, with no dependencies, reveals along the whole path, glimpse mode, hidden monsters, undo, calibration and 24 languages.'
+date: 2026-10-30
+category: 'Hexploration'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-hexploration-cover.jpg'
+heroAlt: 'Hexploration mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+**Hexploration**, the Roll20 Mod that covers a hex map and uncovers it as the party explores, has reached version 2.0.0.
+
+Hexploration was created by **Ada Lindberg**. Draw a shape over the area to hide and fill it with hexes, and each hex a player token moves through is revealed, along with hidden locations waiting underneath. Its last release, version 1.3, came out in 2019. It doesn't work in Jumpgate games and is no longer supported, so, as the Mod is open source, I have rewritten it.
+
+Version 2.0.0 works in both Jumpgate and Legacy games and no longer needs PathMath, MatrixMath, Vector Math or HTML Builder. Version 1 hex maps, names, locations and settings, the `!hexploration_*` commands and the `Hexploration_menu` macro all carry over, so you can install it over version 1 and carry on.
+
+## Change Log
+
+### Fixed
+
+- **Works in Jumpgate**: shapes drawn in Jumpgate can be filled, hexes are drawn as Jumpgate shapes, and deleted Jumpgate hexes are forgotten.
+- **Hexes line up** with Jumpgate's regular hex grid. Legacy pages keep the exact version 1 spacing, so existing maps stay aligned.
+- **Inverse Fill** now covers the hexes on the far right and bottom of the page.
+- A token near the edge of a hex is now placed in the correct hex.
+- **Moving a token on the GM layer**, or a monster controlled only by the GM, no longer reveals the map.
+- **Tokens dragged quickly** across the map no longer skip the hexes in between.
+- Bar, marker and other changes that don't move a token no longer trigger reveals.
+- **No more crashes** when a hex, its label or its icon was deleted by hand, when Name Hex is used on something that isn't a hex, or when Fill is used with a token selected.
+- Location names are HTML-escaped in chat.
+- **Players can no longer run the commands**; they are GM only.
+- **Large fills** are drawn in batches, so they no longer trip the API's long-running script watchdog.
+
+### Added
+
+- **Legacy support** continues alongside Jumpgate, with the engine detected automatically.
+- **Hex Layer** setting: draw on the foreground layer, above tokens, or the token layer. Auto tries the foreground layer first and falls back to the token layer.
+- **Reveal Along Path**: the whole route a token is dragged along is revealed, waypoints included.
+- **Large tokens** reveal every hex they cover.
+- **Tokens That Reveal** setting: player tokens (the default), character tokens (the version 1 behaviour) or all tokens.
+- **Glimpse** reveal mode: hexes within sight turn see-through and clear when a token enters them.
+- **Line of Sight** can be switched off.
+- **Mark Location** and **Unmark** commands for hidden location tokens. The version 1 `white-tower` marker still works.
+- **Announce Discoveries** (everyone, GM only or off) and **Ping Discoveries** settings.
+- **Hide Covered Tokens**: the player-visible names, bars and auras of tokens under covered hexes are switched off until they are uncovered, because Roll20 draws them above the hexes.
+- **Reveal** and **Conceal** for selected hexes, shapes and tokens, plus **Reveal Page**, **Reset Page** and **Explore**.
+- **Undo** for the last fill, inverse fill or conceal, including the shapes it used.
+- **Per-page overrides** for the reveal settings.
+- **Rescan** rebuilds a page's hex list after a page or game is copied, re-linking name labels and location tokens.
+- **Calibrate** lines the hex grid up with tokens snapped to hex centres.
+- A **status card** for the current page.
+- GM-only **Help** and **Command Deck** handouts in the Journal.
+- **Available in 24 languages**.
+- `Hexploration.revealAround(token)` for other Mods, and automatic support for tokens moved by **TokenMod**. **TokenController** v5 uses it, so patrols reveal hexes.
+- Hex Layer, Tokens That Reveal and Language on the Mod's One-Click settings page.
+
+### Changed
+
+- The main command is `!hexploration` with subcommands. The version 1 `!hexploration_*` commands still work.
+- Hexploration no longer depends on PathMath, MatrixMath, Vector Math or HTML Builder.
+- New games default to dark hexes with a sight distance of 1. Upgraded games keep their settings.
+- Version 1 games are upgraded automatically on startup, and hexes whose shapes no longer exist are forgotten.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v2.0.0; until then One-Click offers v1.3).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/Hexploration-v2.0.0/Hexploration)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/Hexploration-v2.0.0/Hexploration_v2.0.0.zip).
+
+If you are upgrading from version 1, you can remove PathMath, MatrixMath, Vector Math and HTML Builder afterwards unless another Mod uses them.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Hexploration Project Page**](https://midniteshadow.online/projects/roll20-mods/hexploration/)
+
+A big thank you to Ada Lindberg for creating Hexploration. If you find it useful, take a look at Ada's map and token art packs on the [Roll20 Marketplace](https://marketplace.roll20.net/browse/publisher/165/ada-lindberg).
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
