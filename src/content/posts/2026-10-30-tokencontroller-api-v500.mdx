@@ -1,0 +1,84 @@
+---
+title: 'TokenController API v5.0.0'
+summary: 'TokenController v5.0.0 is a full rewrite for Jumpgate and Legacy games, with routes from drawings and recordings, every grid type, formation following, combat settings and working One-Click installs.'
+date: 2026-10-30
+category: 'TokenController'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-tokencontroller-cover.jpg'
+heroAlt: 'TokenController mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+**TokenController**, the Roll20 Mod that sets tokens patrolling, following and holding still, has reached version 5.0.0.
+
+TokenController was created by **Developesque**. Give a token a route and it walks it on its own, so guards can walk their rounds and carts can follow their drivers while the GM gets on with the game. It was reported as not working in Jumpgate and is no longer supported, and installing its latest version from One-Click failed. As the Mod is open source, I have rewritten it.
+
+Version 5.0.0 works in both Jumpgate and Legacy games and no longer needs HTML Builder. Version 4 paths, patrolling tokens, locks, followers, unfinished drafts, settings, the `T-Cntrl_` macros and the `!tc` commands all carry over, so you can install it over version 4 and carry on.
+
+## Change Log
+
+### Fixed
+
+- **One-Click installs work again.** Version 4.0.1 was published without its `4.0.1/` folder, so installing it failed, and the `4.0.0/` folder had been overwritten with later code. Both folders now hold the code that was released under those numbers.
+- **Editing a patrolling token** (a bar, a marker, its name) no longer takes it off its route.
+- **Back-and-forth routes** walk back exactly the way they came. Version 4 skipped the last and first steps on the way back, so tokens drifted further away on every lap.
+- **Tokens near the edge of the page** can move in every direction. Version 4 treated a token's centre as its top-left corner and remembered each page's size the first time it was used, which also broke resized pages. Steps off the page are now skipped without the token losing its place on the route.
+- **The cell size comes from each page's grid**, including cell sizes other than 1 and Jumpgate grid offsets, instead of one global Pixels Per Unit setting.
+- **Reset** on a single path only resets that path's tokens, and puts tokens back on the layer they started on.
+- A **fixed start on another page** reports the problem instead of failing silently.
+- `!tc list` without arguments no longer throws an error, and path names with spaces work everywhere, including menu buttons and drafts.
+- Paths made only of waits or stealth toggles, such as the built-in `S` Blinker, can be added.
+- The **usage guide handout is GM-only**. Version 4 created it visible to every player and rewrote it on every restart.
+- **Lock** no longer takes over the red status marker or teleports locked tokens every tick.
+- **Combat detection** no longer misses the first creature added to the turn order, and is remembered across API restarts.
+- **Followers** no longer stack on top of a patrolling leader, and a token can no longer follow itself or follow in a circle.
+- **Chat is no longer flooded**: actions get a short whispered reply instead of the whole menu, and menus are not stored in the chat archive.
+- Errors are reported to the GM with a hint, and logged to the API console without stopping the sandbox.
+
+### Added
+
+- **Jumpgate and Legacy** support, with the engine detected automatically. HTML Builder is no longer needed.
+- **Routes from drawings** on the map: lines, polygons, freehand shapes, rectangles and ellipses, in both Jumpgate and Legacy.
+- **Recorded routes**: move a token with buttons or drag it, following Roll20 waypoints. On square grids recordings become editable step codes.
+- **Diagonal steps** (`UL`, `UR`, `DL`, `DR`), steps without a number (one cell) and counted waits (`W3`) in step codes.
+- **Every grid type**: square, hex (V and H), isometric, dimetric and gridless, with a `calibrate` command for maps whose grid doesn't line up.
+- **Movement** setting: one cell per step, or a whole step at once as in version 4.
+- **Exact route speeds**: each route runs at its own interval, instead of being rounded to the global tick.
+- **Combat Detection** (turn tracker, GM switch or both) and **Combat Behaviour** (pause, move each turn or keep moving) settings, with Combat On and Off buttons.
+- **Lock Mode** (Roll20's position lock, undoing moves, or holding still) and **Lock Marker** settings.
+- **Follow Mode**: single file or formation. Leaders can be chosen with the Leader button or by name, so `@{target}` is no longer needed. Followers move with tokens dragged by hand, patrolling tokens and tokens moved by TokenMod.
+- **Dragging a patrolling token** carries the patrol on from there, or stops it if you prefer.
+- **Pause All** and **Resume**, plus Rename, Show and per-route option buttons. Removing a route asks first.
+- **Turn Tokens** supports token art facing any direction.
+- A **status card** showing what the Mod is doing and how it sees the current page's grid.
+- A **public API** for other Mods: `TokenController.ObserveTokenChange`, `start`, `stop`, `reset` and `routeOf`. Moves are passed to **Hexploration** v2, so patrols reveal hexes.
+- GM-only **Help** and **Command Deck** handouts in the Journal.
+- **Available in 24 languages**.
+
+### Changed
+
+- The main command is `!tokencontroller`. `!tc` and `!token-control` still accept every version 4 command.
+- A token follows one route at a time; starting another route replaces the first.
+- Version 4 games are upgraded on startup, keeping paths, patrols, locks, followers, unfinished drafts and settings.
+- New games default to a 2-second interval, moving one cell per step.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v5.0.0; until then One-Click offers v4.0.1).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/TokenController-v5.0.0/TokenController)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/TokenController-v5.0.0/TokenController_v5.0.0.zip).
+
+If you are upgrading from version 4, you can remove HTML Builder afterwards unless another Mod uses it.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**TokenController Project Page**](https://midniteshadow.online/projects/roll20-mods/tokencontroller/)
+
+A big thank you to Developesque for creating TokenController. If you find it useful, you can support their work on [Patreon](https://www.patreon.com/Developesque).
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
