@@ -124,11 +124,9 @@ Generate a detailed encounter report directly into a Roll20 journal.
 
 Reports provide visibility into modified tokens and highlight important changes, creating a central reference point for encounter management.
 
----
+### Available in 24 Languages
 
-## Internationalisation
-
-Combat Encounter Director includes support for more than twenty languages.
+Combat Encounter Director is available in 24 languages.
 
 Menus, journals, chat output, and interface elements can all be displayed in the preferred language of the Game Master, helping make the mod accessible to a wider international audience.
 

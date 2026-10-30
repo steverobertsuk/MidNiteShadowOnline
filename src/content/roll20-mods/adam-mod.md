@@ -119,9 +119,9 @@ Installable macros provide rapid access to common actions and reduce the amount 
 
 This allows players and Game Masters to incorporate A.D.A.M. into their existing Roll20 workflows.
 
-### Localisation Support
+### Available in 24 Languages
 
-A.D.A.M. includes support for more than twenty languages.
+A.D.A.M. is available in 24 languages.
 
 Menus, help text, chat output, and configuration interfaces can all be presented in the preferred language of the user.
 

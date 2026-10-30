@@ -154,6 +154,14 @@ The built-in classification system automatically identifies:
 
 This helps keep menus clean and reduces accidental application of conditions to scenery, spell templates, and utility tokens.
 
+### Available in 24 Languages
+
+Condition Tracker is available in 24 languages.
+
+Chat messages, menus, help content, handouts, and configuration screens are translated, allowing Game Masters and players worldwide to use the mod in their preferred language.
+
+Right-to-left language support is also included for Hebrew.
+
 ---
 
 ## Supported Game Systems
@@ -177,16 +185,6 @@ Condition Tracker includes support for a wide range of tabletop RPG systems, inc
 - and many more.
 
 Game-specific condition lists and marker defaults can be selected through the configuration menu.
-
----
-
-## Internationalisation
-
-Condition Tracker supports localisation for more than twenty languages.
-
-Chat messages, menus, help content, handouts, and configuration screens are translated, allowing Game Masters and players worldwide to use the mod in their preferred language.
-
-Right-to-left language support is also included for Hebrew.
 
 ---
 
