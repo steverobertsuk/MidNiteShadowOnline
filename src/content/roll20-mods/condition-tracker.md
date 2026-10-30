@@ -1,7 +1,7 @@
 ---
 title: 'Condition Tracker'
 summary: 'Advanced condition, effect, and status tracking for campaigns with Turn Tracker integration, custom effects and saved conditions.'
-order: 1
+order: 3
 category: 'Combat automation'
 postCategory: 'condition-tracker'
 status: 'Active'

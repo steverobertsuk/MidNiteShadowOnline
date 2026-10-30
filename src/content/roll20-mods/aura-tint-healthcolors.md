@@ -1,7 +1,7 @@
 ---
 title: 'Aura/Tint HealthColors'
 summary: 'Automatically colourises tokens based on their remaining health, providing instant visual feedback through auras, tint overlays and effects.'
-order: 3
+order: 1
 category: 'Visual feedback'
 postCategory: 'healthcolors'
 status: 'Active'

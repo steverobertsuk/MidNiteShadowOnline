@@ -1,7 +1,7 @@
 ---
 title: 'Combat Encounter Director'
 summary: 'Provides a powerful command centre for scaling encounters, managing reinforcements, controlling battlefield visibility.'
-order: 2
+order: 6
 category: 'Encounter management'
 postCategory: 'combat-encounter-director'
 status: 'Active'

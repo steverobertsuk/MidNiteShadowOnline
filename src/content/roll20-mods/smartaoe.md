@@ -1,7 +1,7 @@
 ---
 title: 'SmartAoE'
 summary: 'Draw areas of effect at any angle on gridded maps, resolve exactly which squares and creatures are inside, then roll saves, apply damage and add markers automatically.'
-order: 5
+order: 2
 category: 'Combat automation'
 postCategory: 'smartaoe'
 status: 'Active'
