@@ -1,0 +1,44 @@
+---
+title: 'Hexploration API v2.0.2'
+summary: 'Hexploration v2.0.2 stops Name Hex breaking the Jumpgate tabletop, keeps marked locations when a fill is undone, and corrects the translations in all 23 languages.'
+date: 2026-10-31T01:20:00Z
+category: 'Hexploration'
+tags: ['Roll20 API Mod', 'Bug Fix Release']
+hero: '../../assets/images/mods/mod-hexploration-cover.jpg'
+heroAlt: 'Hexploration mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+Hexploration v2.0.2 fixes a serious problem with naming hexes in Jumpgate, found while recording the how-to video. It also fixes Undo forgetting hidden locations, and corrects the translations, which had turned "hex" into some odd words. There are no breaking changes.
+
+## Change Log
+
+### Fixed
+
+- **Naming a hex no longer stops Jumpgate drawing the tabletop.** Name labels were made without a font, which Jumpgate can't draw, so Roll20 showed "Something Went Wrong" until the page was refreshed, and again every time the page was opened. Labels now use Arial.
+- **Labels made by v2.0.0 and v2.0.1 are repaired** when the Mod starts or the page is rescanned, so pages that already show the error work again without any changes.
+- **Undoing a fill keeps its hidden locations.** A token marked with Mark Location went back to the token layer as an ordinary token, so the next fill covered it without hiding it, and finding it wasn't announced.
+- **Translations:** the machine translations had rendered "hex" as hexadecimal, witch, spell or magic in several languages, some messages were partly left in English, and a few said the opposite of the English. All 23 translations were proofread, each language now uses one word for hex that matches its setting names, and the `!hexploration set language` command in the help is no longer translated, so it works when copied.
+
+### Changed
+
+- **Where name labels show:** the help handout and README explain that Jumpgate draws the GM layer below the foreground layer. GM-only name labels therefore only show over covered hexes when **Hex Layer** is set to the token layer.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v2.0.2; until then One-Click offers v1.3).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/Hexploration-v2.0.2/Hexploration)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/Hexploration-v2.0.2/Hexploration_v2.0.2.zip).
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Hexploration Project Page**](https://midniteshadow.online/projects/roll20-mods/hexploration/)
+
+Thank you to Ada Lindberg for creating Hexploration. If you find it useful, take a look at Ada's map and token art packs on the [Roll20 Marketplace](https://marketplace.roll20.net/browse/publisher/165/ada-lindberg).
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
