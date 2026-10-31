@@ -10,12 +10,12 @@ versions:
     version: 'v1.3'
     url: ''
   - label: 'GitHub'
-    version: 'v2.0.1'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/Hexploration-v2.0.1/Hexploration'
+    version: 'v2.0.2'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/Hexploration-v2.0.2/Hexploration'
   - label: 'Direct Download'
-    version: 'v2.0.1'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/Hexploration-v2.0.1/Hexploration_v2.0.1.zip'
-lastUpdated: 2026-10-30
+    version: 'v2.0.2'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/Hexploration-v2.0.2/Hexploration_v2.0.2.zip'
+lastUpdated: 2026-10-31
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -37,7 +37,7 @@ featuredLinks:
   - label: 'GitHub'
     url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/Hexploration'
   - label: 'Changelog'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/Hexploration-v2.0.1/Hexploration/CHANGELOG.md'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/Hexploration-v2.0.2/Hexploration/CHANGELOG.md'
 links:
   - label: "Ada Lindberg's Art Packs"
     url: 'https://marketplace.roll20.net/browse/publisher/165/ada-lindberg'
@@ -79,7 +79,7 @@ Hexploration was created by **Ada Lindberg**. Version 2 is a full rewrite by me,
 
 ### Hidden Locations
 
-Select a token for an important place and click **Mark Location** before filling. The token is hidden under the hexes and announced in chat, to everyone or to the GM only, when it is discovered, with an optional ping to show the players where. Hexes can also be given names that only the GM sees.
+Select a token for an important place and click **Mark Location** before filling. The token is hidden under the hexes and announced in chat, to everyone or to the GM only, when it is discovered, with an optional ping to show the players where. Hexes can also be given names that only the GM sees. In Jumpgate, the names show over covered hexes when Hex Layer is set to the token layer.
 
 ### Monsters Stay Hidden
 
@@ -110,6 +110,15 @@ Messages, menus and handouts are available in 24 languages, chosen with `!hexplo
 - Other Mods can call `Hexploration.revealAround(token)`.
 
 ---
+
+## What's New in Version 2.0.2
+
+Version 2.0.2 fixes problems found while recording the how-to video:
+
+- **Name Hex no longer breaks the Jumpgate tabletop.** Labels were made without a font, so Roll20 showed "Something Went Wrong" on that page. Labels made by earlier versions are repaired on startup.
+- **Undo keeps hidden locations**, so tokens marked with Mark Location stay hidden and are still announced when found.
+- **All 23 translations proofread**, so "hex" no longer turns into hexadecimal, witch, spell or magic.
+- The help explains that in Jumpgate, GM-only name labels only show over covered hexes when Hex Layer is set to the token layer.
 
 ## What's New in Version 2.0.1
 
