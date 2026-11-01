@@ -10,12 +10,12 @@ versions:
     version: 'v1.3'
     url: ''
   - label: 'GitHub'
-    version: 'v2.0.2'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/Hexploration-v2.0.2/Hexploration'
+    version: 'v2.0.3'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/Hexploration-v2.0.3/Hexploration'
   - label: 'Direct Download'
-    version: 'v2.0.2'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/Hexploration-v2.0.2/Hexploration_v2.0.2.zip'
-lastUpdated: 2026-10-31
+    version: 'v2.0.3'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/Hexploration-v2.0.3/Hexploration_v2.0.3.zip'
+lastUpdated: 2026-11-01
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -37,7 +37,7 @@ featuredLinks:
   - label: 'GitHub'
     url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/Hexploration'
   - label: 'Changelog'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/Hexploration-v2.0.2/Hexploration/CHANGELOG.md'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/Hexploration-v2.0.3/Hexploration/CHANGELOG.md'
 links:
   - label: "Ada Lindberg's Art Packs"
     url: 'https://marketplace.roll20.net/browse/publisher/165/ada-lindberg'
@@ -107,9 +107,14 @@ Messages, menus and handouts are available in 24 languages, chosen with `!hexplo
 
 - Tokens moved by **TokenMod** reveal hexes automatically.
 - **TokenController** v5 passes every move on, so patrolling and following tokens reveal hexes as they go.
+- Other Mods such as **ScriptCards** can send `!hexploration` commands, and the replies are whispered to the GM.
 - Other Mods can call `Hexploration.revealAround(token)`.
 
 ---
+
+## What's New in Version 2.0.3
+
+Version 2.0.3 is a small fix: commands sent by other Mods, such as ScriptCards, are no longer ignored, and their replies are whispered to the GM.
 
 ## What's New in Version 2.0.2
 
