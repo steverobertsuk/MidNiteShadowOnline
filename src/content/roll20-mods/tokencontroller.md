@@ -125,6 +125,7 @@ Version 5.0.1 adds features from player feedback, with no breaking changes. The 
 - **Stop Markers**: tokens that get a marker such as `dead` leave their routes.
 - **`--ids`** for `start`, `stop`, `reset`, `lock`, `unlock` and `remove`, so other Mods can name the tokens to act on.
 - **Commands from other Mods**, such as ScriptCards, are accepted instead of being refused as not from the GM.
+- **`!tc set <setting>`** and **`!tc combat on|off`** now change version 5 settings and switch combat, instead of being read as version 4 route commands.
 
 ## What's New in Version 5.0.0
 
