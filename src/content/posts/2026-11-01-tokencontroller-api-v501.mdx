@@ -1,0 +1,46 @@
+---
+title: 'TokenController API v5.0.1'
+summary: 'TokenController v5.0.1 adds bounce areas, patrols that stop at walls and closed doors, Stop Markers that take dead tokens off their routes, and --ids so other Mods such as ScriptCards can control tokens.'
+date: 2026-11-01T12:30:00Z
+category: 'TokenController'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-tokencontroller-cover.jpg'
+heroAlt: 'TokenController mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+TokenController v5.0.1 comes from feedback by a player who tried v5.0.0: dead guards kept marching after a fight, patrols walked straight through walls, ScriptCards couldn't tell TokenController which tokens to move, and there was no way to let a token wander around a room. All four are now covered. There are no breaking changes, and the new settings are off until you turn them on.
+
+## Change Log
+
+### Fixed
+
+- **Commands sent by other Mods** (for example a ScriptCards `--@tc|` call) were refused with "Only the GM can use TokenController", because Roll20 sends them from the player "API". They are now accepted, and their replies are whispered to the GM.
+
+### Added
+
+- **Stop Markers** setting: a list of status markers separated by semicolons, for example `!tc set stopMarkers dead;red`. A patrolling token that gets one leaves its route, so dead guards stop marching after a fight. **Stop Marker Action** chooses whether it stays where it is or goes back to where it started. Marked tokens stop following, followers of a marked leader stop too, and marked tokens can't be started. Markers are checked every quarter of a second, even while patrols are paused for combat, so markers added by other Mods such as TokenMod count.
+- **`--ids`** for `start`, `stop`, `reset`, `lock`, `unlock` and `remove`: act on the tokens with the given IDs (separated by semicolons, commas or spaces) instead of the selection, so other Mods can control tokens. For example, `!tc stop --ids -Mabc123;-Mdef456`. `remove --ids` takes tokens off their routes and never removes a route.
+- **Walls** setting and per-route `walls` option: patrols can wait at, or turn back from, dynamic lighting walls and closed doors and windows, in Jumpgate and Legacy, instead of walking through them. A patrol waiting at a door carries on when a player opens it, and followers wait rather than cross a wall. A route set to `ignore` still walks through walls, for ghosts.
+  - **Wall Check** chooses whether only a token's centre or its whole width must stay clear, so a large token can't squeeze through a narrow gap.
+  - **One-Way Walls** and **See-Through Walls** choose whether those kinds of wall block.
+- **Bounce areas** (`bounce <name>` and a **Bounce Area** button): draw a closed shape around a room or a field and select it. Tokens started on the route wander inside it, travelling in straight lines and bouncing off its edges and any walls like a ball in Pong, turning a little at random each time so their path doesn't repeat. It works on every grid type and on gridless pages.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v5.0.1; until then One-Click offers v4.0.1).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/TokenController-v5.0.1/TokenController)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/TokenController-v5.0.1/TokenController_v5.0.1.zip).
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**TokenController Project Page**](https://midniteshadow.online/projects/roll20-mods/tokencontroller/)
+
+Thank you to everyone who tried v5.0.0 and sent in ideas, and to Developesque for creating TokenController. If you find it useful, you can support their work on [Patreon](https://www.patreon.com/Developesque).
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
