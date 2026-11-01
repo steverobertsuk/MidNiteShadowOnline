@@ -1,0 +1,39 @@
+---
+title: 'Customizable Roll Listener v2.0.1'
+summary: 'Customizable Roll Listener v2.0.1 accepts commands sent by other Mods, such as ScriptCards, instead of refusing them as not from a GM.'
+date: 2026-11-01T12:00:00Z
+category: 'Customizable Roll Listener'
+tags: ['Roll20 API Mod', 'Bug Fix Release']
+hero: '../../assets/images/mods/mod-customizablerolllistener-cover.jpg'
+heroAlt: 'Customizable Roll Listener mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+Customizable Roll Listener v2.0.1 is a small fix, found while working on feedback for TokenController: CRL refused commands sent by other Mods. There are no breaking changes.
+
+## Change Log
+
+### Fixed
+
+- **Commands sent by other Mods**, such as a ScriptCards `--@crl|` call, are no longer refused with "Only a GM can use Customizable Roll Listener". Roll20 sends them from the player "API", which isn't a GM. They now work, and their replies are whispered to the GM.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v2.0.1; until then One-Click installs v1.1).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/CustomizableRollListener-v2.0.1/Customizable-Roll-Listener)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CustomizableRollListener-v2.0.1/CRL_v2.0.1.zip).
+
+Customizable Roll Listener has no dependencies.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Customizable Roll Listener Project Page**](https://midniteshadow.online/projects/roll20-mods/customizable-roll-listener/)
+
+A big thank you to Scott C. for creating Customizable Roll Listener, and to The Aaron for keeping it going.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
