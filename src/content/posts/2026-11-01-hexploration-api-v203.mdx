@@ -1,0 +1,37 @@
+---
+title: 'Hexploration API v2.0.3'
+summary: 'Hexploration v2.0.3 accepts commands sent by other Mods, such as ScriptCards, instead of silently ignoring them.'
+date: 2026-11-01T12:10:00Z
+category: 'Hexploration'
+tags: ['Roll20 API Mod', 'Bug Fix Release']
+hero: '../../assets/images/mods/mod-hexploration-cover.jpg'
+heroAlt: 'Hexploration mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+Hexploration v2.0.3 is a small fix, found while working on feedback for TokenController: Hexploration ignored commands sent by other Mods. There are no breaking changes.
+
+## Change Log
+
+### Fixed
+
+- **Commands sent by other Mods**, such as a ScriptCards `--@hexploration|` call, are no longer ignored. Roll20 sends them from the player "API", which isn't a GM, so Hexploration dropped them without a word. They now work, and their replies are whispered to the GM.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v2.0.3; until then One-Click offers v1.3).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/Hexploration-v2.0.3/Hexploration)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/Hexploration-v2.0.3/Hexploration_v2.0.3.zip).
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Hexploration Project Page**](https://midniteshadow.online/projects/roll20-mods/hexploration/)
+
+Thank you to Ada Lindberg for creating Hexploration. If you find it useful, take a look at Ada's map and token art packs on the [Roll20 Marketplace](https://marketplace.roll20.net/browse/publisher/165/ada-lindberg).
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
