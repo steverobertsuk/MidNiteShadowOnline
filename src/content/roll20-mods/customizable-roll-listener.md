@@ -10,11 +10,11 @@ versions:
     version: 'v1.1'
     url: ''
   - label: 'GitHub'
-    version: 'v2.0.1'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/CustomizableRollListener-v2.0.1/Customizable-Roll-Listener'
+    version: 'v2.1.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/CustomizableRollListener-v2.1.0/Customizable-Roll-Listener'
   - label: 'Direct Download'
-    version: 'v2.0.1'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CustomizableRollListener-v2.0.1/CRL_v2.0.1.zip'
+    version: 'v2.1.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CustomizableRollListener-v2.1.0/CRL_v2.1.0.zip'
 lastUpdated: 2026-11-01
 compatibility:
   - label: 'Jumpgate'
@@ -41,7 +41,7 @@ featuredLinks:
   - label: 'GitHub'
     url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/Customizable-Roll-Listener'
   - label: 'Changelog'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/CustomizableRollListener-v2.0.1/Customizable-Roll-Listener/CHANGELOG.md'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/CustomizableRollListener-v2.1.0/Customizable-Roll-Listener/CHANGELOG.md'
 indexMedia: '../../assets/images/mods/mod-customizablerolllistener-cover.jpg'
 indexMediaAlt: 'Customizable Roll Listener mod cover image'
 hero: '../../assets/images/mods/mod-customizablerolllistener-hero.jpg'
@@ -75,8 +75,10 @@ A listener triggers when every filter it has matches:
 - **Roll templates**, such as `atkdmg` or `dnd-2024`
 - **Message types**: general chat, emotes, whispers, `/roll` results, Beacon roll cards and more
 - **Text**, as plain text or regular expressions, with `##` standing for an inline roll
+- **Excluded text**, so `--text sword --exclude dagger` skips daggers
 - **Speakers and characters**, including the character named in the roll template
 - **Players**
+- **Template fields**, such as `--fields subcategory=Attack && title~sword` for D&D 2024 sword attacks
 - **Roll results**: `crit`, `fumble`, `success` and `fail`
 - **Totals and natural dice**, such as `>=15`, `<=2` or `19-20`
 - **Which dice to check**, so damage dice rolling their highest face are not mistaken for crits
@@ -93,7 +95,7 @@ Commands can include details of the roll that triggered them: `${who}`, `${chara
 
 ### The Inspector
 
-When a listener does not trigger, `!crl inspect` explains the next chat message: its type, template and fields, every roll with its dice, the text listeners search, and why each listener did or did not match. It is the quickest way to find a sheet's template and field names.
+When a listener does not trigger, `!crl inspect` explains the next chat message: its type, template and fields, every roll with its dice, the text and raw content listeners search, and why each listener did or did not match. It is the quickest way to find a sheet's template and field names.
 
 ### Control and Safety
 
@@ -116,6 +118,15 @@ Menus, messages and handouts are available in 24 languages, chosen with `!crl co
 CRL can run commands for any other mod, such as Roll20 Audio Master, ScriptCards or TokenMod. Other mods can send `!crl` commands too, and the replies are whispered to the GM. Other mods can also use CRL's API: `CRL.analyse`, `CRL.matches` and `CRL.onMatch`.
 
 ---
+
+## What's New in Version 2.1.0
+
+Version 2.1.0 adds two filters, suggested by Pak on Discord:
+
+- **`--fields`** checks roll template fields directly, such as `--fields subcategory=Attack && title~sword` to trigger only on D&D 2024 sword attacks. `=` and `!=` compare the whole value, and `~` and `!~` look for text in it.
+- **`--exclude`** skips messages containing certain text, such as `--text sword --exclude dagger`.
+
+The Help handout and README also explain that `success` and `fail` need a target written into the roll, such as `1d20>15`, so use `--total` for an AC or DC. The inspector now shortens embedded images, so a card's attributes are no longer hidden.
 
 ## What's New in Version 2.0.1
 
