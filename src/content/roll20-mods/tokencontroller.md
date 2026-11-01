@@ -10,12 +10,12 @@ versions:
     version: 'v4.0.1'
     url: ''
   - label: 'GitHub'
-    version: 'v5.0.0'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/TokenController-v5.0.0/TokenController'
+    version: 'v5.0.1'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/TokenController-v5.0.1/TokenController'
   - label: 'Direct Download'
-    version: 'v5.0.0'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/TokenController-v5.0.0/TokenController_v5.0.0.zip'
-lastUpdated: 2026-10-30
+    version: 'v5.0.1'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/TokenController-v5.0.1/TokenController_v5.0.1.zip'
+lastUpdated: 2026-11-01
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -37,7 +37,7 @@ featuredLinks:
   - label: 'GitHub'
     url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/TokenController'
   - label: 'Changelog'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/TokenController-v5.0.0/TokenController/CHANGELOG.md'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/TokenController-v5.0.1/TokenController/CHANGELOG.md'
 links: []
 indexMedia: '../../assets/images/mods/mod-tokencontroller-cover.jpg'
 indexMediaAlt: 'TokenController mod cover image'
@@ -49,7 +49,7 @@ heroAlt: 'TokenController mod hero image'
 
 A map feels more alive when things move on it: guards walking their rounds, a cart following its driver, a patrol pacing the castle walls. Moving those tokens by hand every turn is slow, and easy to forget in the middle of a scene.
 
-TokenController moves them for you. Give a token a route and it walks it on its own, at its own speed, until you stop it. Other tokens can follow a leader in single file or in formation, and tokens you want left alone can be locked in place. When combat starts, patrols pause, and they carry on when it ends.
+TokenController moves them for you. Give a token a route and it walks it on its own, at its own speed, until you stop it. Other tokens can follow a leader in single file or in formation, and tokens you want left alone can be locked in place. When combat starts, patrols pause, and they carry on when it ends. Patrols can stop at walls and closed doors, and guards marked as dead leave their routes.
 
 TokenController was created by **Developesque**. Version 5.0.0 is a full rewrite by me, MidNiteShadow7, after the Mod was reported as not working in Jumpgate. It works in Jumpgate and Legacy games, no longer needs HTML Builder, and keeps version 4 paths, patrols, locks, followers, macros and `!tc` commands working.
 
@@ -57,11 +57,12 @@ TokenController was created by **Developesque**. Version 5.0.0 is a full rewrite
 
 ## Key Features
 
-### Three Ways to Make a Route
+### Four Ways to Make a Route
 
 - **Step codes**: a short list of moves such as `U2R2D2L2`, with diagonals (`UR`, `DL`), waits (`W3`) and stealth toggles (`S`). A step code isn't tied to one place, so the same route works anywhere on any page.
 - **Drawings**: draw a line, polygon, freehand shape, rectangle or ellipse with Roll20's drawing tools, select it and click **From Drawing**. Tokens walk along it, and you can delete the drawing afterwards.
 - **Recording**: select a token, click **Record** and move it with the arrow buttons or by dragging it on the map. Roll20 waypoints are followed. On square grids the recording is saved as a step code you can edit later.
+- **Bounce areas**: draw a closed shape around a room or a field, select it and click **Bounce Area**. Tokens wander inside it in straight lines, bouncing off its edges like a ball in Pong and turning a little at random each time, so their path doesn't repeat.
 
 ### Every Grid
 
@@ -75,6 +76,14 @@ Square, hex (V and H), isometric, dimetric and gridless pages all work. TokenCon
 - Turn tokens to face the way they walk, whichever way their art faces.
 - Drag a patrolling token and it carries on from where you drop it.
 - **Reset** sends tokens back to exactly where they started, on the layer they started on.
+
+### Walls and Doors
+
+Roll20 doesn't stop tokens that Mods move at walls, so TokenController checks every move itself. Patrols can wait at dynamic lighting walls and closed doors and windows, and carry on when a player opens the door, or turn back the way they came. Followers wait rather than cross a wall. Choose whether only a token's centre or its whole width must fit through a gap, and whether one-way and see-through walls block. Give a ghost's route the `walls ignore` option and it still drifts straight through.
+
+### Stop Markers
+
+List the status markers that should take a token off its route, such as `dead;red`. When a guard gets one, it stops where it is or goes back to where it started, its followers stop, and it stops following its own leader. Markers added by hand or by other Mods such as TokenMod count, even while patrols are paused for combat.
 
 ### Following
 
@@ -102,9 +111,20 @@ Messages, menus and handouts are available in 24 languages, chosen with `!tokenc
 ### Works With Other Mods
 
 - Every move is passed to **Hexploration** v2, so patrolling and following tokens reveal hexes as they move.
+- Other Mods such as **ScriptCards** can send commands, naming tokens with `--ids`, for example `!tc stop --ids -Mabc123;-Mdef456`.
 - Other Mods can use `TokenController.ObserveTokenChange`, `start`, `stop`, `reset` and `routeOf`.
 
 ---
+
+## What's New in Version 5.0.1
+
+Version 5.0.1 adds features from player feedback, with no breaking changes. The new settings are off until you turn them on:
+
+- **Bounce areas**: tokens wander inside a drawn shape, bouncing off its edges and any walls.
+- **Walls**: patrols can wait at, or turn back from, dynamic lighting walls and closed doors and windows. Routes can ignore them, for ghosts.
+- **Stop Markers**: tokens that get a marker such as `dead` leave their routes.
+- **`--ids`** for `start`, `stop`, `reset`, `lock`, `unlock` and `remove`, so other Mods can name the tokens to act on.
+- **Commands from other Mods**, such as ScriptCards, are accepted instead of being refused as not from the GM.
 
 ## What's New in Version 5.0.0
 
