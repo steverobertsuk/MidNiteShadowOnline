@@ -1,0 +1,50 @@
+---
+title: 'Customizable Roll Listener v2.1.0'
+summary: 'Customizable Roll Listener v2.1.0 adds --fields to filter on roll template fields, such as only D&D 2024 sword attacks, and --exclude to skip messages containing certain text.'
+date: 2026-11-01T12:40:00Z
+category: 'Customizable Roll Listener'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-customizablerolllistener-cover.jpg'
+heroAlt: 'Customizable Roll Listener mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+Customizable Roll Listener v2.1.0 comes from ideas by Pak on Discord, who wanted a listener for sword attacks on the D&D 2024 sheet. Matching on text alone also caught other cards that mentioned a sword, so listeners can now check a roll template's fields directly and skip messages containing certain text. There are no breaking changes.
+
+## Change Log
+
+### Added
+
+- **`--fields`** filters on roll template fields. For example, `--fields subcategory=Attack && title~sword` triggers only on D&D 2024 attack cards for swords. `=` and `!=` compare the whole value, `~` and `!~` look for text in it (a regular expression with `--regex on`), and case is ignored. The inspector lists each message's fields and says when a field doesn't match.
+- **`--exclude`** stops a listener when any of its pieces of text appears, such as `--text sword --exclude dagger`. It's searched like `--text`, and the inspector says when excluded text was found.
+
+```
+!crl new Sword Attacks --fields subcategory=Attack && title~sword --commands /em swings a sword!
+```
+
+### Changed
+
+- The README and Help handout explain that `success` and `fail` need a target written into the roll, such as `1d20>15`, so they never trigger on D&D sheet attacks, saves and checks. Use `--total` for an AC or DC instead.
+- They also explain that `--text` searches the raw content the inspector shows, which for a Beacon card is its HTML.
+- The inspector shortens embedded images in the raw content to their type. The weapon icon on a D&D 2024 attack card used up most of the 3,000 characters shown, hiding attributes such as `data-rollSubcategory`.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v2.1.0; until then One-Click installs v1.1).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/CustomizableRollListener-v2.1.0/Customizable-Roll-Listener)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CustomizableRollListener-v2.1.0/CRL_v2.1.0.zip).
+
+Customizable Roll Listener has no dependencies.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Customizable Roll Listener Project Page**](https://midniteshadow.online/projects/roll20-mods/customizable-roll-listener/)
+
+Thank you to Pak for the ideas behind this release, to Scott C. for creating Customizable Roll Listener, and to The Aaron for keeping it going.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
