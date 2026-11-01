@@ -10,12 +10,12 @@ versions:
     version: 'v1.0.0'
     url: ''
   - label: 'GitHub'
-    version: 'v1.0.1'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/SmartAoE-v1.0.1/SmartAoE'
+    version: 'v1.0.2'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/SmartAoE-v1.0.2/SmartAoE'
   - label: 'Direct Download'
-    version: 'v1.0.1'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/SmartAoE-v1.0.1/SmartAoE_v1.0.1.zip'
-lastUpdated: 2026-10-28
+    version: 'v1.0.2'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/SmartAoE-v1.0.2/SmartAoE_v1.0.2.zip'
+lastUpdated: 2026-11-01
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -39,7 +39,7 @@ featuredLinks:
   - label: 'GitHub'
     url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/SmartAoE'
   - label: 'Changelog'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/SmartAoE-v1.0.1/SmartAoE/CHANGELOG.md'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/SmartAoE-v1.0.2/SmartAoE/CHANGELOG.md'
   - label: 'Wiki'
     url: 'https://wiki.roll20.net/SmartAoE'
 links:
@@ -59,7 +59,7 @@ SmartAoE solves both problems. Place a control token, aim it at any angle, and S
 
 It can be used simply to draw areas of effect, or it can go much further: rolling saving throws for every creature caught in the blast, applying damage with resistances, vulnerabilities and immunities, adding condition markers and posting a results card to chat. Effects can be applied straight away, or later from buttons on the chat card.
 
-SmartAoE was created by **David M.** (djmoorehead), and versions 1.0.0 and 1.0.1 are maintenance releases by me, MidNiteShadow7, that fix long-standing bugs reported on the Roll20 forums, improves Jumpgate support, adds D&D 2024 sheet support and tidies up the code, with no breaking changes to existing macros.
+SmartAoE was created by **David M.** (djmoorehead), and versions 1.0.0 to 1.0.2 are maintenance releases by me, MidNiteShadow7, that fix long-standing bugs reported on the Roll20 forums, improves Jumpgate support, adds D&D 2024 sheet support and tidies up the code, with no breaking changes to existing macros.
 
 ---
 
@@ -75,6 +75,10 @@ SmartAoE supports every common area of effect:
 - Pathfinder-style circles (`PFcircle`)
 
 Move the control token to aim the area. Cones can also rotate their origin around the caster's corners and faces with the **CW** and **CCW** token actions, which is ideal for large creatures.
+
+### Stops at Walls
+
+With `--blockedBy|walls`, an AoE stops at dynamic lighting walls and closed doors and windows, so a fireball no longer reaches the next room. A square counts when a straight line from the point of origin reaches it, so a square seen through an open doorway is still hit. `--blockedBy|walls, spread` lets the AoE flow round corners instead, as the 2014 _Fireball_ does.
 
 ### Consistent Coverage Rules
 
@@ -120,6 +124,14 @@ On first start, SmartAoE sets everything up for you:
 SmartAoE exposes `SmartAoE.ObserveTokenChange` so other mods can react to the token changes it makes. **Aura/Tint HealthColors** uses this to update health colours and dead markers as soon as SmartAoE applies area damage or healing, and respects SmartAoE's 0 HP markers.
 
 ---
+
+## What's New in Version 1.0.2
+
+Version 1.0.2 adds AoEs that stop at walls, from player feedback, with no breaking changes:
+
+- **`--blockedBy|walls`** leaves out squares that no straight line from the point of origin can reach past a dynamic lighting wall or a closed door or window. Open doors and windows let the AoE through.
+- **`--blockedBy|walls, spread`** also lets the AoE flow round corners, as far as its reach.
+- Without `--blockedBy`, walls are ignored as before.
 
 ## What's New in Version 1.0.1
 
