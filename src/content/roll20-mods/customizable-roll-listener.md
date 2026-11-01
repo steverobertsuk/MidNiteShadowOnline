@@ -10,12 +10,12 @@ versions:
     version: 'v1.1'
     url: ''
   - label: 'GitHub'
-    version: 'v2.0.0'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/CustomizableRollListener-v2.0.0/Customizable-Roll-Listener'
+    version: 'v2.0.1'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/CustomizableRollListener-v2.0.1/Customizable-Roll-Listener'
   - label: 'Direct Download'
-    version: 'v2.0.0'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CustomizableRollListener-v2.0.0/CRL_v2.0.0.zip'
-lastUpdated: 2026-10-30
+    version: 'v2.0.1'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CustomizableRollListener-v2.0.1/CRL_v2.0.1.zip'
+lastUpdated: 2026-11-01
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -41,7 +41,7 @@ featuredLinks:
   - label: 'GitHub'
     url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/Customizable-Roll-Listener'
   - label: 'Changelog'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/CustomizableRollListener-v2.0.0/Customizable-Roll-Listener/CHANGELOG.md'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/CustomizableRollListener-v2.0.1/Customizable-Roll-Listener/CHANGELOG.md'
 indexMedia: '../../assets/images/mods/mod-customizablerolllistener-cover.jpg'
 indexMediaAlt: 'Customizable Roll Listener mod cover image'
 hero: '../../assets/images/mods/mod-customizablerolllistener-hero.jpg'
@@ -113,9 +113,13 @@ Menus, messages and handouts are available in 24 languages, chosen with `!crl co
 
 ### Works With Other Mods
 
-CRL can run commands for any other mod, such as Roll20 Audio Master, ScriptCards or TokenMod. Other mods can also use CRL's API: `CRL.analyse`, `CRL.matches` and `CRL.onMatch`.
+CRL can run commands for any other mod, such as Roll20 Audio Master, ScriptCards or TokenMod. Other mods can send `!crl` commands too, and the replies are whispered to the GM. Other mods can also use CRL's API: `CRL.analyse`, `CRL.matches` and `CRL.onMatch`.
 
 ---
+
+## What's New in Version 2.0.1
+
+Version 2.0.1 is a small fix: commands sent by other Mods, such as ScriptCards, are no longer refused as not from a GM, and their replies are whispered to the GM.
 
 ## What's New in Version 2.0.0
 
