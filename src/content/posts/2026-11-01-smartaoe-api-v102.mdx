@@ -1,0 +1,57 @@
+---
+title: 'SmartAoE API v1.0.2'
+summary: 'SmartAoE v1.0.2 adds --blockedBy, so areas of effect stop at dynamic lighting walls and closed doors, with an optional spread mode that flows round corners like the 2014 Fireball.'
+date: 2026-11-01T12:20:00Z
+category: 'SmartAoE'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-smartaoe-cover.jpg'
+heroAlt: 'SmartAoE mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+SmartAoE v1.0.2 adds one feature asked for by a player: areas of effect that stop at walls. Until now a fireball reached every token inside its radius, even those in the next room. There are no breaking changes, and walls are still ignored unless a macro asks for them.
+
+## Change Log
+
+### Added
+
+- **`--blockedBy|walls`** stops an AoE at dynamic lighting walls (Jumpgate and Legacy) and at closed doors and windows. A square is left out when no straight line from the point of origin reaches it past a wall, as the D&D 5e rules say. Its centre and four points near its corners are tried, so a square seen through a doorway still counts. Open doors and windows let the AoE through, and a caster standing against a wall isn't blocked by it.
+- **`--blockedBy|walls, spread`** also lets the AoE flow round corners from square to square, as far as its reach, as the 2014 _Fireball_ does.
+
+For example, a fireball that stops at walls but spreads round corners, as the 2014 spell does (use plain `walls` for the 2024 rule):
+
+```
+!smartaoe {{
+  --aoeType|circle, float
+  --radius|20ft
+  --blockedBy|walls, spread
+  --dc|@{selected|spell_save_dc}
+  --saveFormula|5eDEX
+  --damageFormula1|[[8d6]]
+  --damageType1|fire
+  --fx|burn-fire
+}}
+```
+
+Walls are checked when the AoE is drawn, that is when the control token moves. After opening or closing a door, nudge the control token so the AoE is drawn again before you trigger it.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.0.2; until then One-Click installs v1.0.0).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/SmartAoE-v1.0.2/SmartAoE)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/SmartAoE-v1.0.2/SmartAoE_v1.0.2.zip).
+
+SmartAoE requires the **libInline** mod, which the One-Click installer adds automatically.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**SmartAoE Project Page**](https://midniteshadow.online/projects/roll20-mods/smartaoe/)
+
+Thank you for the suggestion, and to David M. for creating SmartAoE. If you find it useful, you can support his work on [Patreon](https://www.patreon.com/djmoorehead).
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
