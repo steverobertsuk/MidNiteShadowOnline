@@ -1,0 +1,67 @@
+---
+title: 'Concentration v1.1.0'
+summary: 'Concentration v1.1.0 says when concentration ends and on which spell, switches spells, fixes players’ Roll buttons and unlinked tokens, and adds Help and Command Deck handouts and 24 languages.'
+date: 2026-11-02T12:45:00Z
+category: 'Concentration'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-concentration-cover.jpg'
+heroAlt: 'Concentration mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+Concentration v1.1.0 started with the new how-to video. When concentration ended, the last line in chat was "is now concentrating on…", which read as if ending had started it again. Ending actually posted nothing, so the earlier message was left at the bottom. Version 1.1.0 fixes that, and brings the mod up to the standard of the other mods I maintain: new chat cards, Help and Command Deck handouts, and 24 languages. Version 1.0 settings, macros and commands keep working.
+
+## Change Log
+
+### Fixed
+
+- Ending concentration now always says so, and on which spell: "is no longer concentrating on…", "loses concentration on…" after a failed save, or "drops to 0 hit points and loses concentration on…".
+- Players clicking a reminder's **Roll** or **Advantage** button started or ended concentration on whatever token they had selected instead of rolling. The buttons now roll, for the GM and the token's players.
+- Damage was compared as text, so a bar going from 10 to 9 was not seen as damage.
+- The One-Click settings on the mod's page were listed but never read. They now apply on startup.
+- Changing the HP Bar no longer needs a restart.
+- A failed save on one goblin no longer takes the marker off every token made from the same sheet. Unlinked tokens now concentrate on their own.
+- Send Reminder To `character` whispered to the first word of the token's name. Whispers now go to the character by its full name, with a copy to the GM.
+- 5e OGL spell cards that list `charname` before `name` no longer give the caster's name as the spell.
+
+### Added
+
+- **Spell switching**: naming a different spell, or casting another concentration spell from a sheet, switches to it and says so.
+- Putting the marker on or taking it off by hand starts or ends concentration, with a message. Deleting a concentrating token ends it too.
+- **End at 0 HP** (on by default) ends concentration without a save at 0 hit points.
+- Save DCs stop at 30, as in the 2024 rules.
+- `!concentration end` and `!concentration status`, with an **End** button for each caster on the status card.
+- **Concentration - Help** and **Concentration - Command Deck** handouts (GM only).
+- Custom token markers can be the Status Marker, and changing it moves the marker on concentrating tokens.
+- Commands from other mods, and a `globalThis.Concentration` API (`isConcentrating`, `spellOf`, `start`, `end` and `list`).
+- Translations into 24 languages, with a **Language** setting.
+
+```
+!concentration Hold Person
+!concentration status
+```
+
+### Security
+
+- Spell cards only start concentration for characters the sender controls (or from the GM and other mods). Version 1.0 let anyone mark any character by posting a card with its name.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.1.0; until then One-Click installs v1.0.0).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/concentration-v1.1.0/Concentration)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/concentration-v1.1.0/Concentration_v1.1.0.zip).
+
+Concentration has no dependencies.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Concentration Project Page**](https://midniteshadow.online/projects/roll20-mods/concentration/)
+
+Thank you to Robin Kuiper for creating Concentration.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
