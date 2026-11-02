@@ -1,0 +1,57 @@
+---
+title: 'SmartAoE API v1.0.3'
+summary: 'SmartAoE v1.0.3 no longer crashes when another mod, such as SelectManager with !forselected, passes on a command without its inline rolls, and explains how to write the roll instead.'
+date: 2026-11-02T13:00:00Z
+category: 'SmartAoE'
+tags: ['Roll20 API Mod', 'Bug Fix Release']
+hero: '../../assets/images/mods/mod-smartaoe-cover.jpg'
+heroAlt: 'SmartAoE mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+SmartAoE v1.0.3 fixes a crash reported by Pak on Discord. A Fireball macro run through SelectManager's `!forselected` stopped with "Cannot read properties of undefined (reading 'total')". There are no breaking changes.
+
+## Change Log
+
+### Changed
+
+- The README and help handout explain that SelectManager's `!forselected` drops inline rolls, so rolls in a `!forselected` command should be written as `<<…>>`.
+
+### Fixed
+
+- **Inline rolls lost by another mod no longer crash SmartAoE.** `!forselected` sends the command on once for each selected token, but without the original message's inline rolls. A roll such as `--damageFormula1|[[(5+?{Cast at what level?})d6]]` reached SmartAoE with no result. SmartAoE now whispers which roll has no result and suggests `<<…>>` instead.
+- **An argument with no value**, such as a bare `--instant`, no longer stops with "Cannot read properties of undefined (reading 'match')".
+
+If you run SmartAoE through `!forselected`, write the roll with `<<…>>`, which SmartAoE rolls itself. A query such as `?{Cast at what level?}` is still asked once, so the slot level and the damage stay in step:
+
+```
+!forselected smartaoe {{
+  --aoeType|circle, float
+  --radius|20ft
+  --dc|@{selected|spell_save_dc}
+  --saveFormula|5eDEX
+  --damageFormula1|<<(5+?{Cast at what level?|3|4|5|6|7|8|9})d6>>
+  --damageType1|fire
+}}
+```
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.0.3; until then One-Click installs v1.0.0).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/SmartAoE-v1.0.3/SmartAoE)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/SmartAoE-v1.0.3/SmartAoE_v1.0.3.zip).
+
+SmartAoE requires the **libInline** mod, which the One-Click installer adds automatically.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**SmartAoE Project Page**](https://midniteshadow.online/projects/roll20-mods/smartaoe/)
+
+Thank you to Pak for the report, and to David M. for creating SmartAoE. If you find it useful, you can support his work on [Patreon](https://www.patreon.com/djmoorehead).
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
