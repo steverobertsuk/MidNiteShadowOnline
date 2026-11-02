@@ -1,6 +1,6 @@
 ---
 title: 'Concentration'
-summary: 'Keeps concentration effects visible and easier to maintain, especially when damage checks and linked spell effects need to stay in sync.'
+summary: 'Keeps track of who is concentrating on which spell: a marker on the caster, a Constitution save when they take damage, and a message whenever concentration starts, switches or ends.'
 order: 4
 category: 'Spell support'
 postCategory: 'concentration'
@@ -10,12 +10,19 @@ versions:
     version: 'v1.0.0'
     url: ''
   - label: 'GitHub'
-    version: 'v1.0.0'
-    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/Concentration/1.0.0'
-lastUpdated: 2026-05-23
+    version: 'v1.1.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/concentration-v1.1.0/Concentration'
+  - label: 'Direct Download'
+    version: 'v1.1.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/concentration-v1.1.0/Concentration_v1.1.0.zip'
+lastUpdated: 2026-11-02
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
+  - label: 'D&D 5e 2014 sheet'
+    url: ''
+  - label: 'D&D 5e 2024 sheet'
+    url: ''
 requirements:
   - label: 'Roll20 Pro'
     url: ''
@@ -24,64 +31,113 @@ requirements:
 credits:
   - name: 'MidNiteShadow7'
     url: 'https://app.roll20.net/users/16506286/midniteshadow7'
+  - name: 'Robin Kuiper'
+    url: 'https://app.roll20.net/users/1226016/robin'
 featuredLinks:
   - label: 'GitHub'
     url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/Concentration'
   - label: 'Issues'
     url: 'https://github.com/users/steverobertsuk/projects/6/views/1'
   - label: 'Changelog'
-    url: 'https://github.com/Roll20/roll20-api-scripts/blob/master/Concentration/CHANGELOG.md'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/concentration-v1.1.0/Concentration/CHANGELOG.md'
 links:
   - label: 'v1 Release via Roll20 Forum Support Post'
     url: 'https://app.roll20.net/forum/post/12727019/concentration-mod-slash-api-spells-do-not-trigger-it-dnd-2024-sheet/?pageforid=12761476#post-12761476'
 indexMedia: '../../assets/images/mods/mod-concentration-cover.jpg'
 indexMediaAlt: 'Concentration mod cover image'
-hero: '../../assets/images/mods/mod-concentration-cover.jpg'
+hero: '../../assets/images/mods/mod-concentration-hero.jpg'
 heroAlt: 'Concentration mod hero image'
 ---
 
 ## Concentration Overview
 
-Concentration is planned as a focused Roll20 API utility for tracking which creature is concentrating, what effect is tied to that state, and when that concentration chain should end.
+Concentration is one of the easiest rules to forget in a busy fight. Someone takes a hit, nobody remembers they were holding Web, and three rounds later the table is arguing about whether the spell should still be up.
 
-It is intended to help Game Masters and players keep concentration visible during combat, especially when damage checks, spell effects, and linked token markers need to stay in sync.
+Concentration keeps track for you. It puts a marker on the caster's token, rolls (or asks for) a Constitution save when that token takes damage, and tells the table when concentration starts, switches to a new spell, or ends.
 
-The goal is to reduce missed concentration checks and make it easier to clear related effects when concentration breaks.
+Concentration was created by **Robin Kuiper**. Version 1.0.0 added D&D 2024 sheet support, and version 1.1.0 brings it up to the standard of the other mods I maintain, with new chat cards, handouts and 24 languages. Version 1.0 settings, macros and commands keep working.
 
 ---
 
 ## Key Features
 
-### Concentration Visibility
+### Quick to Use
 
-The script is intended to make concentrating tokens easier to identify at a glance, reducing the chance that active concentration effects are forgotten.
+Select the caster's token and type the spell:
 
-### Linked Effect Tracking
+```
+!concentration Bless
+```
 
-Concentration can record or display the effect associated with the concentrating creature, helping the table understand what is currently being maintained.
+The marker goes on and everyone is told. Type `!concentration` with nothing selected for the settings, where every setting is a button, or open the **Command Deck** handout for a button for every action.
 
-### Damage Check Prompts
+### Says What Happened
 
-When a concentrating creature takes damage, the script can surface a reminder that a concentration check may be required.
+Every change is announced, so the last line in chat is always right:
 
-### One-Command Cleanup
+- "Atala Dumein is now concentrating on Web."
+- "Atala Dumein stops concentrating on Web and is now concentrating on Hold Person."
+- "Atala Dumein is no longer concentrating on Hold Person."
 
-When concentration ends, the script is intended to provide a simple way to clear the concentration state and any linked effect information.
+Naming a different spell switches to it, as casting a new concentration spell does.
 
-### Beacon-Friendly Direction
+### Concentration Saves
 
-The project is intended to work well with modern Roll20 character sheet and automation setups, including Beacon-compatible workflows where possible.
+Change a token's hit points in its bar bubble, and a Constitution save is rolled at DC 10 or half the damage, whichever is higher, up to DC 30. A failed save ends concentration, and so does dropping to 0 hit points.
+
+Turn **Auto Roll Save** off, and the reminder has **Roll** and **Advantage** buttons instead, which the GM or the token's players can press. The **Advantage Menu** gives a character advantage on saves, as the War Caster feat does.
+
+### Spells Cast from a Sheet
+
+Casting a concentration spell from the D&D 5e 2014 or D&D 2024 sheet adds the marker automatically. Only cards posted by the GM, another mod or one of the character's players count.
+
+### Linked and Unlinked Tokens
+
+Player characters and named NPCs with a linked hit point bar share concentration across all their tokens, on every page. Unlinked tokens, such as a pack of goblins from one sheet, each concentrate on their own.
+
+### Who Is Concentrating
+
+`!concentration status` lists everyone who is concentrating, with an **End** button for each. Putting the marker on or taking it off by hand starts or ends concentration too.
+
+### Who Sees It
+
+**Send Reminder To** decides who sees the messages and saves: everyone, the GM, or the character's players as whispers.
+
+### Available in 24 Languages
+
+Chat messages and handouts are available in 24 languages, chosen with the **Language** setting.
+
+### Works With Other Mods
+
+Other mods can send `!concentration` commands, and can read and change concentration through `globalThis.Concentration`: `isConcentrating`, `spellOf`, `start`, `end` and `list`.
 
 ---
 
-## Why Use It?
+## What's New in Version 1.1.0
 
-Concentration is one of the easiest combat mechanics to overlook during busy encounters.
+- **End messages**: ending concentration now always says so, and on which spell. Before, it posted nothing, so the earlier "is now concentrating on…" was left as the last line.
+- **Spell switching**, and an **End at 0 HP** setting.
+- **Players' Roll buttons** roll the save, instead of starting or ending concentration on whatever the player had selected.
+- **Unlinked tokens** concentrate on their own, so one goblin's failed save no longer ends it for the whole pack.
+- **The One-Click settings** now apply, and changing the HP Bar no longer needs a restart.
+- **Status card**, **Help** and **Command Deck** handouts, custom token markers, and an API for other mods.
+- **Available in 24 languages**.
+- Spell cards only start concentration for characters the sender controls.
 
-This script aims to keep concentration visible, remind the table when checks are needed, and reduce the clean-up work required when a spell or effect ends.
+The full list is in the changelog.
 
 ---
 
 ## Compatibility
 
-Concentration is planned for Roll20 API games and is intended to support modern Roll20 table setups.
+Concentration works in Jumpgate games and has been tested with the D&D 5e 2014 and D&D 2024 sheets. D&D 2024 spell detection may need the Experimental API server; Debug Mode explains what was detected.
+
+Only changes made in Roll20 itself, such as the bar bubbles, are seen. Changes other mods make through the API raise no events.
+
+Concentration has no dependencies.
+
+---
+
+## Why Use It?
+
+Concentration should be something the table plays with, not something it forgets. With the marker on the token, the save rolled the moment damage lands and a message whenever it ends, everyone knows which spells are still up.
