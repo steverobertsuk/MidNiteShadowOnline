@@ -10,12 +10,12 @@ versions:
     version: 'v1.0.0'
     url: ''
   - label: 'GitHub'
-    version: 'v1.0.2'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/SmartAoE-v1.0.2/SmartAoE'
+    version: 'v1.0.3'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/SmartAoE-v1.0.3/SmartAoE'
   - label: 'Direct Download'
-    version: 'v1.0.2'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/SmartAoE-v1.0.2/SmartAoE_v1.0.2.zip'
-lastUpdated: 2026-11-01
+    version: 'v1.0.3'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/SmartAoE-v1.0.3/SmartAoE_v1.0.3.zip'
+lastUpdated: 2026-11-02
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -39,7 +39,7 @@ featuredLinks:
   - label: 'GitHub'
     url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/SmartAoE'
   - label: 'Changelog'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/SmartAoE-v1.0.2/SmartAoE/CHANGELOG.md'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/SmartAoE-v1.0.3/SmartAoE/CHANGELOG.md'
   - label: 'Wiki'
     url: 'https://wiki.roll20.net/SmartAoE'
 links:
@@ -59,7 +59,7 @@ SmartAoE solves both problems. Place a control token, aim it at any angle, and S
 
 It can be used simply to draw areas of effect, or it can go much further: rolling saving throws for every creature caught in the blast, applying damage with resistances, vulnerabilities and immunities, adding condition markers and posting a results card to chat. Effects can be applied straight away, or later from buttons on the chat card.
 
-SmartAoE was created by **David M.** (djmoorehead), and versions 1.0.0 to 1.0.2 are maintenance releases by me, MidNiteShadow7, that fix long-standing bugs reported on the Roll20 forums, improves Jumpgate support, adds D&D 2024 sheet support and tidies up the code, with no breaking changes to existing macros.
+SmartAoE was created by **David M.** (djmoorehead), and versions 1.0.0 to 1.0.3 are maintenance releases by me, MidNiteShadow7, that fix long-standing bugs reported on the Roll20 forums, improves Jumpgate support, adds D&D 2024 sheet support and tidies up the code, with no breaking changes to existing macros.
 
 ---
 
@@ -124,6 +124,13 @@ On first start, SmartAoE sets everything up for you:
 SmartAoE exposes `SmartAoE.ObserveTokenChange` so other mods can react to the token changes it makes. **Aura/Tint HealthColors** uses this to update health colours and dead markers as soon as SmartAoE applies area damage or healing, and respects SmartAoE's 0 HP markers.
 
 ---
+
+## What's New in Version 1.0.3
+
+Version 1.0.3 fixes a crash reported on Discord, with no breaking changes:
+
+- **Inline rolls lost by another mod**, such as SelectManager's `!forselected`, no longer crash SmartAoE. It whispers which roll has no result and suggests writing it as `<<…>>`, which SmartAoE rolls itself.
+- **An argument with no value**, such as a bare `--instant`, no longer stops with an error.
 
 ## What's New in Version 1.0.2
 
