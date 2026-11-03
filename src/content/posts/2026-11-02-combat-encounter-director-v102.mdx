@@ -1,0 +1,57 @@
+---
+title: 'Combat Encounter Director v1.0.2'
+summary: "Combat Encounter Director v1.0.2 adds a language picker to the Command Deck, rewrites the deck straight away when the language changes, fixes Auto-number after Roll20's Enumerate Tokens, and gives the Command Deck and Status handouts the same look as its chat cards."
+date: 2026-11-02T20:00:00Z
+category: 'Combat Encounter Director'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-combatencounterdirector-cover.jpg'
+heroAlt: 'Combat Encounter Director mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+Combat Encounter Director v1.0.2 makes it easier to choose the language the mod speaks, and gives its handouts the same look as its chat replies. There are no breaking changes, so your macros and saved encounters keep working.
+
+## Change Log
+
+### Added
+
+- **A Language button in the Command Deck.** The Config section of the Command Deck now has a **Language** button, which opens a drop-down of all 24 languages. Beneath it, a table lists every language with its flag, code, English name and native name, as in the other MidNite Shadow mods.
+- The README has a new Languages section, and the language setting is in its configuration table.
+
+### Changed
+
+- **The Command Deck and Status handouts look like CED's chat cards**, with the same card, title bar, buttons and label/value rows.
+- The Status handout's tables no longer pick up Roll20's handout table borders and white background.
+- Minions now show their hit points as "= 1" in the Status handout, instead of "-999%".
+
+### Fixed
+
+- **Changing the language now rewrites the Command Deck straight away.** Before, `!ced config language` only changed the chat replies, and the Command Deck stayed in the old language until it was next rebuilt.
+- **Auto-number Selected now works after Roll20's own Enumerate Tokens.** Roll20's Advanced Transform > Enumerate Tokens numbers duplicate names as "Goblin 3 (1)". Auto-number Selected used to keep the "(1)" and name the tokens "Goblin 3 (1) 1"; now it numbers them cleanly, from "Goblin 1" upwards.
+
+You can still choose the language by typing it, for example:
+
+```
+!ced config language fr
+```
+
+Chat replies, the Command Deck and the Status handout all switch at once.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.0.2; until then One-Click installs v1.0.1).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/CombatEncounterDirector-v1.0.2/CombatEncounterDirector)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CombatEncounterDirector-v1.0.2/CombatEncounterDirector_v1.0.2.zip).
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Combat Encounter Director Project Page**](https://midniteshadow.online/projects/roll20-mods/combat-encounter-director/)
+
+Feedback and suggestions are always welcome. I hope Combat Encounter Director helps you spend less time on admin and more time on the story unfolding at your table.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
