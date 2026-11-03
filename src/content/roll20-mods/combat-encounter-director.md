@@ -10,12 +10,12 @@ versions:
     version: 'v1.0.1'
     url: ''
   - label: 'GitHub'
-    version: 'v1.0.1'
-    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/CombatEncounterDirector/1.0.1'
+    version: 'v1.0.2'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/CombatEncounterDirector-v1.0.2/CombatEncounterDirector'
   - label: 'Direct Download'
-    version: 'v1.0.1'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CombatEncounterDirector-v1.0.1/CombatEncounterDirector_v1.0.1.zip'
-lastUpdated: 2026-06-25
+    version: 'v1.0.2'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CombatEncounterDirector-v1.0.2/CombatEncounterDirector_v1.0.2.zip'
+lastUpdated: 2026-11-02
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -28,15 +28,15 @@ credits:
   - name: 'MidNiteShadow7'
     url: 'https://app.roll20.net/users/16506286/midniteshadow7'
 featuredLinks:
-  - label: "GitHub"
-    url: "https://github.com/Roll20/roll20-api-scripts/tree/master/CombatEncounterDirector"
-  - label: "Issues"
+  - label: 'GitHub'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/CombatEncounterDirector'
+  - label: 'Issues'
     url: 'https://github.com/users/steverobertsuk/projects/6/views/1'
-  - label: "Changelog"
-    url: "https://github.com/Roll20/roll20-api-scripts/blob/master/CombatEncounterDirector/CHANGELOG.md"
+  - label: 'Changelog'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/CombatEncounterDirector-v1.0.2/CombatEncounterDirector/CHANGELOG.md'
 links:
-  - label: "Roll20 Forum Post"
-    url: "https://app.roll20.net/forum/post/12765964/script-combat-encounter-director"
+  - label: 'Roll20 Forum Post'
+    url: 'https://app.roll20.net/forum/post/12765964/script-combat-encounter-director'
 indexMedia: '../../assets/images/mods/mod-combatencounterdirector-cover.jpg'
 indexMediaAlt: 'Combat Encounter Director mod cover image'
 hero: '../../assets/images/mods/mod-combatencounterdirector-cover.jpg'
@@ -129,6 +129,19 @@ Reports provide visibility into modified tokens and highlight important changes,
 Combat Encounter Director is available in 24 languages.
 
 Menus, journals, chat output, and interface elements can all be displayed in the preferred language of the Game Master, helping make the mod accessible to a wider international audience.
+
+Choose the language with the **Language** button in the Config section of the Command Deck, or type `!ced config language <code>`, such as `!ced config language fr`.
+
+---
+
+## What's New in Version 1.0.2
+
+Version 1.0.2 makes the language easier to choose and tidies up the handouts, with no breaking changes:
+
+- **A Language button** in the Config section of the Command Deck opens a drop-down of all 24 languages, with a table of their flags, codes and native names.
+- **Changing the language rewrites the Command Deck straight away**, instead of only changing the chat replies.
+- **Auto-number Selected works after Roll20's own Enumerate Tokens**, numbering "Goblin 3 (1)" and the like cleanly from "Goblin 1" upwards.
+- **The Command Deck and Status handouts look like the chat cards**, and the Status handout no longer picks up Roll20's white table background. Minions show their hit points as "= 1" instead of "-999%".
 
 ---
 
