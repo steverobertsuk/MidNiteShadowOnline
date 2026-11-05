@@ -15,7 +15,7 @@ versions:
   - label: 'Direct Download'
     version: 'v1.0.2'
     url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/CombatEncounterDirector-v1.0.2/CombatEncounterDirector_v1.0.2.zip'
-lastUpdated: 2026-11-02
+lastUpdated: 2026-11-05
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -59,7 +59,7 @@ Whether you are running a one-shot for two players, a convention table with a do
 
 Scale encounters to suit the number of players at the table.
 
-Built-in presets support everything from solo adventures to massive convention-style groups, automatically adjusting hit points, armour class, and damage expectations.
+Built-in presets support everything from solo adventures to massive convention-style groups, automatically adjusting hit points and armour class.
 
 Custom scaling values are also available for Game Masters who prefer fine-grained control.
 
@@ -74,7 +74,9 @@ Apply presets such as:
 - Boss
 - Legendary
 
-Each preset adjusts creature statistics to reflect the intended role within the encounter.
+Each preset adjusts a creature's hit points and armour class to reflect its role within the encounter: Boss triples its hit points and adds 2 to its armour class, while a Minion drops to a single hit point.
+
+The **Preset Reference** at the end of the Command Deck lists what every party and boss preset changes, with a worked example for a 40 HP, AC 15 monster.
 
 ### Reinforcements and Duplication
 
@@ -122,7 +124,7 @@ Game Masters can safely experiment with scaling and adjustments knowing that tok
 
 Generate a detailed encounter report directly into a Roll20 journal.
 
-Reports provide visibility into modified tokens and highlight important changes, creating a central reference point for encounter management.
+The Status handout counts the tokens you have changed and lists each one with its hit points, armour class and preset, creating a central reference point for encounter management.
 
 ### Available in 24 Languages
 
@@ -136,11 +138,13 @@ Choose the language with the **Language** button in the Config section of the Co
 
 ## What's New in Version 1.0.2
 
-Version 1.0.2 makes the language easier to choose and tidies up the handouts, with no breaking changes:
+Version 1.0.2 makes the language easier to choose, adds a reference to every preset and tidies up the handouts:
 
 - **A Language button** in the Config section of the Command Deck opens a drop-down of all 24 languages, with a table of their flags, codes and native names.
 - **Changing the language rewrites the Command Deck straight away**, instead of only changing the chat replies.
 - **Auto-number Selected works after Roll20's own Enumerate Tokens**, numbering "Goblin 3 (1)" and the like cleanly from "Goblin 1" upwards.
+- **A Preset Reference** at the end of the Command Deck and the README: tables of every party and boss preset, with what each changes and a worked example.
+- **Presets scale hit points and armour class only.** The damage percentage never changed anything on the token or in rolls, so it has been removed, along with `!ced scale damage`, the Damage % buttons and the Dmg column of the Status handout.
 - **The Command Deck and Status handouts look like the chat cards**, and the Status handout no longer picks up Roll20's white table background. Minions show their hit points as "= 1" instead of "-999%".
 
 ---
