@@ -1,6 +1,6 @@
 ---
 title: 'Combat Encounter Director v1.0.2'
-summary: "Combat Encounter Director v1.0.2 adds a language picker to the Command Deck, rewrites the deck straight away when the language changes, fixes Auto-number after Roll20's Enumerate Tokens, and gives the Command Deck and Status handouts the same look as its chat cards."
+summary: "Combat Encounter Director v1.0.2 adds a language picker and a Preset Reference to the Command Deck, removes the damage percentage that never changed anything, fixes Auto-number after Roll20's Enumerate Tokens, and gives the handouts the same look as its chat cards."
 date: 2026-11-02T20:00:00Z
 category: 'Combat Encounter Director'
 tags: ['Roll20 API Mod', 'Feature Release']
@@ -10,14 +10,19 @@ heroAlt: 'Combat Encounter Director mod hero image'
 
 import InfoNotice from '../../components/InfoNotice.astro';
 
-Combat Encounter Director v1.0.2 makes it easier to choose the language the mod speaks, and gives its handouts the same look as its chat replies. There are no breaking changes, so your macros and saved encounters keep working.
+Combat Encounter Director v1.0.2 makes it easier to choose the language the mod speaks, adds a reference to every scaling preset, and gives its handouts the same look as its chat replies. Your macros and saved encounters keep working; the only command taken away is `!ced scale damage`, which now explains that damage scaling was removed.
 
 ## Change Log
 
 ### Added
 
 - **A Language button in the Command Deck.** The Config section of the Command Deck now has a **Language** button, which opens a drop-down of all 24 languages. Beneath it, a table lists every language with its flag, code, English name and native name, as in the other MidNite Shadow mods.
+- **A Preset Reference** at the end of the Command Deck (All and Scaling tabs) and the README. Two tables list every party and boss preset, what each changes, and a worked example for a monster with 40 HP and AC 15: Large Party takes it to 56 HP and AC 16, Boss to 120 HP and AC 17. The Command Deck builds its tables from the presets themselves, so they always match.
 - The README has a new Languages section, and the language setting is in its configuration table.
+
+### Removed
+
+- **Damage scaling.** The damage percentage never changed anything on the token or in rolls: damage comes from dice and character sheets, which CED can't reach. It was only a number in the status report, and it read as if it had been calculated from the monster's damage. Presets and boss tiers now scale hit points and armour class only. `!ced scale damage`, the Damage % buttons on the Command Deck and the Dmg column of the Status handout are gone, and damage values saved by earlier versions are cleared from tokens and saved encounters when the Mod starts.
 
 ### Changed
 
