@@ -1,0 +1,29 @@
+---
+import { getIframeLoadingPolicy, type IframePriorityTier } from '../lib/mediaPriority';
+
+interface Props {
+  /** The 11-character YouTube video ID. */
+  id: string;
+  /** Accessible name for the player, usually the video's title. */
+  title: string;
+  /** Use 'hero' when the video is the first thing on the page. */
+  priority?: IframePriorityTier;
+}
+
+const { id, title, priority = 'embed' } = Astro.props;
+const loadingPolicy = getIframeLoadingPolicy(priority);
+const src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0`;
+---
+
+<div class="video-embed">
+  <iframe
+    src={src}
+    title={title}
+    {...loadingPolicy}
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen></iframe>
+</div>
+<p>
+  <a href={`https://www.youtube.com/watch?v=${encodeURIComponent(id)}`}>Watch on YouTube</a>
+</p>
