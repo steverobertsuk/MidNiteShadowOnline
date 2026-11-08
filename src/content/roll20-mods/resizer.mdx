@@ -1,0 +1,156 @@
+---
+title: 'Resizer'
+summary: 'Resize tokens, fit maps to the grid and zoom whole pages: the map, tokens, text, walls, doors and windows grow together, and every distance stays the same.'
+order: 13
+category: 'Map tools'
+postCategory: 'resizer'
+status: 'Active'
+versions:
+  - label: 'One-Click'
+    version: 'v0.0.9'
+    url: ''
+  - label: 'GitHub'
+    version: 'v1.0.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/Resizer-v1.0.0/Resizer'
+  - label: 'Direct Download'
+    version: 'v1.0.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/Resizer-v1.0.0/Resizer_v1.0.0.zip'
+lastUpdated: 2026-11-08
+compatibility:
+  - label: 'Jumpgate'
+    url: 'https://pages.roll20.net/redesign'
+  - label: 'Legacy'
+    url: ''
+  - label: 'Any game system'
+    url: ''
+requirements:
+  - label: 'Roll20 Pro'
+    url: ''
+  - label: 'Roll20 Elite'
+    url: ''
+credits:
+  - name: 'MidNiteShadow7'
+    url: 'https://app.roll20.net/users/16506286/midniteshadow7'
+  - name: 'Robin Kuiper'
+    url: 'https://app.roll20.net/users/1226016/robin'
+featuredLinks:
+  - label: 'GitHub'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/Resizer-v1.0.0/Resizer'
+  - label: 'Changelog'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/Resizer-v1.0.0/Resizer/CHANGELOG.md'
+links:
+  - label: 'Original Roll20 Forum Thread'
+    url: 'https://app.roll20.net/forum/post/6285519/script-resizer/'
+indexMedia: '../../assets/images/mods/mod-resizer-cover.jpg'
+indexMediaAlt: 'Resizer mod cover image'
+hero: '../../assets/images/mods/mod-resizer-hero.jpg'
+heroAlt: 'Resizer mod hero image'
+---
+
+import YouTube from '../../components/YouTube.astro';
+
+## Resizer Overview
+
+Maps that came in at the wrong size, tokens that need to be Large, a whole page that needs to be bigger: these are small jobs, but doing them by hand means dragging every token, redrawing every wall and hoping the grid still lines up.
+
+Resizer does them for you. It resizes tokens to a creature size or an exact size, fits a map to the grid from a box drawn over a few of its own squares, and zooms a whole page with everything on it. The walls, doors and windows move with the map, and every distance in feet stays the same.
+
+Resizer was created by **Robin Kuiper**, whose last release, 0.0.9, came out in 2018 and did not know about Jumpgate. Version 1.0.0 is a full rewrite by me, MidNiteShadow7: in Jumpgate the old version left the walls behind and doubled the distance per square. Every 0.0.9 command still works.
+
+---
+
+## How-To
+
+<YouTube
+  id="6tukytCIc0g"
+  title="Resizer v1.0.0 for Roll20: Resize Tokens, Fit Maps to the Grid and Zoom Whole Pages (How-To)"
+/>
+
+This four-minute video goes through every feature of Resizer v1.0.0: resizing tokens, fitting a map to the grid, zooming a page, zooming several pages at once, history and undo, the settings, and translations.
+
+---
+
+## Key Features
+
+### Quick to Use
+
+Type `!resizer` in chat for the menu, or open the **Command Deck** handout for a button for every action. With tokens selected, the menu lists their sizes in pixels and grid cells.
+
+### Creature Sizes
+
+Select tokens and click **Creature size** to make them Tiny, Small, Medium, Large, Huge or Gargantuan, in the page's own grid cells. **Resize** sets an exact size in pixels, grid cells or page units.
+
+```
+!resizer size large
+!resizer size 2 2 cells
+```
+
+### Fit a Map to the Grid
+
+Many battle maps have their own grid printed on them, at their own size. Draw a rectangle over a few of the map's squares, select it and the map, and click **Calibrate map**. Say how many squares the box covers, and the map is scaled and moved so its squares sit on the page's grid. The box is deleted afterwards.
+
+**Calibrate and fit page** also resizes the page to the map, and **Calibrate by pixels** skips the box if you know the size of the map's squares.
+
+### Zoom a Whole Page
+
+**Zoom page** scales the page and everything on it: the map, tokens, text, Jumpgate and Legacy drawings, and dynamic lighting walls, doors and windows. `2` doubles everything, `0.5` halves it, and `to 140` makes the cells 140 pixels.
+
+**Distances stay true.** A 5 ft cell is still 5 ft after a zoom, so rulers, auras, lights and vision measure the same. **Keep their size** moves tokens with the map but leaves them one square big.
+
+```
+!resizer zoom 2
+!resizer zoom 0.5 --keep-tokens
+```
+
+### Several Pages at Once
+
+**Pick pages** lists every page in the game with a tick box. Tick the ones you want and click **Zoom ticked pages** to zoom them together, as one change.
+
+### History and Undo
+
+Every change can be undone with the menu's **Undo** button. The last 10 changes are kept with the game, so they survive a Mod sandbox restart, and **History** lists them. A zoom across several pages is undone in one step.
+
+### Settings
+
+The settings card has a button for each setting: keep token size when zooming, scale drawing line widths, delete the calibration box, the language, and an extra name for the command. `!rsz` works as well as `!resizer`.
+
+### Available in 24 Languages
+
+The menu, messages and handouts are available in 24 languages, chosen in the settings or on the Mod's settings page.
+
+### Works With Other Mods
+
+Other mods can send `!resizer` commands, naming objects with `--ids`, and the replies are whispered to the GM. Mods that remember positions on a page can follow a zoom with the API: `Resizer.zoomPage`, `Resizer.undo`, `Resizer.history` and `Resizer.onZoom`.
+
+---
+
+## What's New in Version 1.0.0
+
+Version 1.0.0 is a full rewrite of 0.0.9:
+
+- **Jumpgate**: zooming a page moves and scales Jumpgate drawings, dynamic lighting walls, doors and windows with the map. 0.0.9 left them where they were.
+- **Distances stay true**: 0.0.9 multiplied the distance per cell, so a 5 ft cell became 10 ft.
+- **`scale 2 up`** now grows the page. 0.0.9 read the direction word twice, so both `up` and `down` shrank it.
+- **Grid cell sizes** come from each page, instead of assuming 70 pixels.
+- **Undo** works for every change and keeps the last 10 through a sandbox restart. 0.0.9 could only undo the last resize.
+- **Calibrate**, **creature sizes**, **sizes in grid cells or page units**, **zooming several pages** and **history** are new.
+- **Chat menu**, **Help** and **Command Deck** handouts, a settings card and an API for other mods.
+- **Available in 24 languages**.
+
+Every 0.0.9 command still works, and a renamed command is kept. The full list is in the changelog.
+
+---
+
+## Compatibility
+
+Resizer works in both Jumpgate and Legacy games, with any game system: it works on the page, maps, tokens, drawings, text and dynamic lighting walls, not on character sheets.
+
+Jumpgate does not redraw a Legacy drawing that a Mod changes, so Resizer draws Legacy drawings again at their new size, and they get new IDs. Maps must be square to the page (rotated 0°, 90°, 180° or 270°) to be calibrated.
+
+If 0.0.9 is installed, replace it rather than running both. Resizer has no dependencies.
+
+---
+
+## Why Use It?
+
+A map at the wrong size or a page that needs to be bigger shouldn't cost you the walls you spent an evening drawing. With Resizer the map fits the grid in one go, the page zooms with everything on it, and if it isn't right, one click takes it back.
