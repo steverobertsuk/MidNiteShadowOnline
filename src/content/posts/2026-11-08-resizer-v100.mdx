@@ -1,0 +1,70 @@
+---
+title: 'Resizer v1.0.0'
+summary: 'Resizer v1.0.0 is a full rewrite for Jumpgate: resize tokens, fit maps to the grid and zoom whole pages with their walls, doors and windows, keeping every distance true. Every 0.0.9 command still works.'
+date: 2026-11-08T13:30:00Z
+category: 'Resizer'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-resizer-cover.jpg'
+heroAlt: 'Resizer mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+Maps that came in at the wrong size, tokens that need to be Large, a whole page that needs to be bigger: **Resizer** does all of it, and moves the walls with the map.
+
+Version 1.0.0 is a full rewrite of Robin Kuiper's Resizer 0.0.9, which had not been updated since 2018 and did not know about Jumpgate. In Jumpgate the old version scaled the map but left the walls behind, and doubled the distance per square while it was at it. Every 0.0.9 command still works, and a new [four-minute How-To video](/posts/resizer-v100-how-to-video/) shows every feature.
+
+## Change Log
+
+### Fixed
+
+- Zooming a page (0.0.9's `scale`) moves and scales Jumpgate drawings, dynamic lighting walls, doors and windows with the map. 0.0.9 only knew Legacy drawings, so in Jumpgate the walls no longer matched the map.
+- Zooming keeps the distance per cell. 0.0.9 multiplied the page's scale, so a 5 ft cell became 10 ft, changing what every ruler, aura and light meant.
+- `scale 2 up` grows the page and `scale 2 down` shrinks it. 0.0.9 read the direction word twice, so both shrank the page.
+- Legacy drawings are drawn again at their new size, as Jumpgate ignores a Mod's change to their scale.
+- A zoomed page keeps its new grid cell size, even when Jumpgate saves the page back with its old one.
+- The grid cell size comes from each page, and the Jumpgate grid offset is scaled with the page. 0.0.9 assumed 70 pixel cells.
+- **Fit** with keep ratio centres the graphic on the page, instead of leaving it in the top-left corner.
+- **Undo** works for every change and keeps the last 10 with the game. 0.0.9 could only undo the last resize, and lost it on a sandbox restart.
+- Errors and empty selections get a clear message, and the help button no longer links to a page that has gone.
+
+### Added
+
+- **Zoom** with factors such as `2`, `0.5`, `150%`, `1/2` or `to 140`, and an option to keep tokens their size.
+- **Calibrate**: fit a map to the grid from a rectangle drawn over some of its own squares, or from its square size in pixels.
+- **Creature sizes** from Tiny to Gargantuan, in the page's grid cells, and sizes in pixels, grid cells or page units.
+- **Zoom several pages** at once with the **Pick pages** card, undone in one step.
+- A **History** card listing the last 10 changes.
+- A chat menu, **Resizer - Help** and **Resizer - Command Deck** handouts (GM only), a settings card, and 24 languages.
+- Commands from other Mods, `--ids` to name objects, and an API: `Resizer.zoomPage`, `Resizer.undo`, `Resizer.history` and `Resizer.onZoom`.
+
+```
+!resizer size large
+!resizer calibrate 4 2
+!resizer zoom 2 --pages Docks, Market
+```
+
+### Changed
+
+- The main menu replaces 0.0.9's separate size, help and config cards, and `!rsz` also works.
+- `set command <name>` renames the command, instead of the first-start config card.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.0.0; until then One-Click installs v0.0.9).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/Resizer-v1.0.0/Resizer)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/Resizer-v1.0.0/Resizer_v1.0.0.zip).
+
+If 0.0.9 is installed, replace it rather than running both. Resizer works in Jumpgate and Legacy games, with any game system, and has no dependencies.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Resizer Project Page**](https://midniteshadow.online/projects/roll20-mods/resizer/)
+
+Thank you to Robin Kuiper for creating Resizer.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
