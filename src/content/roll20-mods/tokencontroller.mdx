@@ -45,6 +45,8 @@ hero: '../../assets/images/mods/mod-tokencontroller-hero.jpg'
 heroAlt: 'TokenController mod hero image'
 ---
 
+import YouTube from '../../components/YouTube.astro';
+
 ## TokenController Overview
 
 A map feels more alive when things move on it: guards walking their rounds, a cart following its driver, a patrol pacing the castle walls. Moving those tokens by hand every turn is slow, and easy to forget in the middle of a scene.
@@ -52,6 +54,17 @@ A map feels more alive when things move on it: guards walking their rounds, a ca
 TokenController moves them for you. Give a token a route and it walks it on its own, at its own speed, until you stop it. Other tokens can follow a leader in single file or in formation, and tokens you want left alone can be locked in place. When combat starts, patrols pause, and they carry on when it ends. Patrols can stop at walls and closed doors, and guards marked as dead leave their routes.
 
 TokenController was created by **Developesque**. Version 5.0.0 is a full rewrite by me, MidNiteShadow7, after the Mod was reported as not working in Jumpgate. It works in Jumpgate and Legacy games, no longer needs HTML Builder, and keeps version 4 paths, patrols, locks, followers, macros and `!tc` commands working.
+
+---
+
+## How-To
+
+<YouTube
+  id="VH_80iShAcc"
+  title="TokenController v5.0.1 for Roll20: Patrol Routes, Followers, Locks and Combat Pauses (How-To)"
+/>
+
+This seven-minute video goes through every feature of TokenController v5.0.1: the menu and Command Deck, patrols and step codes, bounce areas, following, locking, combat pauses, Stop All and translations.
 
 ---
 
@@ -95,7 +108,7 @@ Hold a token in place with Roll20's own position lock, by undoing any move, or b
 
 ### Combat Aware
 
-Combat is detected from the turn tracker, a GM switch, or both. Patrols can pause, move once each time the turn passes, or keep moving, and the GM is told when they pause and resume.
+Combat is detected from the Turn Order, a GM switch, or both. Patrols can pause, move once each time the turn passes, or keep moving, and the GM is told when they pause and resume.
 
 ### Easy to Drive
 
