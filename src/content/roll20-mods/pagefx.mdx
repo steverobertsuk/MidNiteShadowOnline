@@ -1,0 +1,159 @@
+---
+title: 'PageFX'
+summary: 'Fill part of your map with effects that keep going: rain on the docks, fog in the swamp, embers by the hearth, and traps that burst into sparks when someone steps on them, on every page your players are on.'
+order: 12
+category: 'Map effects'
+postCategory: 'pagefx'
+status: 'Active'
+versions:
+  - label: 'One-Click'
+    version: 'v1.3'
+    url: ''
+  - label: 'GitHub'
+    version: 'v2.0.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/PageFX-v2.0.0/PageFX'
+  - label: 'Direct Download'
+    version: 'v2.0.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/PageFX-v2.0.0/PageFX_v2.0.0.zip'
+lastUpdated: 2026-11-08
+compatibility:
+  - label: 'Jumpgate'
+    url: 'https://pages.roll20.net/redesign'
+  - label: 'Legacy'
+    url: ''
+  - label: 'Any game system'
+    url: ''
+requirements:
+  - label: 'Roll20 Pro'
+    url: ''
+  - label: 'Roll20 Elite'
+    url: ''
+credits:
+  - name: 'MidNiteShadow7'
+    url: 'https://app.roll20.net/users/16506286/midniteshadow7'
+  - name: 'Ada Lindberg'
+    url: 'https://app.roll20.net/users/46544/ada-l'
+featuredLinks:
+  - label: 'GitHub'
+    url: 'https://github.com/Roll20/roll20-api-scripts/tree/master/PageFX'
+  - label: 'Changelog'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/PageFX-v2.0.0/PageFX/CHANGELOG.md'
+links: []
+indexMedia: '../../assets/images/mods/mod-pagefx-cover.jpg'
+indexMediaAlt: 'PageFX mod cover image'
+hero: '../../assets/images/mods/mod-pagefx-hero.jpg'
+heroAlt: 'PageFX mod hero image'
+---
+
+import YouTube from '../../components/YouTube.astro';
+
+## PageFX Overview
+
+Rain on the docks, fog drifting through the swamp, embers rising from the hearth: a few effects that keep going make a map feel like a place. Roll20 can draw them, but only one at a time, when someone clicks.
+
+PageFX keeps them going for you. Pick a token, choose an effect, and set its area with the token's aura. The effect spawns again and again at random points in that area, on every page your players are on, until you turn it off. Effects can also wait for something to happen: a glyph that bursts into sparks when someone steps on it, or a storm that breaks when a new round of combat begins.
+
+PageFX was created by **Ada Lindberg** in 2016. Version 2.0.0 is a full rewrite by me, MidNiteShadow7, after Jason H. reported on the Roll20 forums that players moved to their own page saw no effects. It fixes that and every other known version 1 bug, and adds chat menus, presets, triggers and translations. Version 1 tokens named PageFX and NullFX keep working.
+
+---
+
+## How-To
+
+<YouTube
+  id="_Y1FTAT8_As"
+  title="PageFX v2.0.0 for Roll20: Rain, Fog, Embers and Traps That Fire on Your Map (How-To)"
+/>
+
+This seven-and-a-half-minute video goes through every feature of PageFX v2.0.0: the Command Deck, presets, your own effects, controlling them, a split party, no-effect areas, triggers, upgrading from version 1 and translations.
+
+---
+
+## Key Features
+
+### Quick to Set Up
+
+Put a token where the effect should be (the GM layer keeps it hidden from players), select it, and click a preset in the **Command Deck** handout or the `!pagefx` menu. Resize the token's Aura 1 to set the area. The effect starts as soon as players are on the page, and stops when they leave.
+
+### 23 Presets
+
+| Pack            | Presets                                                                          |
+| --------------- | -------------------------------------------------------------------------------- |
+| Weather         | Light rain, Heavy rain, Thunderstorm, Snow, Blizzard, Hail, Sandstorm, Fog wisps |
+| Fire and heat   | Embers, Falling ash, Bubbling magma, Lava spurts, Sparks                         |
+| Water           | Cave drips, Steam vents, Geyser, Waterfall spray, Bubbles                        |
+| Magic and eerie | Fireflies, Arcane motes, Necrotic mist, Holy glimmer, Swamp gas                  |
+
+Changing a preset afterwards makes the effect your own. Other Mods can add presets of their own.
+
+### Your Own Effects
+
+Each effect has one or more **layers**, and each layer spawns one thing with its own timing. A layer can spawn:
+
+- A **built-in Roll20 effect** in any type and colour, such as `burn-fire` or `beam-acid`
+- A **custom FX** saved in the game, by name
+- A **custom FX definition** pasted as JSON. Missing values are filled in, so a short definition still draws
+
+Jumpgate draws custom FX definitions in white unless they are saved, so PageFX saves its own as custom FX and they draw in colour. Beam-like effects can fire in a random direction or a fixed one.
+
+### Effects on Every Page With Players
+
+Effects run on the page with the Player Ribbon and on every page a player has been moved to on their own, so a split party each sees their own page's weather. Turn on **GM Page Preview** to try effects out on the page you are looking at, with no players there.
+
+### Control
+
+- Turn each effect **on** or **off**, **pause** it, or change its **intensity**
+- **Pause All** and **Resume All**, and a global intensity
+- **Fire** an effect once to try it out
+- A cap on spawns per page each second (30 by default), so fast effects don't lag the game
+
+### Triggers
+
+A trigger starts, stops, switches, fires or bursts an effect when something happens:
+
+- **Each round**, or on one round, from the Turn Tracker
+- **On a turn**, when a chosen token reaches the top of the turn order
+- **When a token enters or leaves** the effect's area, or another token's aura: player tokens, any token or named tokens
+
+Triggers can go off every time or only the first time.
+
+### No-Effect Areas
+
+Make a token a **no-effect area** and nothing spawns inside it, so the rain stays out of the tavern.
+
+### Available in 24 Languages
+
+Menus, messages and the Help and Command Deck handouts are available in 24 languages, chosen from the settings card or the Mod's settings page. Commands and preset IDs stay in English.
+
+### Works With Other Mods
+
+Other Mods can send `!pagefx` commands, and use PageFX's API: `PageFX.start`, `stop`, `pause`, `resume`, `fire`, `create`, `remove`, `registerPreset`, `checkToken` and more.
+
+---
+
+## What's New in Version 2.0.0
+
+Version 2.0.0 is a full rewrite:
+
+- **Split parties**: effects run on every page with players on it. Version 1 only ever drew them on the Player Ribbon page.
+- **Areas** are worked out from each effect's own page and cell size, so they are right on scaled and hex pages.
+- **Saved custom FX** are spawned once, not twice, and random directions work for saved beam-like FX.
+- Moving or selecting an effect token no longer restarts its timer, and effects start when the sandbox starts.
+- Effects that rise upwards now draw in Legacy games too.
+- **Errors** reach the GM, not just the API console.
+- **Chat menus**, the **Command Deck** and **Help** handouts, **presets**, **layers**, **triggers**, intensity, pause, a spawn cap and **24 languages** are new.
+
+Version 1 tokens named PageFX and NullFX are taken over on the first start, with their GM Notes, bars and interdiction marker, and `!pageFX on` and `!pageFX off` still work. The full list is in the changelog.
+
+---
+
+## Compatibility
+
+PageFX works in both Jumpgate and Legacy games, with any game system: it works with tokens and pages, not character sheets. It has been tested on square, scaled and hex pages.
+
+PageFX has no dependencies.
+
+---
+
+## Why Use It?
+
+Players remember the places where something was happening: the storm over the harbour, the embers in the forge, the glyph that flared when the rogue stepped on it. PageFX lets you set those up once, before the session, and leaves your hands free to run the game.
