@@ -1,0 +1,80 @@
+---
+title: 'PageFX v2.0.0'
+summary: 'PageFX 2.0.0 is a full rewrite that runs effects on every page with players on it, with chat menus, 23 presets, layers, triggers and 24 languages. Version 1 tokens keep working.'
+date: 2026-11-08T12:00:00Z
+category: 'PageFX'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-pagefx-cover.jpg'
+heroAlt: 'PageFX mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+**PageFX**, the Roll20 Mod that fills part of your map with effects that keep going, has reached version 2.0.0.
+
+PageFX was created by **Ada Lindberg** in 2016 and last updated in 2017. A token named PageFX spawned an effect at random points within its aura, again and again, so a GM could set rain, fire or fog going on a map. But it only ever drew effects on the page with the Player Ribbon: when Jason H. split his party on the Roll20 forums, the players moved to their own page saw nothing. The mod is no longer supported, so I have rewritten it.
+
+Version 2.0.0 is a full rewrite. Version 1 tokens named PageFX and NullFX are taken over on the first start and keep working, and `!pageFX on` and `!pageFX off` still work.
+
+## Change Log
+
+### Fixed
+
+- **Effects only ran on the page with the Player Ribbon.** Players moved to their own page (a split party) saw nothing. Effects now run on every page with players on it, each drawn on its own page.
+- The area and page edges were worked out from the ribbon page, not the effect's own page.
+- Aura radii assumed 70 px cells, so areas were wrong on pages with a different cell size.
+- A NullFX area grew or shrank with the size of the PageFX token being checked, not its own.
+- Saved custom FX were spawned twice each time.
+- A `random` direction never worked for saved beam-like custom FX.
+- Bar values were used as text in the interval maths.
+- Moving or selecting a PageFX token restarted its timer.
+- Effects did not start when the sandbox started, only when the ribbon next moved.
+- A debug message was logged on every beam spawn.
+- Errors, such as a saved FX that could not be found, only reached the API console; the GM is now told.
+- Effects had no limit, which made games lag with fast effects. Each page now gets at most 30 spawns a second (a setting).
+- Effects that rise upwards drew nothing in Legacy games; they now draw in both Legacy and Jumpgate.
+
+### Added
+
+- **Chat menus**: a main menu of the effects on your page, a card per effect with buttons for every setting, a presets card, settings and status.
+- Effects made from any token, and **no-effect areas** from any token.
+- **Layers**: one effect can spawn several things, each with its own timing.
+- Built-in FX in any type and colour, saved custom FX, and custom FX definitions pasted as JSON. Missing values in a definition are filled in, and PageFX saves its definitions as its own custom FX so Jumpgate draws them in colour.
+- **Per-effect on/off, pause and intensity**, plus Pause All, Resume All and a global intensity.
+- **23 presets** in four packs: weather, fire and heat, water, and magic. Other Mods can add more.
+- **Triggers**: start, stop, switch, fire or burst an effect each round or on a round, on a token's turn, or when a token enters or leaves an area, for player tokens, any token or named tokens, once or every time.
+- **GM Page Preview** setting: also run effects on the page a GM is looking at.
+- **PageFX - Help** and **PageFX - Command Deck** handouts.
+- **Available in 24 languages**, chosen from the settings card or the Mod's settings page.
+- Commands from other Mods are accepted, and a public API: `start`, `stop`, `pause`, `resume`, `setIntensity`, `fire`, `create`, `remove`, `getEffect`, `listEffects`, `isRunning`, `registerPreset`, `listPresets` and `checkToken`.
+- `status`, `rescan` and `journal rebuild` commands.
+
+### Changed
+
+- The main command is `!pagefx`. `!pageFX on` and `!pageFX off` now resume and pause every effect.
+- Random points are spread evenly over the area, where version 1 bunched them towards the middle.
+- The code is split into modules, bundled with Rollup and covered by automated tests.
+
+## How-To Video
+
+A seven-and-a-half-minute video goes through every feature: [PageFX v2.0.0 How-To Video](/posts/pagefx-v200-how-to-video/).
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v2.0.0; until then One-Click installs v1.3).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/PageFX-v2.0.0/PageFX)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/PageFX-v2.0.0/PageFX_v2.0.0.zip).
+
+PageFX has no dependencies.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**PageFX Project Page**](https://midniteshadow.online/projects/roll20-mods/pagefx/)
+
+A big thank you to Ada Lindberg for creating PageFX, and to Jason H. for reporting the split-party bug.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
