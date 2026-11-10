@@ -1,0 +1,152 @@
+---
+title: 'DeathTracker'
+summary: 'Marks tokens as bloodied, dying, stable or dead as their hit points change, counts death saves from the character sheet, and can move the dead off the map and out of the turn order.'
+order: 14
+category: 'Combat automation'
+postCategory: 'deathtracker'
+status: 'Active'
+versions:
+  - label: 'One-Click'
+    version: 'v0.1.8'
+    url: ''
+  - label: 'GitHub'
+    version: 'v1.0.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/DeathTracker-v1.0.0/DeathTracker'
+  - label: 'Direct Download'
+    version: 'v1.0.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/DeathTracker-v1.0.0/DeathTracker_v1.0.0.zip'
+lastUpdated: 2026-11-10
+compatibility:
+  - label: 'Jumpgate'
+    url: 'https://pages.roll20.net/redesign'
+  - label: 'Legacy'
+    url: ''
+  - label: 'D&D 5E 2024'
+    url: ''
+  - label: 'D&D 5E 2014'
+    url: ''
+requirements:
+  - label: 'Roll20 Pro'
+    url: ''
+  - label: 'Roll20 Elite'
+    url: ''
+credits:
+  - name: 'MidNiteShadow7'
+    url: 'https://app.roll20.net/users/16506286/midniteshadow7'
+  - name: 'Robin Kuiper'
+    url: 'https://app.roll20.net/users/1226016/robin'
+featuredLinks:
+  - label: 'GitHub'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/DeathTracker-v1.0.0/DeathTracker'
+  - label: 'Changelog'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/DeathTracker-v1.0.0/DeathTracker/CHANGELOG.md'
+links:
+  - label: 'Original DeathTracker by Robin Kuiper'
+    url: 'https://github.com/RobinKuiper/Roll20APIScripts/tree/master/DeathTracker'
+indexMedia: '../../assets/images/mods/mod-deathtracker-cover.jpg'
+indexMediaAlt: 'DeathTracker mod cover image'
+hero: '../../assets/images/mods/mod-deathtracker-hero.jpg'
+heroAlt: 'DeathTracker mod hero image'
+---
+
+import YouTube from '../../components/YouTube.astro';
+
+## DeathTracker Overview
+
+In a big fight it's easy to lose track of who's bloodied, who's dying and how many death saves they've made, and every glance at a character sheet takes the GM's attention away from the table.
+
+DeathTracker watches hit points for you. Every token is marked as **bloodied**, **dying**, **stable** or **dead** as its hit points change. A player character at 0 makes death saves, counted straight from the character sheet, and the dead can be moved off the map and out of the turn order.
+
+DeathTracker was created by **Robin Kuiper**, whose last release, 0.1.8, came out in 2018. Version 1.0.0 is a full rewrite by me, MidNiteShadow7, for Jumpgate and the D&D 2024 sheet. Your 0.1 settings carry over, and `!dead` still works.
+
+---
+
+## How-To
+
+<YouTube
+  id="fY0ucDm7tNk"
+  title="DeathTracker v1.0.0 for Roll20: Bloodied, Dying, Stable and Dead Tokens, with Death Saves (How-To)"
+/>
+
+This five-minute video goes through every feature of DeathTracker v1.0.0: hit points and bloodied, death saves, PC or NPC, what happens when a token dies, markers and translations.
+
+---
+
+## Key Features
+
+### Quick to Use
+
+Type `!deathtracker` (or `!dt`) in chat for the menu. It shows how many tokens on the page are healthy, bloodied, dying or dead, which player characters are down, and the tools. The **Command Deck** handout has a button for every command.
+
+### Bloodied, Dying, Stable and Dead
+
+| Status   | When                                                               | Default marker |
+| -------- | ------------------------------------------------------------------ | -------------- |
+| Bloodied | At or below the Bloodied share of maximum hit points (50%)         | red dot        |
+| Dying    | A player character at 0 hit points, making death saves             | sleepy         |
+| Stable   | A dying PC with three successes, or stabilised from the menu       | green dot      |
+| Dead     | An NPC at 0, a PC with three failures, or killed by massive damage | dead (red X)   |
+
+Tokens can also be tinted from green to red as they're hurt, with an effect when they take damage or are healed. Any bar can hold the hit points, and an empty bar is never read as 0.
+
+### Death Saves from the Sheet
+
+On the **D&D 2024 sheet**, DeathTracker counts the death save boxes as they're ticked or rolled: three successes and the character is stable, three failures and it's dead. When a PC drops to 0 from the token bar, it opens the sheet's death save boxes ready to tick, and clears them again when the PC is healed.
+
+The **D&D 2014 sheet** and other sheets are read from their death save checkboxes, and a **DeathSaves** token action covers sheets that can't be read. The GM and the PC's players are told when a character goes down, is stable, dies or gets back up.
+
+### PC or NPC
+
+Player characters make death saves; everyone else dies at 0. A token controlled by a player is a PC, and so is one whose sheet isn't an NPC sheet. **Make PC** and **Make NPC** override it for a character, and **Decide automatically** puts it back.
+
+### When a Token Dies
+
+Each of these is off until you switch it on, for NPCs or for everyone: move the dead to the GM layer or the map layer, and remove them from the turn order. Killed by mistake? **Restore** puts the token back on the map and into the turn order with its initiative.
+
+### Any Marker
+
+Every status can use any marker in your game, including custom marker sets and the D&D 2024 sheet's condition markers, such as **Unconscious** for dying.
+
+### Works With HealthColors
+
+[Aura/Tint HealthColors](/projects/roll20-mods/aura-tint-healthcolors/) 2.5 and later can also track death saves, colour tokens by health and play hurt and heal effects. **Who handles what**, in either Mod's settings, chooses which Mod does each, so the two never fight over a token. At first DeathTracker handles death saves and HealthColors the colours and effects.
+
+### Available in 24 Languages
+
+The menu, messages and handouts are available in 24 languages, chosen in the settings or on the Mod's settings page.
+
+### Works With Other Mods
+
+Other mods can send `!deathtracker` commands, naming tokens with `--ids`. The API offers `DeathTracker.check`, `getStatus`, `onStatusChange` and `isManagingDeathSaves`, and 0.1's `ObserveTokenChange` still works, so CombatMaster, LazyExperience and StatusInfo keep working.
+
+---
+
+## What's New in Version 1.0.0
+
+Version 1.0.0 is a full rewrite of 0.1.8:
+
+- **Death saves** for player characters, read from the D&D 2024 sheet, the 2014 sheet's checkboxes or a token action.
+- **Clearing a hit point bar** no longer marks the token dead: empty bars are left alone.
+- **Tints** no longer break (`#NaNNaNNaN`) on tokens without maximum hit points, and a token's own tint comes back at full health.
+- **Tokens controlled by several players**, or by "all", are judged PC or NPC correctly.
+- **Any marker** can be used, not only Roll20's old built-in ones.
+- **Bloodied threshold**, **Make PC / Make NPC**, **when a token dies**, **Restore**, **massive damage** and **announcements** are new.
+- **Who handles what** with HealthColors 2.5 and later.
+- **Chat menu**, **Help** and **Command Deck** handouts, a settings card, One-Click options for every setting, and an API for other mods.
+- **Available in 24 languages**.
+
+Your 0.1 settings are carried over, and `!dead` still works. The full list is in the changelog.
+
+---
+
+## Compatibility
+
+DeathTracker works in both Jumpgate and Legacy games. Hit points, bloodied and dead work with any game system; death saves are read from the D&D 2024 sheet, the D&D 2014 sheet, or any sheet that keeps them as checkboxes, with a token action for the rest.
+
+If 0.1.8 is installed, replace it rather than running both. DeathTracker has no dependencies.
+
+---
+
+## Why Use It?
+
+The middle of a fight is the worst time to be counting death saves. With DeathTracker the table can see at a glance who's hurt, who's going down and who's out of the fight, and you can keep your mind on the story.
