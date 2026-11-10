@@ -7,15 +7,15 @@ postCategory: 'healthcolors'
 status: 'Active'
 versions:
   - label: 'One-Click'
-    version: 'v2.3.0'
+    version: 'v2.4.0'
     url: ''
   - label: 'GitHub'
-    version: 'v2.4.0'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/HealthColors-v2.4.0/HealthColors'
+    version: 'v2.5.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/HealthColors-v2.5.0/HealthColors'
   - label: 'Direct Download'
-    version: 'v2.4.0'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.4.0/HealthColors_v2.4.0.zip'
-lastUpdated: 2026-10-25
+    version: 'v2.5.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.5.0/HealthColors_v2.5.0.zip'
+lastUpdated: 2026-11-10
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -144,7 +144,7 @@ Separate settings are available for:
 
 The `!aura` menu groups every setting into clear sections, with buttons to update the selected tokens, refresh every token or post a read-only copy of the settings to chat.
 
-A GM-only **HealthColors — Help & Reference** handout in the Journal lists every command, the aura shapes, colour palettes, character attributes, optional integrations, tips and the game's current settings. It is kept up to date automatically, and `!aura handout` rebuilds it on demand.
+A GM-only **HealthColors — Help & Reference** handout in the Journal, shown with the HealthColors icon, lists every command, the aura shapes, colour palettes, character attributes, optional integrations, tips and the game's current settings. It is kept up to date automatically, and `!aura handout` rebuilds it on demand.
 
 ### One-Click Install Options
 
@@ -177,6 +177,18 @@ To prevent silent misconfiguration, marker validation now warns the GM when a co
 Live death-save syncing for D&D 2024 (Beacon) sheets needs Roll20's Mod Script Sandbox v1.5. HealthColors detects the sandbox version and only shows a note when the game is on v1.0.
 
 Upgrade handling has also been improved: campaigns migrating from the interim PC dying-marker build now keep existing dying-marker settings instead of resetting them.
+
+### Works With DeathTracker
+
+[DeathTracker](/projects/roll20-mods/deathtracker/) 1.0 can also track death saves, colour tokens by health and play hurt and heal effects. Since version 2.5.0, a **Who handles what** section at the top of the `!aura` menu chooses **HealthColors**, **DeathTracker** or **Off** for each:
+
+| Area                       | Command                                                    | What it covers                                              |
+| :------------------------- | :--------------------------------------------------------- | :---------------------------------------------------------- |
+| Death saves & 0 HP markers | `!aura owner deathsaves <HealthColors\|DeathTracker\|off>` | Death save tracking and the dying, stable and dead markers. |
+| Health colours             | `!aura owner colours <HealthColors\|DeathTracker\|off>`    | HealthColors' aura or tint, or DeathTracker's tint.         |
+| Hurt & heal effects        | `!aura owner effects <HealthColors\|DeathTracker\|off>`    | The effects played when hit points go down or up.           |
+
+The choice is stored once and DeathTracker's settings show and change the same values, so the two mods never fight over a token, and a change in either updates both mods' tokens straight away. With DeathTracker installed, DeathTracker handles death saves and HealthColors the colours and effects at first; without it, HealthColors handles all three. The death sound and nameplates are always HealthColors'.
 
 ---
 
