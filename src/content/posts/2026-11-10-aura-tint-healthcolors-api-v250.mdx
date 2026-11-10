@@ -1,0 +1,48 @@
+---
+title: 'Aura/Tint HealthColors API v2.5.0'
+summary: 'HealthColors v2.5.0 works hand in hand with DeathTracker 1.0: a shared Who handles what choice picks HealthColors, DeathTracker or Off for death saves, health colours and hurt and heal effects.'
+date: 2026-11-10T06:00:00Z
+category: 'HealthColors'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-healthcolors-cover.jpg'
+heroAlt: 'HealthColors mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+HealthColors v2.5.0 makes it work hand in hand with [DeathTracker 1.0](/posts/deathtracker-v100/), released today. Both mods can track death saves with the dying, stable and dead markers, colour tokens by health and play hurt and heal effects. Running both used to mean switching parts of one off by hand; now one shared choice decides which mod does each, so they never fight over a token.
+
+## Change Log
+
+### Added
+
+- **Who handles what, shared with DeathTracker.** A new **Who handles what** section at the top of the `!aura` menu, and `!aura owner <deathsaves|colours|effects> <HealthColors|DeathTracker|off>`, choose which mod handles death saves (with the dying, stable and dead markers), health colours and hurt and heal effects, or neither. The choice is stored once and DeathTracker's settings show and change the same values, so the two mods always agree, and changing it in either refreshes both mods' tokens.
+- At first, with DeathTracker installed, DeathTracker handles death saves and HealthColors the colours and effects. Without DeathTracker, HealthColors handles all three, as before. DeathTracker 0.1 is not affected.
+- When HealthColors does not handle death saves it adds no dead (Red X), dying or stable marker of its own and its Death Save Integration stays idle (`!aura deathsaves sync` says who handles them). When it does not handle colours it adds no aura or tint and takes its own off; when it does not handle effects it plays no heal or hurt effects. The death sound and nameplates are always HealthColors'.
+- The GM menu, the help handout and the startup log show who handles what, and the handout marks DeathTracker as _detected_ or _not installed_.
+- The help handout shows the HealthColors icon in the Journal, including in games that already have it.
+- The public API gains `HealthColors.ownersChanged()`, which DeathTracker calls after a change.
+
+```
+!aura owner deathsaves DeathTracker
+!aura owner colours HealthColors
+!aura owner effects off
+```
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v2.5.0; until then One-Click installs v2.4.0).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/HealthColors-v2.5.0/HealthColors)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/HealthColors-v2.5.0/HealthColors_v2.5.0.zip).
+
+The [v2.4.0 How-To video](/posts/aura-tint-healthcolors-v240-how-to-video/) still shows every other feature.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**Aura/Tint HealthColors Project Page**](https://midniteshadow.online/projects/roll20-mods/aura-tint-healthcolors/)
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
