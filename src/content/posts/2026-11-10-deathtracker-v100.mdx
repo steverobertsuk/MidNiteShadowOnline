@@ -1,0 +1,71 @@
+---
+title: 'DeathTracker v1.0.0'
+summary: 'DeathTracker v1.0.0 is a full rewrite for Jumpgate and the D&D 2024 sheet: tokens marked bloodied, dying, stable or dead, death saves counted from the sheet, and the dead moved off the map. Your 0.1 settings carry over.'
+date: 2026-11-10T05:00:00Z
+category: 'DeathTracker'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-deathtracker-cover.jpg'
+heroAlt: 'DeathTracker mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+Who's bloodied, who's dying, and how many death saves have they made? **DeathTracker** watches hit points and keeps track for you, straight from the character sheet.
+
+Version 1.0.0 is a full rewrite of Robin Kuiper's DeathTracker 0.1.8, which had not changed since 2018. It works in Jumpgate and reads death saves from the D&D 2024 sheet. Your 0.1 settings carry over and `!dead` still works, and a new [five-minute How-To video](/posts/deathtracker-v100-how-to-video/) shows every feature.
+
+## Change Log
+
+### Fixed
+
+- Clearing a token's hit point bar marked it dead (an empty bar was read as 0). Empty bars, and bars that don't hold a number, are now left alone.
+- A token with no maximum hit points got a broken tint (`#NaNNaNNaN`).
+- Tokens controlled by more than one player, or by "all", were wrongly treated as NPCs or PCs.
+- Only Roll20's old built-in markers could be chosen. Any marker in the game now works, including custom marker sets and the D&D 2024 sheet's condition markers.
+- Changing the hit point bar no longer says the sandbox needs a restart.
+- At full hit points the tint no longer wipes a tint set by the GM or another Mod.
+- Settings typed in chat are checked, and bad values are refused with a message.
+- One Mod's failing `ObserveTokenChange` handler no longer stops DeathTracker and the other handlers.
+
+### Added
+
+- **Death saves** for player characters: **Dying** at 0, **Stable** after three successes, **Dead** after three failures. They're read from the D&D 2024 sheet as boxes are ticked or saves rolled, from checkbox fields on the 2014 sheet and others, or from a **DeathSaves** token action.
+- Saves are counted from the drop to 0, and the sheet's boxes are cleared at the drop and on healing. On the D&D 2024 sheet, the death save boxes are opened when a PC drops to 0 from the token bar.
+- **Who is a PC**: player-controlled tokens or characters, or characters without an NPC sheet, plus **Make PC** and **Make NPC** per character.
+- A **Bloodied** threshold setting (50% by default).
+- **When a token dies** (each off by default): move it to the GM layer or the map layer, and remove it from the turn order. **Restore** puts it back, with its initiative.
+- A **massive damage** option for PCs, and announcements to the GM and the PC's players.
+- **Who handles what**, shared with [Aura/Tint HealthColors 2.5](/posts/aura-tint-healthcolors-api-v250/) and later: choose DeathTracker, HealthColors or Off for death saves, health colours and hurt/heal effects.
+- A chat menu, a settings card, **DeathTracker - Help** and **DeathTracker - Command Deck** handouts with the DeathTracker icon in the Journal, One-Click options for every setting, and 24 languages.
+- An API for other Mods: `check`, `getStatus`, `onStatusChange`, `isManagingDeathSaves` and `ownersChanged`, alongside 0.1's `ObserveTokenChange`.
+
+```
+!deathtracker
+!deathtracker stable
+!deathtracker restore --ids <token id>
+```
+
+### Changed
+
+- The main command is `!deathtracker` (also `!dt`); `!dead`, `!dead config key|value` and `!dead reset` still work.
+- The PC Unconscious marker is now the Dying marker.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.0.0; until then One-Click installs v0.1.8).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/DeathTracker-v1.0.0/DeathTracker)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/DeathTracker-v1.0.0/DeathTracker_v1.0.0.zip).
+
+If 0.1.8 is installed, replace it rather than running both. DeathTracker works in Jumpgate and Legacy games and has no dependencies.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**DeathTracker Project Page**](https://midniteshadow.online/projects/roll20-mods/deathtracker/)
+
+Thank you to Robin Kuiper for creating DeathTracker.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
