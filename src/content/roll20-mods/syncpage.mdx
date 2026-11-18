@@ -1,0 +1,131 @@
+---
+title: 'SyncPage'
+summary: 'Keeps copies of a map in step, so each group of players can have its own copy and you can hide tokens from some players and not others.'
+order: 15
+category: 'Map tools'
+postCategory: 'syncpage'
+status: 'Active'
+versions:
+  - label: 'One-Click'
+    version: 'v0.1.9'
+    url: ''
+  - label: 'GitHub'
+    version: 'v1.0.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/SyncPage-v1.0.0/SyncPage'
+  - label: 'Direct Download'
+    version: 'v1.0.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/SyncPage-v1.0.0/SyncPage_v1.0.0.zip'
+lastUpdated: 2026-11-18
+compatibility:
+  - label: 'Jumpgate'
+    url: 'https://pages.roll20.net/redesign'
+  - label: 'Legacy'
+    url: ''
+requirements:
+  - label: 'Roll20 Pro'
+    url: ''
+  - label: 'Roll20 Elite'
+    url: ''
+credits:
+  - name: 'MidNiteShadow7'
+    url: 'https://app.roll20.net/users/16506286/midniteshadow7'
+  - name: 'Robin Kuiper'
+    url: 'https://app.roll20.net/users/1226016/robin'
+featuredLinks:
+  - label: 'GitHub'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/SyncPage-v1.0.0/SyncPage'
+  - label: 'Changelog'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/SyncPage-v1.0.0/SyncPage/CHANGELOG.md'
+links:
+  - label: 'Original SyncPage by Robin Kuiper'
+    url: 'https://github.com/RobinKuiper/Roll20APIScripts/tree/master/SyncPage'
+  - label: 'Splitting the party in Roll20, by Nick Olivo'
+    url: 'https://www.youtube.com/watch?v=mBxSJfmGjlQ&t=229s'
+indexMedia: '../../assets/images/mods/mod-syncpage-cover.jpg'
+indexMediaAlt: 'SyncPage mod cover image'
+hero: '../../assets/images/mods/mod-syncpage-hero.jpg'
+heroAlt: 'SyncPage mod hero image'
+---
+
+## SyncPage Overview
+
+Roll20 can't hide a token from only some of your players. Dynamic lighting decides what each token can see round corners, but not "this guard has drunk a potion of invisibility: the cleric can see him, the dwarf can't". The answer is a copy of the map for each group of players, with Roll20's split party putting each player on their own copy. But copies drift apart: without help you'd move every token and open every door on every copy.
+
+SyncPage keeps the copies in step. Move, draw or delete on one page and every copy follows, while each copy hides only what its players shouldn't see. It works just as well for an illusion only the wizard sees, a trap only the rogue has spotted, or a character who has been blinded.
+
+SyncPage was created by **Robin Kuiper**, whose last release, 0.1.9, came out in 2018. Version 1.0.0 is a full rewrite by me, MidNiteShadow7, for Jumpgate. Your 0.1 set-up carries over, and `!sync` still works.
+
+---
+
+## Key Features
+
+### Quick to Use
+
+Type `!syncpage` in chat for the menu. It shows this page's group, with buttons for the group, its players, repair, hiding and the settings. The **Command Deck** handout has a button for every command, and the **Help** handout explains everything.
+
+### Sync Groups
+
+1. Go to your map page and click **Make a group from this page**.
+2. Use Roll20's **Duplicate Page** on it, so the copy keeps any marketplace art.
+3. Go to the copy and click **Add this page to a group**. SyncPage pairs the objects that match and copies anything missing.
+
+A group can have any number of pages, with a source page as the reference for repairs. Groups are stored by page ID, so renaming a page is safe.
+
+### What Is Mirrored
+
+Tokens (Jumpgate lights included), text, Legacy and Jumpgate drawings, every kind of wall, doors and windows, in both directions: new objects, changes and deletes. Page settings such as lighting, grid and size are mirrored too, unless a page keeps them for itself. Changes made through TokenMod are mirrored, and other Mods can tell SyncPage about theirs.
+
+### Hiding Per Page
+
+Select tokens and click **Hide here**, **Show here**, **Hide on other pages** or **Show on other pages**. Only that page's copy is hidden, and changes on other pages never undo the hide. Hidden copies go to the GM layer, or are removed and made again when shown, so there's nothing left for players to find.
+
+### Players
+
+The **Players** card shows who is on which copy, with a button per page to move each player. **Everyone to** gathers the party on the source page and remembers the split, and **Restore layout** puts everyone back. Select tokens first, and the card adds a grid to hide or show each one page by page.
+
+### Repair, Pause and Undo
+
+**Preview repair** shows what has drifted, and **Repair now** brings every copy back in step with the source. **Pause** a group to rearrange one copy on purpose. Deletes that spread go into the group's **Recycle bin**, and **Undo** brings them back on every page.
+
+### Settings for Every Table
+
+Every setting can be changed for all groups or for one: what a delete does (everywhere, source page only, unlink, or **Ask**), how copies are hidden, what happens to objects that match nothing, which token properties (such as vision) and page settings (such as darkness) each page keeps for itself, and which layers aren't synced.
+
+### Available in 24 Languages
+
+The menu, messages and handouts are available in 24 languages, chosen on the settings card.
+
+### Works With Other Mods
+
+The API offers `SyncPage.getGroup`, `getLinked`, `notify`, `isHidden`, `onSync` and `repair`, so other Mods can work with linked copies.
+
+---
+
+## What's New in Version 1.0.0
+
+Version 1.0.0 is a full rewrite of 0.1.9:
+
+- **Jumpgate** drawings, walls, doors, windows and lighting settings are mirrored.
+- **Named sync groups** with any number of pages, instead of pages named `_synced`.
+- **Copies keep their IDs**: no more rebuilding every copy on each restart, so turn order and other Mods keep track.
+- **Pairing** with Roll20's Duplicate Page, so marketplace art is kept.
+- **Hiding per page** kept safely, with a remove mode that leaves nothing for players to find.
+- A **Players** card, **Repair**, **Pause**, **Undo** and a **Recycle bin**.
+- A **chat menu**, **Help** and **Command Deck** handouts, settings for all groups or one, and One-Click options for every setting.
+- **Available in 24 languages**.
+
+Your 0.1 set-up is carried over, and `!sync` still works. The full list is in the changelog.
+
+---
+
+## Compatibility
+
+SyncPage works in both Jumpgate and Legacy games, with any game system. Use Roll20's Duplicate Page to make copies: the Mod API can't copy marketplace art. To learn how to split a party in Roll20, see [Nick Olivo's video](https://www.youtube.com/watch?v=mBxSJfmGjlQ&t=229s).
+
+If 0.1.9 is installed, replace it rather than running both. SyncPage has no dependencies.
+
+---
+
+## Why Use It?
+
+Splitting the party is one of the best tools a GM has, and one of the hardest to run on a virtual tabletop. With SyncPage, each group of players sees exactly what their characters should, and you run the scene once, not once per copy.
