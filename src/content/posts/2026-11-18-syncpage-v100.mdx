@@ -1,0 +1,75 @@
+---
+title: 'SyncPage v1.0.0'
+summary: 'SyncPage v1.0.0 is a full rewrite for Jumpgate: copies of a map kept in step, so you can hide tokens from some players and not others. Named sync groups, per-page hiding, a Players card, repair and undo. Your 0.1 set-up carries over.'
+date: 2026-11-18T00:30:00Z
+category: 'SyncPage'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-syncpage-cover.jpg'
+heroAlt: 'SyncPage mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+Roll20 can't hide a token from only some of your players: the invisible guard the cleric can see but the dwarf can't, the illusion only the wizard sees, the trap only the rogue has spotted. The answer is a copy of the map for each group of players, but copies drift apart. **SyncPage** keeps them in step, so you only change what each page hides.
+
+Version 1.0.0 is a full rewrite of Robin Kuiper's SyncPage 0.1.9, which had not changed since 2018. It works in Jumpgate and Legacy, and your 0.1 set-up carries over: `!sync` still works.
+
+## Change Log
+
+### Fixed
+
+- Jumpgate drawings and walls, doors and windows were never mirrored.
+- An object made on any page was copied to every page whose name contained that page's name ("Town" → "Town Hall", "Old Town"), even with no `_synced` pages at all.
+- Deleting anything on a page that was not synced threw an error in the API console.
+- Every sandbox start emptied and rebuilt every copy, so object IDs changed (turn order, TokenHome and other Mods lost track), hides on copies were lost and players' tokens were recreated.
+- Links were wiped on every start, so with Reload Refresh off nothing stayed linked.
+- "Forest_Road_synced" linked to "Forest", and page names were matched case-sensitively.
+- When the original page was missing, syncing stopped until the next restart.
+- Show/Hide wrote the text "undefined" into GM Notes, and moved the source token's layer as well as the copies'.
+- A token whose picture could not be copied crashed the copy, or got a placeholder picture.
+- Page settings went from the original to only one `_synced` page, missed every Jumpgate lighting setting, and archiving the original archived the copy.
+- GM Notes were never copied, and changes made by other Mods were never mirrored or repaired.
+- Renaming a page to end in `_synced` wiped and rebuilt it without warning.
+
+### Added
+
+- **Named sync groups**, made from the menu, stored by page ID so renaming a page is safe. Any number of pages per group, with a source page as the reference.
+- **Pairing**: a page made with Roll20's **Duplicate Page** is matched object by object (marketplace art kept), and anything missing is copied. Objects that match nothing are copied, left, or offered on a card.
+- **Per-page hiding**, in two modes: the GM layer, or removed and made again when shown, so nothing is left for players to find (turn order kept).
+- A **Players** card: who is on which page, buttons to move each player, gather everyone, save and restore the layout, and a show/hide grid for the selected tokens.
+- **Repair** with a preview, **Pause** and **Resume**, **Undo** and a **Recycle bin** per group.
+- **Settings** for all groups or one: what a delete does (everywhere, source page only, unlink, or ask), how copies are hidden, which token properties and page settings each page keeps for itself, layers not synced, and more.
+- A chat menu and cards laid out like the handouts, **SyncPage - Help** and **SyncPage - Command Deck** handouts with the SyncPage icon in the Journal, One-Click options for every setting, and 24 languages.
+- TokenMod changes are mirrored, and an API for other Mods: `getGroup`, `getLinked`, `notify`, `isHidden`, `onSync` and `repair`.
+
+```
+!syncpage
+!syncpage group create Lab Room
+!syncpage hide here
+!syncpage players
+```
+
+### Changed
+
+- The main command is `!syncpage`; `!sync` and 0.1's custom command still work.
+- **True Copy** is gone: Roll20's Duplicate Page does it better, marketplace art included.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.0.0; until then One-Click installs v0.1.9).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/SyncPage-v1.0.0/SyncPage)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/SyncPage-v1.0.0/SyncPage_v1.0.0.zip).
+
+If 0.1.9 is installed, replace it rather than running both. SyncPage works in Jumpgate and Legacy games and has no dependencies.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**SyncPage Project Page**](https://midniteshadow.online/projects/roll20-mods/syncpage/)
+
+Thank you to Robin Kuiper for creating SyncPage.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
