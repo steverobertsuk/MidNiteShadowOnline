@@ -1,0 +1,70 @@
+---
+title: 'LazyExperience v1.0.0'
+summary: 'LazyExperience v1.0.0 is a full rewrite that works with the D&D 2024 sheet and many others: session XP collected from defeated creatures and awards, split fairly across the party, written to the sheets and kept in a Session Log.'
+date: 2026-11-19T01:30:00Z
+category: 'LazyExperience'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-lazyexperience-cover.jpg'
+heroAlt: 'LazyExperience mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+At the end of a session, someone has to add up the XP, divide it by the party and type it into every character sheet. **LazyExperience** does it for you: it collects the experience points as the session goes, splits them fairly and writes each share to the sheets.
+
+Version 1.0.0 is a full rewrite of Robin Kuiper's LazyExperience 0.1.14, last updated in 2020, which wrote nothing to the D&D 2024 sheet. It works with the 2024 sheet and many others, uses Roll20's own party, and brings your settings and the session's XP across from 0.1. A new [five-minute How-To video](/posts/lazyexperience-v100-how-to-video/) shows every feature.
+
+## Change Log
+
+### Fixed
+
+- XP is now written to the D&D Fifth Edition (5E & 5.5E, 2024) sheet. 0.1.14 wrote nothing to it.
+- Adding XP to a character controlled by "all players", or by several players, crashed the Mod, and such characters were counted once for every player.
+- Refreshing characters left gaps in the list, so some characters were skipped.
+- Instant XP wasn't rounded and divided by zero when nobody was active, and text in an XP box became NaN.
+- The defeated prompt could appear twice, and appeared for player characters.
+- Whispers went to the first word of a character's name, the player card always showed 0 XP, and `show` was titled Help.
+
+### Added
+
+- **Game-system profiles**, picked for each character from its sheet and tested in Roll20: D&D 5E 2024, 2014 and Shaped, Pathfinder 1E (Roll20 and Community) and 2E, Starfinder, Old-School Essentials, Dungeon Crawl Classics, Dungeon World, Shadowrun 5E and 6E (karma) and Cypher. WFRP 4E is partly supported. Sheets without XP, such as Savage Worlds, 13th Age and Call of Cthulhu, are refused with a warning, and a custom profile takes your own field names and level table.
+- **Roll20's own party**: characters ticked as **Party Member** share the XP, falling back to characters controlled by players. `!lazyxp party add` and `remove` tick Party Member from chat.
+- **Defeated creatures**: the HP bar dropping to 0 (on the token, on its linked attribute or through TokenMod), the defeated marker, or DeathTracker 1.0's dead status adds the creature's XP. The GM is asked first, or the XP is added automatically. Creature XP comes from the sheet's XP value, the challenge rating, or (Pathfinder 2E) the level difference.
+- **Fair splits**: absent characters, with an optional **Absent share**, per-character shares, bonus XP, `give`, and extra shares for companions. XP that doesn't divide evenly carries over.
+- **Level-up notices** from each system's level table, sent once per level.
+- The **LazyExperience - Session Log** handout, newest session first, and a whisper to each player of their character's XP at the end of a session.
+- Chat menus for the session, party, settings and status, **LazyExperience - Help** and **LazyExperience - Command Deck** handouts, 24 languages, One-Click options and an API for other Mods.
+
+```
+!lazyxp
+!lazyxp add 200 Rescued the miller
+!lazyxp bonus 25 A clever plan
+!lazyxp absent
+!lazyxp end
+```
+
+### Changed
+
+- The main command is now `!lazyxp` (and `!lazyexperience`). `!xp` still works unless EasyExperience or ExperienceTracker, which also use it, is installed. A custom command from 0.1, and the old subcommands, keep working.
+- Characters controlled only by "All players", such as helper tokens, no longer share XP.
+- Sheets are updated by default on new installs; upgraded games keep their setting.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.0.0; until then One-Click installs v0.1.14).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/LazyExperience-v1.0.0/LazyExperience)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/LazyExperience-v1.0.0/LazyExperience_v1.0.0.zip).
+
+If 0.1.14 is installed, replace it rather than running both. LazyExperience works in Jumpgate and Legacy games and has no dependencies.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**LazyExperience Project Page**](https://midniteshadow.online/projects/roll20-mods/lazyexperience/)
+
+Thank you to Robin Kuiper for creating LazyExperience, and to The Aaron for keeping it running.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
