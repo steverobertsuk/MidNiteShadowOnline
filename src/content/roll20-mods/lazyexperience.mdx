@@ -1,0 +1,141 @@
+---
+title: 'LazyExperience'
+summary: 'Collects the experience points a party earns during a session, splits them fairly and writes them to the character sheets, from the D&D 2024 sheet to Pathfinder, Starfinder and Shadowrun.'
+order: 17
+category: 'Character tracking'
+postCategory: 'lazyexperience'
+status: 'Active'
+versions:
+  - label: 'One-Click'
+    version: 'v0.1.14'
+    url: ''
+  - label: 'GitHub'
+    version: 'v1.0.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/LazyExperience-v1.0.0/LazyExperience'
+  - label: 'Direct Download'
+    version: 'v1.0.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/LazyExperience-v1.0.0/LazyExperience_v1.0.0.zip'
+lastUpdated: 2026-11-19
+compatibility:
+  - label: 'Jumpgate'
+    url: 'https://pages.roll20.net/redesign'
+  - label: 'Legacy'
+    url: ''
+requirements:
+  - label: 'Roll20 Pro'
+    url: ''
+  - label: 'Roll20 Elite'
+    url: ''
+credits:
+  - name: 'MidNiteShadow7'
+    url: 'https://app.roll20.net/users/16506286/midniteshadow7'
+  - name: 'Robin Kuiper'
+    url: 'https://app.roll20.net/users/1226016/robin'
+featuredLinks:
+  - label: 'GitHub'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/LazyExperience-v1.0.0/LazyExperience'
+  - label: 'Changelog'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/LazyExperience-v1.0.0/LazyExperience/CHANGELOG.md'
+links:
+  - label: 'Original LazyExperience by Robin Kuiper'
+    url: 'https://github.com/RobinKuiper/Roll20APIScripts/tree/master/LazyExperience'
+indexMedia: '../../assets/images/mods/mod-lazyexperience-cover.jpg'
+indexMediaAlt: 'LazyExperience mod cover image'
+hero: '../../assets/images/mods/mod-lazyexperience-hero.jpg'
+heroAlt: 'LazyExperience mod hero image'
+---
+
+import YouTube from '../../components/YouTube.astro';
+
+## LazyExperience Overview
+
+At the end of a session, someone has to add up the XP, divide it by the party and type it into every character sheet. LazyExperience does it for you: it collects the experience points as the session goes, splits them fairly and writes each share to the sheets. Defeated creatures add their XP as they fall, and when the session ends everyone is paid, told and logged.
+
+It works with the D&D 2024 sheet and many other sheets: D&D 2014 and Shaped, Pathfinder, Starfinder, Old-School Essentials, Dungeon Crawl Classics, Dungeon World, Shadowrun karma and Cypher, each tested in Roll20.
+
+LazyExperience was created by **Robin Kuiper**, and its last release, 0.1.14, came out in 2020 with fixes by The Aaron. It wrote nothing to the D&D 2024 sheet. Version 1.0.0 is a full rewrite by me, MidNiteShadow7. Your settings and the session's XP from 0.1 are brought across.
+
+---
+
+## How-To
+
+<YouTube
+  id="FGBmwf5H2Fw"
+  title="LazyExperience v1.0.0 for Roll20: Session XP, Split Fairly and Written to the Sheets"
+/>
+
+This five-minute video starts with a quick look at what LazyExperience does, then goes through every feature of version 1.0.0: the Command Deck and menu, the party, adding XP, defeated creatures, ending the session, settings, game systems and translations.
+
+---
+
+## Key Features
+
+### Quick to Use
+
+Type `!lazyxp` in chat for the menu, or open the **Command Deck** handout, which has a button for every action. The menu shows the session's XP, how many shares it splits into, the XP per share and each character in the party.
+
+### Roll20's Own Party
+
+Characters ticked as **Party Member** in their character settings share the XP. The Party card lists them and adds or removes the selected tokens. Without a party, the characters controlled by players share it.
+
+### Defeated Creatures
+
+When a creature's HP bar drops to 0, it gets the defeated marker, or DeathTracker marks it dead, you're asked whether to add its XP. The XP comes from the sheet's XP value or challenge rating, or for Pathfinder 2E from the level difference. **Other Amount** changes it, **Undo** takes back the last award, and the GM can have the XP added without asking.
+
+### Adding XP
+
+**Add XP** asks for an amount and a reason, for quests, role-play or anything else. The **+** button beside a name gives one character bonus XP on top of their share, and **give** pays a character straight away.
+
+### Fair Splits
+
+Mark players who missed the session as **Absent**: they get nothing, or part of a share if you choose. Any character can have a different share, such as a half share, and extra shares can be set aside for companions. XP that doesn't divide evenly carries over to the next session.
+
+### Ending the Session
+
+**End Session** pays everyone their share, writes it to their sheets and announces it, along with anyone who now has enough XP for a new level. Each player gets a whisper of what their character earned and their new total. XP can also be paid out as soon as it is awarded instead.
+
+### The Session Log
+
+Every session is kept in the **LazyExperience - Session Log** handout, newest first: who was there, what was earned and who levelled up. `!lazyxp show` reads everyone's XP and level straight from their sheets, with the XP for the next level.
+
+### Many Game Systems
+
+LazyExperience picks a profile for each character from its sheet: D&D 5E 2024, 2014 and Shaped, Pathfinder 1E, Community and 2E, Starfinder, Old-School Essentials, Dungeon Crawl Classics, Dungeon World, Shadowrun 5E and 6E (karma) and Cypher. WFRP 4E is partly supported. Sheets without XP, such as Savage Worlds, 13th Age and Call of Cthulhu, are refused with a warning, and any other sheet can use field names and a level table you choose.
+
+### Available in 24 Languages
+
+The menu, messages and handouts are available in 24 languages, chosen in the settings.
+
+### Works With Other Mods
+
+Other Mods, such as ScriptCards, can send any of the commands. DeathTracker's dead status and TokenMod's changes to the HP bar or marker are noticed, and an API lets other Mods add XP and hear about level-ups.
+
+---
+
+## What's New in Version 1.0.0
+
+Version 1.0.0 is a full rewrite of 0.1.14:
+
+- Works with the **D&D 2024 sheet**, and with game-system profiles for many other sheets.
+- **Roll20's own party** as the list of who shares the XP.
+- **Defeated creatures** noticed from the HP bar, the defeated marker or DeathTracker, with **Other Amount** and **Undo**.
+- **Fair splits**: absent characters, per-character shares, bonus XP and carried-over XP.
+- **Level-up notices**, a whisper to each player and the **Session Log** handout.
+- A **chat menu**, **Help** and **Command Deck** handouts, and One-Click options.
+- **Available in 24 languages**.
+
+Your settings, the session's XP and each character's extra XP from 0.1 are brought across. The full list is in the changelog.
+
+---
+
+## Compatibility
+
+LazyExperience works in both Jumpgate and Legacy games, and Roll20's Party Member setting is a Jumpgate feature; in Legacy games the characters controlled by players share the XP. The main command is `!lazyxp`. `!xp` also works unless EasyExperience or ExperienceTracker, which use it too, is installed.
+
+If 0.1.14 is installed, replace it rather than running both. LazyExperience has no dependencies; with DeathTracker or TokenMod installed, creatures they mark as defeated are noticed too.
+
+---
+
+## Why Use It?
+
+XP is easy to award and tedious to share out. With LazyExperience the sums are done for you, nobody's sheet is missed, absent players are treated fairly, and every session is on record in the journal.
