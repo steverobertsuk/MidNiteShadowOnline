@@ -1,0 +1,69 @@
+---
+title: 'InspirationTracker v1.0.0'
+summary: 'InspirationTracker v1.0.0 is a full rewrite that works with the D&D 2024 sheet: Heroic Inspiration kept in step on the sheet, the token and the chat, with player spending, passing it on, a Party card and points pools for any game.'
+date: 2026-11-19T00:30:00Z
+category: 'InspirationTracker'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-inspirationtracker-cover.jpg'
+heroAlt: 'InspirationTracker mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+"Do I still have inspiration?" It is on the character sheet, but nobody at the table can see the sheet. **InspirationTracker** keeps inspiration on the sheet, the token and the chat in step: give it from a menu, the sheet's own button or a token marker, and all three agree.
+
+Version 1.0.0 is a full rewrite of Robin Kuiper's InspirationTracker 0.1.4, which had not changed since 2018 and could not see the D&D 2024 sheet. It works with Heroic Inspiration on the 2024 sheet and Inspiration on the 2014 sheet, adds points pools for any game, and keeps your marker, special effect and command name from 0.1.
+
+## Change Log
+
+### Fixed
+
+- Inspiration on the D&D Fifth Edition (5E & 5.5E, 2024) sheet is now read and written. 0.1.4 could not see that sheet, so every toggle answered "Could not find attribute named: inspiration", markers added by hand never reached the sheet, and ticking the box on the sheet never showed the marker.
+- A 2014 character whose Inspiration box had never been ticked could not be given inspiration.
+- Tokens on every page get the marker and the special effect, and the effect plays on the page the token is on.
+- The marker list was fixed in the code; it now comes from the game's own token marker sets.
+
+### Added
+
+- **Player spending**: players spend inspiration for characters they control with a **Spend** button or the **Inspiration** token action. The GM is told who spent it, with an **Undo** button. Clearing the box on a sheet or taking the marker off a token counts as a spend too.
+- **Heroic Inspiration wording**: characters on the 2024 rules say Heroic Inspiration, those on the 2014 rules say Inspiration, following each D&D 2024 sheet's rules setting. The **Wording** setting can force either.
+- **Passing it on (2024 rules)**: a character who would gain Heroic Inspiration while having it can give it to a party member who does not have it.
+- A **Party** card with Give, Remove and Spend buttons, which players can be allowed to see.
+- **Points pools**: set **Tracking** to **Points pool** to track inspiration as points that build up and are spent a few at a time, with **Boost** to spend points for a bonus to a roll at the pool's cost per +1. The points are kept in the sheet resource box that has the pool's name, or in a plain attribute, so pools work on any sheet; the Party card says which for each character. The GM can rename the default pool and add more, for hero points, luck and the like.
+- **Custom token markers**: any marker from the game's marker sets, or **None** for no marker on tokens. The sheet's inspiration box and each points pool have a marker of their own; a pool starts with none.
+- Settings for who sees announcements, player spending, the player overview and passing on.
+- A chat menu and cards laid out like the handouts, **InspirationTracker - Help** and **InspirationTracker - Command Deck** handouts, and 24 languages.
+- Commands from other Mods, and an API: `give`, `spend`, `remove`, `isInspired`, `points`, `givePoints`, `spendPoints` and `ObserveTokenChange`.
+
+```
+!inspiration
+!inspiration give
+!inspiration party
+!inspiration boost 4
+!inspiration give 2 --pool "Hero Points"
+```
+
+### Changed
+
+- The command is always `!inspiration`. A command name chosen in 0.1 keeps working alongside it.
+- The marker, special effect and effect type are copied from 0.1, whose settings are left in place, so going back to 0.1.4 still works.
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.0.0; until then One-Click installs v0.1.4).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/InspirationTracker-v1.0.0/InspirationTracker)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/InspirationTracker-v1.0.0/InspirationTracker_v1.0.0.zip).
+
+If 0.1.4 is installed, replace it rather than running both. InspirationTracker works in Jumpgate and Legacy games and has no dependencies.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**InspirationTracker Project Page**](https://midniteshadow.online/projects/roll20-mods/inspirationtracker/)
+
+Thank you to Robin Kuiper for creating InspirationTracker.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
