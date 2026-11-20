@@ -1,0 +1,59 @@
+---
+title: 'LazyExperience v1.1.0'
+summary: 'LazyExperience v1.1.0 adds a Pathfinder 1E track setting: fast, medium or slow, or tracks that change by level, with the XP for the next level written to the sheet. It also fixes the Pathfinder and Starfinder next-level boxes never being read.'
+date: 2026-11-20T09:00:00Z
+category: 'LazyExperience'
+tags: ['Roll20 API Mod', 'Feature Release']
+hero: '../../assets/images/mods/mod-lazyexperience-cover.jpg'
+heroAlt: 'LazyExperience mod hero image'
+---
+
+import InfoNotice from '../../components/InfoNotice.astro';
+
+LazyExperience v1.1.0 started with a question on Reddit the day after [v1.0.0](/posts/lazyexperience-v100/) came out. Pathfinder 1E has three XP tracks, fast, medium and slow, and some GMs mix them: fast for the first few levels, medium for the middle of the campaign and slow after that. Could the Mod follow that, mid-game?
+
+It couldn't, and checking why turned up a bug. Version 1.1.0 adds a **Pathfinder 1E track** setting that does exactly that, and fixes the bug.
+
+## Change Log
+
+### Added
+
+- The **Pathfinder 1E track** setting: fast, medium or slow, or tracks that change by level, such as `fast 1-3, medium 4-13, slow 14+`. A character advances on the track for the level they are on now: in that example, a level 4 character needs 15,000 XP for level 5 (medium), and a level 14 character needs 955,000 for level 15 (slow).
+- After each award, the XP for the next level is written to the sheet's next-level box (the number after the slash beside XP), so the sheet and the level-up notices agree.
+- **Sheet box as typed** (`sheet`) reads the next-level box as the GM types it and leaves it alone.
+- The settings card shows the track, such as "Fast 1–3 · Medium 4–13 · Slow 14+", with a **Mixed** button for tracks by level. There is a One-Click option too, and the new text is in all 24 languages.
+
+```
+!lazyxp set pf1Track fast
+!lazyxp set pf1Track fast 1-3, medium 4-13, slow 14+
+!lazyxp set pf1Track sheet
+```
+
+### Changed
+
+- On the Pathfinder 1E sheets the Mod now writes the next-level box, from the medium track unless you choose another. If you type that box yourself, set **Pathfinder 1E track** to **Sheet box as typed**.
+- `!lazyxp show` uses the same XP for the next level as the level-up notices.
+
+### Fixed
+
+- The next-level boxes on the Pathfinder 1E, Pathfinder Community and Starfinder sheets were never read. Roll20 keeps a box like `xp_max` as the second value of the `xp` attribute, not as an attribute of its own, so version 1.0.0 always fell back to the medium track (and Starfinder's own table).
+
+## Where to install the mod from?
+
+- Roll20 One-Click Installer (once Roll20 merges v1.1.0; until then One-Click installs v0.1.14).
+- [GitHub](https://github.com/steverobertsuk/roll20-api-scripts/tree/LazyExperience-v1.1.0/LazyExperience)
+- [Download and install manually via GitHub](https://github.com/steverobertsuk/roll20-api-scripts/releases/download/LazyExperience-v1.1.0/LazyExperience_v1.1.0.zip).
+
+Replace v1.0.0 or 0.1.14 rather than running both. Your settings and the session's XP are kept.
+
+You can learn more about the mod, explore the full feature set and access download links on the project page below:
+
+➡️ [**LazyExperience Project Page**](https://midniteshadow.online/projects/roll20-mods/lazyexperience/)
+
+Thank you to the Reddit user who asked about Pathfinder's tracks.
+
+<InfoNotice>
+  The mod API is offered under the MIT License, and it allows users to freely use, copy, modify,
+  merge, publish, distribute, sublicense, and sell the software, provided the original copyright and
+  license notice are included.
+</InfoNotice>
