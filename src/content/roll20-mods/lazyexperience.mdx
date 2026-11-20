@@ -10,12 +10,12 @@ versions:
     version: 'v0.1.14'
     url: ''
   - label: 'GitHub'
-    version: 'v1.0.0'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/LazyExperience-v1.0.0/LazyExperience'
+    version: 'v1.1.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/LazyExperience-v1.1.0/LazyExperience'
   - label: 'Direct Download'
-    version: 'v1.0.0'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/LazyExperience-v1.0.0/LazyExperience_v1.0.0.zip'
-lastUpdated: 2026-11-19
+    version: 'v1.1.0'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/releases/download/LazyExperience-v1.1.0/LazyExperience_v1.1.0.zip'
+lastUpdated: 2026-11-20
 compatibility:
   - label: 'Jumpgate'
     url: 'https://pages.roll20.net/redesign'
@@ -33,9 +33,9 @@ credits:
     url: 'https://app.roll20.net/users/1226016/robin'
 featuredLinks:
   - label: 'GitHub'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/LazyExperience-v1.0.0/LazyExperience'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/tree/LazyExperience-v1.1.0/LazyExperience'
   - label: 'Changelog'
-    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/LazyExperience-v1.0.0/LazyExperience/CHANGELOG.md'
+    url: 'https://github.com/steverobertsuk/roll20-api-scripts/blob/LazyExperience-v1.1.0/LazyExperience/CHANGELOG.md'
   - label: 'Wiki'
     url: 'https://wiki.roll20.net/Script:LazyExperience'
 links:
@@ -66,7 +66,7 @@ LazyExperience was created by **Robin Kuiper**, and its last release, 0.1.14, ca
   title="LazyExperience v1.0.0 for Roll20: Session XP, Split Fairly and Written to the Sheets"
 />
 
-This five-minute video starts with a quick look at what LazyExperience does, then goes through every feature of version 1.0.0: the Command Deck and menu, the party, adding XP, defeated creatures, ending the session, settings, game systems and translations.
+This five-minute video starts with a quick look at what LazyExperience does, then goes through every feature of version 1.0.0: the Command Deck and menu, the party, adding XP, defeated creatures, ending the session, settings, game systems and translations. The Pathfinder 1E track setting from version 1.1.0 isn't in the video.
 
 ---
 
@@ -104,6 +104,10 @@ Every session is kept in the **LazyExperience - Session Log** handout, newest fi
 
 LazyExperience picks a profile for each character from its sheet: D&D 5E 2024, 2014 and Shaped, Pathfinder 1E, Community and 2E, Starfinder, Old-School Essentials, Dungeon Crawl Classics, Dungeon World, Shadowrun 5E and 6E (karma) and Cypher. WFRP 4E is partly supported. Sheets without XP, such as Savage Worlds, 13th Age and Call of Cthulhu, are refused with a warning, and any other sheet can use field names and a level table you choose.
 
+### Pathfinder 1E Tracks
+
+Pathfinder 1E has three XP tracks, and the **Pathfinder 1E track** setting picks one: fast, medium or slow. The track can also change by level, such as fast for levels 1 to 3, medium to 13 and slow after, with `!lazyxp set pf1Track fast 1-3, medium 4-13, slow 14+`. After each award the XP for the next level is written to the sheet's next-level box, so the sheet and the level-up notices agree. If you'd rather type that box yourself, choose **Sheet box as typed**.
+
 ### Available in 24 Languages
 
 The menu, messages and handouts are available in 24 languages, chosen in the settings.
@@ -113,6 +117,13 @@ The menu, messages and handouts are available in 24 languages, chosen in the set
 Other Mods, such as ScriptCards, can send any of the commands. DeathTracker's dead status and TokenMod's changes to the HP bar or marker are noticed, and an API lets other Mods add XP and hear about level-ups.
 
 ---
+
+## What's New in Version 1.1.0
+
+- The **Pathfinder 1E track** setting: fast, medium or slow, or tracks that change by level, with the XP for the next level written to the sheet.
+- The next-level boxes on the Pathfinder 1E, Pathfinder Community and Starfinder sheets are now read. Version 1.0.0 missed them and always used its own tables.
+
+The full list is in the [release post](/posts/lazyexperience-v110/) and the changelog.
 
 ## What's New in Version 1.0.0
 
